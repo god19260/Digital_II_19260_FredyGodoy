@@ -50,20 +50,28 @@
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
 char Valor_TMR0 = 100;
+char Contador_Semaforo = 0;
 //------------------------------------------------------------------------------
 //***************************** Prototipos *************************************
 char Tabla_Display (char numero);
+void Secuencia_Inicio(void);
 //------------------------------------------------------------------------------
 //*************************** Interrupciones ***********************************
 void __interrupt() isr (void){    
      // Interrupcion del timer0
     if (T0IF == 1){
+        Contador_Semaforo++;
         TMR0 = Valor_TMR0;  
         T0IF = 0;
     } // Fin de interrupción timer0
     
     // Interrupcion del PORTB
     if (RBIF == 1){
+        if (RB0 == 0){
+            PORTA = Tabla_Display(3);
+            Contador_Semaforo = 0;
+            RE0 =1;
+        }
 
         RBIF = 0; 
     }// Fin de interrupción del PORTB
@@ -77,7 +85,7 @@ void main(void) {
     IRCF1 = 1;
     IRCF2 = 1;       // 8 Mhz   
       
-     // Configurar Timer0
+    // Configurar Timer0
     PS0 = 1;
     PS1 = 1;
     PS2 = 1;         //Prescaler de 256
@@ -105,7 +113,8 @@ void main(void) {
     
     //Limpieza de puertos
     PORTA = 0;
-    PORTB = 0;
+    PORTBbits.RB6 = 0;
+    PORTBbits.RB7 = 0;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
@@ -113,7 +122,8 @@ void main(void) {
 //------------------------------------------------------------------------------
 //*************************** loop principal ***********************************
     while(1){
-        PORTA = Tabla_Display(7);
+        Secuencia_Inicio();
+       
         //PORTA = Tabla_Display(1);
     } // fin loop principal while 
 } // fin main
@@ -140,4 +150,27 @@ char Tabla_Display (char numero){
         0b1110001, // F
     }; 
     return tabla[numero];
+}
+
+void Secuencia_Inicio(void){
+    if (Contador_Semaforo == 50){
+        if (RE0 == 1){
+            RE0 = 0;
+            RE1 = 1;
+            RE2 = 0;
+            PORTA = Tabla_Display(2);
+        } else if(RE1 == 1){
+            RE0 = 0;
+            RE1 = 0;
+            RE2 = 1;
+            PORTA = Tabla_Display(1);
+        }else if(RE2 == 1 ){
+            RE0 = 0;
+            RE1 = 0;
+            RE2 = 0;
+            PORTA = Tabla_Display(0);
+        }
+        Contador_Semaforo = 0;
+    }
+    
 }

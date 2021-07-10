@@ -11,18 +11,31 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"58 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_0\Lab_0.X\Lab_0.c
+"60 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_0\Lab_0.X\Lab_0.c
 [v _isr isr `II(v  1 e 1 0 ]
-"72
+"80
 [v _main main `(v  1 e 1 0 ]
-"123
+"133
 [v _Tabla_Display Tabla_Display `(uc  1 e 1 0 ]
+[v i1_Tabla_Display Tabla_Display `(uc  1 e 1 0 ]
+"155
+[v _Secuencia_Inicio Secuencia_Inicio `(v  1 e 1 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "166
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
-"228
-[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+[s S103 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"245
+[u S112 . 1 `S103 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES112  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
@@ -31,7 +44,7 @@
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "459
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-[s S34 . 1 `uc 1 PS 1 0 :3:0 
+[s S42 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -39,12 +52,12 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1366
-[s S41 . 1 `uc 1 PS0 1 0 :1:0 
+[s S49 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S45 . 1 `S34 1 . 1 0 `S41 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES45  1 e 1 @129 ]
+[u S53 . 1 `S42 1 . 1 0 `S49 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES53  1 e 1 @129 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
@@ -55,10 +68,10 @@
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S60 . 1 `uc 1 WPUB 1 0 :8:0 
+[s S68 . 1 `uc 1 WPUB 1 0 :8:0 
 ]
 "2366
-[s S62 . 1 `uc 1 WPUB0 1 0 :1:0 
+[s S70 . 1 `uc 1 WPUB0 1 0 :1:0 
 `uc 1 WPUB1 1 0 :1:1 
 `uc 1 WPUB2 1 0 :1:2 
 `uc 1 WPUB3 1 0 :1:3 
@@ -67,8 +80,8 @@
 `uc 1 WPUB6 1 0 :1:6 
 `uc 1 WPUB7 1 0 :1:7 
 ]
-[u S71 . 1 `S60 1 . 1 0 `S62 1 . 1 0 ]
-[v _WPUBbits WPUBbits `VES71  1 e 1 @149 ]
+[u S79 . 1 `S68 1 . 1 0 `S70 1 . 1 0 ]
+[v _WPUBbits WPUBbits `VES79  1 e 1 @149 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -91,33 +104,59 @@
 [v _PS2 PS2 `VEb  1 e 0 @1034 ]
 "4058
 [v _PSA PSA `VEb  1 e 0 @1035 ]
+"4103
+[v _RB0 RB0 `VEb  1 e 0 @48 ]
 "4130
 [v _RBIF RBIF `VEb  1 e 0 @88 ]
+"4205
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
+"4208
+[v _RE1 RE1 `VEb  1 e 0 @73 ]
+"4211
+[v _RE2 RE2 `VEb  1 e 0 @74 ]
 "4316
 [v _T0CS T0CS `VEb  1 e 0 @1037 ]
 "4322
 [v _T0IF T0IF `VEb  1 e 0 @90 ]
 "52 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_0\Lab_0.X\Lab_0.c
 [v _Valor_TMR0 Valor_TMR0 `uc  1 e 1 0 ]
-"72
+"53
+[v _Contador_Semaforo Contador_Semaforo `uc  1 e 1 0 ]
+"80
 [v _main main `(v  1 e 1 0 ]
 {
-"119
+"129
 } 0
-"123
+"155
+[v _Secuencia_Inicio Secuencia_Inicio `(v  1 e 1 0 ]
+{
+"176
+} 0
+"133
 [v _Tabla_Display Tabla_Display `(uc  1 e 1 0 ]
 {
 [v Tabla_Display@numero numero `uc  1 a 1 wreg ]
-"124
-[v Tabla_Display@tabla tabla `[16]uc  1 a 16 0 ]
-"123
+"134
+[v Tabla_Display@tabla tabla `[16]uc  1 a 16 21 ]
+"133
 [v Tabla_Display@numero numero `uc  1 a 1 wreg ]
-[v Tabla_Display@F1271 F1271 `[16]uc  1 s 16 F1271 ]
-[v Tabla_Display@numero numero `uc  1 a 1 16 ]
-"143
+[v Tabla_Display@F1273 F1273 `[16]uc  1 s 16 F1273 ]
+[v Tabla_Display@numero numero `uc  1 a 1 37 ]
+"153
 } 0
-"58
+"60
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"70
+"78
+} 0
+"133
+[v i1_Tabla_Display Tabla_Display `(uc  1 e 1 0 ]
+{
+[v i1Tabla_Display@numero numero `uc  1 a 1 wreg ]
+"134
+[v i1Tabla_Display@tabla tabla `[16]uc  1 a 16 0 ]
+"133
+[v i1Tabla_Display@numero numero `uc  1 a 1 wreg ]
+[v i1Tabla_Display@numero numero `uc  1 a 1 16 ]
+"153
 } 0

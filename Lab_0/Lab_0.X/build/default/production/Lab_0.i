@@ -2531,20 +2531,28 @@ extern __bank0 __bit __timeout;
 
 
 char Valor_TMR0 = 100;
+char Contador_Semaforo = 0;
 
 
 char Tabla_Display (char numero);
+void Secuencia_Inicio(void);
 
 
 void __attribute__((picinterrupt(("")))) isr (void){
 
     if (T0IF == 1){
+        Contador_Semaforo++;
         TMR0 = Valor_TMR0;
         T0IF = 0;
     }
 
 
     if (RBIF == 1){
+        if (RB0 == 0){
+            PORTA = Tabla_Display(3);
+            Contador_Semaforo = 0;
+            RE0 =1;
+        }
 
         RBIF = 0;
     }
@@ -2586,7 +2594,8 @@ void main(void) {
 
 
     PORTA = 0;
-    PORTB = 0;
+    PORTBbits.RB6 = 0;
+    PORTBbits.RB7 = 0;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
@@ -2594,7 +2603,8 @@ void main(void) {
 
 
     while(1){
-        PORTA = Tabla_Display(7);
+        Secuencia_Inicio();
+
 
     }
 }
@@ -2621,4 +2631,27 @@ char Tabla_Display (char numero){
         0b1110001,
     };
     return tabla[numero];
+}
+
+void Secuencia_Inicio(void){
+    if (Contador_Semaforo == 50){
+        if (RE0 == 1){
+            RE0 = 0;
+            RE1 = 1;
+            RE2 = 0;
+            PORTA = Tabla_Display(2);
+        } else if(RE1 == 1){
+            RE0 = 0;
+            RE1 = 0;
+            RE2 = 1;
+            PORTA = Tabla_Display(1);
+        }else if(RE2 == 1 ){
+            RE0 = 0;
+            RE1 = 0;
+            RE2 = 0;
+            PORTA = Tabla_Display(0);
+        }
+        Contador_Semaforo = 0;
+    }
+
 }
