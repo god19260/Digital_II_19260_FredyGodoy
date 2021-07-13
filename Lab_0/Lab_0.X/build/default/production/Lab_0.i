@@ -2530,30 +2530,36 @@ extern __bank0 __bit __timeout;
 
 
 
-char Valor_TMR0 = 100;
-char Contador_Semaforo = 0;
+struct{
+    char bit0;
+    char bit1;
+    char bit2;
+}Comparador_PORTB;
+unsigned char Boton_0 = 0;
+unsigned char Boton_1 = 0;
+unsigned char Boton_2 = 0;
+unsigned char Contador_J1 = 0;
+unsigned char Contador_J2 = 0;
+unsigned char Juego_Iniciado = 0;
 
 
 char Tabla_Display (char numero);
 void Secuencia_Inicio(void);
+void Botones(void);
 
 
 void __attribute__((picinterrupt(("")))) isr (void){
 
-    if (T0IF == 1){
-        Contador_Semaforo++;
-        TMR0 = Valor_TMR0;
-        T0IF = 0;
-    }
-
-
     if (RBIF == 1){
-        if (RB0 == 0){
-            PORTA = Tabla_Display(3);
-            Contador_Semaforo = 0;
-            RE0 =1;
+        if(RB0 == 0 && Comparador_PORTB.bit0 == 1){
+            Boton_0 = 1;
         }
-
+        if(RB1 == 0 && Comparador_PORTB.bit1 == 1 && Boton_0 == 0){
+            Boton_1 = 1;
+        }
+        if(RB2 == 0 && Comparador_PORTB.bit2 == 1 && Boton_0 == 0){
+            Boton_2 = 1;
+        }
         RBIF = 0;
     }
 }
@@ -2565,23 +2571,16 @@ void main(void) {
     IRCF0 = 1;
     IRCF1 = 1;
     IRCF2 = 1;
-
-
-    PS0 = 1;
-    PS1 = 1;
-    PS2 = 1;
-    T0CS = 0;
-    PSA = 0;
-    INTCON = 0b10101000;
-    TMR0 = Valor_TMR0;
-
+    INTCON = 0b11101000;
 
     OPTION_REGbits.nRBPU = 0;
     WPUBbits.WPUB0=1;
     WPUBbits.WPUB1=1;
+    WPUBbits.WPUB2=1;
 
     IOCB0 = 1;
     IOCB1 = 1;
+    IOCB2 = 1;
 
 
     ANSEL = 0;
@@ -2603,8 +2602,7 @@ void main(void) {
 
 
     while(1){
-        Secuencia_Inicio();
-
+        Botones();
 
     }
 }
@@ -2634,24 +2632,75 @@ char Tabla_Display (char numero){
 }
 
 void Secuencia_Inicio(void){
-    if (Contador_Semaforo == 50){
-        if (RE0 == 1){
-            RE0 = 0;
-            RE1 = 1;
-            RE2 = 0;
-            PORTA = Tabla_Display(2);
-        } else if(RE1 == 1){
-            RE0 = 0;
-            RE1 = 0;
-            RE2 = 1;
-            PORTA = Tabla_Display(1);
-        }else if(RE2 == 1 ){
-            RE0 = 0;
-            RE1 = 0;
-            RE2 = 0;
-            PORTA = Tabla_Display(0);
+
+    RE0 = 1;
+    RE1 = 0;
+    RE2 = 0;
+    PORTA = Tabla_Display(3);
+    _delay((unsigned long)((1000)*(8000000/4000.0)));
+
+    RE0 = 0;
+    RE1 = 1;
+    RE2 = 0;
+    PORTA = Tabla_Display(2);
+    _delay((unsigned long)((1000)*(8000000/4000.0)));
+
+    RE0 = 0;
+    RE1 = 0;
+    RE2 = 1;
+    PORTA = Tabla_Display(1);
+
+    _delay((unsigned long)((1000)*(8000000/4000.0)));
+    RE0 = 0;
+    RE1 = 0;
+    RE2 = 0;
+    PORTA = Tabla_Display(0);
+}
+
+void Botones(void){
+    if(Boton_0 == 1){
+        RB6 = 0;
+        RB7 = 0;
+        PORTC = 0;
+        PORTD = 0;
+        Secuencia_Inicio();
+        Juego_Iniciado = 1;
+        Boton_0 = 0;
+        Boton_1 = 0;
+        Boton_2 = 0;
+    }
+    if (RB6 == 0 && RB7 == 0 && Juego_Iniciado == 1){
+        if(Boton_1 == 1 && RB6 == 0){
+            if (PORTC == 128){
+                PORTA = Tabla_Display(1);
+                RB6 = 1;
+                PORTC = 0;
+            } else{
+                if (PORTC == 0){
+                    PORTC = 1;
+                }else{
+                    PORTC = PORTC * 2;
+                }
+            }
+            Boton_1 = 0;
         }
-        Contador_Semaforo = 0;
+        if(Boton_2 == 1 && RB7 == 0){
+            if (PORTD == 128){
+                PORTA = Tabla_Display(2);
+                RB7 = 1;
+                PORTD = 0;
+            } else{
+                if (PORTD == 0){
+                    PORTD = 1;
+                }else{
+                    PORTD = PORTD * 2;
+                }
+            }
+            Boton_2 = 0;
+        }
     }
 
+    Comparador_PORTB.bit0 = RB0;
+    Comparador_PORTB.bit1 = RB1;
+    Comparador_PORTB.bit2 = RB2;
 }
