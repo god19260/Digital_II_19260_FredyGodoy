@@ -271,22 +271,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 "11
 [; ;Libreria.c: 11:     char tabla [16]= {
--> -> 63 `i `uc
--> -> 6 `i `uc
--> -> 91 `i `uc
--> -> 79 `i `uc
--> -> 102 `i `uc
--> -> 109 `i `uc
--> -> 125 `i `uc
--> -> 7 `i `uc
--> -> 127 `i `uc
--> -> 103 `i `uc
--> -> 119 `i `uc
--> -> 124 `i `uc
--> -> 57 `i `uc
--> -> 94 `i `uc
+-> -> 64 `i `uc
 -> -> 121 `i `uc
--> -> 113 `i `uc
+-> -> 36 `i `uc
+-> -> 48 `i `uc
+-> -> 25 `i `uc
+-> -> 18 `i `uc
+-> -> 2 `i `uc
+-> -> 120 `i `uc
+-> -> 0 `i `uc
+-> -> 24 `i `uc
+-> -> 8 `i `uc
+-> -> 3 `i `uc
+-> -> 70 `i `uc
+-> -> 33 `i `uc
+-> -> 6 `i `uc
+-> -> 14 `i `uc
 ..
 ]
 [v _tabla `uc ~T0 @X0 -> 16 `i a ]
@@ -299,21 +299,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Libreria.c: 30: }
 [e :UE 138 ]
 }
-"31
-[; ;Libreria.c: 31: char ADC_Valor(char canal){
+"32
+[; ;Libreria.c: 32: char ADC_Valor(char canal){
 [v _ADC_Valor `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _ADC_Valor ]
 [v _canal `uc ~T0 @X0 1 r1 ]
 [f ]
-"32
-[; ;Libreria.c: 32:     ADCON0bits.CHS = canal;
-[e = . . _ADCON0bits 0 2 -> _canal `uc ]
 "33
-[; ;Libreria.c: 33:     return ADRESH;
+[; ;Libreria.c: 33:     ADCON0bits.CHS = canal;
+[e = . . _ADCON0bits 0 2 -> _canal `uc ]
+"34
+[; ;Libreria.c: 34:     return ADRESH;
 [e ) -> _ADRESH `uc ]
 [e $UE 139  ]
-"34
-[; ;Libreria.c: 34: }
+"35
+[; ;Libreria.c: 35: }
 [e :UE 139 ]
 }

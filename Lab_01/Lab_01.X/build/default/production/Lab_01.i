@@ -2504,6 +2504,11 @@ char Tabla_Display (char numero);
 char ADC_Valor(char canal);
 # 11 "Lab_01.c" 2
 
+# 1 "./Librerias_II.h" 1
+# 35 "./Librerias_II.h"
+void ff(void);
+# 12 "Lab_01.c" 2
+
 
 
 
@@ -2567,6 +2572,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
         if (RE0 == 1){
             RE0 = 0;
             PORTC = Tabla_Display(Nibbler_L);
+
             RE1 = 1;
 
         }else{
@@ -2659,6 +2665,7 @@ void main(void) {
 
 
     while(1){
+
         if (Valor_ADC > PORTD){
             RE2 = 1;
         }else{

@@ -9,6 +9,7 @@
 #include <xc.h>
 #define _XTAL_FREQ 8000000
 #include "Libreria.h"
+#include "Librerias_II.h"
 
 // PIC16F887 Configuration Bit Settings
 
@@ -72,6 +73,7 @@ void __interrupt() isr (void){
         if (RE0 == 1){
             RE0 = 0;
             PORTC = Tabla_Display(Nibbler_L);
+            //PORTC = Tabla_Display(6);
             RE1 = 1;
             
         }else{
@@ -164,6 +166,7 @@ void main(void) {
 //------------------------------------------------------------------------------
 //*************************** loop principal ***********************************
     while(1){
+       
         if (Valor_ADC > PORTD){
             RE2 = 1;
         }else{

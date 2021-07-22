@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
+$C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 E E 3 2
 config CONFIG 4 2007 2007 2 2
@@ -75,131 +75,131 @@ STRING 154-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab_01.X.production.o
-11 cinit CODE >694:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-11 cinit CODE >697:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-11 cinit CODE >768:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-12 cinit CODE >769:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-13 cinit CODE >770:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-14 cinit CODE >771:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-15 cinit CODE >772:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-16 cinit CODE >773:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-17 cinit CODE >774:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-18 cinit CODE >775:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-19 cinit CODE >776:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-1A cinit CODE >777:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-1F cinit CODE >781:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-20 cinit CODE >782:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-21 cinit CODE >783:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-22 cinit CODE >786:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-23 cinit CODE >787:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-24 cinit CODE >788:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-25 cinit CODE >789:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-26 cinit CODE >790:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-27 cinit CODE >796:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-27 cinit CODE >798:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-28 cinit CODE >799:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-4 intentry CODE >66:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-146 text3 CODE >31:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
-147 text3 CODE >32:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
-152 text3 CODE >33:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
-153 text3 CODE >34:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
+11 cinit CODE >694:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+11 cinit CODE >697:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+11 cinit CODE >768:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+12 cinit CODE >769:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+13 cinit CODE >770:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+14 cinit CODE >771:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+15 cinit CODE >772:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+16 cinit CODE >773:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+17 cinit CODE >774:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+18 cinit CODE >775:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+19 cinit CODE >776:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+1A cinit CODE >777:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+1F cinit CODE >781:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+20 cinit CODE >782:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+21 cinit CODE >783:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+22 cinit CODE >786:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+23 cinit CODE >787:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+24 cinit CODE >788:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+25 cinit CODE >789:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+26 cinit CODE >790:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+27 cinit CODE >796:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+27 cinit CODE >798:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+28 cinit CODE >799:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+4 intentry CODE >67:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+146 text3 CODE >32:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
+147 text3 CODE >33:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
+152 text3 CODE >34:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
+153 text3 CODE >35:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
 105 text2 CODE >10:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
 108 text2 CODE >11:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
 11D text2 CODE >29:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
 121 text2 CODE >30:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
-2B text1 CODE >66:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-2B text1 CODE >68:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-2F text1 CODE >70:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-30 text1 CODE >71:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-34 text1 CODE >72:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-38 text1 CODE >73:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-39 text1 CODE >74:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-42 text1 CODE >75:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-43 text1 CODE >77:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-44 text1 CODE >78:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-45 text1 CODE >79:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-4E text1 CODE >80:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-4F text1 CODE >85:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-53 text1 CODE >86:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-59 text1 CODE >87:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-5D text1 CODE >88:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-62 text1 CODE >89:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-64 text1 CODE >91:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-65 text1 CODE >95:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-6B text1 CODE >96:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-6C text1 CODE >97:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-77 text1 CODE >98:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-7F text1 CODE >98:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-82 text1 CODE >98:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-8A text1 CODE >99:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-8F text1 CODE >100:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-9A text1 CODE >101:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-9F text1 CODE >102:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-A3 text1 CODE >103:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-A6 text1 CODE >105:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-AF maintext CODE >107:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-AF maintext CODE >111:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-B2 maintext CODE >112:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-B3 maintext CODE >113:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-B4 maintext CODE >114:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-B6 maintext CODE >117:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-B7 maintext CODE >118:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-B8 maintext CODE >119:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-B9 maintext CODE >120:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-BA maintext CODE >121:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-BB maintext CODE >122:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-BD maintext CODE >123:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-C1 maintext CODE >126:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-C4 maintext CODE >127:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-C7 maintext CODE >128:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-CA maintext CODE >129:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-CB maintext CODE >130:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-CC maintext CODE >131:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-CF maintext CODE >132:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-D0 maintext CODE >133:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-D1 maintext CODE >134:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-D8 maintext CODE >135:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-DB maintext CODE >138:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-DE maintext CODE >139:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-DF maintext CODE >140:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-E0 maintext CODE >143:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-E1 maintext CODE >144:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-E2 maintext CODE >148:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-E6 maintext CODE >149:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-E7 maintext CODE >150:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-EB maintext CODE >151:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-ED maintext CODE >152:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-EE maintext CODE >153:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-EF maintext CODE >154:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F0 maintext CODE >157:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F3 maintext CODE >158:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F4 maintext CODE >159:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F5 maintext CODE >160:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F6 maintext CODE >161:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F7 maintext CODE >162:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F8 maintext CODE >166:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-F8 maintext CODE >167:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-FA maintext CODE >167:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-FE maintext CODE >168:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-FF maintext CODE >169:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-100 maintext CODE >170:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-122 inittext CODE >742:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-122 inittext CODE >743:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-123 inittext CODE >744:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-124 inittext CODE >745:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-125 inittext CODE >746:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-126 inittext CODE >753:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-126 inittext CODE >754:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-12B inittext CODE >755:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-12C inittext CODE >756:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-12D inittext CODE >757:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-12E inittext CODE >758:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-12F inittext CODE >759:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-130 inittext CODE >760:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-131 inittext CODE >761:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-132 inittext CODE >762:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-133 inittext CODE >763:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
-134 inittext CODE >764:C:\Users\fredy\AppData\Local\Temp\xcAs7kg.s
+2B text1 CODE >67:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+2B text1 CODE >69:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+2F text1 CODE >71:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+30 text1 CODE >72:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+34 text1 CODE >73:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+38 text1 CODE >74:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+39 text1 CODE >75:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+42 text1 CODE >77:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+43 text1 CODE >79:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+44 text1 CODE >80:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+45 text1 CODE >81:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+4E text1 CODE >82:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+4F text1 CODE >87:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+53 text1 CODE >88:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+59 text1 CODE >89:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+5D text1 CODE >90:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+62 text1 CODE >91:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+64 text1 CODE >93:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+65 text1 CODE >97:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+6B text1 CODE >98:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+6C text1 CODE >99:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+77 text1 CODE >100:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+7F text1 CODE >100:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+82 text1 CODE >100:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+8A text1 CODE >101:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+8F text1 CODE >102:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+9A text1 CODE >103:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+9F text1 CODE >104:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+A3 text1 CODE >105:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+A6 text1 CODE >107:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+AF maintext CODE >109:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+AF maintext CODE >113:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+B2 maintext CODE >114:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+B3 maintext CODE >115:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+B4 maintext CODE >116:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+B6 maintext CODE >119:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+B7 maintext CODE >120:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+B8 maintext CODE >121:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+B9 maintext CODE >122:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+BA maintext CODE >123:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+BB maintext CODE >124:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+BD maintext CODE >125:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+C1 maintext CODE >128:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+C4 maintext CODE >129:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+C7 maintext CODE >130:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+CA maintext CODE >131:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+CB maintext CODE >132:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+CC maintext CODE >133:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+CF maintext CODE >134:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+D0 maintext CODE >135:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+D1 maintext CODE >136:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+D8 maintext CODE >137:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+DB maintext CODE >140:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+DE maintext CODE >141:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+DF maintext CODE >142:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+E0 maintext CODE >145:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+E1 maintext CODE >146:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+E2 maintext CODE >150:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+E6 maintext CODE >151:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+E7 maintext CODE >152:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+EB maintext CODE >153:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+ED maintext CODE >154:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+EE maintext CODE >155:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+EF maintext CODE >156:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F0 maintext CODE >159:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F3 maintext CODE >160:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F4 maintext CODE >161:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F5 maintext CODE >162:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F6 maintext CODE >163:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F7 maintext CODE >164:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F8 maintext CODE >168:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+F8 maintext CODE >170:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+FA maintext CODE >170:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+FE maintext CODE >171:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+FF maintext CODE >172:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+100 maintext CODE >173:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
+122 inittext CODE >742:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+122 inittext CODE >743:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+123 inittext CODE >744:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+124 inittext CODE >745:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+125 inittext CODE >746:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+126 inittext CODE >753:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+126 inittext CODE >754:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+12B inittext CODE >755:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+12C inittext CODE >756:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+12D inittext CODE >757:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+12E inittext CODE >758:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+12F inittext CODE >759:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+130 inittext CODE >760:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+131 inittext CODE >761:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+132 inittext CODE >762:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+133 inittext CODE >763:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+134 inittext CODE >764:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -230,22 +230,22 @@ _RBIF 58 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _T0CS 40D 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _T0IF 5A 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Lab_01.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
+___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
 _main 15E 0 CODE 0 maintext dist/default/production\Lab_01.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
-start 1C 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
+start 1C 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _ADC_Valor 28C 0 CODE 0 text3 dist/default/production\Lab_01.X.production.o
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 Tabla_Display@F1266 32 0 BANK0 1 dataBANK0 dist/default/production\Lab_01.X.production.o
@@ -256,13 +256,13 @@ _ADRESH 1E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _ANSELH 189 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 _INTCON B 0 ABS 0 - dist/default/production\Lab_01.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
-___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
+___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
 _WPUBbits 95 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 start_initialization 22 0 CODE 0 cinit dist/default/production\Lab_01.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Lab_01.X.production.o
 Tabla_Display@numero 30 0 BANK0 1 cstackBANK0 dist/default/production\Lab_01.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
+___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -318,7 +318,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 ADC_Valor@canal 71 0 COMMON 1 cstackCOMMON dist/default/production\Lab_01.X.production.o
 __end_of_isr 15E 0 CODE 0 text1 dist/default/production\Lab_01.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs7kg.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
 __pdataBANK0 32 0 BANK0 1 dataBANK0 dist/default/production\Lab_01.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Lab_01.X.production.o
