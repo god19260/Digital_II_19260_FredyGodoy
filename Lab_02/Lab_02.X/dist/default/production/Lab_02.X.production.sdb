@@ -1,0 +1,339 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"59 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Lab_02.c
+[v _isr isr `II(v  1 e 1 0 ]
+"86
+[v _main main `(v  1 e 1 0 ]
+"5 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\LCD.c
+[v _LCD_Init_8bits LCD_Init_8bits `(v  1 e 1 0 ]
+"20
+[v _PORT_LCD PORT_LCD `(v  1 e 1 0 ]
+"30
+[v _CMD_LCD CMD_LCD `(v  1 e 1 0 ]
+"37
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+"52
+[v _Char_LCD Char_LCD `(v  1 e 1 0 ]
+"59
+[v _Write_LCD Write_LCD `(v  1 e 1 0 ]
+"65
+[v _Print_Num Print_Num `(v  1 e 1 0 ]
+"78
+[v _tabla_num tabla_num `(v  1 e 1 0 ]
+"6 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Libreria.c
+[v _Config_Oscilador Config_Oscilador `(v  1 e 1 0 ]
+"13
+[v _Config_TMR0 Config_TMR0 `(uc  1 e 1 0 ]
+"28
+[v _Config_ADC Config_ADC `(v  1 e 1 0 ]
+"40
+[v _Config_USART Config_USART `(v  1 e 1 0 ]
+"53
+[v _Config_Puertos Config_Puertos `(v  1 e 1 0 ]
+"72
+[v _Valor_ADC Valor_ADC `(uc  1 e 1 0 ]
+"97
+[v _tabla_USART tabla_USART `(v  1 e 1 0 ]
+"59 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
+"166
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+[s S286 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"183
+[u S295 . 1 `S286 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES295  1 e 1 @5 ]
+"228
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"290
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"352
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"414
+[v _PORTE PORTE `VEuc  1 e 1 @9 ]
+[s S307 . 1 `uc 1 RE0 1 0 :1:0 
+`uc 1 RE1 1 0 :1:1 
+`uc 1 RE2 1 0 :1:2 
+`uc 1 RE3 1 0 :1:3 
+]
+"427
+[u S312 . 1 `S307 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES312  1 e 1 @9 ]
+"459
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+[s S189 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"553
+[u S197 . 1 `S189 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES197  1 e 1 @12 ]
+"1133
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"1238
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+[s S137 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+`uc 1 ADCS 1 0 :2:6 
+]
+"1276
+[s S142 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 ADCS0 1 0 :1:6 
+`uc 1 ADCS1 1 0 :1:7 
+]
+[s S151 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S154 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S157 . 1 `S137 1 . 1 0 `S142 1 . 1 0 `S151 1 . 1 0 `S154 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES157  1 e 1 @31 ]
+"1416
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1478
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1540
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1602
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1664
+[v _TRISE TRISE `VEuc  1 e 1 @137 ]
+[s S102 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+]
+"1718
+[u S110 . 1 `S102 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES110  1 e 1 @140 ]
+"2642
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+[s S122 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 VCFG0 1 0 :1:4 
+`uc 1 VCFG1 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"2991
+[u S128 . 1 `S122 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES128  1 e 1 @159 ]
+"3387
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+"3449
+[v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"3587
+[v _ADIF ADIF `VEb  1 e 0 @102 ]
+"3836
+[v _CREN CREN `VEb  1 e 0 @196 ]
+"3956
+[v _IRCF0 IRCF0 `VEb  1 e 0 @1148 ]
+"3959
+[v _IRCF1 IRCF1 `VEb  1 e 0 @1149 ]
+"3962
+[v _IRCF2 IRCF2 `VEb  1 e 0 @1150 ]
+"4049
+[v _PS0 PS0 `VEb  1 e 0 @1032 ]
+"4052
+[v _PS1 PS1 `VEb  1 e 0 @1033 ]
+"4055
+[v _PS2 PS2 `VEb  1 e 0 @1034 ]
+"4058
+[v _PSA PSA `VEb  1 e 0 @1035 ]
+"4175
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"4259
+[v _SPEN SPEN `VEb  1 e 0 @199 ]
+"4313
+[v _SYNC SYNC `VEb  1 e 0 @1220 ]
+"4316
+[v _T0CS T0CS `VEb  1 e 0 @1037 ]
+"4322
+[v _T0IF T0IF `VEb  1 e 0 @90 ]
+"4538
+[v _TXEN TXEN `VEb  1 e 0 @1221 ]
+"54 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Lab_02.c
+[v _Valor_TMR0 Valor_TMR0 `uc  1 e 1 0 ]
+"55
+[v _Valor_Canal_10 Valor_Canal_10 `uc  1 e 1 0 ]
+"56
+[v _Valor_Canal_12 Valor_Canal_12 `uc  1 e 1 0 ]
+"86
+[v _main main `(v  1 e 1 0 ]
+{
+"110
+} 0
+"65 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\LCD.c
+[v _Print_Num Print_Num `(v  1 e 1 0 ]
+{
+[v Print_Num@valor valor `uc  1 a 1 wreg ]
+"66
+[v Print_Num@temp temp `i  1 a 2 17 ]
+"67
+[v Print_Num@centena centena `i  1 a 2 15 ]
+[v Print_Num@decena decena `i  1 a 2 13 ]
+[v Print_Num@unidad unidad `i  1 a 2 10 ]
+"65
+[v Print_Num@valor valor `uc  1 a 1 wreg ]
+"68
+[v Print_Num@valor valor `uc  1 a 1 12 ]
+"77
+} 0
+"78
+[v _tabla_num tabla_num `(v  1 e 1 0 ]
+{
+[v tabla_num@numero numero `i  1 p 2 4 ]
+"103
+} 0
+"59
+[v _Write_LCD Write_LCD `(v  1 e 1 0 ]
+{
+[v Write_LCD@a a `*.24uc  1 a 1 wreg ]
+"60
+[v Write_LCD@i i `uc  1 a 1 2 ]
+"59
+[v Write_LCD@a a `*.24uc  1 a 1 wreg ]
+"61
+[v Write_LCD@a a `*.24uc  1 a 1 3 ]
+"63
+} 0
+"52
+[v _Char_LCD Char_LCD `(v  1 e 1 0 ]
+{
+[v Char_LCD@a a `uc  1 a 1 wreg ]
+[v Char_LCD@a a `uc  1 a 1 wreg ]
+[v Char_LCD@a a `uc  1 a 1 0 ]
+"58
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 6 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"37 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\LCD.c
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
+{
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+"38
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 4 ]
+"37
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+[v Lcd_Set_Cursor@b b `uc  1 p 1 1 ]
+"39
+[v Lcd_Set_Cursor@a a `uc  1 a 1 3 ]
+"47
+} 0
+"5
+[v _LCD_Init_8bits LCD_Init_8bits `(v  1 e 1 0 ]
+{
+"18
+} 0
+"30
+[v _CMD_LCD CMD_LCD `(v  1 e 1 0 ]
+{
+[v CMD_LCD@v v `uc  1 a 1 wreg ]
+[v CMD_LCD@v v `uc  1 a 1 wreg ]
+[v CMD_LCD@v v `uc  1 a 1 0 ]
+"36
+} 0
+"20
+[v _PORT_LCD PORT_LCD `(v  1 e 1 0 ]
+{
+[v PORT_LCD@v v `uc  1 a 1 wreg ]
+[v PORT_LCD@v v `uc  1 a 1 wreg ]
+[v PORT_LCD@v v `uc  1 a 1 6 ]
+"29
+} 0
+"40 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Libreria.c
+[v _Config_USART Config_USART `(v  1 e 1 0 ]
+{
+"51
+} 0
+"13
+[v _Config_TMR0 Config_TMR0 `(uc  1 e 1 0 ]
+{
+"26
+} 0
+"53
+[v _Config_Puertos Config_Puertos `(v  1 e 1 0 ]
+{
+"69
+} 0
+"6
+[v _Config_Oscilador Config_Oscilador `(v  1 e 1 0 ]
+{
+"12
+} 0
+"28
+[v _Config_ADC Config_ADC `(v  1 e 1 0 ]
+{
+"39
+} 0
+"59 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Lab_02.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"84
+} 0
+"72 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Libreria.c
+[v _Valor_ADC Valor_ADC `(uc  1 e 1 0 ]
+{
+[v Valor_ADC@canal canal `uc  1 a 1 wreg ]
+[v Valor_ADC@canal canal `uc  1 a 1 wreg ]
+[v Valor_ADC@canal canal `uc  1 a 1 1 ]
+"77
+} 0

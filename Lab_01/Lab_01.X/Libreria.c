@@ -34,3 +34,5 @@ char ADC_Valor(char canal){
     return ADRESH;
 }
 
+
+

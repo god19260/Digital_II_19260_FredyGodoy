@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+$C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 E E 3 2
 config CONFIG 4 2007 2007 2 2
@@ -75,29 +75,29 @@ STRING 154-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab_01.X.production.o
-11 cinit CODE >694:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-11 cinit CODE >697:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-11 cinit CODE >768:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-12 cinit CODE >769:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-13 cinit CODE >770:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-14 cinit CODE >771:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-15 cinit CODE >772:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-16 cinit CODE >773:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-17 cinit CODE >774:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-18 cinit CODE >775:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-19 cinit CODE >776:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-1A cinit CODE >777:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-1F cinit CODE >781:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-20 cinit CODE >782:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-21 cinit CODE >783:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-22 cinit CODE >786:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-23 cinit CODE >787:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-24 cinit CODE >788:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-25 cinit CODE >789:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-26 cinit CODE >790:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-27 cinit CODE >796:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-27 cinit CODE >798:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-28 cinit CODE >799:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+11 cinit CODE >694:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+11 cinit CODE >697:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+11 cinit CODE >768:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+12 cinit CODE >769:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+13 cinit CODE >770:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+14 cinit CODE >771:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+15 cinit CODE >772:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+16 cinit CODE >773:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+17 cinit CODE >774:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+18 cinit CODE >775:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+19 cinit CODE >776:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+1A cinit CODE >777:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+1F cinit CODE >781:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+20 cinit CODE >782:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+21 cinit CODE >783:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+22 cinit CODE >786:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+23 cinit CODE >787:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+24 cinit CODE >788:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+25 cinit CODE >789:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+26 cinit CODE >790:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+27 cinit CODE >796:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+27 cinit CODE >798:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+28 cinit CODE >799:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
 4 intentry CODE >67:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
 146 text3 CODE >32:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
 147 text3 CODE >33:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Libreria.c
@@ -183,23 +183,23 @@ FA maintext CODE >170:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodo
 FE maintext CODE >171:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
 FF maintext CODE >172:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
 100 maintext CODE >173:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_01\Lab_01.X\Lab_01.c
-122 inittext CODE >742:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-122 inittext CODE >743:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-123 inittext CODE >744:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-124 inittext CODE >745:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-125 inittext CODE >746:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-126 inittext CODE >753:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-126 inittext CODE >754:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-12B inittext CODE >755:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-12C inittext CODE >756:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-12D inittext CODE >757:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-12E inittext CODE >758:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-12F inittext CODE >759:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-130 inittext CODE >760:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-131 inittext CODE >761:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-132 inittext CODE >762:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-133 inittext CODE >763:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
-134 inittext CODE >764:C:\Users\fredy\AppData\Local\Temp\xcAs1oo.s
+122 inittext CODE >742:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+122 inittext CODE >743:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+123 inittext CODE >744:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+124 inittext CODE >745:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+125 inittext CODE >746:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+126 inittext CODE >753:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+126 inittext CODE >754:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+12B inittext CODE >755:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+12C inittext CODE >756:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+12D inittext CODE >757:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+12E inittext CODE >758:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+12F inittext CODE >759:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+130 inittext CODE >760:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+131 inittext CODE >761:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+132 inittext CODE >762:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+133 inittext CODE >763:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
+134 inittext CODE >764:C:\Users\fredy\AppData\Local\Temp\xcAs7ec.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -230,22 +230,22 @@ _RBIF 58 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _T0CS 40D 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _T0IF 5A 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Lab_01.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
 _main 15E 0 CODE 0 maintext dist/default/production\Lab_01.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
-start 1C 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+start 1C 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _ADC_Valor 28C 0 CODE 0 text3 dist/default/production\Lab_01.X.production.o
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 Tabla_Display@F1266 32 0 BANK0 1 dataBANK0 dist/default/production\Lab_01.X.production.o
@@ -256,13 +256,13 @@ _ADRESH 1E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 _ANSELH 189 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 _INTCON B 0 ABS 0 - dist/default/production\Lab_01.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
-___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
+___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
 _WPUBbits 95 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 start_initialization 22 0 CODE 0 cinit dist/default/production\Lab_01.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Lab_01.X.production.o
 Tabla_Display@numero 30 0 BANK0 1 cstackBANK0 dist/default/production\Lab_01.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -318,7 +318,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\Lab_01.X.production.o
 ADC_Valor@canal 71 0 COMMON 1 cstackCOMMON dist/default/production\Lab_01.X.production.o
 __end_of_isr 15E 0 CODE 0 text1 dist/default/production\Lab_01.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs1oo.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs7ec.o
 __pdataBANK0 32 0 BANK0 1 dataBANK0 dist/default/production\Lab_01.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Lab_01.X.production.o

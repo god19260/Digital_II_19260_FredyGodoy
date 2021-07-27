@@ -35,5 +35,6 @@
 
 char Tabla_Display (char numero);
 char ADC_Valor(char canal);
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 
