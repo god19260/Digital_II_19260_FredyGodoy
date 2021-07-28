@@ -22,6 +22,9 @@ void Config_Puertos(void);
 // Funciones de programa
 char Valor_ADC(char canal);
 void Transmisor_USART(char valor);
-void tabla_USART(char numero);
+void tabla_USART(int numero);
+void USART(unsigned char canal_10,unsigned char canal_12);
+void Texto_USART(char texto[]);
+void LCD(unsigned char canal_10,unsigned char canal_12);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

@@ -39,15 +39,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27 ./LCD.h
 [; ;./LCD.h: 27: void LCD_Init_8bits(void);
 [v _LCD_Init_8bits `(v ~T0 @X0 0 ef ]
-"30
-[; ;./LCD.h: 30: void Lcd_Set_Cursor(char a, char b);
-[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"33
-[; ;./LCD.h: 33: void Write_LCD(char *a);
-[v _Write_LCD `(v ~T0 @X0 0 ef1`*uc ]
-"34
-[; ;./LCD.h: 34: void Print_Num(char valor);
-[v _Print_Num `(v ~T0 @X0 0 ef1`uc ]
+"26 ./Libreria.h
+[; ;./Libreria.h: 26: void USART(unsigned char canal_10,unsigned char canal_12);
+[v _USART `(v ~T0 @X0 0 ef2`uc`uc ]
+"28
+[; ;./Libreria.h: 28: void LCD(unsigned char canal_10,unsigned char canal_12);
+[v _LCD `(v ~T0 @X0 0 ef2`uc`uc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -319,30 +316,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab_02.c: 45:     Config_USART();
 [p x WRT  =  OFF         ]
 "54
-[; ;Lab_02.c: 54:     Write_LCD("POT 1: ");
+[; ;Lab_02.c: 54: 
 [v _Valor_TMR0 `uc ~T0 @X0 1 e ]
 [i _Valor_TMR0
 -> -> 100 `i `uc
 ]
 "55
-[; ;Lab_02.c: 55:     Print_Num(Valor_Canal_12);
+[; ;Lab_02.c: 55: 
 [v _Valor_Canal_10 `uc ~T0 @X0 1 e ]
 "56
-[; ;Lab_02.c: 56:     Lcd_Set_Cursor(2,1);
+[; ;Lab_02.c: 56: 
 [v _Valor_Canal_12 `uc ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
 "59
-[; ;Lab_02.c: 59: 
+[; ;Lab_02.c: 59:     }
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
 "61
-[; ;Lab_02.c: 61: 
 [e $ ! == -> _T0IF `i -> 1 `i 139  ]
 {
 "63
-[; ;Lab_02.c: 63: }
 [e = _T0IF -> -> 0 `i `b ]
 "64
 [e = _TMR0 _Valor_TMR0 ]
@@ -395,27 +390,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "98
 [e :U 144 ]
 {
+"99
+[e ( _USART (2 , _Valor_Canal_10 _Valor_Canal_12 ]
 "100
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"101
-[e ( _Write_LCD (1 :s 1C ]
-"102
-[e ( _Print_Num (1 -> _Valor_Canal_12 `uc ]
-"103
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[e ( _LCD (2 , _Valor_Canal_10 _Valor_Canal_12 ]
 "104
-[e ( _Write_LCD (1 :s 2C ]
-"105
-[e ( _Print_Num (1 -> _Valor_Canal_10 `uc ]
-"107
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"109
+"106
 }
 [e :U 143 ]
 [e $U 144  ]
 [e :U 145 ]
-"110
+"107
 [e :UE 142 ]
 }
-[a 2C 80 79 84 32 50 58 32 0 ]
-[a 1C 80 79 84 32 49 58 32 0 ]

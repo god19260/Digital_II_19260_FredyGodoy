@@ -2500,8 +2500,25 @@ void Config_Puertos(void);
 
 char Valor_ADC(char canal);
 void Transmisor_USART(char valor);
-void tabla_USART(char numero);
+void tabla_USART(int numero);
+void USART(unsigned char canal_10,unsigned char canal_12);
+void Texto_USART(char texto[]);
+void LCD(unsigned char canal_10,unsigned char canal_12);
 # 2 "Libreria.c" 2
+
+# 1 "./LCD.h" 1
+# 27 "./LCD.h"
+void LCD_Init_8bits(void);
+void PORT_LCD(char v);
+void CMD_LCD(char v);
+void Lcd_Set_Cursor(char a, char b);
+void Clear_LCD(void);
+void Char_LCD(char a);
+void Write_LCD(char *a);
+void Print_Num(char valor);
+void Print_Cont(char valor);
+void tabla_num(int numero);
+# 3 "Libreria.c" 2
 
 
 
@@ -2580,24 +2597,27 @@ char Valor_ADC(char canal){
 }
 
 void Transmisor_USART(char valor){
-    char unidad, decena, centena;
-    centena = valor/100;
-    valor = valor - centena*100;
-    decena = valor/10;
-    unidad = valor - decena*10;
+    int temp;
+    int unidad, decena, centena;
+    temp = valor * 2;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10;
     tabla_USART(centena);
-    _delay((unsigned long)((1)*(8000000/4000.0)));
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    TXREG = '.';
     tabla_USART(decena);
-    _delay((unsigned long)((1)*(8000000/4000.0)));
+    _delay((unsigned long)((5)*(8000000/4000.0)));
     tabla_USART(unidad);
-    _delay((unsigned long)((1)*(8000000/4000.0)));
-    TXREG = '\r';
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+
 
 
 
 
 }
-void tabla_USART(char numero){
+void tabla_USART(int numero){
 
 
     if (numero == 1){
@@ -2605,20 +2625,55 @@ void tabla_USART(char numero){
     } else if (numero == 2){
         TXREG = '2';
     } else if (numero == 3){
-
+        TXREG = '3';
     } else if (numero == 4){
-
+        TXREG = '4';
     } else if (numero == 5){
-
+        TXREG = '5';
     } else if (numero == 6){
-
+        TXREG = '6';
     } else if (numero == 7){
-
+        TXREG = '7';
     } else if (numero == 8){
-
+        TXREG = '8';
     } else if (numero == 9){
-
+        TXREG = '9';
     } else if (numero == 0){
-
+        TXREG = '0';
     }
+}
+
+void USART(unsigned char canal_10,unsigned char canal_12){
+    Texto_USART("POT 1    ");
+    Texto_USART("POT 2");
+    TXREG = '\r';
+    Transmisor_USART(canal_10);
+    Texto_USART(" --- ");
+    Transmisor_USART(canal_12);
+    TXREG = '\r';
+}
+
+void Texto_USART(char texto[]){
+    char i = 0;
+    while(texto[i] != '\0'){
+        TXREG = texto[i];
+        i++;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+    }
+}
+void LCD(unsigned char canal_10,unsigned char canal_12){
+    Lcd_Set_Cursor(1,1);
+    Write_LCD("POT1");
+    Lcd_Set_Cursor(2,1);
+    Print_Num(canal_10);
+
+    Lcd_Set_Cursor(1,7);
+    Write_LCD("POT2");
+    Lcd_Set_Cursor(2,7);
+    Print_Num(canal_12);
+
+
+
+
+
 }

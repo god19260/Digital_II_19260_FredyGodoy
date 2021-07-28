@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "Libreria.h"
+#include "LCD.h"
 #define _XTAL_FREQ 8000000
 //------------------------------------------------------------------------------
 //----------------- Configuraciones --------------------------------------------
@@ -77,24 +78,27 @@ char Valor_ADC(char canal){
 }
 
 void Transmisor_USART(char valor){
-    char unidad, decena, centena;
-    centena = valor/100;
-    valor = valor - centena*100;
-    decena = valor/10;
-    unidad = valor - decena*10; 
+    int temp;
+    int unidad, decena, centena;
+    temp = valor * 2;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10; 
     tabla_USART(centena);
-    __delay_ms(1);
+    __delay_ms(5);
+    TXREG = '.';
     tabla_USART(decena);
-    __delay_ms(1);
+    __delay_ms(5);
     tabla_USART(unidad);
-    __delay_ms(1);
-    TXREG = '\r';
+    __delay_ms(5);
+    
 
 //    tabla_num(centena);
 //    tabla_num(decena);
 //    tabla_num(unidad);   
 }
-void tabla_USART(char numero){
+void tabla_USART(int numero){
     // forma == 0 LCD
     // forma == 1 USART
     if (numero == 1){
@@ -102,20 +106,55 @@ void tabla_USART(char numero){
     } else if (numero == 2){
         TXREG = '2';
     } else if (numero == 3){
-       
+        TXREG = '3';
     } else if (numero == 4){
-        
+        TXREG = '4';
     } else if (numero == 5){
-        
+        TXREG = '5';
     } else if (numero == 6){
-        
+        TXREG = '6';
     } else if (numero == 7){
-        
+        TXREG = '7';
     } else if (numero == 8){
-        
+        TXREG = '8';
     } else if (numero == 9){
-        
+        TXREG = '9';
     } else if (numero == 0){
-        
+        TXREG = '0';
     }
+}
+
+void USART(unsigned char canal_10,unsigned char canal_12){
+    Texto_USART("POT 1    ");
+    Texto_USART("POT 2");
+    TXREG = '\r';
+    Transmisor_USART(canal_10);
+    Texto_USART(" --- ");
+    Transmisor_USART(canal_12);
+    TXREG = '\r';
+}
+
+void Texto_USART(char texto[]){
+    char i = 0;
+    while(texto[i] != '\0'){
+        TXREG = texto[i];
+        i++;
+        __delay_ms(1);
+    }
+}
+void LCD(unsigned char canal_10,unsigned char canal_12){
+    Lcd_Set_Cursor(1,1);
+    Write_LCD("POT1");
+    Lcd_Set_Cursor(2,1);
+    Print_Num(canal_10);
+    
+    Lcd_Set_Cursor(1,7);
+    Write_LCD("POT2");
+    Lcd_Set_Cursor(2,7);
+    Print_Num(canal_12); 
+    
+//    Lcd_Set_Cursor(1,12);
+//    Write_LCD("USART");
+//    Lcd_Set_Cursor(2,12);
+//    Print_Cont(cont); 
 }

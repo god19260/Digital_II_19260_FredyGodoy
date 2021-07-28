@@ -2499,6 +2499,7 @@ void Clear_LCD(void);
 void Char_LCD(char a);
 void Write_LCD(char *a);
 void Print_Num(char valor);
+void Print_Cont(char valor);
 void tabla_num(int numero);
 # 2 "LCD.c" 2
 
@@ -2576,7 +2577,21 @@ void Print_Num(char valor){
     Write_LCD(".");
     tabla_num(decena);
     tabla_num(unidad);
+
 }
+void Print_Cont(char valor){
+    int temp;
+    int unidad, decena, centena;
+    temp = valor * 2;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10;
+    tabla_num(centena);
+    tabla_num(decena);
+    tabla_num(unidad);
+}
+
 void tabla_num(int numero){
 
 

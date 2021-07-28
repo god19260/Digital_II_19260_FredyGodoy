@@ -31,8 +31,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "427
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 427: extern volatile PORTEbits_t PORTEbits __attribute__((address(0x009)));
 [v _PORTEbits `VS13 ~T0 @X0 0 e@9 ]
-"35 ./LCD.h
-[; ;./LCD.h: 35: void tabla_num(int numero);
+"36 ./LCD.h
+[; ;./LCD.h: 36: void tabla_num(int numero);
 [v _tabla_num `(v ~T0 @X0 0 ef1`i ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
@@ -529,130 +529,173 @@ Version 4.0 HI-TECH Software Intermediate Code
 "76
 [; ;LCD.c: 76:     tabla_num(unidad);
 [e ( _tabla_num (1 _unidad ]
-"77
-[; ;LCD.c: 77: }
+"78
+[; ;LCD.c: 78: }
 [e :UE 152 ]
 }
-"78
-[; ;LCD.c: 78: void tabla_num(int numero){
+"79
+[; ;LCD.c: 79: void Print_Cont(char valor){
+[v _Print_Cont `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _Print_Cont ]
+[v _valor `uc ~T0 @X0 1 r1 ]
+[f ]
+"80
+[; ;LCD.c: 80:     int temp;
+[v _temp `i ~T0 @X0 1 a ]
+"81
+[; ;LCD.c: 81:     int unidad, decena, centena;
+[v _unidad `i ~T0 @X0 1 a ]
+[v _decena `i ~T0 @X0 1 a ]
+[v _centena `i ~T0 @X0 1 a ]
+"82
+[; ;LCD.c: 82:     temp = valor * 2;
+[e = _temp * -> _valor `i -> 2 `i ]
+"83
+[; ;LCD.c: 83:     centena = temp/100;
+[e = _centena / _temp -> 100 `i ]
+"84
+[; ;LCD.c: 84:     temp = temp - centena*100;
+[e = _temp - _temp * _centena -> 100 `i ]
+"85
+[; ;LCD.c: 85:     decena = temp/10;
+[e = _decena / _temp -> 10 `i ]
+"86
+[; ;LCD.c: 86:     unidad = temp - decena*10;
+[e = _unidad - _temp * _decena -> 10 `i ]
+"87
+[; ;LCD.c: 87:     tabla_num(centena);
+[e ( _tabla_num (1 _centena ]
+"88
+[; ;LCD.c: 88:     tabla_num(decena);
+[e ( _tabla_num (1 _decena ]
+"89
+[; ;LCD.c: 89:     tabla_num(unidad);
+[e ( _tabla_num (1 _unidad ]
+"90
+[; ;LCD.c: 90: }
+[e :UE 153 ]
+}
+"92
+[; ;LCD.c: 92: void tabla_num(int numero){
 [v _tabla_num `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _tabla_num ]
 [v _numero `i ~T0 @X0 1 r1 ]
 [f ]
-"82
-[; ;LCD.c: 82:     if (numero == 1){
-[e $ ! == _numero -> 1 `i 154  ]
-{
-"83
-[; ;LCD.c: 83:     Write_LCD("1");
-[e ( _Write_LCD (1 :s 2C ]
-"84
-[; ;LCD.c: 84:     } else if (numero == 2){
-}
-[e $U 155  ]
-[e :U 154 ]
-[e $ ! == _numero -> 2 `i 156  ]
-{
-"85
-[; ;LCD.c: 85:         Write_LCD("2");
-[e ( _Write_LCD (1 :s 3C ]
-"86
-[; ;LCD.c: 86:     } else if (numero == 3){
-}
-[e $U 157  ]
-[e :U 156 ]
-[e $ ! == _numero -> 3 `i 158  ]
-{
-"87
-[; ;LCD.c: 87:         Write_LCD("3");
-[e ( _Write_LCD (1 :s 4C ]
-"88
-[; ;LCD.c: 88:     } else if (numero == 4){
-}
-[e $U 159  ]
-[e :U 158 ]
-[e $ ! == _numero -> 4 `i 160  ]
-{
-"89
-[; ;LCD.c: 89:         Write_LCD("4");
-[e ( _Write_LCD (1 :s 5C ]
-"90
-[; ;LCD.c: 90:     } else if (numero == 5){
-}
-[e $U 161  ]
-[e :U 160 ]
-[e $ ! == _numero -> 5 `i 162  ]
-{
-"91
-[; ;LCD.c: 91:         Write_LCD("5");
-[e ( _Write_LCD (1 :s 6C ]
-"92
-[; ;LCD.c: 92:     } else if (numero == 6){
-}
-[e $U 163  ]
-[e :U 162 ]
-[e $ ! == _numero -> 6 `i 164  ]
-{
-"93
-[; ;LCD.c: 93:         Write_LCD("6");
-[e ( _Write_LCD (1 :s 7C ]
-"94
-[; ;LCD.c: 94:     } else if (numero == 7){
-}
-[e $U 165  ]
-[e :U 164 ]
-[e $ ! == _numero -> 7 `i 166  ]
-{
-"95
-[; ;LCD.c: 95:         Write_LCD("7");
-[e ( _Write_LCD (1 :s 8C ]
 "96
-[; ;LCD.c: 96:     } else if (numero == 8){
-}
-[e $U 167  ]
-[e :U 166 ]
-[e $ ! == _numero -> 8 `i 168  ]
+[; ;LCD.c: 96:     if (numero == 1){
+[e $ ! == _numero -> 1 `i 155  ]
 {
 "97
-[; ;LCD.c: 97:         Write_LCD("8");
-[e ( _Write_LCD (1 :s 9C ]
+[; ;LCD.c: 97:     Write_LCD("1");
+[e ( _Write_LCD (1 :s 2C ]
 "98
-[; ;LCD.c: 98:     } else if (numero == 9){
+[; ;LCD.c: 98:     } else if (numero == 2){
 }
-[e $U 169  ]
-[e :U 168 ]
-[e $ ! == _numero -> 9 `i 170  ]
+[e $U 156  ]
+[e :U 155 ]
+[e $ ! == _numero -> 2 `i 157  ]
 {
 "99
-[; ;LCD.c: 99:         Write_LCD("9");
-[e ( _Write_LCD (1 :s 10C ]
+[; ;LCD.c: 99:         Write_LCD("2");
+[e ( _Write_LCD (1 :s 3C ]
 "100
-[; ;LCD.c: 100:     } else if (numero == 0){
+[; ;LCD.c: 100:     } else if (numero == 3){
 }
-[e $U 171  ]
-[e :U 170 ]
-[e $ ! == _numero -> 0 `i 172  ]
+[e $U 158  ]
+[e :U 157 ]
+[e $ ! == _numero -> 3 `i 159  ]
 {
 "101
-[; ;LCD.c: 101:         Write_LCD("0");
-[e ( _Write_LCD (1 :s 11C ]
+[; ;LCD.c: 101:         Write_LCD("3");
+[e ( _Write_LCD (1 :s 4C ]
 "102
-[; ;LCD.c: 102:     }
+[; ;LCD.c: 102:     } else if (numero == 4){
 }
-[e :U 172 ]
-[e :U 171 ]
-[e :U 169 ]
-[e :U 167 ]
-[e :U 165 ]
-[e :U 163 ]
-[e :U 161 ]
+[e $U 160  ]
 [e :U 159 ]
-[e :U 157 ]
-[e :U 155 ]
+[e $ ! == _numero -> 4 `i 161  ]
+{
 "103
-[; ;LCD.c: 103: }
-[e :UE 153 ]
+[; ;LCD.c: 103:         Write_LCD("4");
+[e ( _Write_LCD (1 :s 5C ]
+"104
+[; ;LCD.c: 104:     } else if (numero == 5){
+}
+[e $U 162  ]
+[e :U 161 ]
+[e $ ! == _numero -> 5 `i 163  ]
+{
+"105
+[; ;LCD.c: 105:         Write_LCD("5");
+[e ( _Write_LCD (1 :s 6C ]
+"106
+[; ;LCD.c: 106:     } else if (numero == 6){
+}
+[e $U 164  ]
+[e :U 163 ]
+[e $ ! == _numero -> 6 `i 165  ]
+{
+"107
+[; ;LCD.c: 107:         Write_LCD("6");
+[e ( _Write_LCD (1 :s 7C ]
+"108
+[; ;LCD.c: 108:     } else if (numero == 7){
+}
+[e $U 166  ]
+[e :U 165 ]
+[e $ ! == _numero -> 7 `i 167  ]
+{
+"109
+[; ;LCD.c: 109:         Write_LCD("7");
+[e ( _Write_LCD (1 :s 8C ]
+"110
+[; ;LCD.c: 110:     } else if (numero == 8){
+}
+[e $U 168  ]
+[e :U 167 ]
+[e $ ! == _numero -> 8 `i 169  ]
+{
+"111
+[; ;LCD.c: 111:         Write_LCD("8");
+[e ( _Write_LCD (1 :s 9C ]
+"112
+[; ;LCD.c: 112:     } else if (numero == 9){
+}
+[e $U 170  ]
+[e :U 169 ]
+[e $ ! == _numero -> 9 `i 171  ]
+{
+"113
+[; ;LCD.c: 113:         Write_LCD("9");
+[e ( _Write_LCD (1 :s 10C ]
+"114
+[; ;LCD.c: 114:     } else if (numero == 0){
+}
+[e $U 172  ]
+[e :U 171 ]
+[e $ ! == _numero -> 0 `i 173  ]
+{
+"115
+[; ;LCD.c: 115:         Write_LCD("0");
+[e ( _Write_LCD (1 :s 11C ]
+"116
+[; ;LCD.c: 116:     }
+}
+[e :U 173 ]
+[e :U 172 ]
+[e :U 170 ]
+[e :U 168 ]
+[e :U 166 ]
+[e :U 164 ]
+[e :U 162 ]
+[e :U 160 ]
+[e :U 158 ]
+[e :U 156 ]
+"117
+[; ;LCD.c: 117: }
+[e :UE 154 ]
 }
 [a 10C 57 0 ]
 [a 9C 56 0 ]

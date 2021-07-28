@@ -32,6 +32,7 @@ void Clear_LCD(void);
 void Char_LCD(char a);
 void Write_LCD(char *a);
 void Print_Num(char valor);
+void Print_Cont(char valor);
 void tabla_num(int numero);
 
 #endif	/* XC_HEADER_TEMPLATE_H */

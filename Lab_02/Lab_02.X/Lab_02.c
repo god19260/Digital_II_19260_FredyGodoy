@@ -96,15 +96,12 @@ void main(void) {
     LCD_Init_8bits();
     
     while(1){
-    //Write_LCD("Fredy hola"); 
-    Lcd_Set_Cursor(1,1);
-    Write_LCD("POT 1: ");
-    Print_Num(Valor_Canal_12);
-    Lcd_Set_Cursor(2,1);
-    Write_LCD("POT 2: ");
-    Print_Num(Valor_Canal_10);
-    //Print_Num(100);
-    __delay_ms(100);
-         
+        USART(Valor_Canal_10, Valor_Canal_12);
+        LCD(Valor_Canal_10,Valor_Canal_12);
+        
+
+        //Print_Num(100);
+        __delay_ms(100);
+
     } // fin loop principal while 
 } // fin main

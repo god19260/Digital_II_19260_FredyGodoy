@@ -2509,7 +2509,10 @@ void Config_Puertos(void);
 
 char Valor_ADC(char canal);
 void Transmisor_USART(char valor);
-void tabla_USART(char numero);
+void tabla_USART(int numero);
+void USART(unsigned char canal_10,unsigned char canal_12);
+void Texto_USART(char texto[]);
+void LCD(unsigned char canal_10,unsigned char canal_12);
 # 11 "Lab_02.c" 2
 
 # 1 "./LCD.h" 1
@@ -2522,6 +2525,7 @@ void Clear_LCD(void);
 void Char_LCD(char a);
 void Write_LCD(char *a);
 void Print_Num(char valor);
+void Print_Cont(char valor);
 void tabla_num(int numero);
 # 12 "Lab_02.c" 2
 
@@ -2611,15 +2615,12 @@ void main(void) {
     LCD_Init_8bits();
 
     while(1){
+        USART(Valor_Canal_10, Valor_Canal_12);
+        LCD(Valor_Canal_10,Valor_Canal_12);
 
-    Lcd_Set_Cursor(1,1);
-    Write_LCD("POT 1: ");
-    Print_Num(Valor_Canal_12);
-    Lcd_Set_Cursor(2,1);
-    Write_LCD("POT 2: ");
-    Print_Num(Valor_Canal_10);
 
-    _delay((unsigned long)((100)*(8000000/4000.0)));
+
+        _delay((unsigned long)((100)*(8000000/4000.0)));
 
     }
 }

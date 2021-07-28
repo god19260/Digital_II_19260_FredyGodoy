@@ -1,3 +1,4 @@
 build/default/production/Libreria.p1:  \
 Libreria.c  \
-Libreria.h 
+Libreria.h  \
+LCD.h 

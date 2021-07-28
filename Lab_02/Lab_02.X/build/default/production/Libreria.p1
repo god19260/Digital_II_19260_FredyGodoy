@@ -147,11 +147,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
 "25 ./Libreria.h
-[; ;./Libreria.h: 25: void tabla_USART(char numero);
-[v _tabla_USART `(v ~T0 @X0 0 ef1`uc ]
+[; ;./Libreria.h: 25: void tabla_USART(int numero);
+[v _tabla_USART `(v ~T0 @X0 0 ef1`i ]
 "1133 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
 [v _TXREG `Vuc ~T0 @X0 0 e@25 ]
+"27 ./Libreria.h
+[; ;./Libreria.h: 27: void Texto_USART(char texto[]);
+[v _Texto_USART `(v ~T0 @X0 0 ef1`*uc ]
+"30 ./LCD.h
+[; ;./LCD.h: 30: void Lcd_Set_Cursor(char a, char b);
+[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"33
+[; ;./LCD.h: 33: void Write_LCD(char *a);
+[v _Write_LCD `(v ~T0 @X0 0 ef1`*uc ]
+"34
+[; ;./LCD.h: 34: void Print_Num(char valor);
+[v _Print_Num `(v ~T0 @X0 0 ef1`uc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -386,341 +398,371 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"6 Libreria.c
-[; ;Libreria.c: 6: void Config_Oscilador(void){
+"7 Libreria.c
+[; ;Libreria.c: 7: void Config_Oscilador(void){
 [v _Config_Oscilador `(v ~T0 @X0 1 ef ]
 {
 [e :U _Config_Oscilador ]
 [f ]
-"8
-[; ;Libreria.c: 8:     IRCF0 = 1;
-[e = _IRCF0 -> -> 1 `i `b ]
 "9
-[; ;Libreria.c: 9:     IRCF1 = 1;
-[e = _IRCF1 -> -> 1 `i `b ]
+[; ;Libreria.c: 9:     IRCF0 = 1;
+[e = _IRCF0 -> -> 1 `i `b ]
 "10
-[; ;Libreria.c: 10:     IRCF2 = 1;
-[e = _IRCF2 -> -> 1 `i `b ]
+[; ;Libreria.c: 10:     IRCF1 = 1;
+[e = _IRCF1 -> -> 1 `i `b ]
 "11
-[; ;Libreria.c: 11:     INTCON = 0b11101000;
-[e = _INTCON -> -> 232 `i `uc ]
+[; ;Libreria.c: 11:     IRCF2 = 1;
+[e = _IRCF2 -> -> 1 `i `b ]
 "12
-[; ;Libreria.c: 12: }
+[; ;Libreria.c: 12:     INTCON = 0b11101000;
+[e = _INTCON -> -> 232 `i `uc ]
+"13
+[; ;Libreria.c: 13: }
 [e :UE 138 ]
 }
-"13
-[; ;Libreria.c: 13: char Config_TMR0(void){
+"14
+[; ;Libreria.c: 14: char Config_TMR0(void){
 [v _Config_TMR0 `(uc ~T0 @X0 1 ef ]
 {
 [e :U _Config_TMR0 ]
 [f ]
-"16
-[; ;Libreria.c: 16:     char valor_tmr0;
-[v _valor_tmr0 `uc ~T0 @X0 1 a ]
 "17
-[; ;Libreria.c: 17:     PS0 = 1;
-[e = _PS0 -> -> 1 `i `b ]
+[; ;Libreria.c: 17:     char valor_tmr0;
+[v _valor_tmr0 `uc ~T0 @X0 1 a ]
 "18
-[; ;Libreria.c: 18:     PS1 = 1;
-[e = _PS1 -> -> 1 `i `b ]
+[; ;Libreria.c: 18:     PS0 = 1;
+[e = _PS0 -> -> 1 `i `b ]
 "19
-[; ;Libreria.c: 19:     PS2 = 1;
-[e = _PS2 -> -> 1 `i `b ]
+[; ;Libreria.c: 19:     PS1 = 1;
+[e = _PS1 -> -> 1 `i `b ]
 "20
-[; ;Libreria.c: 20:     T0CS = 0;
-[e = _T0CS -> -> 0 `i `b ]
+[; ;Libreria.c: 20:     PS2 = 1;
+[e = _PS2 -> -> 1 `i `b ]
 "21
-[; ;Libreria.c: 21:     PSA = 0;
-[e = _PSA -> -> 0 `i `b ]
+[; ;Libreria.c: 21:     T0CS = 0;
+[e = _T0CS -> -> 0 `i `b ]
 "22
-[; ;Libreria.c: 22:     INTCON = 0b10101000;
-[e = _INTCON -> -> 168 `i `uc ]
+[; ;Libreria.c: 22:     PSA = 0;
+[e = _PSA -> -> 0 `i `b ]
 "23
-[; ;Libreria.c: 23:     valor_tmr0 = 100;
-[e = _valor_tmr0 -> -> 100 `i `uc ]
+[; ;Libreria.c: 23:     INTCON = 0b10101000;
+[e = _INTCON -> -> 168 `i `uc ]
 "24
-[; ;Libreria.c: 24:     TMR0 = valor_tmr0;
-[e = _TMR0 -> _valor_tmr0 `uc ]
+[; ;Libreria.c: 24:     valor_tmr0 = 100;
+[e = _valor_tmr0 -> -> 100 `i `uc ]
 "25
-[; ;Libreria.c: 25:     return valor_tmr0;
+[; ;Libreria.c: 25:     TMR0 = valor_tmr0;
+[e = _TMR0 -> _valor_tmr0 `uc ]
+"26
+[; ;Libreria.c: 26:     return valor_tmr0;
 [e ) _valor_tmr0 ]
 [e $UE 139  ]
-"26
-[; ;Libreria.c: 26: }
+"27
+[; ;Libreria.c: 27: }
 [e :UE 139 ]
 }
-"28
-[; ;Libreria.c: 28: void Config_ADC(void){
+"29
+[; ;Libreria.c: 29: void Config_ADC(void){
 [v _Config_ADC `(v ~T0 @X0 1 ef ]
 {
 [e :U _Config_ADC ]
 [f ]
-"29
-[; ;Libreria.c: 29:     PIE1bits.ADIE = 1;
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
 "30
-[; ;Libreria.c: 30:     ADIF = 0;
-[e = _ADIF -> -> 0 `i `b ]
+[; ;Libreria.c: 30:     PIE1bits.ADIE = 1;
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
 "31
-[; ;Libreria.c: 31:     ADCON1bits.ADFM = 0;
-[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
+[; ;Libreria.c: 31:     ADIF = 0;
+[e = _ADIF -> -> 0 `i `b ]
 "32
-[; ;Libreria.c: 32:     ADCON1bits.VCFG0 = 0;
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[; ;Libreria.c: 32:     ADCON1bits.ADFM = 0;
+[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
 "33
 [; ;Libreria.c: 33:     ADCON1bits.VCFG0 = 0;
 [e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
 "34
-[; ;Libreria.c: 34:     ADCON0bits.ADCS0 = 0;
-[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
+[; ;Libreria.c: 34:     ADCON1bits.VCFG0 = 0;
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
 "35
-[; ;Libreria.c: 35:     ADCON0bits.ADCS1 = 1;
-[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
+[; ;Libreria.c: 35:     ADCON0bits.ADCS0 = 0;
+[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
 "36
-[; ;Libreria.c: 36:     ADCON0bits.ADON = 1;
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;Libreria.c: 36:     ADCON0bits.ADCS1 = 1;
+[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
 "37
-[; ;Libreria.c: 37:     _delay((unsigned long)((50)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;Libreria.c: 37:     ADCON0bits.ADON = 1;
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
 "38
-[; ;Libreria.c: 38:     ADCON0bits.GO = 1;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;Libreria.c: 38:     _delay((unsigned long)((50)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "39
-[; ;Libreria.c: 39: }
+[; ;Libreria.c: 39:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"40
+[; ;Libreria.c: 40: }
 [e :UE 140 ]
 }
-"40
-[; ;Libreria.c: 40: void Config_USART(void){
+"41
+[; ;Libreria.c: 41: void Config_USART(void){
 [v _Config_USART `(v ~T0 @X0 1 ef ]
 {
 [e :U _Config_USART ]
 [f ]
-"42
-[; ;Libreria.c: 42:     TXEN = 1;
-[e = _TXEN -> -> 1 `i `b ]
 "43
-[; ;Libreria.c: 43:     SYNC = 0;
-[e = _SYNC -> -> 0 `i `b ]
+[; ;Libreria.c: 43:     TXEN = 1;
+[e = _TXEN -> -> 1 `i `b ]
 "44
-[; ;Libreria.c: 44:     SPEN = 1;
+[; ;Libreria.c: 44:     SYNC = 0;
+[e = _SYNC -> -> 0 `i `b ]
+"45
+[; ;Libreria.c: 45:     SPEN = 1;
 [e = _SPEN -> -> 1 `i `b ]
-"47
-[; ;Libreria.c: 47:     CREN = 1;
-[e = _CREN -> -> 1 `i `b ]
 "48
-[; ;Libreria.c: 48:     PIE1bits.RCIE = 1;
-[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
+[; ;Libreria.c: 48:     CREN = 1;
+[e = _CREN -> -> 1 `i `b ]
 "49
-[; ;Libreria.c: 49:     PIR1bits.RCIF = 0;
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+[; ;Libreria.c: 49:     PIE1bits.RCIE = 1;
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
 "50
-[; ;Libreria.c: 50:     SPBRG=12;
-[e = _SPBRG -> -> 12 `i `uc ]
+[; ;Libreria.c: 50:     PIR1bits.RCIF = 0;
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
 "51
-[; ;Libreria.c: 51: }
+[; ;Libreria.c: 51:     SPBRG=12;
+[e = _SPBRG -> -> 12 `i `uc ]
+"52
+[; ;Libreria.c: 52: }
 [e :UE 141 ]
 }
-"53
-[; ;Libreria.c: 53: void Config_Puertos(void){
+"54
+[; ;Libreria.c: 54: void Config_Puertos(void){
 [v _Config_Puertos `(v ~T0 @X0 1 ef ]
 {
 [e :U _Config_Puertos ]
 [f ]
-"55
-[; ;Libreria.c: 55:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
 "56
-[; ;Libreria.c: 56:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
+[; ;Libreria.c: 56:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
 "57
-[; ;Libreria.c: 57:     TRISA = 0;
-[e = _TRISA -> -> 0 `i `uc ]
+[; ;Libreria.c: 57:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
 "58
-[; ;Libreria.c: 58:     TRISB = 0b11;
-[e = _TRISB -> -> 3 `i `uc ]
+[; ;Libreria.c: 58:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
 "59
-[; ;Libreria.c: 59:     TRISC = 0b10000000;
-[e = _TRISC -> -> 128 `i `uc ]
+[; ;Libreria.c: 59:     TRISB = 0b11;
+[e = _TRISB -> -> 3 `i `uc ]
 "60
-[; ;Libreria.c: 60:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;Libreria.c: 60:     TRISC = 0b10000000;
+[e = _TRISC -> -> 128 `i `uc ]
 "61
-[; ;Libreria.c: 61:     TRISE = 0;
+[; ;Libreria.c: 61:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
+"62
+[; ;Libreria.c: 62:     TRISE = 0;
 [e = _TRISE -> -> 0 `i `uc ]
-"64
-[; ;Libreria.c: 64:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
 "65
-[; ;Libreria.c: 65:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;Libreria.c: 65:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
 "66
-[; ;Libreria.c: 66:     PORTC = 0;
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;Libreria.c: 66:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
 "67
-[; ;Libreria.c: 67:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;Libreria.c: 67:     PORTC = 0;
+[e = _PORTC -> -> 0 `i `uc ]
 "68
-[; ;Libreria.c: 68:     PORTE = 0;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;Libreria.c: 68:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "69
-[; ;Libreria.c: 69: }
+[; ;Libreria.c: 69:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
+"70
+[; ;Libreria.c: 70: }
 [e :UE 142 ]
 }
-"72
-[; ;Libreria.c: 72: char Valor_ADC(char canal){
+"73
+[; ;Libreria.c: 73: char Valor_ADC(char canal){
 [v _Valor_ADC `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Valor_ADC ]
 [v _canal `uc ~T0 @X0 1 r1 ]
 [f ]
-"73
-[; ;Libreria.c: 73:     ADCON0bits.CHS = canal;
-[e = . . _ADCON0bits 0 2 -> _canal `uc ]
 "74
-[; ;Libreria.c: 74:     _delay((unsigned long)((50)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;Libreria.c: 74:     ADCON0bits.CHS = canal;
+[e = . . _ADCON0bits 0 2 -> _canal `uc ]
 "75
-[; ;Libreria.c: 75:     ADCON0bits.GO = 1;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;Libreria.c: 75:     _delay((unsigned long)((50)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "76
-[; ;Libreria.c: 76:     return ADRESH;
+[; ;Libreria.c: 76:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"77
+[; ;Libreria.c: 77:     return ADRESH;
 [e ) -> _ADRESH `uc ]
 [e $UE 143  ]
-"77
-[; ;Libreria.c: 77: }
+"78
+[; ;Libreria.c: 78: }
 [e :UE 143 ]
 }
-"79
-[; ;Libreria.c: 79: void Transmisor_USART(char valor){
+"80
+[; ;Libreria.c: 80: void Transmisor_USART(char valor){
 [v _Transmisor_USART `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Transmisor_USART ]
 [v _valor `uc ~T0 @X0 1 r1 ]
 [f ]
-"80
-[; ;Libreria.c: 80:     char unidad, decena, centena;
-[v _unidad `uc ~T0 @X0 1 a ]
-[v _decena `uc ~T0 @X0 1 a ]
-[v _centena `uc ~T0 @X0 1 a ]
 "81
-[; ;Libreria.c: 81:     centena = valor/100;
-[e = _centena -> / -> _valor `i -> 100 `i `uc ]
+[; ;Libreria.c: 81:     int temp;
+[v _temp `i ~T0 @X0 1 a ]
 "82
-[; ;Libreria.c: 82:     valor = valor - centena*100;
-[e = _valor -> - -> _valor `i * -> _centena `i -> 100 `i `uc ]
+[; ;Libreria.c: 82:     int unidad, decena, centena;
+[v _unidad `i ~T0 @X0 1 a ]
+[v _decena `i ~T0 @X0 1 a ]
+[v _centena `i ~T0 @X0 1 a ]
 "83
-[; ;Libreria.c: 83:     decena = valor/10;
-[e = _decena -> / -> _valor `i -> 10 `i `uc ]
+[; ;Libreria.c: 83:     temp = valor * 2;
+[e = _temp * -> _valor `i -> 2 `i ]
 "84
-[; ;Libreria.c: 84:     unidad = valor - decena*10;
-[e = _unidad -> - -> _valor `i * -> _decena `i -> 10 `i `uc ]
+[; ;Libreria.c: 84:     centena = temp/100;
+[e = _centena / _temp -> 100 `i ]
 "85
-[; ;Libreria.c: 85:     tabla_USART(centena);
-[e ( _tabla_USART (1 _centena ]
+[; ;Libreria.c: 85:     temp = temp - centena*100;
+[e = _temp - _temp * _centena -> 100 `i ]
 "86
-[; ;Libreria.c: 86:     _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Libreria.c: 86:     decena = temp/10;
+[e = _decena / _temp -> 10 `i ]
 "87
-[; ;Libreria.c: 87:     tabla_USART(decena);
-[e ( _tabla_USART (1 _decena ]
+[; ;Libreria.c: 87:     unidad = temp - decena*10;
+[e = _unidad - _temp * _decena -> 10 `i ]
 "88
-[; ;Libreria.c: 88:     _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Libreria.c: 88:     tabla_USART(centena);
+[e ( _tabla_USART (1 _centena ]
 "89
-[; ;Libreria.c: 89:     tabla_USART(unidad);
-[e ( _tabla_USART (1 _unidad ]
+[; ;Libreria.c: 89:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "90
-[; ;Libreria.c: 90:     _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Libreria.c: 90:     TXREG = '.';
+[e = _TXREG -> -> 46 `ui `uc ]
 "91
-[; ;Libreria.c: 91:     TXREG = '\r';
-[e = _TXREG -> -> 13 `ui `uc ]
-"96
-[; ;Libreria.c: 96: }
+[; ;Libreria.c: 91:     tabla_USART(decena);
+[e ( _tabla_USART (1 _decena ]
+"92
+[; ;Libreria.c: 92:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"93
+[; ;Libreria.c: 93:     tabla_USART(unidad);
+[e ( _tabla_USART (1 _unidad ]
+"94
+[; ;Libreria.c: 94:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"100
+[; ;Libreria.c: 100: }
 [e :UE 144 ]
 }
-"97
-[; ;Libreria.c: 97: void tabla_USART(char numero){
-[v _tabla_USART `(v ~T0 @X0 1 ef1`uc ]
+"101
+[; ;Libreria.c: 101: void tabla_USART(int numero){
+[v _tabla_USART `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _tabla_USART ]
-[v _numero `uc ~T0 @X0 1 r1 ]
+[v _numero `i ~T0 @X0 1 r1 ]
 [f ]
-"100
-[; ;Libreria.c: 100:     if (numero == 1){
-[e $ ! == -> _numero `i -> 1 `i 146  ]
+"104
+[; ;Libreria.c: 104:     if (numero == 1){
+[e $ ! == _numero -> 1 `i 146  ]
 {
-"101
-[; ;Libreria.c: 101:         TXREG = '1';
+"105
+[; ;Libreria.c: 105:         TXREG = '1';
 [e = _TXREG -> -> 49 `ui `uc ]
-"102
-[; ;Libreria.c: 102:     } else if (numero == 2){
+"106
+[; ;Libreria.c: 106:     } else if (numero == 2){
 }
 [e $U 147  ]
 [e :U 146 ]
-[e $ ! == -> _numero `i -> 2 `i 148  ]
+[e $ ! == _numero -> 2 `i 148  ]
 {
-"103
-[; ;Libreria.c: 103:         TXREG = '2';
+"107
+[; ;Libreria.c: 107:         TXREG = '2';
 [e = _TXREG -> -> 50 `ui `uc ]
-"104
-[; ;Libreria.c: 104:     } else if (numero == 3){
+"108
+[; ;Libreria.c: 108:     } else if (numero == 3){
 }
 [e $U 149  ]
 [e :U 148 ]
-[e $ ! == -> _numero `i -> 3 `i 150  ]
+[e $ ! == _numero -> 3 `i 150  ]
 {
-"106
-[; ;Libreria.c: 106:     } else if (numero == 4){
+"109
+[; ;Libreria.c: 109:         TXREG = '3';
+[e = _TXREG -> -> 51 `ui `uc ]
+"110
+[; ;Libreria.c: 110:     } else if (numero == 4){
 }
 [e $U 151  ]
 [e :U 150 ]
-[e $ ! == -> _numero `i -> 4 `i 152  ]
+[e $ ! == _numero -> 4 `i 152  ]
 {
-"108
-[; ;Libreria.c: 108:     } else if (numero == 5){
+"111
+[; ;Libreria.c: 111:         TXREG = '4';
+[e = _TXREG -> -> 52 `ui `uc ]
+"112
+[; ;Libreria.c: 112:     } else if (numero == 5){
 }
 [e $U 153  ]
 [e :U 152 ]
-[e $ ! == -> _numero `i -> 5 `i 154  ]
+[e $ ! == _numero -> 5 `i 154  ]
 {
-"110
-[; ;Libreria.c: 110:     } else if (numero == 6){
+"113
+[; ;Libreria.c: 113:         TXREG = '5';
+[e = _TXREG -> -> 53 `ui `uc ]
+"114
+[; ;Libreria.c: 114:     } else if (numero == 6){
 }
 [e $U 155  ]
 [e :U 154 ]
-[e $ ! == -> _numero `i -> 6 `i 156  ]
+[e $ ! == _numero -> 6 `i 156  ]
 {
-"112
-[; ;Libreria.c: 112:     } else if (numero == 7){
+"115
+[; ;Libreria.c: 115:         TXREG = '6';
+[e = _TXREG -> -> 54 `ui `uc ]
+"116
+[; ;Libreria.c: 116:     } else if (numero == 7){
 }
 [e $U 157  ]
 [e :U 156 ]
-[e $ ! == -> _numero `i -> 7 `i 158  ]
+[e $ ! == _numero -> 7 `i 158  ]
 {
-"114
-[; ;Libreria.c: 114:     } else if (numero == 8){
+"117
+[; ;Libreria.c: 117:         TXREG = '7';
+[e = _TXREG -> -> 55 `ui `uc ]
+"118
+[; ;Libreria.c: 118:     } else if (numero == 8){
 }
 [e $U 159  ]
 [e :U 158 ]
-[e $ ! == -> _numero `i -> 8 `i 160  ]
+[e $ ! == _numero -> 8 `i 160  ]
 {
-"116
-[; ;Libreria.c: 116:     } else if (numero == 9){
+"119
+[; ;Libreria.c: 119:         TXREG = '8';
+[e = _TXREG -> -> 56 `ui `uc ]
+"120
+[; ;Libreria.c: 120:     } else if (numero == 9){
 }
 [e $U 161  ]
 [e :U 160 ]
-[e $ ! == -> _numero `i -> 9 `i 162  ]
+[e $ ! == _numero -> 9 `i 162  ]
 {
-"118
-[; ;Libreria.c: 118:     } else if (numero == 0){
+"121
+[; ;Libreria.c: 121:         TXREG = '9';
+[e = _TXREG -> -> 57 `ui `uc ]
+"122
+[; ;Libreria.c: 122:     } else if (numero == 0){
 }
 [e $U 163  ]
 [e :U 162 ]
-[e $ ! == -> _numero `i -> 0 `i 164  ]
+[e $ ! == _numero -> 0 `i 164  ]
 {
-"120
-[; ;Libreria.c: 120:     }
+"123
+[; ;Libreria.c: 123:         TXREG = '0';
+[e = _TXREG -> -> 48 `ui `uc ]
+"124
+[; ;Libreria.c: 124:     }
 }
 [e :U 164 ]
 [e :U 163 ]
@@ -732,7 +774,118 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 151 ]
 [e :U 149 ]
 [e :U 147 ]
-"121
-[; ;Libreria.c: 121: }
+"125
+[; ;Libreria.c: 125: }
 [e :UE 145 ]
 }
+"127
+[; ;Libreria.c: 127: void USART(unsigned char canal_10,unsigned char canal_12){
+[v _USART `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _USART ]
+[v _canal_10 `uc ~T0 @X0 1 r1 ]
+[v _canal_12 `uc ~T0 @X0 1 r2 ]
+[f ]
+"128
+[; ;Libreria.c: 128:     Texto_USART("POT 1    ");
+[e ( _Texto_USART (1 :s 1C ]
+"129
+[; ;Libreria.c: 129:     Texto_USART("POT 2");
+[e ( _Texto_USART (1 :s 2C ]
+"130
+[; ;Libreria.c: 130:     TXREG = '\r';
+[e = _TXREG -> -> 13 `ui `uc ]
+"131
+[; ;Libreria.c: 131:     Transmisor_USART(canal_10);
+[e ( _Transmisor_USART (1 -> _canal_10 `uc ]
+"132
+[; ;Libreria.c: 132:     Texto_USART(" --- ");
+[e ( _Texto_USART (1 :s 3C ]
+"133
+[; ;Libreria.c: 133:     Transmisor_USART(canal_12);
+[e ( _Transmisor_USART (1 -> _canal_12 `uc ]
+"134
+[; ;Libreria.c: 134:     TXREG = '\r';
+[e = _TXREG -> -> 13 `ui `uc ]
+"135
+[; ;Libreria.c: 135: }
+[e :UE 165 ]
+}
+"137
+[; ;Libreria.c: 137: void Texto_USART(char texto[]){
+[v _Texto_USART `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _Texto_USART ]
+[v _texto `*uc ~T0 @X0 1 r1 ]
+[f ]
+"138
+[; ;Libreria.c: 138:     char i = 0;
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+"139
+[; ;Libreria.c: 139:     while(texto[i] != '\0'){
+[e $U 167  ]
+[e :U 168 ]
+{
+"140
+[; ;Libreria.c: 140:         TXREG = texto[i];
+[e = _TXREG -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `uc ]
+"141
+[; ;Libreria.c: 141:         i++;
+[e ++ _i -> -> 1 `i `uc ]
+"142
+[; ;Libreria.c: 142:         _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"143
+[; ;Libreria.c: 143:     }
+}
+[e :U 167 ]
+"139
+[; ;Libreria.c: 139:     while(texto[i] != '\0'){
+[e $ != -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `ui -> 0 `ui 168  ]
+[e :U 169 ]
+"144
+[; ;Libreria.c: 144: }
+[e :UE 166 ]
+}
+"145
+[; ;Libreria.c: 145: void LCD(unsigned char canal_10,unsigned char canal_12){
+[v _LCD `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _LCD ]
+[v _canal_10 `uc ~T0 @X0 1 r1 ]
+[v _canal_12 `uc ~T0 @X0 1 r2 ]
+[f ]
+"146
+[; ;Libreria.c: 146:     Lcd_Set_Cursor(1,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"147
+[; ;Libreria.c: 147:     Write_LCD("POT1");
+[e ( _Write_LCD (1 :s 4C ]
+"148
+[; ;Libreria.c: 148:     Lcd_Set_Cursor(2,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"149
+[; ;Libreria.c: 149:     Print_Num(canal_10);
+[e ( _Print_Num (1 -> _canal_10 `uc ]
+"151
+[; ;Libreria.c: 151:     Lcd_Set_Cursor(1,7);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
+"152
+[; ;Libreria.c: 152:     Write_LCD("POT2");
+[e ( _Write_LCD (1 :s 5C ]
+"153
+[; ;Libreria.c: 153:     Lcd_Set_Cursor(2,7);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 7 `i `uc ]
+"154
+[; ;Libreria.c: 154:     Print_Num(canal_12);
+[e ( _Print_Num (1 -> _canal_12 `uc ]
+"160
+[; ;Libreria.c: 160: }
+[e :UE 170 ]
+}
+[a 5C 80 79 84 50 0 ]
+[a 2C 80 79 84 32 50 0 ]
+[a 4C 80 79 84 49 0 ]
+[a 3C 32 45 45 45 32 0 ]
+[a 1C 80 79 84 32 49 32 32 32 32 0 ]

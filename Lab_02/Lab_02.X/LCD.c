@@ -73,8 +73,22 @@ void Print_Num(char valor){ // imprimir numero LCD
     tabla_num(centena);
     Write_LCD(".");
     tabla_num(decena);
+    tabla_num(unidad);  
+    
+}
+void Print_Cont(char valor){ // imprimir numero LCD
+    int temp;
+    int unidad, decena, centena;
+    temp = valor * 2;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10; 
+    tabla_num(centena);
+    tabla_num(decena);
     tabla_num(unidad);     
 }
+
 void tabla_num(int numero){
     
     // forma == 0 LCD
