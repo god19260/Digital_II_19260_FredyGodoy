@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
+$C:\Users\fredy\AppData\Local\Temp\xcAs534.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -100,16 +100,16 @@ STRING 69C-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab_02.X.production.o
-F cinit CODE >972:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-F cinit CODE >975:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-F cinit CODE >1001:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-14 cinit CODE >1002:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-15 cinit CODE >1006:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-16 cinit CODE >1007:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-17 cinit CODE >1008:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-18 cinit CODE >1014:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-18 cinit CODE >1016:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
-19 cinit CODE >1017:C:\Users\fredy\AppData\Local\Temp\xcAsjv4.s
+F cinit CODE >972:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+F cinit CODE >975:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+F cinit CODE >1001:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+14 cinit CODE >1002:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+15 cinit CODE >1006:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+16 cinit CODE >1007:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+17 cinit CODE >1008:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+18 cinit CODE >1014:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+18 cinit CODE >1016:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
+19 cinit CODE >1017:C:\Users\fredy\AppData\Local\Temp\xcAs534.s
 4 intentry CODE >60:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Lab_02.c
 65C text23 CODE >74:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Libreria.c
 65D text23 CODE >75:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_02\Lab_02.X\Libreria.c
@@ -451,10 +451,10 @@ _T0IF 5A 0 ABS 0 - dist/default/production\Lab_02.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production\Lab_02.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Lab_02.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production\Lab_02.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
+___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs534.o
 _main 730 0 CODE 0 maintext dist/default/production\Lab_02.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab_02.X.production.o
-start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
+start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs534.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\Lab_02.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab_02.X.production.o
 __size_of_Char_LCD 0 0 ABS 0 - dist/default/production\Lab_02.X.production.o
@@ -468,12 +468,12 @@ __size_of_Write_LCD 0 0 ABS 0 - dist/default/production\Lab_02.X.production.o
 Transmisor_USART@valor 2C 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
 Write_LCD@a 23 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
 Write_LCD@i 22 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs534.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs534.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs534.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs534.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs534.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs534.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab_02.X.production.o
 _Config_ADC C5E 0 CODE 0 text21 dist/default/production\Lab_02.X.production.o
 Texto_USART@texto 21 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
@@ -501,8 +501,8 @@ Transmisor_USART@unidad 2A 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.
 ___awdiv@divisor 20 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
 __end_of___awdiv 730 0 CODE 0 text13 dist/default/production\Lab_02.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\Lab_02.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
-___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
+___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs534.o
+___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs534.o
 Char_LCD@a 20 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
 __end_of_Config_ADC C8E 0 CODE 0 text21 dist/default/production\Lab_02.X.production.o
 __end_of_Config_Oscilador D36 0 CODE 0 text20 dist/default/production\Lab_02.X.production.o
@@ -514,7 +514,7 @@ __size_of_Config_Oscilador 0 0 ABS 0 - dist/default/production\Lab_02.X.producti
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Lab_02.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
 Print_Num@valor 2C 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
+___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs534.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -585,7 +585,7 @@ __Lintentry 8 0 CODE 0 intentry -
 __end_of_PORT_LCD 878 0 CODE 0 text16 dist/default/production\Lab_02.X.production.o
 __stringtab A00 0 STRING 0 strings dist/default/production\Lab_02.X.production.o
 __size_of_Config_TMR0 0 0 ABS 0 - dist/default/production\Lab_02.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAsjv4.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs534.o
 __pdataBANK0 3D 0 BANK0 1 dataBANK0 dist/default/production\Lab_02.X.production.o
 Print_Cont@centena 30 0 BANK0 1 cstackBANK0 dist/default/production\Lab_02.X.production.o
 __size_of___wmul 0 0 ABS 0 - dist/default/production\Lab_02.X.production.o

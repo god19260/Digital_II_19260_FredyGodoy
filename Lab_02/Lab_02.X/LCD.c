@@ -43,7 +43,6 @@ void Lcd_Set_Cursor(char a, char b) {
         temp = 0xC0 + b - 1;
         CMD_LCD(temp);
     }
-    
 }
 void Clear_LCD(void){
     CMD_LCD(0);
