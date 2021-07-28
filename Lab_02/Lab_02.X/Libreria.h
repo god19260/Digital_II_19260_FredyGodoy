@@ -25,6 +25,6 @@ void Transmisor_USART(char valor);
 void tabla_USART(int numero);
 void USART(unsigned char canal_10,unsigned char canal_12);
 void Texto_USART(char texto[]);
-void LCD(unsigned char canal_10,unsigned char canal_12);
+void LCD(unsigned char canal_10,unsigned char canal_12, unsigned char cont);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

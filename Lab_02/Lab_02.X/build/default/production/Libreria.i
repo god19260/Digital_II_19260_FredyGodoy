@@ -2503,7 +2503,7 @@ void Transmisor_USART(char valor);
 void tabla_USART(int numero);
 void USART(unsigned char canal_10,unsigned char canal_12);
 void Texto_USART(char texto[]);
-void LCD(unsigned char canal_10,unsigned char canal_12);
+void LCD(unsigned char canal_10,unsigned char canal_12, unsigned char cont);
 # 2 "Libreria.c" 2
 
 # 1 "./LCD.h" 1
@@ -2546,6 +2546,7 @@ char Config_TMR0(void){
 }
 
 void Config_ADC(void){
+
     PIE1bits.ADIE = 1;
     ADIF = 0;
     ADCON1bits.ADFM = 0;
@@ -2661,17 +2662,21 @@ void Texto_USART(char texto[]){
         _delay((unsigned long)((1)*(8000000/4000.0)));
     }
 }
-void LCD(unsigned char canal_10,unsigned char canal_12){
-    Lcd_Set_Cursor(1,1);
-    Write_LCD("POT1");
+void LCD(unsigned char canal_10,unsigned char canal_12, unsigned char cont){
+    Lcd_Set_Cursor(1,2);
+    Write_LCD("S1");
     Lcd_Set_Cursor(2,1);
     Print_Num(canal_10);
 
-    Lcd_Set_Cursor(1,7);
-    Write_LCD("POT2");
+    Lcd_Set_Cursor(1,8);
+    Write_LCD("S2");
     Lcd_Set_Cursor(2,7);
     Print_Num(canal_12);
 
+    Lcd_Set_Cursor(1,13);
+    Write_LCD("S3");
+    Lcd_Set_Cursor(2,13);
+    Print_Cont(cont);
 
 
 

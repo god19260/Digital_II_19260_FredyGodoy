@@ -2512,7 +2512,7 @@ void Transmisor_USART(char valor);
 void tabla_USART(int numero);
 void USART(unsigned char canal_10,unsigned char canal_12);
 void Texto_USART(char texto[]);
-void LCD(unsigned char canal_10,unsigned char canal_12);
+void LCD(unsigned char canal_10,unsigned char canal_12, unsigned char cont);
 # 11 "Lab_02.c" 2
 
 # 1 "./LCD.h" 1
@@ -2573,6 +2573,7 @@ void tabla_num(int numero);
 unsigned char Valor_TMR0 = 100;
 unsigned char Valor_Canal_10;
 unsigned char Valor_Canal_12;
+unsigned char contador = 0;
 
 
 void __attribute__((picinterrupt(("")))) isr (void){
@@ -2584,21 +2585,25 @@ void __attribute__((picinterrupt(("")))) isr (void){
 
     }
 
+
     if (ADIF == 1){
         ADIF = 0;
         Valor_Canal_12 = Valor_ADC(12);
         _delay((unsigned long)((10)*(8000000/4000.0)));
         Valor_Canal_10 = Valor_ADC(10);
 
-
-
     }
+
 
     if (RCIF == 1){
 
 
+        if (RCREG == '+'){
+            contador++;
+        }else if (RCREG == '-'){
+            contador--;
+        }
         RCIF = 0;
-
     }
 }
 
@@ -2616,10 +2621,7 @@ void main(void) {
 
     while(1){
         USART(Valor_Canal_10, Valor_Canal_12);
-        LCD(Valor_Canal_10,Valor_Canal_12);
-
-
-
+        LCD(Valor_Canal_10,Valor_Canal_12,contador);
         _delay((unsigned long)((100)*(8000000/4000.0)));
 
     }

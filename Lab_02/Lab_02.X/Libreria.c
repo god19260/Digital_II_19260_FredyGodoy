@@ -27,6 +27,7 @@ char Config_TMR0(void){
 }
 
 void Config_ADC(void){
+    
     PIE1bits.ADIE = 1;
     ADIF = 0; // Bandera de interrupción
     ADCON1bits.ADFM = 0; // Justificado a la izquierda    
@@ -142,17 +143,21 @@ void Texto_USART(char texto[]){
         __delay_ms(1);
     }
 }
-void LCD(unsigned char canal_10,unsigned char canal_12){
-    Lcd_Set_Cursor(1,1);
-    Write_LCD("POT1");
+void LCD(unsigned char canal_10,unsigned char canal_12, unsigned char cont){
+    Lcd_Set_Cursor(1,2);
+    Write_LCD("S1");
     Lcd_Set_Cursor(2,1);
     Print_Num(canal_10);
     
-    Lcd_Set_Cursor(1,7);
-    Write_LCD("POT2");
+    Lcd_Set_Cursor(1,8);
+    Write_LCD("S2");
     Lcd_Set_Cursor(2,7);
     Print_Num(canal_12); 
     
+    Lcd_Set_Cursor(1,13);
+    Write_LCD("S3");
+    Lcd_Set_Cursor(2,13);
+    Print_Cont(cont);
 //    Lcd_Set_Cursor(1,12);
 //    Write_LCD("USART");
 //    Lcd_Set_Cursor(2,12);

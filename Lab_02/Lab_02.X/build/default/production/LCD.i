@@ -2582,9 +2582,8 @@ void Print_Num(char valor){
 void Print_Cont(char valor){
     int temp;
     int unidad, decena, centena;
-    temp = valor * 2;
-    centena = temp/100;
-    temp = temp - centena*100;
+    centena = valor/100;
+    temp = valor - centena*100;
     decena = temp/10;
     unidad = temp - decena*10;
     tabla_num(centena);

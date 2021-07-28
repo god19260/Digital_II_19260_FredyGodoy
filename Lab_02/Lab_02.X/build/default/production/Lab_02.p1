@@ -20,6 +20,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4175 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4175: extern volatile __bit RCIF __attribute__((address(0x65)));
 [v _RCIF `Vb ~T0 @X0 0 e@101 ]
+"1140
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
 [p mainexit ]
 "16 ./Libreria.h
 [; ;./Libreria.h: 16: void Config_Oscilador(void);
@@ -43,8 +46,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./Libreria.h: 26: void USART(unsigned char canal_10,unsigned char canal_12);
 [v _USART `(v ~T0 @X0 0 ef2`uc`uc ]
 "28
-[; ;./Libreria.h: 28: void LCD(unsigned char canal_10,unsigned char canal_12);
-[v _LCD `(v ~T0 @X0 0 ef2`uc`uc ]
+[; ;./Libreria.h: 28: void LCD(unsigned char canal_10,unsigned char canal_12, unsigned char cont);
+[v _LCD `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -280,43 +283,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "19 Lab_02.c
-[; ;Lab_02.c: 19:     }
+[; ;Lab_02.c: 19: 
 [p x FOSC  =  INTRC_NOCLKOUT  ]
 "22
-[; ;Lab_02.c: 22:         ADIF = 0;
+[; ;Lab_02.c: 22: 
 [p x WDTE  =  OFF        ]
 "25
-[; ;Lab_02.c: 25:         Valor_Canal_10 = Valor_ADC(10);
+[; ;Lab_02.c: 25:         Valor_Canal_12 = Valor_ADC(12);
 [p x PWRTE  =  OFF       ]
 "26
-[; ;Lab_02.c: 26: 
+[; ;Lab_02.c: 26:         _delay((unsigned long)((10)*(8000000/4000.0)));
 [p x MCLRE  =  OFF       ]
 "29
 [; ;Lab_02.c: 29:     }
 [p x CP  =  OFF           ]
 "31
-[; ;Lab_02.c: 31:     if (RCIF == 1){
+[; ;Lab_02.c: 31: 
 [p x CPD  =  OFF          ]
 "33
 [; ;Lab_02.c: 33: 
 [p x BOREN  =  OFF       ]
 "34
-[; ;Lab_02.c: 34:         RCIF = 0;
+[; ;Lab_02.c: 34: 
 [p x IESO  =  OFF        ]
 "36
-[; ;Lab_02.c: 36:     }
+[; ;Lab_02.c: 36:             contador++;
 [p x FCMEN  =  OFF       ]
 "38
-[; ;Lab_02.c: 38: 
+[; ;Lab_02.c: 38:             contador--;
 [p x LVP  =  OFF         ]
 "43
-[; ;Lab_02.c: 43:     Valor_TMR0 = Config_TMR0();
+[; ;Lab_02.c: 43: 
 [p x BOR4V  =  BOR40V    ]
 "45
-[; ;Lab_02.c: 45:     Config_USART();
+[; ;Lab_02.c: 45: 
 [p x WRT  =  OFF         ]
 "54
-[; ;Lab_02.c: 54: 
+[; ;Lab_02.c: 54:     LCD_Init_8bits();
 [v _Valor_TMR0 `uc ~T0 @X0 1 e ]
 [i _Valor_TMR0
 -> -> 100 `i `uc
@@ -325,82 +328,106 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab_02.c: 55: 
 [v _Valor_Canal_10 `uc ~T0 @X0 1 e ]
 "56
-[; ;Lab_02.c: 56: 
+[; ;Lab_02.c: 56:     while(1){
 [v _Valor_Canal_12 `uc ~T0 @X0 1 e ]
+"57
+[; ;Lab_02.c: 57:         USART(Valor_Canal_10, Valor_Canal_12);
+[v _contador `uc ~T0 @X0 1 e ]
+[i _contador
+-> -> 0 `i `uc
+]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"59
-[; ;Lab_02.c: 59:     }
+"60
+[; ;Lab_02.c: 60: 
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"61
+"62
+[; ;Lab_02.c: 62: }
 [e $ ! == -> _T0IF `i -> 1 `i 139  ]
 {
-"63
-[e = _T0IF -> -> 0 `i `b ]
 "64
+[e = _T0IF -> -> 0 `i `b ]
+"65
 [e = _TMR0 _Valor_TMR0 ]
-"66
+"67
 }
 [e :U 139 ]
-"68
+"70
 [e $ ! == -> _ADIF `i -> 1 `i 140  ]
 {
-"69
-[e = _ADIF -> -> 0 `i `b ]
-"70
-[e = _Valor_Canal_12 -> ( _Valor_ADC (1 -> -> 12 `i `uc `uc ]
 "71
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e = _ADIF -> -> 0 `i `b ]
 "72
+[e = _Valor_Canal_12 -> ( _Valor_ADC (1 -> -> 12 `i `uc `uc ]
+"73
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"74
 [e = _Valor_Canal_10 -> ( _Valor_ADC (1 -> -> 10 `i `uc `uc ]
 "76
 }
 [e :U 140 ]
-"78
+"79
 [e $ ! == -> _RCIF `i -> 1 `i 141  ]
 {
-"81
-[e = _RCIF -> -> 0 `i `b ]
+"82
+[e $ ! == -> _RCREG `ui -> 43 `ui 142  ]
+{
 "83
+[e ++ _contador -> -> 1 `i `uc ]
+"84
+}
+[e $U 143  ]
+[e :U 142 ]
+[e $ ! == -> _RCREG `ui -> 45 `ui 144  ]
+{
+"85
+[e -- _contador -> -> 1 `i `uc ]
+"86
+}
+[e :U 144 ]
+[e :U 143 ]
+"87
+[e = _RCIF -> -> 0 `i `b ]
+"88
 }
 [e :U 141 ]
-"84
+"89
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"86
+"91
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"89
+"94
 [e ( _Config_Oscilador ..  ]
-"90
+"95
 [e = _Valor_TMR0 -> ( _Config_TMR0 ..  `uc ]
-"91
-[e ( _Config_ADC ..  ]
-"92
-[e ( _Config_USART ..  ]
-"93
-[e ( _Config_Puertos ..  ]
 "96
-[e ( _LCD_Init_8bits ..  ]
+[e ( _Config_ADC ..  ]
+"97
+[e ( _Config_USART ..  ]
 "98
-[e :U 144 ]
+[e ( _Config_Puertos ..  ]
+"101
+[e ( _LCD_Init_8bits ..  ]
+"103
+[e :U 147 ]
 {
-"99
-[e ( _USART (2 , _Valor_Canal_10 _Valor_Canal_12 ]
-"100
-[e ( _LCD (2 , _Valor_Canal_10 _Valor_Canal_12 ]
 "104
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( _USART (2 , _Valor_Canal_10 _Valor_Canal_12 ]
+"105
+[e ( _LCD (3 , , _Valor_Canal_10 _Valor_Canal_12 _contador ]
 "106
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"108
 }
-[e :U 143 ]
-[e $U 144  ]
-[e :U 145 ]
-"107
-[e :UE 142 ]
+[e :U 146 ]
+[e $U 147  ]
+[e :U 148 ]
+"109
+[e :UE 145 ]
 }

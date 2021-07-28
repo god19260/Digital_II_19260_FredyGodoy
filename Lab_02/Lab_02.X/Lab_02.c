@@ -54,16 +54,18 @@
 unsigned char Valor_TMR0 = 100;
 unsigned char Valor_Canal_10;
 unsigned char Valor_Canal_12;
+unsigned char contador = 0;
 //------------------------------------------------------------------------------
 //*************************** Interrupciones ***********************************
 void __interrupt() isr (void){ 
-    // Interrupcion del timer0
+ // Interrupcion del timer0
     if (T0IF == 1){
         // Interrupcion cada 20ms: tmr0 100, prescaler 256, 8MHz de oscilador
         T0IF = 0;
         TMR0 = Valor_TMR0;
-        
-    }
+           
+    } // Fin de interrupción timer0
+    
     // Interrupcion del ADC module
     if (ADIF == 1){
         ADIF = 0;
@@ -71,15 +73,18 @@ void __interrupt() isr (void){
         __delay_ms(10);
         Valor_Canal_10 = Valor_ADC(10);
         //Transmisor_USART(Valor_Canal_12);
-        
-        
     }
+    
     // Interrupcion USART
     if (RCIF == 1){
         // RCREG (Receptor)
         // TXREG (Transmisor)
+        if (RCREG == '+'){
+            contador++;
+        }else if (RCREG == '-'){
+            contador--;
+        }
         RCIF = 0; 
-          
     }
 }    
 
@@ -97,10 +102,7 @@ void main(void) {
     
     while(1){
         USART(Valor_Canal_10, Valor_Canal_12);
-        LCD(Valor_Canal_10,Valor_Canal_12);
-        
-
-        //Print_Num(100);
+        LCD(Valor_Canal_10,Valor_Canal_12,contador);
         __delay_ms(100);
 
     } // fin loop principal while 
