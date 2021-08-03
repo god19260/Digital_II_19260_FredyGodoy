@@ -88,7 +88,6 @@ void Print_Cont(char valor){ // imprimir numero LCD
 }
 
 void tabla_num(int numero){
-    
     // forma == 0 LCD
     // forma == 1 USART
     if (numero == 1){

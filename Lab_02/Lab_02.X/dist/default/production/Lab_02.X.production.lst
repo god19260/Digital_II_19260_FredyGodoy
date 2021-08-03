@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Tue Jul 27 21:40:59 2021
+                                                                                               Mon Aug 02 23:38:12 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	16F887
@@ -1876,7 +1876,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1861  0148                     __ptext7:	
   1862 ;; *************** function _Print_Num *****************
   1863 ;; Defined at:
-  1864 ;;		line 65 in file "LCD.c"
+  1864 ;;		line 64 in file "LCD.c"
   1865 ;; Parameters:    Size  Location     Type
   1866 ;;  valor           1    wreg     unsigned char 
   1867 ;; Auto vars:     Size  Location     Type
@@ -1923,7 +1923,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1908  014A  00AC               	movwf	Print_Num@valor
   1909  014B                     l1425:
   1910                           
-  1911                           ;LCD.c: 66:     int temp;;LCD.c: 67:     int unidad, decena, centena;;LCD.c: 68:     tem
+  1911                           ;LCD.c: 65:     int temp;;LCD.c: 66:     int unidad, decena, centena;;LCD.c: 67:     tem
       +                          p = valor * 2;
   1912  014B  082C               	movf	Print_Num@valor,w
   1913  014C  00A8               	movwf	??_Print_Num
@@ -1935,7 +1935,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1919  0152  00B2               	movwf	Print_Num@temp+1
   1920  0153                     l1427:
   1921                           
-  1922                           ;LCD.c: 69:     centena = temp/100;
+  1922                           ;LCD.c: 68:     centena = temp/100;
   1923  0153  3064               	movlw	100
   1924  0154  00A0               	movwf	___awdiv@divisor
   1925  0155  3000               	movlw	0
@@ -1953,7 +1953,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1937  0165  00AF               	movwf	Print_Num@centena
   1938  0166                     l1429:
   1939                           
-  1940                           ;LCD.c: 70:     temp = temp - centena*100;
+  1940                           ;LCD.c: 69:     temp = temp - centena*100;
   1941  0166  0830               	movf	Print_Num@centena+1,w
   1942  0167  00A1               	movwf	___wmul@multiplier+1
   1943  0168  082F               	movf	Print_Num@centena,w
@@ -1975,7 +1975,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1959  017C  00B2               	movwf	Print_Num@temp+1
   1960  017D                     l1431:
   1961                           
-  1962                           ;LCD.c: 71:     decena = temp/10;
+  1962                           ;LCD.c: 70:     decena = temp/10;
   1963  017D  300A               	movlw	10
   1964  017E  00A0               	movwf	___awdiv@divisor
   1965  017F  3000               	movlw	0
@@ -1993,7 +1993,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1977  018F  00AD               	movwf	Print_Num@decena
   1978  0190                     l1433:
   1979                           
-  1980                           ;LCD.c: 72:     unidad = temp - decena*10;
+  1980                           ;LCD.c: 71:     unidad = temp - decena*10;
   1981  0190  082E               	movf	Print_Num@decena+1,w
   1982  0191  00A1               	movwf	___wmul@multiplier+1
   1983  0192  082D               	movf	Print_Num@decena,w
@@ -2015,7 +2015,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1999  01A6  00AB               	movwf	Print_Num@unidad+1
   2000  01A7                     l1435:
   2001                           
-  2002                           ;LCD.c: 73:     tabla_num(centena);
+  2002                           ;LCD.c: 72:     tabla_num(centena);
   2003  01A7  0830               	movf	Print_Num@centena+1,w
   2004  01A8  00A5               	movwf	tabla_num@numero+1
   2005  01A9  082F               	movf	Print_Num@centena,w
@@ -2023,12 +2023,12 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2007  01AB  120A  118A  20BB  120A  118A  	fcall	_tabla_num
   2008  01B0                     l1437:
   2009                           
-  2010                           ;LCD.c: 74:     Write_LCD(".");
+  2010                           ;LCD.c: 73:     Write_LCD(".");
   2011  01B0  3020               	movlw	(low ((STR_7-__stringbase)| (0+32768)))& (0+255)
   2012  01B1  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2013  01B6                     l1439:
   2014                           
-  2015                           ;LCD.c: 75:     tabla_num(decena);
+  2015                           ;LCD.c: 74:     tabla_num(decena);
   2016  01B6  1283               	bcf	3,5	;RP0=0, select bank0
   2017  01B7  1303               	bcf	3,6	;RP1=0, select bank0
   2018  01B8  082E               	movf	Print_Num@decena+1,w
@@ -2038,7 +2038,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2022  01BC  120A  118A  20BB  120A  118A  	fcall	_tabla_num
   2023  01C1                     l1441:
   2024                           
-  2025                           ;LCD.c: 76:     tabla_num(unidad);
+  2025                           ;LCD.c: 75:     tabla_num(unidad);
   2026  01C1  1283               	bcf	3,5	;RP0=0, select bank0
   2027  01C2  1303               	bcf	3,6	;RP1=0, select bank0
   2028  01C3  082B               	movf	Print_Num@unidad+1,w
@@ -2054,7 +2054,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2038  01CD                     __ptext8:	
   2039 ;; *************** function _Print_Cont *****************
   2040 ;; Defined at:
-  2041 ;;		line 79 in file "LCD.c"
+  2041 ;;		line 78 in file "LCD.c"
   2042 ;; Parameters:    Size  Location     Type
   2043 ;;  valor           1    wreg     unsigned char 
   2044 ;; Auto vars:     Size  Location     Type
@@ -2100,7 +2100,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2084  01CF  00B2               	movwf	Print_Cont@valor
   2085  01D0                     l1443:
   2086                           
-  2087                           ;LCD.c: 80:     int temp;;LCD.c: 81:     int unidad, decena, centena;;LCD.c: 82:     cen
+  2087                           ;LCD.c: 79:     int temp;;LCD.c: 80:     int unidad, decena, centena;;LCD.c: 81:     cen
       +                          tena = valor/100;
   2088  01D0  3064               	movlw	100
   2089  01D1  00A0               	movwf	___awdiv@divisor
@@ -2121,7 +2121,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2104  01E4  0820               	movf	?___awdiv,w
   2105  01E5  00B0               	movwf	Print_Cont@centena
   2106                           
-  2107                           ;LCD.c: 83:     temp = valor - centena*100;
+  2107                           ;LCD.c: 82:     temp = valor - centena*100;
   2108  01E6  0831               	movf	Print_Cont@centena+1,w
   2109  01E7  00A1               	movwf	___wmul@multiplier+1
   2110  01E8  0830               	movf	Print_Cont@centena,w
@@ -2141,7 +2141,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2124  01FA  0A21               	incf	?___wmul+1,w
   2125  01FB  00AD               	movwf	Print_Cont@temp+1
   2126                           
-  2127                           ;LCD.c: 84:     decena = temp/10;
+  2127                           ;LCD.c: 83:     decena = temp/10;
   2128  01FC  300A               	movlw	10
   2129  01FD  00A0               	movwf	___awdiv@divisor
   2130  01FE  3000               	movlw	0
@@ -2158,7 +2158,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2141  020D  0820               	movf	?___awdiv,w
   2142  020E  00AE               	movwf	Print_Cont@decena
   2143                           
-  2144                           ;LCD.c: 85:     unidad = temp - decena*10;
+  2144                           ;LCD.c: 84:     unidad = temp - decena*10;
   2145  020F  082F               	movf	Print_Cont@decena+1,w
   2146  0210  00A1               	movwf	___wmul@multiplier+1
   2147  0211  082E               	movf	Print_Cont@decena,w
@@ -2180,7 +2180,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2163  0225  00AB               	movwf	Print_Cont@unidad+1
   2164  0226                     l1445:
   2165                           
-  2166                           ;LCD.c: 86:     tabla_num(centena);
+  2166                           ;LCD.c: 85:     tabla_num(centena);
   2167  0226  0831               	movf	Print_Cont@centena+1,w
   2168  0227  00A5               	movwf	tabla_num@numero+1
   2169  0228  0830               	movf	Print_Cont@centena,w
@@ -2188,7 +2188,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2171  022A  120A  118A  20BB  120A  118A  	fcall	_tabla_num
   2172  022F                     l1447:
   2173                           
-  2174                           ;LCD.c: 87:     tabla_num(decena);
+  2174                           ;LCD.c: 86:     tabla_num(decena);
   2175  022F  1283               	bcf	3,5	;RP0=0, select bank0
   2176  0230  1303               	bcf	3,6	;RP1=0, select bank0
   2177  0231  082F               	movf	Print_Cont@decena+1,w
@@ -2198,7 +2198,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2181  0235  120A  118A  20BB  120A  118A  	fcall	_tabla_num
   2182  023A                     l1449:
   2183                           
-  2184                           ;LCD.c: 88:     tabla_num(unidad);
+  2184                           ;LCD.c: 87:     tabla_num(unidad);
   2185  023A  1283               	bcf	3,5	;RP0=0, select bank0
   2186  023B  1303               	bcf	3,6	;RP1=0, select bank0
   2187  023C  082B               	movf	Print_Cont@unidad+1,w
@@ -2214,7 +2214,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2197  00BB                     __ptext9:	
   2198 ;; *************** function _tabla_num *****************
   2199 ;; Defined at:
-  2200 ;;		line 91 in file "LCD.c"
+  2200 ;;		line 90 in file "LCD.c"
   2201 ;; Parameters:    Size  Location     Type
   2202 ;;  numero          2    4[BANK0 ] int 
   2203 ;; Auto vars:     Size  Location     Type
@@ -2251,7 +2251,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2234                           ; Regs used in _tabla_num: [wreg-fsr0h+status,2+status,0+pclath+cstack]
   2235                           
   2236                           
-  2237                           ;LCD.c: 95:     if (numero == 1){
+  2237                           ;LCD.c: 93:     if (numero == 1){
   2238  00BB  1283               	bcf	3,5	;RP0=0, select bank0
   2239  00BC  1303               	bcf	3,6	;RP1=0, select bank0
   2240  00BD  0324               	decf	tabla_num@numero,w
@@ -2264,11 +2264,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2247  00C3                     u870:
   2248  00C3                     l1285:
   2249                           
-  2250                           ;LCD.c: 96:     Write_LCD("1");
+  2250                           ;LCD.c: 94:     Write_LCD("1");
   2251  00C3  3018               	movlw	(low (((STR_4+1)-__stringbase)| (0+32768)))& (0+255)
   2252  00C4  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2253                           
-  2254                           ;LCD.c: 97:     } else if (numero == 2){
+  2254                           ;LCD.c: 95:     } else if (numero == 2){
   2255  00C9  2947               	goto	l261
   2256  00CA                     l1287:
   2257  00CA  3002               	movlw	2
@@ -2282,11 +2282,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2265  00D1                     u880:
   2266  00D1                     l1289:
   2267                           
-  2268                           ;LCD.c: 98:         Write_LCD("2");
+  2268                           ;LCD.c: 96:         Write_LCD("2");
   2269  00D1  3015               	movlw	(low (((STR_2+4)-__stringbase)| (0+32768)))& (0+255)
   2270  00D2  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2271                           
-  2272                           ;LCD.c: 99:     } else if (numero == 3){
+  2272                           ;LCD.c: 97:     } else if (numero == 3){
   2273  00D7  2947               	goto	l261
   2274  00D8                     l1291:
   2275  00D8  3003               	movlw	3
@@ -2300,11 +2300,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2283  00DF                     u890:
   2284  00DF                     l1293:
   2285                           
-  2286                           ;LCD.c: 100:         Write_LCD("3");
+  2286                           ;LCD.c: 98:         Write_LCD("3");
   2287  00DF  301E               	movlw	(low (((STR_6+1)-__stringbase)| (0+32768)))& (0+255)
   2288  00E0  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2289                           
-  2290                           ;LCD.c: 101:     } else if (numero == 4){
+  2290                           ;LCD.c: 99:     } else if (numero == 4){
   2291  00E5  2947               	goto	l261
   2292  00E6                     l1295:
   2293  00E6  3004               	movlw	4
@@ -2318,11 +2318,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2301  00ED                     u900:
   2302  00ED                     l1297:
   2303                           
-  2304                           ;LCD.c: 102:         Write_LCD("4");
+  2304                           ;LCD.c: 100:         Write_LCD("4");
   2305  00ED  3024               	movlw	(low ((STR_11-__stringbase)| (0+32768)))& (0+255)
   2306  00EE  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2307                           
-  2308                           ;LCD.c: 103:     } else if (numero == 5){
+  2308                           ;LCD.c: 101:     } else if (numero == 5){
   2309  00F3  2947               	goto	l261
   2310  00F4                     l1299:
   2311  00F4  3005               	movlw	5
@@ -2336,11 +2336,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2319  00FB                     u910:
   2320  00FB                     l1301:
   2321                           
-  2322                           ;LCD.c: 104:         Write_LCD("5");
+  2322                           ;LCD.c: 102:         Write_LCD("5");
   2323  00FB  3026               	movlw	(low ((STR_12-__stringbase)| (0+32768)))& (0+255)
   2324  00FC  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2325                           
-  2326                           ;LCD.c: 105:     } else if (numero == 6){
+  2326                           ;LCD.c: 103:     } else if (numero == 6){
   2327  0101  2947               	goto	l261
   2328  0102                     l1303:
   2329  0102  3006               	movlw	6
@@ -2354,11 +2354,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2337  0109                     u920:
   2338  0109                     l1305:
   2339                           
-  2340                           ;LCD.c: 106:         Write_LCD("6");
+  2340                           ;LCD.c: 104:         Write_LCD("6");
   2341  0109  3028               	movlw	(low ((STR_13-__stringbase)| (0+32768)))& (0+255)
   2342  010A  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2343                           
-  2344                           ;LCD.c: 107:     } else if (numero == 7){
+  2344                           ;LCD.c: 105:     } else if (numero == 7){
   2345  010F  2947               	goto	l261
   2346  0110                     l1307:
   2347  0110  3007               	movlw	7
@@ -2372,11 +2372,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2355  0117                     u930:
   2356  0117                     l1309:
   2357                           
-  2358                           ;LCD.c: 108:         Write_LCD("7");
+  2358                           ;LCD.c: 106:         Write_LCD("7");
   2359  0117  302A               	movlw	(low ((STR_14-__stringbase)| (0+32768)))& (0+255)
   2360  0118  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2361                           
-  2362                           ;LCD.c: 109:     } else if (numero == 8){
+  2362                           ;LCD.c: 107:     } else if (numero == 8){
   2363  011D  2947               	goto	l261
   2364  011E                     l1311:
   2365  011E  3008               	movlw	8
@@ -2390,11 +2390,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2373  0125                     u940:
   2374  0125                     l1313:
   2375                           
-  2376                           ;LCD.c: 110:         Write_LCD("8");
+  2376                           ;LCD.c: 108:         Write_LCD("8");
   2377  0125  302C               	movlw	(low ((STR_15-__stringbase)| (0+32768)))& (0+255)
   2378  0126  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2379                           
-  2380                           ;LCD.c: 111:     } else if (numero == 9){
+  2380                           ;LCD.c: 109:     } else if (numero == 9){
   2381  012B  2947               	goto	l261
   2382  012C                     l1315:
   2383  012C  3009               	movlw	9
@@ -2408,11 +2408,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2391  0133                     u950:
   2392  0133                     l1317:
   2393                           
-  2394                           ;LCD.c: 112:         Write_LCD("9");
+  2394                           ;LCD.c: 110:         Write_LCD("9");
   2395  0133  302E               	movlw	(low ((STR_16-__stringbase)| (0+32768)))& (0+255)
   2396  0134  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2397                           
-  2398                           ;LCD.c: 113:     } else if (numero == 0){
+  2398                           ;LCD.c: 111:     } else if (numero == 0){
   2399  0139  2947               	goto	l261
   2400  013A                     l1319:
   2401  013A  0824               	movf	tabla_num@numero,w
@@ -2425,7 +2425,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2408  0140                     u960:
   2409  0140                     l1321:
   2410                           
-  2411                           ;LCD.c: 114:         Write_LCD("0");
+  2411                           ;LCD.c: 112:         Write_LCD("0");
   2412  0140  3022               	movlw	(low ((STR_17-__stringbase)| (0+32768)))& (0+255)
   2413  0141  120A  118A  25B3  120A  118A  	fcall	_Write_LCD
   2414  0146  2947               	goto	l261
@@ -2438,7 +2438,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2421  05B3                     __ptext10:	
   2422 ;; *************** function _Write_LCD *****************
   2423 ;; Defined at:
-  2424 ;;		line 59 in file "LCD.c"
+  2424 ;;		line 58 in file "LCD.c"
   2425 ;; Parameters:    Size  Location     Type
   2426 ;;  a               1    wreg     PTR unsigned char 
   2427 ;;		 -> STR_17(2), STR_16(2), STR_15(2), STR_14(2), 
@@ -2489,12 +2489,12 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2472  05B5  00A3               	movwf	Write_LCD@a
   2473  05B6                     l1225:
   2474                           
-  2475                           ;LCD.c: 60:     char i;;LCD.c: 61:     for (i = 0; a[i] != '\0'; i++)
+  2475                           ;LCD.c: 59:     char i;;LCD.c: 60:     for (i = 0; a[i] != '\0'; i++)
   2476  05B6  01A2               	clrf	Write_LCD@i
   2477  05B7  2DCB               	goto	l1231
   2478  05B8                     l1227:
   2479                           
-  2480                           ;LCD.c: 62:         Char_LCD(a[i]);
+  2480                           ;LCD.c: 61:         Char_LCD(a[i]);
   2481  05B8  0822               	movf	Write_LCD@i,w
   2482  05B9  0723               	addwf	Write_LCD@a,w
   2483  05BA  0084               	movwf	4
@@ -2527,7 +2527,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2510  05FF                     __ptext11:	
   2511 ;; *************** function _Char_LCD *****************
   2512 ;; Defined at:
-  2513 ;;		line 52 in file "LCD.c"
+  2513 ;;		line 51 in file "LCD.c"
   2514 ;; Parameters:    Size  Location     Type
   2515 ;;  a               1    wreg     unsigned char 
   2516 ;; Auto vars:     Size  Location     Type
@@ -2567,22 +2567,22 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2550  0601  00A0               	movwf	Char_LCD@a
   2551  0602                     l1215:
   2552                           
-  2553                           ;LCD.c: 53:     PORTEbits.RE0 = 1;
+  2553                           ;LCD.c: 52:     PORTEbits.RE0 = 1;
   2554  0602  1409               	bsf	9,0	;volatile
   2555  0603                     l1217:
   2556                           
-  2557                           ;LCD.c: 54:     PORT_LCD(a);
+  2557                           ;LCD.c: 53:     PORT_LCD(a);
   2558  0603  0820               	movf	Char_LCD@a,w
   2559  0604  120A  118A  23EA  120A  118A  	fcall	_PORT_LCD
   2560  0609                     l1219:
   2561                           
-  2562                           ;LCD.c: 55:     PORTEbits.RE1 = 1;
+  2562                           ;LCD.c: 54:     PORTEbits.RE1 = 1;
   2563  0609  1283               	bcf	3,5	;RP0=0, select bank0
   2564  060A  1303               	bcf	3,6	;RP1=0, select bank0
   2565  060B  1489               	bsf	9,1	;volatile
   2566  060C                     l1221:
   2567                           
-  2568                           ;LCD.c: 56:     _delay((unsigned long)((500)*(8000000/4000000.0)));
+  2568                           ;LCD.c: 55:     _delay((unsigned long)((500)*(8000000/4000000.0)));
   2569  060C  30C7               	movlw	199
   2570  060D  00F7               	movwf	??_Char_LCD
   2571  060E                     u1277:
@@ -2593,7 +2593,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2576  0612  2E13               	nop2
   2577  0613                     l1223:
   2578                           
-  2579                           ;LCD.c: 57:     PORTEbits.RE1 = 0;
+  2579                           ;LCD.c: 56:     PORTEbits.RE1 = 0;
   2580  0613  1283               	bcf	3,5	;RP0=0, select bank0
   2581  0614  1303               	bcf	3,6	;RP1=0, select bank0
   2582  0615  1089               	bcf	9,1	;volatile
@@ -4153,7 +4153,7 @@ EEDATA             100      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Tue Jul 27 21:40:59 2021
+Symbol Table                                                                                   Mon Aug 02 23:38:12 2021
 
                         pc 0002               ___awdiv@sign 0025                         fsr 0004  
       ___wmul@multiplicand 0022                        l212 043B                        l221 05FE  

@@ -1,4 +1,4 @@
-# 1 "LCD.c"
+# 1 "Lab_03_Master.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,15 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "LCD.c" 2
+# 1 "Lab_03_Master.c" 2
+
+
+
+
+
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2487,131 +2495,97 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 1 "LCD.c" 2
-
-# 1 "./LCD.h" 1
-# 27 "./LCD.h"
-void LCD_Init_8bits(void);
-void PORT_LCD(char v);
-void CMD_LCD(char v);
-void Lcd_Set_Cursor(char a, char b);
-void Clear_LCD(void);
-void Char_LCD(char a);
-void Write_LCD(char *a);
-void Print_Num(char valor);
-void Print_Cont(char valor);
-void tabla_num(int numero);
-# 2 "LCD.c" 2
+# 9 "Lab_03_Master.c" 2
 
 
+# 1 "./Libreria.h" 1
+# 16 "./Libreria.h"
+void Config_Oscilador(void);
+void Config_TMR0(void);
+void Config_ADC(void);
+void Config_USART(void);
+void Config_Puertos(void);
 
-void LCD_Init_8bits(void){
-    PORT_LCD(0);
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-    CMD_LCD(0b111000);
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-    CMD_LCD(0b1100);
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-    CMD_LCD(0b1);
 
-    CMD_LCD(0b111000);
-    CMD_LCD(0b1000);
-    CMD_LCD(0b1);
-    CMD_LCD(0b110);
-}
+char Valor_ADC(char canal);
+void tabla_USART(int numero);
+void Texto_USART(char texto[]);
+# 11 "Lab_03_Master.c" 2
 
-void PORT_LCD(char v){
-    PORTAbits.RA0 = v & 1 ? 1 : 0;
-    PORTAbits.RA1 = v & 2 ? 1 : 0;
-    PORTAbits.RA2 = v & 4 ? 1 : 0;
-    PORTAbits.RA3 = v & 8 ? 1 : 0;
-    PORTAbits.RA4 = v & 16 ? 1 : 0;
-    PORTAbits.RA5 = v & 32 ? 1 : 0;
-    PORTAbits.RA6 = v & 64 ? 1 : 0;
-    PORTAbits.RA7 = v & 128 ? 1 : 0;
-}
-void CMD_LCD(char v){
-    PORTEbits.RE0 = 0;
-    PORT_LCD(v);
-    PORTEbits.RE1 = 1;
-    _delay((unsigned long)((500)*(8000000/4000000.0)));
-    PORTEbits.RE1 = 0;
-}
-void Lcd_Set_Cursor(char a, char b) {
-    char temp, z, y;
-    if (a == 1) {
-        temp = 0x80 + b - 1;
-        CMD_LCD(temp);
-    } else if (a == 2) {
-        temp = 0xC0 + b - 1;
-        CMD_LCD(temp);
+# 1 "./SPI.h" 1
+# 14 "./SPI.h"
+void Init_Master(void);
+void Init_Slave(void);
+void spiWrite(char dat);
+char spiRead();
+# 12 "Lab_03_Master.c" 2
+
+
+
+
+
+
+
+#pragma config FOSC = INTRC_NOCLKOUT
+
+
+#pragma config WDTE = OFF
+
+
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+
+
+#pragma config CP = OFF
+
+#pragma config CPD = OFF
+
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+
+#pragma config FCMEN = OFF
+
+#pragma config LVP = OFF
+
+
+
+
+#pragma config BOR4V = BOR40V
+
+#pragma config WRT = OFF
+# 57 "Lab_03_Master.c"
+void __attribute__((picinterrupt(("")))) isr (void){
+
+
+    if (ADIF == 1){
+        PORTB++;
+        PORTD = ADRESH;
+        ADIF = 0;
+        _delay((unsigned long)((50)*(8000000/4000000.0)));
+        ADCON0bits.GO = 1;
+
+    }
+
+
+    if (RCIF == 1){
+
+
+
+        RCIF = 0;
     }
 }
-void Clear_LCD(void){
-    CMD_LCD(0);
-    CMD_LCD(1);
-}
-void Char_LCD(char a){
-    PORTEbits.RE0 = 1;
-    PORT_LCD(a);
-    PORTEbits.RE1 = 1;
-    _delay((unsigned long)((500)*(8000000/4000000.0)));
-    PORTEbits.RE1 = 0;
-}
-void Write_LCD(char *a) {
-    char i;
-    for (i = 0; a[i] != '\0'; i++)
-        Char_LCD(a[i]);
-}
 
-void Print_Num(char valor){
-    int temp;
-    int unidad, decena, centena;
-    temp = valor * 2;
-    centena = temp/100;
-    temp = temp - centena*100;
-    decena = temp/10;
-    unidad = temp - decena*10;
-    tabla_num(centena);
-    Write_LCD(".");
-    tabla_num(decena);
-    tabla_num(unidad);
-
-}
-void Print_Cont(char valor){
-    int temp;
-    int unidad, decena, centena;
-    centena = valor/100;
-    temp = valor - centena*100;
-    decena = temp/10;
-    unidad = temp - decena*10;
-    tabla_num(centena);
-    tabla_num(decena);
-    tabla_num(unidad);
-}
-
-void tabla_num(int numero){
+void main(void) {
 
 
-    if (numero == 1){
-    Write_LCD("1");
-    } else if (numero == 2){
-        Write_LCD("2");
-    } else if (numero == 3){
-        Write_LCD("3");
-    } else if (numero == 4){
-        Write_LCD("4");
-    } else if (numero == 5){
-        Write_LCD("5");
-    } else if (numero == 6){
-        Write_LCD("6");
-    } else if (numero == 7){
-        Write_LCD("7");
-    } else if (numero == 8){
-        Write_LCD("8");
-    } else if (numero == 9){
-        Write_LCD("9");
-    } else if (numero == 0){
-        Write_LCD("0");
+    Config_Oscilador();
+    Config_ADC();
+    Config_USART();
+    Config_Puertos();
+    Init_Master();
+
+
+    while(1){
+        spiWrite('h');
     }
 }
