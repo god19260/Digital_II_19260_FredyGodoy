@@ -74,10 +74,11 @@ void Config_Puertos(void){
 //------------------------------------------------------------------------------
 //--------------- Funciones de programa ----------------------------------------
 char Valor_ADC(char canal){
+    __delay_us(50);
     char temp;
-    ADCON0bits.CHS = canal;        
+    ADCON0bits.CHS = canal;   
     temp = ADRESH;
-    __delay_us(100);
+    __delay_us(50);
     ADCON0bits.GO = 1;
     return temp;           
 }

@@ -403,6 +403,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _SPI (2 , -> &U _V_ADC_0 `*Vuc -> &U _V_ADC_1 `*Vuc ]
 "87
 [e = _PORTD -> _V_ADC_0 `uc ]
+"88
+[e = _PORTB -> _V_ADC_1 `uc ]
 "90
 [e ( _texto_Programa (2 , _V_ADC_0 _V_ADC_1 ]
 "92

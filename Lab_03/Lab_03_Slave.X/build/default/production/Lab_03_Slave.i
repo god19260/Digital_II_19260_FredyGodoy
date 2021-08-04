@@ -2512,7 +2512,9 @@ void tabla_USART(int numero);
 void Texto_USART(char texto[]);
 
 
-void SPI(char v1, char v2);
+void SPI(volatile char *v1,volatile char *v2);
+void USART_Num(char valor);
+void texto_Programa(char v1, char v2);
 # 11 "Lab_03_Slave.c" 2
 
 # 1 "./../../LIB/LIB.X/SPI.h" 1
@@ -2577,12 +2579,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (ADIF == 1){
         ADIF = 0;
         V_ADC_0 = Valor_ADC(0);
-        _delay((unsigned long)((10)*(8000000/4000000.0)));
         V_ADC_1 = Valor_ADC(1);
-
-
-
-
     }
     if(SSPIF == 1){
         if (temp1 == 0){

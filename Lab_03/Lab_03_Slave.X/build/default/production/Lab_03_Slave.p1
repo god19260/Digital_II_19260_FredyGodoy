@@ -7,10 +7,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 22: char Valor_ADC(char canal);
 [v _Valor_ADC `(uc ~T0 @X0 0 ef1`uc ]
-[v F1256 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
-[v __delay `JF1256 ~T0 @X0 0 e ]
-[p i __delay ]
 "4277 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4277: extern volatile __bit SSPIF __attribute__((address(0x63)));
 [v _SSPIF `Vb ~T0 @X0 0 e@99 ]
@@ -22,7 +18,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _RCIF `Vb ~T0 @X0 0 e@101 ]
 [p mainexit ]
 "58 Lab_03_Slave.c
-[; ;Lab_03_Slave.c: 58: 
+[; ;Lab_03_Slave.c: 58:     }
 [v _config `(v ~T0 @X0 0 ef ]
 "15 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
@@ -298,182 +294,179 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "19 Lab_03_Slave.c
-[; ;Lab_03_Slave.c: 19:         _delay((unsigned long)((10)*(8000000/4000000.0)));
+[; ;Lab_03_Slave.c: 19:         V_ADC_1 = Valor_ADC(1);
 [p x FOSC  =  INTRC_NOCLKOUT  ]
 "22
-[; ;Lab_03_Slave.c: 22: 
+[; ;Lab_03_Slave.c: 22:         if (temp1 == 0){
 [p x WDTE  =  OFF        ]
 "25
-[; ;Lab_03_Slave.c: 25:     }
+[; ;Lab_03_Slave.c: 25:         } else{
 [p x PWRTE  =  OFF       ]
 "26
-[; ;Lab_03_Slave.c: 26:     if(SSPIF == 1){
+[; ;Lab_03_Slave.c: 26:             spiWrite(V_ADC_1);
 [p x MCLRE  =  OFF       ]
 "29
-[; ;Lab_03_Slave.c: 29:             temp1 = 1;
+[; ;Lab_03_Slave.c: 29: 
 [p x CP  =  OFF           ]
 "31
-[; ;Lab_03_Slave.c: 31:             spiWrite(V_ADC_1);
+[; ;Lab_03_Slave.c: 31:         SSPIF = 0;
 [p x CPD  =  OFF          ]
 "33
-[; ;Lab_03_Slave.c: 33:         }
+[; ;Lab_03_Slave.c: 33: 
 [p x BOREN  =  OFF       ]
 "34
 [; ;Lab_03_Slave.c: 34: 
 [p x IESO  =  OFF        ]
 "36
-[; ;Lab_03_Slave.c: 36:         SSPIF = 0;
+[; ;Lab_03_Slave.c: 36: 
 [p x FCMEN  =  OFF       ]
 "38
 [; ;Lab_03_Slave.c: 38: 
 [p x LVP  =  OFF         ]
 "43
-[; ;Lab_03_Slave.c: 43: 
+[; ;Lab_03_Slave.c: 43: void main(void) {
 [p x BOR4V  =  BOR40V    ]
 "45
-[; ;Lab_03_Slave.c: 45:     }
+[; ;Lab_03_Slave.c: 45: 
 [p x WRT  =  OFF         ]
 "54
-[; ;Lab_03_Slave.c: 54:     Config_ADC();
+[; ;Lab_03_Slave.c: 54: 
 [v _V_ADC_0 `uc ~T0 @X0 1 e ]
 [i _V_ADC_0
 -> -> 0 `i `uc
 ]
 "55
-[; ;Lab_03_Slave.c: 55:     Config_USART();
+[; ;Lab_03_Slave.c: 55:     while(1){
 [v _V_ADC_1 `uc ~T0 @X0 1 e ]
 [i _V_ADC_1
 -> -> 0 `i `uc
 ]
 "56
-[; ;Lab_03_Slave.c: 56:     Init_Slave();
+[; ;Lab_03_Slave.c: 56: 
 [v _temp1 `uc ~T0 @X0 1 e ]
 [i _temp1
 -> -> 0 `i `uc
 ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
 "61
-[; ;Lab_03_Slave.c: 61: 
+[; ;Lab_03_Slave.c: 61: void config(void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
 "63
-[; ;Lab_03_Slave.c: 63:     }
+[; ;Lab_03_Slave.c: 63:     TRISB = 0;
 [e $ ! == -> _ADIF `i -> 1 `i 139  ]
 {
 "64
-[; ;Lab_03_Slave.c: 64: }
+[; ;Lab_03_Slave.c: 64:     TRISD = 0;
 [e = _ADIF -> -> 0 `i `b ]
 "65
 [; ;Lab_03_Slave.c: 65: 
 [e = _V_ADC_0 ( _Valor_ADC (1 -> -> 0 `i `uc ]
 "66
-[; ;Lab_03_Slave.c: 66: void config(void){
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"67
-[; ;Lab_03_Slave.c: 67:     TRISA = 0b100011;
+[; ;Lab_03_Slave.c: 66:     ANSEL = 0b11;
 [e = _V_ADC_1 ( _Valor_ADC (1 -> -> 1 `i `uc ]
-"72
-[; ;Lab_03_Slave.c: 72:     ANSELH = 0;
+"67
+[; ;Lab_03_Slave.c: 67:     ANSELH = 0;
 }
 [e :U 139 ]
-"73
-[; ;Lab_03_Slave.c: 73: 
+"68
+[; ;Lab_03_Slave.c: 68: 
 [e $ ! == -> _SSPIF `i -> 1 `i 140  ]
 {
-"74
-[; ;Lab_03_Slave.c: 74: 
+"69
+[; ;Lab_03_Slave.c: 69: 
 [e $ ! == -> _temp1 `i -> 0 `i 141  ]
 {
-"75
-[; ;Lab_03_Slave.c: 75: 
+"70
+[; ;Lab_03_Slave.c: 70: 
 [e ( _spiWrite (1 _V_ADC_0 ]
-"76
-[; ;Lab_03_Slave.c: 76:     PORTB = 0;
+"71
+[; ;Lab_03_Slave.c: 71:     PORTB = 0;
 [e = _temp1 -> -> 1 `i `uc ]
-"77
-[; ;Lab_03_Slave.c: 77:     PORTC = 0;
+"72
+[; ;Lab_03_Slave.c: 72:     PORTC = 0;
 }
 [e $U 142  ]
 [e :U 141 ]
 {
-"78
-[; ;Lab_03_Slave.c: 78:     PORTD = 0;
+"73
+[; ;Lab_03_Slave.c: 73:     PORTD = 0;
 [e ( _spiWrite (1 _V_ADC_1 ]
-"79
-[; ;Lab_03_Slave.c: 79:     PORTE = 0;
+"74
+[; ;Lab_03_Slave.c: 74:     PORTE = 0;
 [e = _temp1 -> -> 0 `i `uc ]
-"80
-[; ;Lab_03_Slave.c: 80: }
+"75
+[; ;Lab_03_Slave.c: 75: }
 }
 [e :U 142 ]
-"83
+"78
 [e = _SSPIF -> -> 0 `i `b ]
-"84
+"79
 }
 [e :U 140 ]
-"87
+"82
 [e $ ! == -> _RCIF `i -> 1 `i 143  ]
 {
-"91
+"86
 [e = _RCIF -> -> 0 `i `b ]
-"92
+"87
 }
 [e :U 143 ]
-"93
+"88
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"95
+"90
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"98
+"93
 [e ( _config ..  ]
-"100
+"95
 [e ( _Config_Oscilador ..  ]
-"101
+"96
 [e ( _Config_ADC ..  ]
-"102
+"97
 [e ( _Config_USART ..  ]
-"103
+"98
 [e ( _Init_Slave ..  ]
-"107
+"102
 [e :U 146 ]
 {
-"110
+"105
 }
 [e :U 145 ]
 [e $U 146  ]
 [e :U 147 ]
-"111
+"106
 [e :UE 144 ]
 }
-"113
+"108
 [v _config `(v ~T0 @X0 1 ef ]
 {
 [e :U _config ]
 [f ]
-"114
+"109
 [e = _TRISA -> -> 35 `i `uc ]
-"115
+"110
 [e = _TRISB -> -> 0 `i `uc ]
-"116
+"111
 [e = _TRISD -> -> 0 `i `uc ]
-"118
+"113
 [e = _ANSEL -> -> 3 `i `uc ]
-"119
+"114
 [e = _ANSELH -> -> 0 `i `uc ]
-"123
+"118
 [e = _PORTB -> -> 0 `i `uc ]
-"124
+"119
 [e = _PORTC -> -> 0 `i `uc ]
-"125
+"120
 [e = _PORTD -> -> 0 `i `uc ]
-"126
+"121
 [e = _PORTE -> -> 0 `i `uc ]
-"127
+"122
 [e :UE 148 ]
 }

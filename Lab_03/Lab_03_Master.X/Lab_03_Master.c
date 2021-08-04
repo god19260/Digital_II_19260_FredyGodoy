@@ -85,7 +85,7 @@ void main(void) {
     while(1){ 
         SPI(&V_ADC_0, &V_ADC_1);
         PORTD = V_ADC_0;
-        //PORTB = V_ADC_1;
+        PORTB = V_ADC_1;
         
         texto_Programa(V_ADC_0, V_ADC_1);
 

@@ -63,12 +63,7 @@ void __interrupt() isr (void){
     if (ADIF == 1){
         ADIF = 0;
         V_ADC_0 = Valor_ADC(0);
-        __delay_us(10);
         V_ADC_1 = Valor_ADC(1);
-        
-//        __delay_us(50);
-//        ADCON0bits.GO = 1;
-        //Transmisor_USART(Valor_Canal_12);
     }
     if(SSPIF == 1){
         if (temp1 == 0){

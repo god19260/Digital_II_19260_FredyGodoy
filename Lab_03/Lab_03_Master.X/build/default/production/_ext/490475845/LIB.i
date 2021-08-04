@@ -2593,7 +2593,7 @@ char Valor_ADC(char canal){
     char temp;
     ADCON0bits.CHS = canal;
     temp = ADRESH;
-    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
     ADCON0bits.GO = 1;
     return temp;
 }
