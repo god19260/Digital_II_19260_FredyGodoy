@@ -2503,7 +2503,9 @@ void tabla_USART(int numero);
 void Texto_USART(char texto[]);
 
 
-void SPI(char v1, char v2);
+void SPI(volatile char *v1,volatile char *v2);
+void USART_Num(char valor);
+void texto_Programa(char v1, char v2);
 # 2 "../../LIB/LIB.X/LIB.c" 2
 
 # 1 "../../LIB/LIB.X/SPI.h" 1
@@ -2595,7 +2597,22 @@ char Valor_ADC(char canal){
     ADCON0bits.GO = 1;
     return temp;
 }
+void USART_Num(char valor){
+    int temp;
+    int unidad, decena, centena;
+    temp = valor;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10;
+    tabla_USART(centena);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    tabla_USART(decena);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    tabla_USART(unidad);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
 
+}
 void tabla_USART(int numero){
 
 
@@ -2632,20 +2649,37 @@ void Texto_USART(char texto[]){
 }
 
 
-void SPI(char v1, char v2){
+void SPI(volatile char *v1,volatile char *v2){
     RA0 = ~RA0;
     PORTCbits.RC2 = 0;
     _delay((unsigned long)((1)*(8000000/4000.0)));
     spiWrite(0b110011);
 
     if(RA0 == 0){
-        PORTD = spiRead();
-        RA2 = 1;
+        *v1 = spiRead();
+
     }else{
-        PORTB = spiRead();
+        *v2 = spiRead();
+
     }
 
     _delay((unsigned long)((1)*(8000000/4000.0)));
     PORTCbits.RC2 = 0;
     _delay((unsigned long)((10)*(8000000/4000.0)));
+
+}
+
+void texto_Programa(char v1, char v2){
+        Texto_USART("POT 1: ");
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        USART_Num(v1);
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        TXREG = '\r';
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        Texto_USART("POT 2: ");
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        USART_Num(v2);
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        TXREG = '\r';
+        TXREG = '\r';
 }

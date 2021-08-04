@@ -81,7 +81,22 @@ char Valor_ADC(char canal){
     ADCON0bits.GO = 1;
     return temp;           
 }
-
+void USART_Num(char valor){
+    int temp;
+    int unidad, decena, centena;
+    temp = valor;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10; 
+    tabla_USART(centena);
+    __delay_ms(5);
+    tabla_USART(decena);
+    __delay_ms(5);
+    tabla_USART(unidad);
+    __delay_ms(5);
+    
+}
 void tabla_USART(int numero){
     // forma == 0 LCD
     // forma == 1 USART
@@ -118,20 +133,37 @@ void Texto_USART(char texto[]){
 }
 //------------------------------------------------------------------------------
 //--------------- Funciones especificas ----------------------------------------
-void SPI(char v1, char v2){
+void SPI(volatile char *v1,volatile char *v2){
     RA0 = ~RA0;
     PORTCbits.RC2 = 0;
     __delay_ms(1);
     spiWrite(0b110011);
     
     if(RA0 == 0){
-        PORTD = spiRead();   
-        RA2 = 1;
+        *v1 = spiRead(); 
+        //PORTD = v1;
     }else{
-        PORTB = spiRead();
+        *v2 = spiRead();
+        //PORTB = v2;
     }
     
     __delay_ms(1);
     PORTCbits.RC2 = 0;
     __delay_ms(10);
+    
+}
+
+void texto_Programa(char v1, char v2){
+        Texto_USART("POT 1: ");
+        __delay_ms(1);
+        USART_Num(v1);
+        __delay_ms(1);
+        TXREG = '\r';
+        __delay_ms(1);
+        Texto_USART("POT 2: ");
+        __delay_ms(1);
+        USART_Num(v2);
+        __delay_ms(1);
+        TXREG = '\r';
+        TXREG = '\r';
 }

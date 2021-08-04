@@ -2577,7 +2577,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (ADIF == 1){
         ADIF = 0;
         V_ADC_0 = Valor_ADC(0);
-        _delay((unsigned long)((500)*(8000000/4000000.0)));
+        _delay((unsigned long)((10)*(8000000/4000000.0)));
         V_ADC_1 = Valor_ADC(1);
 
 

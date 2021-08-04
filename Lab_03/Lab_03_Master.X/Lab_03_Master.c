@@ -54,6 +54,7 @@
 char V_ADC_0 = 0;
 char V_ADC_1 = 0;
 char temp1 = 1;
+char pots[2];
 //--------------------- Prototipo función configuración ------------------------
 void config(void);
 //------------------------------------------------------------------------------
@@ -63,7 +64,7 @@ void __interrupt() isr (void){
     if (RCIF == 1){
         // RCREG (Receptor)
         // TXREG (Transmisor)
-
+        PORTB = RCREG;
         RCIF = 0; 
     }
 }    
@@ -82,8 +83,11 @@ void main(void) {
 //------------------------------------------------------------------------------
 //*************************** loop principal ***********************************   
     while(1){ 
-        SPI(V_ADC_0,V_ADC_1);
-        //PORTD = V_ADC_0; 
+        SPI(&V_ADC_0, &V_ADC_1);
+        PORTD = V_ADC_0;
+        //PORTB = V_ADC_1;
+        
+        texto_Programa(V_ADC_0, V_ADC_1);
 
     } // fin loop principal while 
 } // fin main

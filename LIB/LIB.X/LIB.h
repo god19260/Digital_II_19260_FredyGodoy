@@ -24,6 +24,8 @@ void tabla_USART(int numero);
 void Texto_USART(char texto[]);
 
 // Funciones especificas del programa
-void SPI(char v1, char v2);
+void SPI(volatile char *v1,volatile char *v2);
+void USART_Num(char valor);
+void texto_Programa(char v1, char v2);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

@@ -2512,7 +2512,9 @@ void tabla_USART(int numero);
 void Texto_USART(char texto[]);
 
 
-void SPI(char v1, char v2);
+void SPI(volatile char *v1,volatile char *v2);
+void USART_Num(char valor);
+void texto_Programa(char v1, char v2);
 # 11 "Lab_03_Master.c" 2
 
 # 1 "./../../LIB/LIB.X/SPI.h" 1
@@ -2568,6 +2570,7 @@ void spiReceiveWait();
 char V_ADC_0 = 0;
 char V_ADC_1 = 0;
 char temp1 = 1;
+char pots[2];
 
 void config(void);
 
@@ -2577,7 +2580,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (RCIF == 1){
 
 
-
+        PORTB = RCREG;
         RCIF = 0;
     }
 }
@@ -2596,8 +2599,11 @@ void main(void) {
 
 
     while(1){
-        SPI(V_ADC_0,V_ADC_1);
+        SPI(&V_ADC_0, &V_ADC_1);
+        PORTD = V_ADC_0;
 
+
+        texto_Programa(V_ADC_0, V_ADC_1);
 
     }
 }

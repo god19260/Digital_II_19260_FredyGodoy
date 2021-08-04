@@ -298,7 +298,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "19 Lab_03_Slave.c
-[; ;Lab_03_Slave.c: 19:         _delay((unsigned long)((500)*(8000000/4000000.0)));
+[; ;Lab_03_Slave.c: 19:         _delay((unsigned long)((10)*(8000000/4000000.0)));
 [p x FOSC  =  INTRC_NOCLKOUT  ]
 "22
 [; ;Lab_03_Slave.c: 22: 
@@ -370,7 +370,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _V_ADC_0 ( _Valor_ADC (1 -> -> 0 `i `uc ]
 "66
 [; ;Lab_03_Slave.c: 66: void config(void){
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "67
 [; ;Lab_03_Slave.c: 67:     TRISA = 0b100011;
 [e = _V_ADC_1 ( _Valor_ADC (1 -> -> 1 `i `uc ]
