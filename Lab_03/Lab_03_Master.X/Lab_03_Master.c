@@ -1,15 +1,15 @@
 /*
  * File:   Lab_03_Master.c
- * Author: fredy
- *
+ * Author: Fredy Godoy 19260
+ * PIC Maestro
  * Created on August 3, 2021, 12:41 AM
  */
 
 
 #include <xc.h>
 #define _XTAL_FREQ 8000000
-#include "Libreria.h"
-#include "SPI.h"
+#include "../../LIB/LIB.X/LIB.h"
+#include "../../LIB/LIB.X/SPI.h"
 
 // PIC16F887 Configuration Bit Settings
 
@@ -51,21 +51,14 @@
 
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
-
+char V_ADC_0 = 0;
+char V_ADC_1 = 0;
+char temp1 = 1;
+//--------------------- Prototipo función configuración ------------------------
+void config(void);
 //------------------------------------------------------------------------------
 //*************************** Interrupciones ***********************************
 void __interrupt() isr (void){ 
-     
-    // Interrupcion del ADC module
-    if (ADIF == 1){
-        PORTB++;
-        PORTD = ADRESH;
-        ADIF = 0;
-        __delay_us(50);
-        ADCON0bits.GO = 1;
-        //Transmisor_USART(Valor_Canal_12);
-    }
-    
     // Interrupcion USART
     if (RCIF == 1){
         // RCREG (Receptor)
@@ -78,14 +71,37 @@ void __interrupt() isr (void){
 void main(void) {
 //------------------------------------------------------------------------------
 //*************************** Configuraciones **********************************        
+    config(); // Configuración del progama
+    
     Config_Oscilador();
-    Config_ADC();
     Config_USART();
-    Config_Puertos();
     Init_Master(); // SPI
+    
+    
+
 //------------------------------------------------------------------------------
 //*************************** loop principal ***********************************   
-    while(1){
-        spiWrite('h');
+    while(1){ 
+        SPI(V_ADC_0,V_ADC_1);
+        //PORTD = V_ADC_0; 
+
     } // fin loop principal while 
 } // fin main
+
+void config(void){    
+    TRISA  = 0;
+    TRISB  = 0;
+    TRISC2 = 0; 
+    TRISD  = 0x00;
+    PORTCbits.RC2 = 1;
+    
+    ANSEL  = 0;
+    ANSELH = 0;
+    
+    //Limpieza de puertos
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
+}

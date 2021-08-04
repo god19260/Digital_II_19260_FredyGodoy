@@ -1,4 +1,4 @@
-# 1 "SPI.c"
+# 1 "../../LIB/LIB.X/LIB.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,14 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "SPI.c" 2
-
-
-
-
-
-
-
+# 1 "../../LIB/LIB.X/LIB.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2494,18 +2487,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 8 "SPI.c" 2
+# 1 "../../LIB/LIB.X/LIB.c" 2
 
-# 1 "./SPI.h" 1
-# 14 "./SPI.h"
-void Init_Master(void);
-void Init_Slave(void);
-void spiWrite(char dat);
-char spiRead();
-# 9 "SPI.c" 2
-
-# 1 "./Libreria.h" 1
-# 16 "./Libreria.h"
+# 1 "../../LIB/LIB.X/LIB.h" 1
+# 15 "../../LIB/LIB.X/LIB.h"
 void Config_Oscilador(void);
 void Config_TMR0(void);
 void Config_ADC(void);
@@ -2516,68 +2501,151 @@ void Config_Puertos(void);
 char Valor_ADC(char canal);
 void tabla_USART(int numero);
 void Texto_USART(char texto[]);
-# 10 "SPI.c" 2
+
+
+void SPI(char v1, char v2);
+# 2 "../../LIB/LIB.X/LIB.c" 2
+
+# 1 "../../LIB/LIB.X/SPI.h" 1
+# 14 "../../LIB/LIB.X/SPI.h"
+void Init_Master(void);
+void Init_Slave(void);
+void spiWrite(char dat);
+char spiRead();
+void spiReceiveWait();
+# 3 "../../LIB/LIB.X/LIB.c" 2
 
 
 
 
+void Config_Oscilador(void){
+
+    IRCF0 = 1;
+    IRCF1 = 1;
+    IRCF2 = 1;
+    INTCON = 0b11101000;
+}
+void Config_TMR0(void){
 
 
-void Init_Master(void){
-
-    SSPCONbits.SSPM0 = 0;
-    SSPCONbits.SSPM1 = 0;
-    SSPCONbits.SSPM2 = 0;
-    SSPCONbits.SSPM3 = 0;
-
-
-    SSPCONbits.CKP = 1;
-
-
-    SSPCONbits.SSPEN = 1;
-
-
-
-    SSPSTATbits.SMP = 1;
-    TRISC3 = 0;
-
-
-    SSPSTATbits.CKE = 1;
+    char valor_tmr0;
+    PS0 = 1;
+    PS1 = 1;
+    PS2 = 1;
+    T0CS = 0;
+    PSA = 0;
+    INTCON = 0b10101000;
+    valor_tmr0 = 100;
+    TMR0 = valor_tmr0;
 
 }
 
-void Init_Slave(void){
+void Config_ADC(void){
+    ADCON0bits.ADCS0 = 0;
+    ADCON0bits.ADCS1 = 1;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.CHS = 0;
+    ADCON1bits.ADFM = 0;
+    ADCON0bits.ADON = 1;
+    ADIF = 0;
+    PIE1bits.ADIE = 1;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
 
-    SSPCONbits.SSPM0 = 1;
-    SSPCONbits.SSPM1 = 0;
-    SSPCONbits.SSPM2 = 1;
-    SSPCONbits.SSPM3 = 0;
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
+    ADCON0bits.GO = 1;
+}
+void Config_USART(void){
+
+    TXEN = 1;
+    SYNC = 0;
+    SPEN = 1;
 
 
-
-    SSPCONbits.CKP = 1;
-
-
-    SSPCONbits.SSPEN = 1;
-
-
-
-    SSPSTATbits.SMP = 0;
-
-
-
-    SSPSTATbits.CKE = 1;
-    TRISC3 = 0;
+    CREN = 1;
+    PIE1bits.RCIE = 1;
+    PIR1bits.RCIF = 0;
+    SPBRG=12;
 }
 
-void spiWrite(char dat){
+void Config_Puertos(void){
 
-    SSPBUF = dat;
+    TRISA = 0b111111;
+    TRISB = 0;
+    TRISC = 0b10000000;
+    TRISD = 0;
+    TRISE = 0;
+    ANSEL = 0b1;
+    ANSELH = 0;
+
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
 }
 
-char spiRead(){
 
-    while ( !SSPSTATbits.BF );
-    return(SSPBUF);
+char Valor_ADC(char canal){
+    char temp;
+    ADCON0bits.CHS = canal;
+    temp = ADRESH;
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    ADCON0bits.GO = 1;
+    return temp;
+}
+
+void tabla_USART(int numero){
+
+
+    if (numero == 1){
+        TXREG = '1';
+    } else if (numero == 2){
+        TXREG = '2';
+    } else if (numero == 3){
+        TXREG = '3';
+    } else if (numero == 4){
+        TXREG = '4';
+    } else if (numero == 5){
+        TXREG = '5';
+    } else if (numero == 6){
+        TXREG = '6';
+    } else if (numero == 7){
+        TXREG = '7';
+    } else if (numero == 8){
+        TXREG = '8';
+    } else if (numero == 9){
+        TXREG = '9';
+    } else if (numero == 0){
+        TXREG = '0';
+    }
+}
+
+void Texto_USART(char texto[]){
+    char i = 0;
+    while(texto[i] != '\0'){
+        TXREG = texto[i];
+        i++;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+    }
+}
+
+
+void SPI(char v1, char v2){
+    RA0 = ~RA0;
+    PORTCbits.RC2 = 0;
     _delay((unsigned long)((1)*(8000000/4000.0)));
+    spiWrite(0b110011);
+
+    if(RA0 == 0){
+        PORTD = spiRead();
+        RA2 = 1;
+    }else{
+        PORTB = spiRead();
+    }
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC2 = 0;
+    _delay((unsigned long)((10)*(8000000/4000.0)));
 }

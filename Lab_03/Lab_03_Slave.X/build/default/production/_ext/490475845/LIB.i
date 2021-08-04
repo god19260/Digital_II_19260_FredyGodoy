@@ -1,4 +1,4 @@
-# 1 "Libreria.c"
+# 1 "../../LIB/LIB.X/LIB.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Libreria.c" 2
+# 1 "../../LIB/LIB.X/LIB.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2487,10 +2487,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 1 "Libreria.c" 2
+# 1 "../../LIB/LIB.X/LIB.c" 2
 
-# 1 "./Libreria.h" 1
-# 16 "./Libreria.h"
+# 1 "../../LIB/LIB.X/LIB.h" 1
+# 15 "../../LIB/LIB.X/LIB.h"
 void Config_Oscilador(void);
 void Config_TMR0(void);
 void Config_ADC(void);
@@ -2501,7 +2501,19 @@ void Config_Puertos(void);
 char Valor_ADC(char canal);
 void tabla_USART(int numero);
 void Texto_USART(char texto[]);
-# 2 "Libreria.c" 2
+
+
+void SPI(char v1, char v2);
+# 2 "../../LIB/LIB.X/LIB.c" 2
+
+# 1 "../../LIB/LIB.X/SPI.h" 1
+# 14 "../../LIB/LIB.X/SPI.h"
+void Init_Master(void);
+void Init_Slave(void);
+void spiWrite(char dat);
+char spiRead();
+void spiReceiveWait();
+# 3 "../../LIB/LIB.X/LIB.c" 2
 
 
 
@@ -2559,7 +2571,7 @@ void Config_USART(void){
 
 void Config_Puertos(void){
 
-    TRISA = 0b1;
+    TRISA = 0b111111;
     TRISB = 0;
     TRISC = 0b10000000;
     TRISD = 0;
@@ -2576,10 +2588,12 @@ void Config_Puertos(void){
 
 
 char Valor_ADC(char canal){
+    char temp;
     ADCON0bits.CHS = canal;
-    _delay((unsigned long)((50)*(8000000/4000000.0)));
+    temp = ADRESH;
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
     ADCON0bits.GO = 1;
-    return ADRESH;
+    return temp;
 }
 
 void tabla_USART(int numero){
@@ -2615,4 +2629,23 @@ void Texto_USART(char texto[]){
         i++;
         _delay((unsigned long)((1)*(8000000/4000.0)));
     }
+}
+
+
+void SPI(char v1, char v2){
+    RA0 = ~RA0;
+    PORTCbits.RC2 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    spiWrite(0b110011);
+
+    if(RA0 == 0){
+        PORTD = spiRead();
+        RA2 = 1;
+    }else{
+        PORTB = spiRead();
+    }
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC2 = 0;
+    _delay((unsigned long)((10)*(8000000/4000.0)));
 }

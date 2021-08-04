@@ -1,5 +1,6 @@
 #include <xc.h>
-#include "Libreria.h"
+#include "LIB.h"
+#include "SPI.h"
 #define _XTAL_FREQ 8000000
 //------------------------------------------------------------------------------
 //----------------- Configuraciones --------------------------------------------
@@ -56,11 +57,11 @@ void Config_USART(void){
 
 void Config_Puertos(void){
     // Configurar puertos
-    TRISA  = 0b1;       // Definir el puerto A como salida
-    TRISB  = 0;       // Definir el puerto B como salida
-    TRISC  = 0b10000000;       // Definir el puerto C como salida
-    TRISD  = 0;       // Definir el puerto D como salida
-    TRISE  = 0;       // Definir el puerto E como salida
+    TRISA  = 0b111111;       // Definir el puerto A como salida
+    TRISB  = 0;              // Definir el puerto B como salida
+    TRISC  = 0b10000000;     // Definir el puerto C como salida
+    TRISD  = 0;              // Definir el puerto D como salida
+    TRISE  = 0;              // Definir el puerto E como salida
     ANSEL  = 0b1;
     ANSELH = 0;//0b10100;
     //Limpieza de puertos
@@ -73,10 +74,12 @@ void Config_Puertos(void){
 //------------------------------------------------------------------------------
 //--------------- Funciones de programa ----------------------------------------
 char Valor_ADC(char canal){
-    ADCON0bits.CHS = canal;
-    __delay_us(50);
+    char temp;
+    ADCON0bits.CHS = canal;        
+    temp = ADRESH;
+    __delay_us(100);
     ADCON0bits.GO = 1;
-    return ADRESH;           
+    return temp;           
 }
 
 void tabla_USART(int numero){
@@ -115,3 +118,20 @@ void Texto_USART(char texto[]){
 }
 //------------------------------------------------------------------------------
 //--------------- Funciones especificas ----------------------------------------
+void SPI(char v1, char v2){
+    RA0 = ~RA0;
+    PORTCbits.RC2 = 0;
+    __delay_ms(1);
+    spiWrite(0b110011);
+    
+    if(RA0 == 0){
+        PORTD = spiRead();   
+        RA2 = 1;
+    }else{
+        PORTB = spiRead();
+    }
+    
+    __delay_ms(1);
+    PORTCbits.RC2 = 0;
+    __delay_ms(10);
+}

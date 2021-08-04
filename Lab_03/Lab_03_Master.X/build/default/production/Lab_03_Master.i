@@ -2498,8 +2498,8 @@ extern __bank0 __bit __timeout;
 # 9 "Lab_03_Master.c" 2
 
 
-# 1 "./Libreria.h" 1
-# 16 "./Libreria.h"
+# 1 "./../../LIB/LIB.X/LIB.h" 1
+# 15 "./../../LIB/LIB.X/LIB.h"
 void Config_Oscilador(void);
 void Config_TMR0(void);
 void Config_ADC(void);
@@ -2510,14 +2510,18 @@ void Config_Puertos(void);
 char Valor_ADC(char canal);
 void tabla_USART(int numero);
 void Texto_USART(char texto[]);
+
+
+void SPI(char v1, char v2);
 # 11 "Lab_03_Master.c" 2
 
-# 1 "./SPI.h" 1
-# 14 "./SPI.h"
+# 1 "./../../LIB/LIB.X/SPI.h" 1
+# 14 "./../../LIB/LIB.X/SPI.h"
 void Init_Master(void);
 void Init_Slave(void);
 void spiWrite(char dat);
 char spiRead();
+void spiReceiveWait();
 # 12 "Lab_03_Master.c" 2
 
 
@@ -2553,19 +2557,22 @@ char spiRead();
 #pragma config BOR4V = BOR40V
 
 #pragma config WRT = OFF
-# 57 "Lab_03_Master.c"
+
+
+
+
+
+
+
+
+char V_ADC_0 = 0;
+char V_ADC_1 = 0;
+char temp1 = 1;
+
+void config(void);
+
+
 void __attribute__((picinterrupt(("")))) isr (void){
-
-
-    if (ADIF == 1){
-        PORTB++;
-        PORTD = ADRESH;
-        ADIF = 0;
-        _delay((unsigned long)((50)*(8000000/4000000.0)));
-        ADCON0bits.GO = 1;
-
-    }
-
 
     if (RCIF == 1){
 
@@ -2578,14 +2585,37 @@ void __attribute__((picinterrupt(("")))) isr (void){
 void main(void) {
 
 
+    config();
+
     Config_Oscilador();
-    Config_ADC();
     Config_USART();
-    Config_Puertos();
     Init_Master();
 
 
+
+
+
     while(1){
-        spiWrite('h');
+        SPI(V_ADC_0,V_ADC_1);
+
+
     }
+}
+
+void config(void){
+    TRISA = 0;
+    TRISB = 0;
+    TRISC2 = 0;
+    TRISD = 0x00;
+    PORTCbits.RC2 = 1;
+
+    ANSEL = 0;
+    ANSELH = 0;
+
+
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
 }

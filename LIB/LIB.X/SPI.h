@@ -15,6 +15,6 @@ void Init_Master(void);
 void Init_Slave(void);
 void spiWrite(char dat);
 char spiRead(); 
-
+void spiReceiveWait();
 #endif	/* XC_HEADER_TEMPLATE_H */
 
