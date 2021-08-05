@@ -2515,6 +2515,7 @@ void Texto_USART(char texto[]);
 void SPI(volatile char *v1,volatile char *v2);
 void USART_Num(char valor);
 void texto_Programa(char v1, char v2);
+void Interfaz(char v1, char v2);
 # 11 "Lab_03_Master.c" 2
 
 # 1 "./../../LIB/LIB.X/SPI.h" 1
@@ -2580,7 +2581,12 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (RCIF == 1){
 
 
-        PORTB = RCREG;
+        if(RCREG == '+'){
+            PORTB++;
+        }else if (RCREG == '-'){
+            PORTB--;
+        }
+
         RCIF = 0;
     }
 }
@@ -2601,9 +2607,11 @@ void main(void) {
     while(1){
         SPI(&V_ADC_0, &V_ADC_1);
         PORTD = V_ADC_0;
-        PORTB = V_ADC_1;
 
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        RE1 = ~RE1;
         texto_Programa(V_ADC_0, V_ADC_1);
+
 
     }
 }
@@ -2611,6 +2619,7 @@ void main(void) {
 void config(void){
     TRISA = 0;
     TRISB = 0;
+    TRISE = 0;
     TRISC2 = 0;
     TRISD = 0x00;
     PORTCbits.RC2 = 1;

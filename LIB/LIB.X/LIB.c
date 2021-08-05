@@ -125,11 +125,12 @@ void tabla_USART(int numero){
 }
 
 void Texto_USART(char texto[]){
+    char temp = 10;
     char i = 0;
     while(texto[i] != '\0'){
         TXREG = texto[i];
         i++;
-        __delay_ms(1);
+        __delay_ms(5);
     }
 }
 //------------------------------------------------------------------------------
@@ -155,16 +156,24 @@ void SPI(volatile char *v1,volatile char *v2){
 }
 
 void texto_Programa(char v1, char v2){
-        Texto_USART("POT 1: ");
-        __delay_ms(1);
+    char temp = 10;    
+    Texto_USART("POT 1: ");
+        __delay_ms(5);
         USART_Num(v1);
-        __delay_ms(1);
+        __delay_ms(5);
+        //TXREG = '\n';
         TXREG = '\r';
-        __delay_ms(1);
+        __delay_ms(5);
         Texto_USART("POT 2: ");
-        __delay_ms(1);
+        __delay_ms(100);
         USART_Num(v2);
-        __delay_ms(1);
+        __delay_ms(5);
+        //TXREG = '\n';
+        //TXREG = '\n';
         TXREG = '\r';
         TXREG = '\r';
+}
+void Interfaz(char v1, char v2){
+    USART_Num(v1);
+    USART_Num(v2);
 }

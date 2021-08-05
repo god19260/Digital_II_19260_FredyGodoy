@@ -27,5 +27,6 @@ void Texto_USART(char texto[]);
 void SPI(volatile char *v1,volatile char *v2);
 void USART_Num(char valor);
 void texto_Programa(char v1, char v2);
+void Interfaz(char v1, char v2);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

@@ -614,186 +614,189 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _canal `uc ~T0 @X0 1 r1 ]
 [f ]
 "77
-[; ;../../LIB/LIB.X/LIB.c: 77:     char temp;
-[v _temp `uc ~T0 @X0 1 a ]
-"78
-[; ;../../LIB/LIB.X/LIB.c: 78:     ADCON0bits.CHS = canal;
-[e = . . _ADCON0bits 0 2 -> _canal `uc ]
-"79
-[; ;../../LIB/LIB.X/LIB.c: 79:     temp = ADRESH;
-[e = _temp -> _ADRESH `uc ]
-"80
-[; ;../../LIB/LIB.X/LIB.c: 80:     _delay((unsigned long)((50)*(8000000/4000000.0)));
+[; ;../../LIB/LIB.X/LIB.c: 77:     _delay((unsigned long)((50)*(8000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"78
+[; ;../../LIB/LIB.X/LIB.c: 78:     char temp;
+[v _temp `uc ~T0 @X0 1 a ]
+"79
+[; ;../../LIB/LIB.X/LIB.c: 79:     ADCON0bits.CHS = canal;
+[e = . . _ADCON0bits 0 2 -> _canal `uc ]
+"80
+[; ;../../LIB/LIB.X/LIB.c: 80:     temp = ADRESH;
+[e = _temp -> _ADRESH `uc ]
 "81
-[; ;../../LIB/LIB.X/LIB.c: 81:     ADCON0bits.GO = 1;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;../../LIB/LIB.X/LIB.c: 81:     _delay((unsigned long)((50)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "82
-[; ;../../LIB/LIB.X/LIB.c: 82:     return temp;
+[; ;../../LIB/LIB.X/LIB.c: 82:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"83
+[; ;../../LIB/LIB.X/LIB.c: 83:     return temp;
 [e ) _temp ]
 [e $UE 143  ]
-"83
-[; ;../../LIB/LIB.X/LIB.c: 83: }
+"84
+[; ;../../LIB/LIB.X/LIB.c: 84: }
 [e :UE 143 ]
 }
-"84
-[; ;../../LIB/LIB.X/LIB.c: 84: void USART_Num(char valor){
+"85
+[; ;../../LIB/LIB.X/LIB.c: 85: void USART_Num(char valor){
 [v _USART_Num `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _USART_Num ]
 [v _valor `uc ~T0 @X0 1 r1 ]
 [f ]
-"85
-[; ;../../LIB/LIB.X/LIB.c: 85:     int temp;
-[v _temp `i ~T0 @X0 1 a ]
 "86
-[; ;../../LIB/LIB.X/LIB.c: 86:     int unidad, decena, centena;
+[; ;../../LIB/LIB.X/LIB.c: 86:     int temp;
+[v _temp `i ~T0 @X0 1 a ]
+"87
+[; ;../../LIB/LIB.X/LIB.c: 87:     int unidad, decena, centena;
 [v _unidad `i ~T0 @X0 1 a ]
 [v _decena `i ~T0 @X0 1 a ]
 [v _centena `i ~T0 @X0 1 a ]
-"87
-[; ;../../LIB/LIB.X/LIB.c: 87:     temp = valor;
-[e = _temp -> _valor `i ]
 "88
-[; ;../../LIB/LIB.X/LIB.c: 88:     centena = temp/100;
-[e = _centena / _temp -> 100 `i ]
+[; ;../../LIB/LIB.X/LIB.c: 88:     temp = valor;
+[e = _temp -> _valor `i ]
 "89
-[; ;../../LIB/LIB.X/LIB.c: 89:     temp = temp - centena*100;
-[e = _temp - _temp * _centena -> 100 `i ]
+[; ;../../LIB/LIB.X/LIB.c: 89:     centena = temp/100;
+[e = _centena / _temp -> 100 `i ]
 "90
-[; ;../../LIB/LIB.X/LIB.c: 90:     decena = temp/10;
-[e = _decena / _temp -> 10 `i ]
+[; ;../../LIB/LIB.X/LIB.c: 90:     temp = temp - centena*100;
+[e = _temp - _temp * _centena -> 100 `i ]
 "91
-[; ;../../LIB/LIB.X/LIB.c: 91:     unidad = temp - decena*10;
-[e = _unidad - _temp * _decena -> 10 `i ]
+[; ;../../LIB/LIB.X/LIB.c: 91:     decena = temp/10;
+[e = _decena / _temp -> 10 `i ]
 "92
-[; ;../../LIB/LIB.X/LIB.c: 92:     tabla_USART(centena);
-[e ( _tabla_USART (1 _centena ]
+[; ;../../LIB/LIB.X/LIB.c: 92:     unidad = temp - decena*10;
+[e = _unidad - _temp * _decena -> 10 `i ]
 "93
-[; ;../../LIB/LIB.X/LIB.c: 93:     _delay((unsigned long)((5)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 93:     tabla_USART(centena);
+[e ( _tabla_USART (1 _centena ]
 "94
-[; ;../../LIB/LIB.X/LIB.c: 94:     tabla_USART(decena);
-[e ( _tabla_USART (1 _decena ]
+[; ;../../LIB/LIB.X/LIB.c: 94:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "95
-[; ;../../LIB/LIB.X/LIB.c: 95:     _delay((unsigned long)((5)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 95:     tabla_USART(decena);
+[e ( _tabla_USART (1 _decena ]
 "96
-[; ;../../LIB/LIB.X/LIB.c: 96:     tabla_USART(unidad);
-[e ( _tabla_USART (1 _unidad ]
-"97
-[; ;../../LIB/LIB.X/LIB.c: 97:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[; ;../../LIB/LIB.X/LIB.c: 96:     _delay((unsigned long)((5)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"99
-[; ;../../LIB/LIB.X/LIB.c: 99: }
+"97
+[; ;../../LIB/LIB.X/LIB.c: 97:     tabla_USART(unidad);
+[e ( _tabla_USART (1 _unidad ]
+"98
+[; ;../../LIB/LIB.X/LIB.c: 98:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"100
+[; ;../../LIB/LIB.X/LIB.c: 100: }
 [e :UE 144 ]
 }
-"100
-[; ;../../LIB/LIB.X/LIB.c: 100: void tabla_USART(int numero){
+"101
+[; ;../../LIB/LIB.X/LIB.c: 101: void tabla_USART(int numero){
 [v _tabla_USART `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _tabla_USART ]
 [v _numero `i ~T0 @X0 1 r1 ]
 [f ]
-"103
-[; ;../../LIB/LIB.X/LIB.c: 103:     if (numero == 1){
+"104
+[; ;../../LIB/LIB.X/LIB.c: 104:     if (numero == 1){
 [e $ ! == _numero -> 1 `i 146  ]
 {
-"104
-[; ;../../LIB/LIB.X/LIB.c: 104:         TXREG = '1';
-[e = _TXREG -> -> 49 `ui `uc ]
 "105
-[; ;../../LIB/LIB.X/LIB.c: 105:     } else if (numero == 2){
+[; ;../../LIB/LIB.X/LIB.c: 105:         TXREG = '1';
+[e = _TXREG -> -> 49 `ui `uc ]
+"106
+[; ;../../LIB/LIB.X/LIB.c: 106:     } else if (numero == 2){
 }
 [e $U 147  ]
 [e :U 146 ]
 [e $ ! == _numero -> 2 `i 148  ]
 {
-"106
-[; ;../../LIB/LIB.X/LIB.c: 106:         TXREG = '2';
-[e = _TXREG -> -> 50 `ui `uc ]
 "107
-[; ;../../LIB/LIB.X/LIB.c: 107:     } else if (numero == 3){
+[; ;../../LIB/LIB.X/LIB.c: 107:         TXREG = '2';
+[e = _TXREG -> -> 50 `ui `uc ]
+"108
+[; ;../../LIB/LIB.X/LIB.c: 108:     } else if (numero == 3){
 }
 [e $U 149  ]
 [e :U 148 ]
 [e $ ! == _numero -> 3 `i 150  ]
 {
-"108
-[; ;../../LIB/LIB.X/LIB.c: 108:         TXREG = '3';
-[e = _TXREG -> -> 51 `ui `uc ]
 "109
-[; ;../../LIB/LIB.X/LIB.c: 109:     } else if (numero == 4){
+[; ;../../LIB/LIB.X/LIB.c: 109:         TXREG = '3';
+[e = _TXREG -> -> 51 `ui `uc ]
+"110
+[; ;../../LIB/LIB.X/LIB.c: 110:     } else if (numero == 4){
 }
 [e $U 151  ]
 [e :U 150 ]
 [e $ ! == _numero -> 4 `i 152  ]
 {
-"110
-[; ;../../LIB/LIB.X/LIB.c: 110:         TXREG = '4';
-[e = _TXREG -> -> 52 `ui `uc ]
 "111
-[; ;../../LIB/LIB.X/LIB.c: 111:     } else if (numero == 5){
+[; ;../../LIB/LIB.X/LIB.c: 111:         TXREG = '4';
+[e = _TXREG -> -> 52 `ui `uc ]
+"112
+[; ;../../LIB/LIB.X/LIB.c: 112:     } else if (numero == 5){
 }
 [e $U 153  ]
 [e :U 152 ]
 [e $ ! == _numero -> 5 `i 154  ]
 {
-"112
-[; ;../../LIB/LIB.X/LIB.c: 112:         TXREG = '5';
-[e = _TXREG -> -> 53 `ui `uc ]
 "113
-[; ;../../LIB/LIB.X/LIB.c: 113:     } else if (numero == 6){
+[; ;../../LIB/LIB.X/LIB.c: 113:         TXREG = '5';
+[e = _TXREG -> -> 53 `ui `uc ]
+"114
+[; ;../../LIB/LIB.X/LIB.c: 114:     } else if (numero == 6){
 }
 [e $U 155  ]
 [e :U 154 ]
 [e $ ! == _numero -> 6 `i 156  ]
 {
-"114
-[; ;../../LIB/LIB.X/LIB.c: 114:         TXREG = '6';
-[e = _TXREG -> -> 54 `ui `uc ]
 "115
-[; ;../../LIB/LIB.X/LIB.c: 115:     } else if (numero == 7){
+[; ;../../LIB/LIB.X/LIB.c: 115:         TXREG = '6';
+[e = _TXREG -> -> 54 `ui `uc ]
+"116
+[; ;../../LIB/LIB.X/LIB.c: 116:     } else if (numero == 7){
 }
 [e $U 157  ]
 [e :U 156 ]
 [e $ ! == _numero -> 7 `i 158  ]
 {
-"116
-[; ;../../LIB/LIB.X/LIB.c: 116:         TXREG = '7';
-[e = _TXREG -> -> 55 `ui `uc ]
 "117
-[; ;../../LIB/LIB.X/LIB.c: 117:     } else if (numero == 8){
+[; ;../../LIB/LIB.X/LIB.c: 117:         TXREG = '7';
+[e = _TXREG -> -> 55 `ui `uc ]
+"118
+[; ;../../LIB/LIB.X/LIB.c: 118:     } else if (numero == 8){
 }
 [e $U 159  ]
 [e :U 158 ]
 [e $ ! == _numero -> 8 `i 160  ]
 {
-"118
-[; ;../../LIB/LIB.X/LIB.c: 118:         TXREG = '8';
-[e = _TXREG -> -> 56 `ui `uc ]
 "119
-[; ;../../LIB/LIB.X/LIB.c: 119:     } else if (numero == 9){
+[; ;../../LIB/LIB.X/LIB.c: 119:         TXREG = '8';
+[e = _TXREG -> -> 56 `ui `uc ]
+"120
+[; ;../../LIB/LIB.X/LIB.c: 120:     } else if (numero == 9){
 }
 [e $U 161  ]
 [e :U 160 ]
 [e $ ! == _numero -> 9 `i 162  ]
 {
-"120
-[; ;../../LIB/LIB.X/LIB.c: 120:         TXREG = '9';
-[e = _TXREG -> -> 57 `ui `uc ]
 "121
-[; ;../../LIB/LIB.X/LIB.c: 121:     } else if (numero == 0){
+[; ;../../LIB/LIB.X/LIB.c: 121:         TXREG = '9';
+[e = _TXREG -> -> 57 `ui `uc ]
+"122
+[; ;../../LIB/LIB.X/LIB.c: 122:     } else if (numero == 0){
 }
 [e $U 163  ]
 [e :U 162 ]
 [e $ ! == _numero -> 0 `i 164  ]
 {
-"122
-[; ;../../LIB/LIB.X/LIB.c: 122:         TXREG = '0';
-[e = _TXREG -> -> 48 `ui `uc ]
 "123
-[; ;../../LIB/LIB.X/LIB.c: 123:     }
+[; ;../../LIB/LIB.X/LIB.c: 123:         TXREG = '0';
+[e = _TXREG -> -> 48 `ui `uc ]
+"124
+[; ;../../LIB/LIB.X/LIB.c: 124:     }
 }
 [e :U 164 ]
 [e :U 163 ]
@@ -805,147 +808,173 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 151 ]
 [e :U 149 ]
 [e :U 147 ]
-"124
-[; ;../../LIB/LIB.X/LIB.c: 124: }
+"125
+[; ;../../LIB/LIB.X/LIB.c: 125: }
 [e :UE 145 ]
 }
-"126
-[; ;../../LIB/LIB.X/LIB.c: 126: void Texto_USART(char texto[]){
+"127
+[; ;../../LIB/LIB.X/LIB.c: 127: void Texto_USART(char texto[]){
 [v _Texto_USART `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _Texto_USART ]
 [v _texto `*uc ~T0 @X0 1 r1 ]
 [f ]
-"127
-[; ;../../LIB/LIB.X/LIB.c: 127:     char i = 0;
+"128
+[; ;../../LIB/LIB.X/LIB.c: 128:     char temp = 10;
+[v _temp `uc ~T0 @X0 1 a ]
+[e = _temp -> -> 10 `i `uc ]
+"129
+[; ;../../LIB/LIB.X/LIB.c: 129:     char i = 0;
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-"128
-[; ;../../LIB/LIB.X/LIB.c: 128:     while(texto[i] != '\0'){
+"130
+[; ;../../LIB/LIB.X/LIB.c: 130:     while(texto[i] != '\0'){
 [e $U 166  ]
 [e :U 167 ]
 {
-"129
-[; ;../../LIB/LIB.X/LIB.c: 129:         TXREG = texto[i];
-[e = _TXREG -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `uc ]
-"130
-[; ;../../LIB/LIB.X/LIB.c: 130:         i++;
-[e ++ _i -> -> 1 `i `uc ]
 "131
-[; ;../../LIB/LIB.X/LIB.c: 131:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 131:         TXREG = texto[i];
+[e = _TXREG -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `uc ]
 "132
-[; ;../../LIB/LIB.X/LIB.c: 132:     }
+[; ;../../LIB/LIB.X/LIB.c: 132:         i++;
+[e ++ _i -> -> 1 `i `uc ]
+"133
+[; ;../../LIB/LIB.X/LIB.c: 133:         _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"134
+[; ;../../LIB/LIB.X/LIB.c: 134:     }
 }
 [e :U 166 ]
-"128
-[; ;../../LIB/LIB.X/LIB.c: 128:     while(texto[i] != '\0'){
+"130
+[; ;../../LIB/LIB.X/LIB.c: 130:     while(texto[i] != '\0'){
 [e $ != -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `ui -> 0 `ui 167  ]
 [e :U 168 ]
-"133
-[; ;../../LIB/LIB.X/LIB.c: 133: }
+"135
+[; ;../../LIB/LIB.X/LIB.c: 135: }
 [e :UE 165 ]
 }
-"136
-[; ;../../LIB/LIB.X/LIB.c: 136: void SPI(volatile char *v1,volatile char *v2){
+"138
+[; ;../../LIB/LIB.X/LIB.c: 138: void SPI(volatile char *v1,volatile char *v2){
 [v _SPI `(v ~T0 @X0 1 ef2`*Vuc`*Vuc ]
 {
 [e :U _SPI ]
 [v _v1 `*Vuc ~T0 @X0 1 r1 ]
 [v _v2 `*Vuc ~T0 @X0 1 r2 ]
 [f ]
-"137
-[; ;../../LIB/LIB.X/LIB.c: 137:     RA0 = ~RA0;
-[e = _RA0 -> ~ -> _RA0 `ui `b ]
-"138
-[; ;../../LIB/LIB.X/LIB.c: 138:     PORTCbits.RC2 = 0;
-[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
 "139
-[; ;../../LIB/LIB.X/LIB.c: 139:     _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 139:     RA0 = ~RA0;
+[e = _RA0 -> ~ -> _RA0 `ui `b ]
 "140
-[; ;../../LIB/LIB.X/LIB.c: 140:     spiWrite(0b110011);
-[e ( _spiWrite (1 -> -> 51 `i `uc ]
+[; ;../../LIB/LIB.X/LIB.c: 140:     PORTCbits.RC2 = 0;
+[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
+"141
+[; ;../../LIB/LIB.X/LIB.c: 141:     _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "142
-[; ;../../LIB/LIB.X/LIB.c: 142:     if(RA0 == 0){
+[; ;../../LIB/LIB.X/LIB.c: 142:     spiWrite(0b110011);
+[e ( _spiWrite (1 -> -> 51 `i `uc ]
+"144
+[; ;../../LIB/LIB.X/LIB.c: 144:     if(RA0 == 0){
 [e $ ! == -> _RA0 `i -> 0 `i 170  ]
 {
-"143
-[; ;../../LIB/LIB.X/LIB.c: 143:         *v1 = spiRead();
-[e = *U _v1 ( _spiRead ..  ]
 "145
-[; ;../../LIB/LIB.X/LIB.c: 145:     }else{
+[; ;../../LIB/LIB.X/LIB.c: 145:         *v1 = spiRead();
+[e = *U _v1 ( _spiRead ..  ]
+"147
+[; ;../../LIB/LIB.X/LIB.c: 147:     }else{
 }
 [e $U 171  ]
 [e :U 170 ]
 {
-"146
-[; ;../../LIB/LIB.X/LIB.c: 146:         *v2 = spiRead();
-[e = *U _v2 ( _spiRead ..  ]
 "148
-[; ;../../LIB/LIB.X/LIB.c: 148:     }
+[; ;../../LIB/LIB.X/LIB.c: 148:         *v2 = spiRead();
+[e = *U _v2 ( _spiRead ..  ]
+"150
+[; ;../../LIB/LIB.X/LIB.c: 150:     }
 }
 [e :U 171 ]
-"150
-[; ;../../LIB/LIB.X/LIB.c: 150:     _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"151
-[; ;../../LIB/LIB.X/LIB.c: 151:     PORTCbits.RC2 = 0;
-[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
 "152
-[; ;../../LIB/LIB.X/LIB.c: 152:     _delay((unsigned long)((10)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 152:     _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"153
+[; ;../../LIB/LIB.X/LIB.c: 153:     PORTCbits.RC2 = 0;
+[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
 "154
-[; ;../../LIB/LIB.X/LIB.c: 154: }
+[; ;../../LIB/LIB.X/LIB.c: 154:     _delay((unsigned long)((10)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"156
+[; ;../../LIB/LIB.X/LIB.c: 156: }
 [e :UE 169 ]
 }
-"156
-[; ;../../LIB/LIB.X/LIB.c: 156: void texto_Programa(char v1, char v2){
+"158
+[; ;../../LIB/LIB.X/LIB.c: 158: void texto_Programa(char v1, char v2){
 [v _texto_Programa `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _texto_Programa ]
 [v _v1 `uc ~T0 @X0 1 r1 ]
 [v _v2 `uc ~T0 @X0 1 r2 ]
 [f ]
-"157
-[; ;../../LIB/LIB.X/LIB.c: 157:         Texto_USART("POT 1: ");
-[e ( _Texto_USART (1 :s 1C ]
-"158
-[; ;../../LIB/LIB.X/LIB.c: 158:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "159
-[; ;../../LIB/LIB.X/LIB.c: 159:         USART_Num(v1);
-[e ( _USART_Num (1 _v1 ]
+[; ;../../LIB/LIB.X/LIB.c: 159:     char temp = 10;
+[v _temp `uc ~T0 @X0 1 a ]
+[e = _temp -> -> 10 `i `uc ]
 "160
-[; ;../../LIB/LIB.X/LIB.c: 160:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 160:     Texto_USART("POT 1: ");
+[e ( _Texto_USART (1 :s 1C ]
 "161
-[; ;../../LIB/LIB.X/LIB.c: 161:         TXREG = '\r';
-[e = _TXREG -> -> 13 `ui `uc ]
+[; ;../../LIB/LIB.X/LIB.c: 161:         _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "162
-[; ;../../LIB/LIB.X/LIB.c: 162:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 162:         USART_Num(v1);
+[e ( _USART_Num (1 _v1 ]
 "163
-[; ;../../LIB/LIB.X/LIB.c: 163:         Texto_USART("POT 2: ");
-[e ( _Texto_USART (1 :s 2C ]
-"164
-[; ;../../LIB/LIB.X/LIB.c: 164:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 163:         _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "165
-[; ;../../LIB/LIB.X/LIB.c: 165:         USART_Num(v2);
-[e ( _USART_Num (1 _v2 ]
+[; ;../../LIB/LIB.X/LIB.c: 165:         TXREG = '\r';
+[e = _TXREG -> -> 13 `ui `uc ]
 "166
-[; ;../../LIB/LIB.X/LIB.c: 166:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;../../LIB/LIB.X/LIB.c: 166:         _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "167
-[; ;../../LIB/LIB.X/LIB.c: 167:         TXREG = '\r';
-[e = _TXREG -> -> 13 `ui `uc ]
+[; ;../../LIB/LIB.X/LIB.c: 167:         Texto_USART("POT 2: ");
+[e ( _Texto_USART (1 :s 2C ]
 "168
-[; ;../../LIB/LIB.X/LIB.c: 168:         TXREG = '\r';
-[e = _TXREG -> -> 13 `ui `uc ]
+[; ;../../LIB/LIB.X/LIB.c: 168:         _delay((unsigned long)((100)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "169
-[; ;../../LIB/LIB.X/LIB.c: 169: }
+[; ;../../LIB/LIB.X/LIB.c: 169:         USART_Num(v2);
+[e ( _USART_Num (1 _v2 ]
+"170
+[; ;../../LIB/LIB.X/LIB.c: 170:         _delay((unsigned long)((5)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"173
+[; ;../../LIB/LIB.X/LIB.c: 173:         TXREG = '\r';
+[e = _TXREG -> -> 13 `ui `uc ]
+"174
+[; ;../../LIB/LIB.X/LIB.c: 174:         TXREG = '\r';
+[e = _TXREG -> -> 13 `ui `uc ]
+"175
+[; ;../../LIB/LIB.X/LIB.c: 175: }
 [e :UE 172 ]
+}
+"176
+[; ;../../LIB/LIB.X/LIB.c: 176: void Interfaz(char v1, char v2){
+[v _Interfaz `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _Interfaz ]
+[v _v1 `uc ~T0 @X0 1 r1 ]
+[v _v2 `uc ~T0 @X0 1 r2 ]
+[f ]
+"177
+[; ;../../LIB/LIB.X/LIB.c: 177:     USART_Num(v1);
+[e ( _USART_Num (1 _v1 ]
+"178
+[; ;../../LIB/LIB.X/LIB.c: 178:     USART_Num(v2);
+[e ( _USART_Num (1 _v2 ]
+"179
+[; ;../../LIB/LIB.X/LIB.c: 179: }
+[e :UE 173 ]
 }
 [a 2C 80 79 84 32 50 58 32 0 ]
 [a 1C 80 79 84 32 49 58 32 0 ]

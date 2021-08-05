@@ -64,7 +64,12 @@ void __interrupt() isr (void){
     if (RCIF == 1){
         // RCREG (Receptor)
         // TXREG (Transmisor)
-        PORTB = RCREG;
+        if(RCREG == '+'){
+            PORTB++;
+        }else if (RCREG == '-'){
+            PORTB--;
+        }
+     
         RCIF = 0; 
     }
 }    
@@ -85,16 +90,19 @@ void main(void) {
     while(1){ 
         SPI(&V_ADC_0, &V_ADC_1);
         PORTD = V_ADC_0;
-        PORTB = V_ADC_1;
-        
+        //PORTB = V_ADC_1;
+        __delay_ms(200);
+        RE1 = ~RE1;
         texto_Programa(V_ADC_0, V_ADC_1);
-
+        //Interfaz(V_ADC_0, V_ADC_1);
+        
     } // fin loop principal while 
 } // fin main
 
 void config(void){    
     TRISA  = 0;
     TRISB  = 0;
+    TRISE  = 0;
     TRISC2 = 0; 
     TRISD  = 0x00;
     PORTCbits.RC2 = 1;

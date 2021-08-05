@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Wed Aug 04 01:12:51 2021
+                                                                                               Thu Aug 05 12:05:35 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	16F887
@@ -602,7 +602,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    588                           
    589                           ;psect for function _main
    590  007C                     _main:
-   591  007C                     l1187:	
+   591  007C                     l1203:	
    592                           ;incstack = 0
    593                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    594                           
@@ -610,7 +610,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    596  0081  120A  118A  2108  120A  118A  	fcall	_Config_Oscilador
    597  0086  120A  118A  2059  120A  118A  	fcall	_Config_ADC
    598  008B  120A  118A  20E3  120A  118A  	fcall	_Config_USART
-   599  0090                     l1189:
+   599  0090                     l1205:
    600  0090  120A  118A  20B6  120A  118A  	fcall	_Init_Slave
    601  0095                     l59:
    602  0095                     l60:
@@ -653,7 +653,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    639                           
    640                           ;psect for function _config
    641  00F6                     _config:
-   642  00F6                     l1127:	
+   642  00F6                     l1143:	
    643                           ;incstack = 0
    644                           ; Regs used in _config: [wreg+status,2]
    645                           
@@ -661,25 +661,25 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    647  00F7  1683               	bsf	3,5	;RP0=1, select bank1
    648  00F8  1303               	bcf	3,6	;RP1=0, select bank1
    649  00F9  0085               	movwf	5	;volatile
-   650  00FA                     l1129:
+   650  00FA                     l1145:
    651  00FA  0186               	clrf	6	;volatile
-   652  00FB                     l1131:
+   652  00FB                     l1147:
    653  00FB  0188               	clrf	8	;volatile
    654  00FC  3003               	movlw	3
    655  00FD  1683               	bsf	3,5	;RP0=1, select bank3
    656  00FE  1703               	bsf	3,6	;RP1=1, select bank3
    657  00FF  0088               	movwf	8	;volatile
-   658  0100                     l1133:
+   658  0100                     l1149:
    659  0100  0189               	clrf	9	;volatile
-   660  0101                     l1135:
+   660  0101                     l1151:
    661  0101  1283               	bcf	3,5	;RP0=0, select bank0
    662  0102  1303               	bcf	3,6	;RP1=0, select bank0
    663  0103  0186               	clrf	6	;volatile
-   664  0104                     l1137:
+   664  0104                     l1153:
    665  0104  0187               	clrf	7	;volatile
-   666  0105                     l1139:
+   666  0105                     l1155:
    667  0105  0188               	clrf	8	;volatile
-   668  0106                     l1141:
+   668  0106                     l1157:
    669  0106  0189               	clrf	9	;volatile
    670  0107                     l65:
    671  0107  0008               	return
@@ -720,7 +720,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    706                           
    707                           ;psect for function _Init_Slave
    708  00B6                     _Init_Slave:
-   709  00B6                     l1171:	
+   709  00B6                     l1187:	
    710                           ;incstack = 0
    711                           ; Regs used in _Init_Slave: [status,2]
    712                           
@@ -746,29 +746,29 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    732                           
    733                           ;../../LIB/LIB.X/SPI.c: 44:     TRISC5 = 0;
    734  00BF  1287               	bcf	7,5	;volatile
-   735  00C0                     l1173:
+   735  00C0                     l1189:
    736                           
    737                           ;../../LIB/LIB.X/SPI.c: 46:     SSPCON = 0x00;
    738  00C0  1283               	bcf	3,5	;RP0=0, select bank0
    739  00C1  1303               	bcf	3,6	;RP1=0, select bank0
    740  00C2  0194               	clrf	20	;volatile
-   741  00C3                     l1175:
+   741  00C3                     l1191:
    742                           
    743                           ;../../LIB/LIB.X/SPI.c: 47:     SSPCONbits.SSPM0 = 0;
    744  00C3  1014               	bcf	20,0	;volatile
-   745  00C4                     l1177:
+   745  00C4                     l1193:
    746                           
    747                           ;../../LIB/LIB.X/SPI.c: 48:     SSPCONbits.SSPM1 = 0;
    748  00C4  1094               	bcf	20,1	;volatile
-   749  00C5                     l1179:
+   749  00C5                     l1195:
    750                           
    751                           ;../../LIB/LIB.X/SPI.c: 49:     SSPCONbits.SSPM2 = 1;
    752  00C5  1514               	bsf	20,2	;volatile
-   753  00C6                     l1181:
+   753  00C6                     l1197:
    754                           
    755                           ;../../LIB/LIB.X/SPI.c: 50:     SSPCONbits.SSPM3 = 0;
    756  00C6  1194               	bcf	20,3	;volatile
-   757  00C7                     l1183:
+   757  00C7                     l1199:
    758                           
    759                           ;../../LIB/LIB.X/SPI.c: 54:     SSPCONbits.SSPEN = 1;
    760  00C7  1694               	bsf	20,5	;volatile
@@ -777,7 +777,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    763  00C8  1683               	bsf	3,5	;RP0=1, select bank1
    764  00C9  1303               	bcf	3,6	;RP1=0, select bank1
    765  00CA  0194               	clrf	20	;volatile
-   766  00CB                     l1185:
+   766  00CB                     l1201:
    767                           
    768                           ;../../LIB/LIB.X/SPI.c: 58:     TRISC3 = 1;
    769  00CB  1587               	bsf	7,3	;volatile
@@ -820,7 +820,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    806                           
    807                           ;psect for function _Config_USART
    808  00E3                     _Config_USART:
-   809  00E3                     l1167:	
+   809  00E3                     l1183:	
    810                           ;incstack = 0
    811                           ; Regs used in _Config_USART: [wreg]
    812                           
@@ -850,7 +850,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    836  00EE  1283               	bcf	3,5	;RP0=0, select bank0
    837  00EF  1303               	bcf	3,6	;RP1=0, select bank0
    838  00F0  128C               	bcf	12,5	;volatile
-   839  00F1                     l1169:
+   839  00F1                     l1185:
    840                           
    841                           ;../../LIB/LIB.X/LIB.c: 55:     SPBRG=12;
    842  00F1  300C               	movlw	12
@@ -896,7 +896,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    882                           
    883                           ;psect for function _Config_Oscilador
    884  0108                     _Config_Oscilador:
-   885  0108                     l1143:	
+   885  0108                     l1159:	
    886                           ;incstack = 0
    887                           ; Regs used in _Config_Oscilador: [wreg]
    888                           
@@ -911,7 +911,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    897                           
    898                           ;../../LIB/LIB.X/LIB.c: 11:     IRCF2 = 1;
    899  010C  170F               	bsf	15,6	;volatile
-   900  010D                     l1145:
+   900  010D                     l1161:
    901                           
    902                           ;../../LIB/LIB.X/LIB.c: 12:     INTCON = 0b11101000;
    903  010D  30E8               	movlw	232
@@ -955,7 +955,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    941                           
    942                           ;psect for function _Config_ADC
    943  0059                     _Config_ADC:
-   944  0059                     l1147:	
+   944  0059                     l1163:	
    945                           ;incstack = 0
    946                           ; Regs used in _Config_ADC: [wreg+status,2+status,0]
    947                           
@@ -975,44 +975,44 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    961                           
    962                           ;../../LIB/LIB.X/LIB.c: 33:     ADCON1bits.VCFG1 = 0;
    963  0060  129F               	bcf	31,5	;volatile
-   964  0061                     l1149:
+   964  0061                     l1165:
    965                           
    966                           ;../../LIB/LIB.X/LIB.c: 34:     ADCON0bits.CHS = 0;
    967  0061  30C3               	movlw	-61
    968  0062  1283               	bcf	3,5	;RP0=0, select bank0
    969  0063  1303               	bcf	3,6	;RP1=0, select bank0
    970  0064  059F               	andwf	31,f	;volatile
-   971  0065                     l1151:
+   971  0065                     l1167:
    972                           
    973                           ;../../LIB/LIB.X/LIB.c: 35:     ADCON1bits.ADFM = 0;
    974  0065  1683               	bsf	3,5	;RP0=1, select bank1
    975  0066  1303               	bcf	3,6	;RP1=0, select bank1
    976  0067  139F               	bcf	31,7	;volatile
-   977  0068                     l1153:
+   977  0068                     l1169:
    978                           
    979                           ;../../LIB/LIB.X/LIB.c: 36:     ADCON0bits.ADON = 1;
    980  0068  1283               	bcf	3,5	;RP0=0, select bank0
    981  0069  1303               	bcf	3,6	;RP1=0, select bank0
    982  006A  141F               	bsf	31,0	;volatile
-   983  006B                     l1155:
+   983  006B                     l1171:
    984                           
    985                           ;../../LIB/LIB.X/LIB.c: 37:     ADIF = 0;
    986  006B  130C               	bcf	12,6	;volatile
-   987  006C                     l1157:
+   987  006C                     l1173:
    988                           
    989                           ;../../LIB/LIB.X/LIB.c: 38:     PIE1bits.ADIE = 1;
    990  006C  1683               	bsf	3,5	;RP0=1, select bank1
    991  006D  1303               	bcf	3,6	;RP1=0, select bank1
    992  006E  170C               	bsf	12,6	;volatile
-   993  006F                     l1159:
+   993  006F                     l1175:
    994                           
    995                           ;../../LIB/LIB.X/LIB.c: 39:     INTCONbits.PEIE = 1;
    996  006F  170B               	bsf	11,6	;volatile
-   997  0070                     l1161:
+   997  0070                     l1177:
    998                           
    999                           ;../../LIB/LIB.X/LIB.c: 40:     INTCONbits.GIE = 1;
   1000  0070  178B               	bsf	11,7	;volatile
-  1001  0071                     l1163:
+  1001  0071                     l1179:
   1002                           
   1003                           ;../../LIB/LIB.X/LIB.c: 42:     _delay((unsigned long)((50)*(8000000/4000000.0)));
   1004  0071  3020               	movlw	32
@@ -1023,7 +1023,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1009  0075  0BA0               	decfsz	??_Config_ADC,f
   1010  0076  2875               	goto	u207
   1011  0077  0000               	nop
-  1012  0078                     l1165:
+  1012  0078                     l1181:
   1013                           
   1014                           ;../../LIB/LIB.X/LIB.c: 43:     ADCON0bits.GO = 1;
   1015  0078  1283               	bcf	3,5	;RP0=0, select bank0
@@ -1069,7 +1069,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1055                           
   1056                           ;psect for function _isr
   1057  0016                     _isr:
-  1058  0016                     i1l985:
+  1058  0016                     i1l987:
   1059                           
   1060                           ;Lab_03_Slave.c: 63:     TRISB = 0;
   1061  0016  1283               	bcf	3,5	;RP0=0, select bank0
@@ -1078,13 +1078,13 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1064  0019  281B               	goto	u12_21
   1065  001A  281C               	goto	u12_20
   1066  001B                     u12_21:
-  1067  001B  282F               	goto	i1l991
+  1067  001B  282F               	goto	i1l993
   1068  001C                     u12_20:
-  1069  001C                     i1l987:
+  1069  001C                     i1l989:
   1070                           
   1071                           ;Lab_03_Slave.c: 64:     TRISD = 0;
   1072  001C  130C               	bcf	12,6	;volatile
-  1073  001D                     i1l989:
+  1073  001D                     i1l991:
   1074                           
   1075                           ;Lab_03_Slave.c: 65: 
   1076  001D  3000               	movlw	0
@@ -1099,7 +1099,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1085  002C  00F3               	movwf	??_isr
   1086  002D  0873               	movf	??_isr,w
   1087  002E  00F7               	movwf	_V_ADC_1
-  1088  002F                     i1l991:
+  1088  002F                     i1l993:
   1089                           
   1090                           ;Lab_03_Slave.c: 68: 
   1091  002F  1283               	bcf	3,5	;RP0=0, select bank0
@@ -1108,9 +1108,9 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1094  0032  2834               	goto	u13_21
   1095  0033  2835               	goto	u13_20
   1096  0034                     u13_21:
-  1097  0034  284D               	goto	i1l1005
+  1097  0034  284D               	goto	i1l1007
   1098  0035                     u13_20:
-  1099  0035                     i1l993:
+  1099  0035                     i1l995:
   1100                           
   1101                           ;Lab_03_Slave.c: 69: 
   1102  0035  0876               	movf	_temp1,w
@@ -1118,42 +1118,42 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1104  0037  2839               	goto	u14_21
   1105  0038  283A               	goto	u14_20
   1106  0039                     u14_21:
-  1107  0039  2843               	goto	i1l999
+  1107  0039  2843               	goto	i1l1001
   1108  003A                     u14_20:
-  1109  003A                     i1l995:
+  1109  003A                     i1l997:
   1110                           
   1111                           ;Lab_03_Slave.c: 70: 
   1112  003A  0878               	movf	_V_ADC_0,w
   1113  003B  120A  118A  2110  120A  118A  	fcall	_spiWrite
-  1114  0040                     i1l997:
+  1114  0040                     i1l999:
   1115                           
   1116                           ;Lab_03_Slave.c: 71:     PORTB = 0;
   1117  0040  01F6               	clrf	_temp1
   1118  0041  0AF6               	incf	_temp1,f
   1119                           
   1120                           ;Lab_03_Slave.c: 72:     PORTC = 0;
-  1121  0042  284A               	goto	i1l1003
-  1122  0043                     i1l999:
+  1121  0042  284A               	goto	i1l1005
+  1122  0043                     i1l1001:
   1123                           
   1124                           ;Lab_03_Slave.c: 73:     PORTD = 0;
   1125  0043  0877               	movf	_V_ADC_1,w
   1126  0044  120A  118A  2110  120A  118A  	fcall	_spiWrite
-  1127  0049                     i1l1001:
+  1127  0049                     i1l1003:
   1128                           
   1129                           ;Lab_03_Slave.c: 74:     PORTE = 0;
   1130  0049  01F6               	clrf	_temp1
-  1131  004A                     i1l1003:
+  1131  004A                     i1l1005:
   1132  004A  1283               	bcf	3,5	;RP0=0, select bank0
   1133  004B  1303               	bcf	3,6	;RP1=0, select bank0
   1134  004C  118C               	bcf	12,3	;volatile
-  1135  004D                     i1l1005:
+  1135  004D                     i1l1007:
   1136  004D  1E8C               	btfss	12,5	;volatile
   1137  004E  2850               	goto	u15_21
   1138  004F  2851               	goto	u15_20
   1139  0050                     u15_21:
   1140  0050  2852               	goto	i1l54
   1141  0051                     u15_20:
-  1142  0051                     i1l1007:
+  1142  0051                     i1l1009:
   1143  0051  128C               	bcf	12,5	;volatile
   1144  0052                     i1l54:
   1145  0052  0875               	movf	??_isr+2,w
@@ -1504,25 +1504,25 @@ DATA                 0      0       A      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Wed Aug 04 01:12:51 2021
+Symbol Table                                                                                   Thu Aug 05 12:05:35 2021
 
                         pc 0002                _SSPSTATbits 0094                         l60 0095  
                        l65 0107                         l59 0095                         fsr 0004  
                       l150 010F                        l234 00CC                        l156 007B  
                       l159 00F5                        _RA0 0028                        u207 0075  
                       _PS0 0408                        _PS1 0409                        _PS2 040A  
-                      _PSA 040B                        _isr 0016                       l1131 00FB  
-                     l1141 0106                       l1133 0100                       l1151 0065  
-                     l1143 0108                       l1135 0101                       l1127 00F6  
-                     l1161 0070                       l1153 0068                       l1145 010D  
-                     l1137 0104                       l1129 00FA                       l1163 0071  
-                     l1155 006B                       l1147 0059                       l1171 00B6  
-                     l1139 0105                       l1165 0078                       l1157 006C  
-                     l1149 0061                       l1181 00C6                       l1173 00C0  
-                     l1159 006F                       l1167 00E3                       l1183 00C7  
-                     l1175 00C3                       l1169 00F1                       l1185 00CB  
-                     l1177 00C4                       l1179 00C5                       l1187 007C  
-                     l1189 0090                       _ADIF 0066                       ?_isr 0070  
+                      _PSA 040B                        _isr 0016                       l1201 00CB  
+                     l1203 007C                       l1205 0090                       l1151 0101  
+                     l1143 00F6                       l1161 010D                       l1153 0104  
+                     l1145 00FA                       l1171 006B                       l1163 0059  
+                     l1155 0105                       l1147 00FB                       l1181 0078  
+                     l1173 006C                       l1165 0061                       l1157 0106  
+                     l1149 0100                       l1175 006F                       l1167 0065  
+                     l1159 0108                       l1183 00E3                       l1191 00C3  
+                     l1177 0070                       l1169 0068                       l1185 00F1  
+                     l1193 00C4                       l1179 0071                       l1195 00C5  
+                     l1187 00B6                       l1197 00C6                       l1189 00C0  
+                     l1199 00C7                       _ADIF 0066                       ?_isr 0070  
                      STR_1 00D3                       STR_2 00DB                       _CREN 00C4  
                      _T0CS 040D                       _RCIF 0065                       i1l54 0052  
                      _TMR0 0001                       _SPEN 00C7                       _TXEN 04C5  
@@ -1532,22 +1532,22 @@ Symbol Table                                                                    
                     _IRCF2 047E                 _Config_ADC 0059                      i1l165 00B5  
                     i1l237 0115                      i1l881 009A                      i1l891 00B4  
                     i1l883 009E                      i1l885 00A9                      i1l887 00AD  
-                    i1l895 0111                      i1l991 002F                      i1l889 00B1  
-                    i1l993 0035                      i1l985 0016                      i1l995 003A  
-                    i1l987 001C                      i1l997 0040                      i1l989 001D  
-                    i1l999 0043                      u12_20 001C                      u12_21 001B  
-                    u13_20 0035                      u13_21 0034                      u21_27 009C  
-                    u14_20 003A                      u14_21 0039                      u22_27 00AF  
-                    u15_20 0051                      u15_21 0050                      _SPBRG 0099  
-                    _PORTA 0005                      _PORTB 0006                      _PORTC 0007  
-                    _PORTD 0008                      _PORTE 0009                      _TRISA 0085  
-                    _TRISB 0086                      _TRISC 0087                      _TRISD 0088  
-                    _TRISE 0089                      _SSPIF 0063                      _TXREG 0019  
-                    _temp1 0076                      pclath 000A                      status 0003  
-                    wtemp0 007E       __end_of_Config_USART 00F6            __initialization 000F  
-               _Init_Slave 00B6               __end_of_main 0099                     ??_main 0021  
-                   _ADRESH 001E                     _ANSELH 0189                     i1l1001 0049  
-                   i1l1003 004A                     i1l1005 004D                     i1l1007 0051  
+                    i1l895 0111                      i1l991 001D                      i1l889 00B1  
+                    i1l993 002F                      i1l995 0035                      i1l987 0016  
+                    i1l997 003A                      i1l989 001C                      i1l999 0040  
+                    u12_20 001C                      u12_21 001B                      u13_20 0035  
+                    u13_21 0034                      u21_27 009C                      u14_20 003A  
+                    u14_21 0039                      u22_27 00AF                      u15_20 0051  
+                    u15_21 0050                      _SPBRG 0099                      _PORTA 0005  
+                    _PORTB 0006                      _PORTC 0007                      _PORTD 0008  
+                    _PORTE 0009                      _TRISA 0085                      _TRISB 0086  
+                    _TRISC 0087                      _TRISD 0088                      _TRISE 0089  
+                    _SSPIF 0063                      _TXREG 0019                      _temp1 0076  
+                    pclath 000A                      status 0003                      wtemp0 007E  
+     __end_of_Config_USART 00F6            __initialization 000F                 _Init_Slave 00B6  
+             __end_of_main 0099                     ??_main 0021                     _ADRESH 001E  
+                   _ANSELH 0189                     i1l1001 0043                     i1l1003 0049  
+                   i1l1005 004A                     i1l1007 004D                     i1l1009 0051  
                    _INTCON 000B                     _TRISC3 043B                     _TRISC5 043D  
                    _SSPCON 0014                     _SSPBUF 0013   __end_of_Config_Oscilador 0110  
                    _config 00F6         __size_of_Valor_ADC 001D                ?_Config_ADC 0070  

@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c0000000200000003000000fffffffffffffffffffffffffffffffffd0800000f0000002a0f000008040000</PLACEMENT>
+  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff530100000f0000008007000008040000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
-   <POPUP w="1103" x="2432" flags="00008003" y="46" h="308" pid="0" iid="-1">
+   <POPUP w="1103" x="817" flags="00000003" y="46" h="165" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">843</ITEM>
+     <ITEM name="Message Column Width">964</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>
@@ -124,9 +124,9 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="3681" flags="00000023" y="302" h="250" pid="0" iid="11">
+   <POPUP w="450" x="1470" flags="00000023" y="52" h="250" pid="0" iid="11">
     <PROPERTIES>
-     <ITEM name="HSplitter1Pos">125</ITEM>
+     <ITEM name="HSplitter1Pos">88</ITEM>
      <ITEM name="VSplitter1Pos">298</ITEM>
     </PROPERTIES>
    </POPUP>
@@ -153,6 +153,12 @@
      <ITEM name="TriggerMode">0</ITEM>
      <ITEM name="Version">100</ITEM>
      <ITEM name="nItems">0</ITEM>
+    </PROPERTIES>
+   </POPUP>
+   <POPUP w="450" x="1440" flags="00008023" y="315" h="613" pid="0" iid="3">
+    <PROPERTIES>
+     <ITEM name="AutoEcho">1</ITEM>
+     <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
   </PWI>

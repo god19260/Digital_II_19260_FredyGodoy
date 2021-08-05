@@ -11,6 +11,10 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
+$C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+reset_vec CODE 0 0 0 3 2
+end_init CODE 0 C C 3 2
+config CONFIG 4 2007 2007 2 2
 $dist/default/production\Lab_03_Slave.X.production.o
 cinit CODE 0 F F 7 2
 text1 CODE 0 F6 F6 12 2
@@ -27,10 +31,6 @@ cstackBANK0 BANK0 1 20 20 1 1
 intentry CODE 0 4 4 8 2
 strings STRING 0 CD CD 16 2
 bssCOMMON COMMON 1 76 76 3 1
-config CONFIG 4 2007 2007 2 2
-$C:\Users\fredy\AppData\Local\Temp\xcAslk.o
-reset_vec CODE 0 0 0 3 2
-end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -78,14 +78,14 @@ STRING 116-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab_03_Slave.X.production.o
-F cinit CODE >884:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
-F cinit CODE >887:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
-F cinit CODE >904:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
-10 cinit CODE >905:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
-11 cinit CODE >906:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
-12 cinit CODE >912:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
-12 cinit CODE >914:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
-13 cinit CODE >915:C:\Users\fredy\AppData\Local\Temp\xcAslk.s
+F cinit CODE >884:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
+F cinit CODE >887:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
+F cinit CODE >904:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
+10 cinit CODE >905:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
+11 cinit CODE >906:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
+12 cinit CODE >912:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
+12 cinit CODE >914:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
+13 cinit CODE >915:C:\Users\fredy\AppData\Local\Temp\xcAs5fc.s
 4 intentry CODE >61:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_03\Lab_03_Slave.X\Lab_03_Slave.c
 99 text8 CODE >76:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy/LIB/LIB.X/LIB.c
 9A text8 CODE >77:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy/LIB/LIB.X/LIB.c
@@ -207,20 +207,20 @@ _T0CS 40D 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAslk.o
+___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
 _main F8 0 CODE 0 maintext dist/default/production\Lab_03_Slave.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
-start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAslk.o
+start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _Config_Oscilador 210 0 CODE 0 text4 dist/default/production\Lab_03_Slave.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAslk.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAslk.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAslk.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAslk.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAslk.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAslk.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 _Config_ADC B2 0 CODE 0 text5 dist/default/production\Lab_03_Slave.X.production.o
@@ -232,8 +232,8 @@ _SSPCONbits 14 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 __end_of_config 210 0 CODE 0 text1 dist/default/production\Lab_03_Slave.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAslk.o
-___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAslk.o
+___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
 __end_of_Config_ADC F8 0 CODE 0 text5 dist/default/production\Lab_03_Slave.X.production.o
 __end_of_Config_Oscilador 220 0 CODE 0 text4 dist/default/production\Lab_03_Slave.X.production.o
 _Init_Slave 16C 0 CODE 0 text2 dist/default/production\Lab_03_Slave.X.production.o
@@ -245,7 +245,7 @@ _SSPBUF 13 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAslk.o
+___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -300,7 +300,7 @@ __size_of_Config_USART 0 0 ABS 0 - dist/default/production\Lab_03_Slave.X.produc
 __end_of_isr B2 0 CODE 0 text6 dist/default/production\Lab_03_Slave.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 19A 0 STRING 0 strings dist/default/production\Lab_03_Slave.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAslk.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
 Valor_ADC@canal 71 0 COMMON 1 cstackCOMMON dist/default/production\Lab_03_Slave.X.production.o
 __end_of_Config_USART 1EC 0 CODE 0 text3 dist/default/production\Lab_03_Slave.X.production.o
 __size_of_Config_ADC 0 0 ABS 0 - dist/default/production\Lab_03_Slave.X.production.o

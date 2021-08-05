@@ -2641,11 +2641,12 @@ void tabla_USART(int numero){
 }
 
 void Texto_USART(char texto[]){
+    char temp = 10;
     char i = 0;
     while(texto[i] != '\0'){
         TXREG = texto[i];
         i++;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        _delay((unsigned long)((100)*(8000000/4000.0)));
     }
 }
 
@@ -2671,16 +2672,17 @@ void SPI(volatile char *v1,volatile char *v2){
 }
 
 void texto_Programa(char v1, char v2){
-        Texto_USART("POT 1: ");
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+    char temp = 10;
+    Texto_USART("POT 1: ");
+        _delay((unsigned long)((100)*(8000000/4000.0)));
         USART_Num(v1);
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        TXREG = '\r';
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        _delay((unsigned long)((100)*(8000000/4000.0)));
+        TXREG = '\n';
+        _delay((unsigned long)((100)*(8000000/4000.0)));
         Texto_USART("POT 2: ");
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        _delay((unsigned long)((100)*(8000000/4000.0)));
         USART_Num(v2);
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        TXREG = '\r';
-        TXREG = '\r';
+        _delay((unsigned long)((100)*(8000000/4000.0)));
+        TXREG = '\n';
+        TXREG = '\n';
 }

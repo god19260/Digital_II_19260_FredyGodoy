@@ -99,20 +99,20 @@
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S356 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S358 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "870
-[s S362 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S364 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S367 . 1 `S356 1 . 1 0 `S362 1 . 1 0 ]
-[v _SSPCONbits SSPCONbits `VES367  1 e 1 @20 ]
+[u S369 . 1 `S358 1 . 1 0 `S364 1 . 1 0 ]
+[v _SSPCONbits SSPCONbits `VES369  1 e 1 @20 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1238
@@ -142,7 +142,7 @@
 [v _ADCON0bits ADCON0bits `VES108  1 e 1 @31 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
-[s S424 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S426 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -152,8 +152,8 @@
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1433
-[u S433 . 1 `S424 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES433  1 e 1 @133 ]
+[u S435 . 1 `S426 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES435  1 e 1 @133 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1540
@@ -175,7 +175,7 @@
 [v _PIE1bits PIE1bits `VES158  1 e 1 @140 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S446 . 1 `uc 1 BF 1 0 :1:0 
+[s S448 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -185,39 +185,39 @@
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S455 . 1 `uc 1 . 1 0 :2:0 
+[s S457 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S460 . 1 `uc 1 . 1 0 :2:0 
+[s S462 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S466 . 1 `uc 1 . 1 0 :2:0 
+[s S468 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S471 . 1 `uc 1 . 1 0 :2:0 
+[s S473 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S476 . 1 `uc 1 . 1 0 :2:0 
+[s S478 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S481 . 1 `uc 1 . 1 0 :2:0 
+[s S483 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S486 . 1 `S446 1 . 1 0 `S455 1 . 1 0 `S460 1 . 1 0 `S466 1 . 1 0 `S471 1 . 1 0 `S476 1 . 1 0 `S481 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES486  1 e 1 @148 ]
+[u S488 . 1 `S448 1 . 1 0 `S457 1 . 1 0 `S462 1 . 1 0 `S468 1 . 1 0 `S473 1 . 1 0 `S478 1 . 1 0 `S483 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES488  1 e 1 @148 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 [s S134 . 1 `uc 1 . 1 0 :4:0 
