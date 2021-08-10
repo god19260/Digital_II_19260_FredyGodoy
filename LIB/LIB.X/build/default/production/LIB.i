@@ -2491,10 +2491,217 @@ extern __bank0 __bit __timeout;
 
 # 1 "./LIB.h" 1
 # 15 "./LIB.h"
-void G_H(void);
+void Config_Oscilador(void);
+void Config_TMR0(void);
+void Config_PORTB(void);
+void Config_ADC(void);
+void Config_USART(void);
+void Config_Puertos(void);
+
+
+char Valor_ADC(char canal);
+void tabla_USART(int numero);
+void Texto_USART(char texto[]);
+
+
+void SPI(volatile char *v1,volatile char *v2);
+void USART_Num(char valor);
+void texto_Programa(char v1, char v2);
+void Interfaz(char v1, char v2);
 # 2 "LIB.c" 2
 
+# 1 "./SPI.h" 1
+# 14 "./SPI.h"
+void Init_Master(void);
+void Init_Slave(void);
+void spiWrite(char dat);
+char spiRead();
+void spiReceiveWait();
+# 3 "LIB.c" 2
 
-void G_H(void){
+
+
+
+void Config_Oscilador(void){
+
+    IRCF0 = 1;
+    IRCF1 = 1;
+    IRCF2 = 1;
+    INTCON = 0b11101000;
+}
+void Config_TMR0(void){
+
+
+    char valor_tmr0;
+    PS0 = 1;
+    PS1 = 1;
+    PS2 = 1;
+    T0CS = 0;
+    PSA = 0;
+    INTCON = 0b10101000;
+    valor_tmr0 = 100;
+    TMR0 = valor_tmr0;
+
+}
+void Config_PORTB(void){
+
+    OPTION_REGbits.nRBPU = 0;
+    WPUBbits.WPUB0=1;
+    WPUBbits.WPUB1=1;
+
+
+    IOCB0 = 1;
+    IOCB1 = 1;
+    RBIE = 1;
+}
+void Config_ADC(void){
+    ADCON0bits.ADCS0 = 0;
+    ADCON0bits.ADCS1 = 1;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.CHS = 0;
+    ADCON1bits.ADFM = 0;
+    ADCON0bits.ADON = 1;
+    ADIF = 0;
+    PIE1bits.ADIE = 1;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
+    ADCON0bits.GO = 1;
+}
+void Config_USART(void){
+
+    TXEN = 1;
+    SYNC = 0;
+    SPEN = 1;
+
+
+    CREN = 1;
+    PIE1bits.RCIE = 1;
+    PIR1bits.RCIF = 0;
+    SPBRG=12;
+}
+
+void Config_Puertos(void){
+
+    TRISA = 0b111111;
+    TRISB = 0;
+    TRISC = 0b10000000;
+    TRISD = 0;
+    TRISE = 0;
+    ANSEL = 0b1;
+    ANSELH = 0;
+
     PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
+}
+
+
+char Valor_ADC(char canal){
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
+    char temp;
+    ADCON0bits.CHS = canal;
+    temp = ADRESH;
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
+    ADCON0bits.GO = 1;
+    return temp;
+}
+void USART_Num(char valor){
+    int temp;
+    int unidad, decena, centena;
+    temp = valor;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10;
+    tabla_USART(centena);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    tabla_USART(decena);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    tabla_USART(unidad);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+
+}
+void tabla_USART(int numero){
+
+
+    if (numero == 1){
+        TXREG = '1';
+    } else if (numero == 2){
+        TXREG = '2';
+    } else if (numero == 3){
+        TXREG = '3';
+    } else if (numero == 4){
+        TXREG = '4';
+    } else if (numero == 5){
+        TXREG = '5';
+    } else if (numero == 6){
+        TXREG = '6';
+    } else if (numero == 7){
+        TXREG = '7';
+    } else if (numero == 8){
+        TXREG = '8';
+    } else if (numero == 9){
+        TXREG = '9';
+    } else if (numero == 0){
+        TXREG = '0';
+    }
+}
+
+void Texto_USART(char texto[]){
+    char temp = 10;
+    char i = 0;
+    while(texto[i] != '\0'){
+        TXREG = texto[i];
+        i++;
+        _delay((unsigned long)((5)*(8000000/4000.0)));
+    }
+}
+
+
+void SPI(volatile char *v1,volatile char *v2){
+    RA0 = ~RA0;
+    PORTCbits.RC2 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    spiWrite(0b110011);
+
+    if(RA0 == 0){
+        *v1 = spiRead();
+
+    }else{
+        *v2 = spiRead();
+
+    }
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC2 = 0;
+    _delay((unsigned long)((10)*(8000000/4000.0)));
+
+}
+
+void texto_Programa(char v1, char v2){
+    char temp = 10;
+    Texto_USART("POT 1: ");
+        _delay((unsigned long)((5)*(8000000/4000.0)));
+        USART_Num(v1);
+        _delay((unsigned long)((5)*(8000000/4000.0)));
+
+        TXREG = '\r';
+        _delay((unsigned long)((5)*(8000000/4000.0)));
+        Texto_USART("POT 2: ");
+        _delay((unsigned long)((100)*(8000000/4000.0)));
+        USART_Num(v2);
+        _delay((unsigned long)((5)*(8000000/4000.0)));
+
+
+        TXREG = '\r';
+        TXREG = '\r';
+}
+void Interfaz(char v1, char v2){
+    USART_Num(v1);
+    USART_Num(v2);
 }

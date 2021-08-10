@@ -25,7 +25,17 @@ void Config_TMR0(void){
     TMR0 = valor_tmr0;
     
 }
-
+void Config_PORTB(void){
+    // Configuración del puerto B
+    OPTION_REGbits.nRBPU = 0;
+    WPUBbits.WPUB0=1;
+    WPUBbits.WPUB1=1;
+    
+    // Activación Interrup on change
+    IOCB0 = 1;
+    IOCB1 = 1;
+    RBIE = 1;
+}
 void Config_ADC(void){
     ADCON0bits.ADCS0 = 0;
     ADCON0bits.ADCS1 = 1; // FOSC/8

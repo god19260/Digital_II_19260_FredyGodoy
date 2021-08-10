@@ -2650,28 +2650,7 @@ void Texto_USART(char texto[]){
         _delay((unsigned long)((5)*(8000000/4000.0)));
     }
 }
-
-
-void SPI(volatile char *v1,volatile char *v2){
-    RA0 = ~RA0;
-    PORTCbits.RC2 = 0;
-    _delay((unsigned long)((1)*(8000000/4000.0)));
-    spiWrite(0b110011);
-
-    if(RA0 == 0){
-        *v1 = spiRead();
-
-    }else{
-        *v2 = spiRead();
-
-    }
-
-    _delay((unsigned long)((1)*(8000000/4000.0)));
-    PORTCbits.RC2 = 0;
-    _delay((unsigned long)((10)*(8000000/4000.0)));
-
-}
-
+# 158 "../../LIB/LIB.X/LIB.c"
 void texto_Programa(char v1, char v2){
     char temp = 10;
     Texto_USART("POT 1: ");

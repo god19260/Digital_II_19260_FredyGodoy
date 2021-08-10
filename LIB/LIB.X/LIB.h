@@ -14,6 +14,7 @@
 // Configuraciones de modulos
 void Config_Oscilador(void);
 void Config_TMR0(void);
+void Config_PORTB(void);
 void Config_ADC(void);
 void Config_USART(void);
 void Config_Puertos(void);

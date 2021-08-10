@@ -4,8 +4,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3587 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3587: extern volatile __bit ADIF __attribute__((address(0x66)));
 [v _ADIF `Vb ~T0 @X0 0 e@102 ]
-"22 ./../../LIB/LIB.X/LIB.h
-[; ;./../../LIB/LIB.X/LIB.h: 22: char Valor_ADC(char canal);
+"23 ./../../LIB/LIB.X/LIB.h
+[; ;./../../LIB/LIB.X/LIB.h: 23: char Valor_ADC(char canal);
 [v _Valor_ADC `(uc ~T0 @X0 0 ef1`uc ]
 "4277 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4277: extern volatile __bit SSPIF __attribute__((address(0x63)));
@@ -23,11 +23,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
 [v _Config_Oscilador `(v ~T0 @X0 0 ef ]
-"17
-[; ;./../../LIB/LIB.X/LIB.h: 17: void Config_ADC(void);
-[v _Config_ADC `(v ~T0 @X0 0 ef ]
 "18
-[; ;./../../LIB/LIB.X/LIB.h: 18: void Config_USART(void);
+[; ;./../../LIB/LIB.X/LIB.h: 18: void Config_ADC(void);
+[v _Config_ADC `(v ~T0 @X0 0 ef ]
+"19
+[; ;./../../LIB/LIB.X/LIB.h: 19: void Config_USART(void);
 [v _Config_USART `(v ~T0 @X0 0 ef ]
 "15 ./../../LIB/LIB.X/SPI.h
 [; ;./../../LIB/LIB.X/SPI.h: 15: void Init_Slave(void);

@@ -2502,6 +2502,7 @@ extern __bank0 __bit __timeout;
 # 15 "./../../LIB/LIB.X/LIB.h"
 void Config_Oscilador(void);
 void Config_TMR0(void);
+void Config_PORTB(void);
 void Config_ADC(void);
 void Config_USART(void);
 void Config_Puertos(void);
@@ -2515,6 +2516,7 @@ void Texto_USART(char texto[]);
 void SPI(volatile char *v1,volatile char *v2);
 void USART_Num(char valor);
 void texto_Programa(char v1, char v2);
+void Interfaz(char v1, char v2);
 # 11 "Lab_03_Slave.c" 2
 
 # 1 "./../../LIB/LIB.X/SPI.h" 1

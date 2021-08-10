@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Lab_03_Slave.X.production.sym \
   --cmf=dist/default/production\Lab_03_Slave.X.production.cmf -z -Q16F887 \
-  -oC:\Users\fredy\AppData\Local\Temp\xcAs5fc.4 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\fredy\AppData\Local\Temp\xcAsjq8.4 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Lab_03_Slave.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o \
+  -pfunctab=ENTRY -k C:\Users\fredy\AppData\Local\Temp\xcAsjq8.o \
   dist/default/production\Lab_03_Slave.X.production.o 
 
 Object code version is 3.11
@@ -28,7 +28,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\fredy\AppData\Local\Temp\xcAs5fc.o
+C:\Users\fredy\AppData\Local\Temp\xcAsjq8.o
                 end_init                              C        C        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -168,10 +168,13 @@ _Config_Oscilador          text4        0108
 _Config_USART              text3        00E3
 _INTCON                    (abs)        000B
 _INTCONbits                (abs)        000B
+_IOCB0                     (abs)        04B0
+_IOCB1                     (abs)        04B1
 _IRCF0                     (abs)        047C
 _IRCF1                     (abs)        047D
 _IRCF2                     (abs)        047E
 _Init_Slave                text2        00B6
+_OPTION_REGbits            (abs)        0081
 _PIE1bits                  (abs)        008C
 _PIR1bits                  (abs)        000C
 _PORTA                     (abs)        0005
@@ -185,6 +188,7 @@ _PS1                       (abs)        0409
 _PS2                       (abs)        040A
 _PSA                       (abs)        040B
 _RA0                       (abs)        0028
+_RBIE                      (abs)        005B
 _RCIF                      (abs)        0065
 _SPBRG                     (abs)        0099
 _SPEN                      (abs)        00C7
@@ -210,6 +214,7 @@ _TXREG                     (abs)        0019
 _V_ADC_0                   bssCOMMON    0078
 _V_ADC_1                   bssCOMMON    0077
 _Valor_ADC                 text8        0099
+_WPUBbits                  (abs)        0095
 __Habs1                    abs1         0000
 __Hbank0                   bank0        0000
 __Hbank1                   bank1        0000
