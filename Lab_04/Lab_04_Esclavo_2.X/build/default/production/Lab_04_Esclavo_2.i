@@ -2821,6 +2821,7 @@ void main(void) {
             Boton_1 = 0;
         }
 
+
     }
 }
 
@@ -2836,6 +2837,6 @@ void config(void){
     PORTA = 0;
 
     PORTC = 0;
-    PORTD = 0;
+    PORTD = 0xff;
     PORTE = 0;
 }

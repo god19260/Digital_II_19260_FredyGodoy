@@ -136,6 +136,7 @@ void main(void) {
             }
             Boton_1 = 0;
         }
+        //PORTD = PORTD && 0b11111110;
 
     } // fin loop principal while 
 } // fin main
@@ -152,6 +153,6 @@ void config(void){
     PORTA = 0;
     //PORTB = 0;
     PORTC = 0;
-    PORTD = 0;
+    PORTD = 0xff;
     PORTE = 0;
 }

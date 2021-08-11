@@ -2748,9 +2748,14 @@ void tabla_num(int numero);
 
 
 
-char V_ADC_0 = 0;
-char Cont_Slave_II;
-char temp;
+unsigned char V_ADC_0 = 0;
+unsigned char Cont_Slave_II;
+unsigned char temp;
+unsigned int Sen_MS;
+unsigned int Sen_LS;
+unsigned int Sen_Total;
+unsigned char Sen_Checksum;
+double Temperatura;
 
 void config(void);
 
@@ -2767,7 +2772,8 @@ void main(void) {
     Config_Oscilador();
     LCD_Init_8bits();
     I2C_Master_Init(100000);
-
+Lcd_Set_Cursor(1,1);
+         Write_LCD("S1:   S2:    S3:");
 
 
     while(1){
@@ -2780,20 +2786,24 @@ void main(void) {
 
 
         I2C_Master_Start();
-        I2C_Master_Write(0x40);
-        I2C_Master_Write(0xF3);
-
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-
+        I2C_Master_Write(0x80);
+        I2C_Master_Write(0xE3);
         I2C_Master_RepeatedStart();
-        I2C_Master_Write(0x41);
+        I2C_Master_Write(0x81);
         I2C_Master_RepeatedStart();
-        I2C_Master_Write(0x41);
-        PORTD = I2C_Master_Read(1);
-        PORTB = I2C_Master_Read(1);
-        PORTB = I2C_Master_Read(0);
+        I2C_Master_Write(0x81);
+        Sen_MS = I2C_Master_Read(1);
+        Sen_LS = I2C_Master_Read(1);
+
         I2C_Master_Stop();
         _delay((unsigned long)((200)*(8000000/4000.0)));
+
+
+        Sen_Total = Sen_MS<<8;
+        Sen_Total += Sen_MS;
+        Sen_Total &= ~0b11;
+        Temperatura = -46.85 +(175.72*Sen_Total/65536);
+
 
 
         I2C_Master_Start();
@@ -2805,8 +2815,7 @@ void main(void) {
 
 
 
-         Lcd_Set_Cursor(1,1);
-         Write_LCD("S1:   S2:    S3:");
+
          Lcd_Set_Cursor(2,1);
          temp = PORTD;
          Print_Cont(temp);
@@ -2814,6 +2823,9 @@ void main(void) {
          temp = PORTB;
          Print_Cont(temp);
          RE2 = ~RE2;
+         Lcd_Set_Cursor(2,13);
+         Print_Cont(Temperatura);
+
 
 
     }

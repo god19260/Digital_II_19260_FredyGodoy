@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Lab_04_Esclavo_2.X.production.sym \
   --cmf=dist/default/production\Lab_04_Esclavo_2.X.production.cmf -z \
-  -Q16F887 -oC:\Users\fredy\AppData\Local\Temp\xcAsbt8.4 \
+  -Q16F887 -oC:\Users\fredy\AppData\Local\Temp\xcAsmc8.4 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Lab_04_Esclavo_2.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
@@ -19,7 +19,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\fredy\AppData\Local\Temp\xcAsbt8.o \
+  -pfunctab=ENTRY -k C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o \
   dist/default/production\Lab_04_Esclavo_2.X.production.o 
 
 Object code version is 3.11
@@ -29,7 +29,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\fredy\AppData\Local\Temp\xcAsbt8.o
+C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
                 end_init                              C        C        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -38,10 +38,10 @@ dist/default/production\Lab_04_Esclavo_2.X.production.o
                 intentry                              4        4        8        8       0
                 config                             2007     2007        2        0       4
                 text5                                16       16       70        8       0
-                text4                               10F      10F        8      1EC       0
-                text3                               106      106        9      1EC       0
+                text4                               110      110        8      1EC       0
+                text3                               107      107        9      1EC       0
                 text2                                C6       C6       1A        8       0
-                text1                                F6       F6       10      1EC       0
+                text1                                F6       F6       11      1EC       0
                 maintext                             86       86       40        8       0
                 cstackCOMMON                         70       70        5       70       1
                 bssCOMMON                            75       75        3       70       1
@@ -56,10 +56,10 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intentry                              4        4        8         0
                 reset_vec                             0        0        3         0
                 text5                                16       16       70         0
-                text4                               10F      10F        8         0
-                text3                               106      106        9         0
+                text4                               110      110        8         0
+                text3                               107      107        9         0
                 text2                                C6       C6       1A         0
-                text1                                F6       F6       10         0
+                text1                                F6       F6       11         0
                 maintext                             86       86       40         0
 
         CLASS   STRCODE        
@@ -111,7 +111,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 intentry                       000004  0000DC  0000E0         8       0  CODE        2
                 cstackCOMMON                   000070  000008  000078        70       1  COMMON      1
                 strings                        0000E0  000016  0000F6       1C0       0  STRING      2
-                text1                          0000F6  000021  000117       1EC       0  CODE        2
+                text1                          0000F6  000022  000118       1EC       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
@@ -122,13 +122,13 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0003-0003              1           2
-                         0117-1FFF            800
+                         0118-1FFF            800
         COMMON           0078-007D              6           1
         CONST            0003-0003              1           2
-                         0117-1FFF            100
+                         0118-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0003-0003              1           2
-                         0117-1FFF            100
+                         0118-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0020-006F             50           1
                          00A0-00EF             50
@@ -140,9 +140,9 @@ UNUSED ADDRESS RANGES
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
         STRCODE          0003-0003              1           2
-                         0117-1FFF           1EE9
+                         0118-1FFF           1EE8
         STRING           0003-0003              1           2
-                         0117-1FFF            100
+                         0118-1FFF            100
 
                                   Symbol Table
 
@@ -157,8 +157,8 @@ _BF                        (abs)        04A0
 _Boton_0                   bssCOMMON    0077
 _Boton_1                   bssCOMMON    0076
 _CREN                      (abs)        00C4
-_Config_Oscilador          text4        010F
-_Config_PORTB              text3        0106
+_Config_Oscilador          text4        0110
+_Config_PORTB              text3        0107
 _GIE                       (abs)        005F
 _I2C_Slave_Init            text2        00C6
 _INTCON                    (abs)        000B
@@ -240,7 +240,7 @@ __Hsfr0                    sfr0         0000
 __Hsfr1                    sfr1         0000
 __Hsfr2                    sfr2         0000
 __Hsfr3                    sfr3         0000
-__Hspace_0                 (abs)        0117
+__Hspace_0                 (abs)        0118
 __Hspace_1                 (abs)        0078
 __Hspace_2                 (abs)        0000
 __Hspace_3                 (abs)        0000
@@ -281,7 +281,7 @@ __Lspace_4                 (abs)        0000
 __Lstack                   stack        0000
 __Lstrings                 strings      0000
 __Ltext                    text         0000
-__S0                       (abs)        0117
+__S0                       (abs)        0118
 __S1                       (abs)        0078
 __S2                       (abs)        0000
 __S3                       (abs)        0000
@@ -290,12 +290,12 @@ ___latbits                 (abs)        0002
 ___sp                      stack        0000
 ___stackhi                 (abs)        0000
 ___stacklo                 (abs)        0000
-__end_of_Config_Oscilador  text4        0117
-__end_of_Config_PORTB      text3        010F
+__end_of_Config_Oscilador  text4        0118
+__end_of_Config_PORTB      text3        0110
 __end_of_I2C_Slave_Init    text2        00E0
 __end_of__initialization   cinit        0012
 __end_of__stringtab        strings      00E6
-__end_of_config            text1        0106
+__end_of_config            text1        0107
 __end_of_isr               text5        0086
 __end_of_main              maintext     00C6
 __initialization           cinit        000F
@@ -306,8 +306,8 @@ __pmaintext                maintext     0086
 __pstrings                 strings      00E0
 __ptext1                   text1        00F6
 __ptext2                   text2        00C6
-__ptext3                   text3        0106
-__ptext4                   text4        010F
+__ptext3                   text3        0107
+__ptext4                   text4        0110
 __ptext5                   text5        0016
 __size_of_Config_Oscilador (abs)        0000
 __size_of_Config_PORTB     (abs)        0000
@@ -341,8 +341,8 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 ../../LIB/LIB.X/LIB.c
-		_Config_PORTB  		CODE           	0106	0000	9
-		_Config_Oscilador		CODE           	010F	0000	8
+		_Config_PORTB  		CODE           	0107	0000	9
+		_Config_Oscilador		CODE           	0110	0000	8
 
 ../../LIB/LIB.X/LIB.c estimated size: 17
 
@@ -359,8 +359,8 @@ shared estimated size: 9
 
 Lab_04_Esclavo_2.c
 		_main          		CODE           	0086	0000	64
-		_config        		CODE           	00F6	0000	16
+		_config        		CODE           	00F6	0000	17
 		_isr           		CODE           	0016	0000	112
 
-Lab_04_Esclavo_2.c estimated size: 192
+Lab_04_Esclavo_2.c estimated size: 193
 

@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"58 Lab_04_Maestro.c
-[; ;Lab_04_Maestro.c: 58:         I2C_Master_Stop();
+"63 Lab_04_Maestro.c
+[; ;Lab_04_Maestro.c: 63: 
 [v _config `(v ~T0 @X0 0 ef ]
 "15 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
@@ -12,7 +12,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44 ./../../LIB/LIB.X/I2C.h
 [; ;./../../LIB/LIB.X/I2C.h: 44: void I2C_Master_Init(const unsigned long c);
 [v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
-"56
+"30 ./../../LIB/LIB.X/LCD.h
+[; ;./../../LIB/LIB.X/LCD.h: 30: void Lcd_Set_Cursor(char a, char b);
+[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"33
+[; ;./../../LIB/LIB.X/LCD.h: 33: void Write_LCD(char *a);
+[v _Write_LCD `(v ~T0 @X0 0 ef1`*uc ]
+"56 ./../../LIB/LIB.X/I2C.h
 [; ;./../../LIB/LIB.X/I2C.h: 56: void I2C_Master_Start(void);
 [v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
 "70
@@ -37,13 +43,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "228 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"30 ./../../LIB/LIB.X/LCD.h
-[; ;./../../LIB/LIB.X/LCD.h: 30: void Lcd_Set_Cursor(char a, char b);
-[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"33
-[; ;./../../LIB/LIB.X/LCD.h: 33: void Write_LCD(char *a);
-[v _Write_LCD `(v ~T0 @X0 0 ef1`*uc ]
-"35
+"35 ./../../LIB/LIB.X/LCD.h
 [; ;./../../LIB/LIB.X/LCD.h: 35: void Print_Cont(char valor);
 [v _Print_Cont `(v ~T0 @X0 0 ef1`uc ]
 "4211 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
@@ -314,182 +314,212 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab_04_Maestro.c: 22: 
 [p x WDTE  =  OFF        ]
 "25
-[; ;Lab_04_Maestro.c: 25:     I2C_Master_Init(100000);
+[; ;Lab_04_Maestro.c: 25: 
 [p x PWRTE  =  OFF       ]
 "26
-[; ;Lab_04_Maestro.c: 26: 
+[; ;Lab_04_Maestro.c: 26:     config();
 [p x MCLRE  =  OFF       ]
 "29
-[; ;Lab_04_Maestro.c: 29:     while(1){
+[; ;Lab_04_Maestro.c: 29:     LCD_Init_8bits();
 [p x CP  =  OFF           ]
 "31
-[; ;Lab_04_Maestro.c: 31:         I2C_Master_Start();
+[; ;Lab_04_Maestro.c: 31: Lcd_Set_Cursor(1,1);
 [p x CPD  =  OFF          ]
 "33
-[; ;Lab_04_Maestro.c: 33:         PORTD = I2C_Master_Read(0);
+[; ;Lab_04_Maestro.c: 33: 
 [p x BOREN  =  OFF       ]
 "34
-[; ;Lab_04_Maestro.c: 34:         I2C_Master_Stop();
+[; ;Lab_04_Maestro.c: 34: 
 [p x IESO  =  OFF        ]
 "36
 [; ;Lab_04_Maestro.c: 36: 
 [p x FCMEN  =  OFF       ]
 "38
-[; ;Lab_04_Maestro.c: 38:         I2C_Master_Start();
+[; ;Lab_04_Maestro.c: 38:         I2C_Master_Write(0x51);
 [p x LVP  =  OFF         ]
 "43
 [; ;Lab_04_Maestro.c: 43: 
 [p x BOR4V  =  BOR40V    ]
 "45
-[; ;Lab_04_Maestro.c: 45:         I2C_Master_Write(0x41);
+[; ;Lab_04_Maestro.c: 45:         I2C_Master_Write(0x80);
 [p x WRT  =  OFF         ]
 "54
-[; ;Lab_04_Maestro.c: 54: 
+[; ;Lab_04_Maestro.c: 54:         I2C_Master_Stop();
 [v _V_ADC_0 `uc ~T0 @X0 1 e ]
 [i _V_ADC_0
 -> -> 0 `i `uc
 ]
 "55
-[; ;Lab_04_Maestro.c: 55:         I2C_Master_Start();
+[; ;Lab_04_Maestro.c: 55:         _delay((unsigned long)((200)*(8000000/4000.0)));
 [v _Cont_Slave_II `uc ~T0 @X0 1 e ]
 "56
-[; ;Lab_04_Maestro.c: 56:         I2C_Master_Write(0x61);
+[; ;Lab_04_Maestro.c: 56: 
 [v _temp `uc ~T0 @X0 1 e ]
+"57
+[; ;Lab_04_Maestro.c: 57: 
+[v _Sen_MS `ui ~T0 @X0 1 e ]
+"58
+[; ;Lab_04_Maestro.c: 58:         Sen_Total = Sen_MS<<8;
+[v _Sen_LS `ui ~T0 @X0 1 e ]
+"59
+[; ;Lab_04_Maestro.c: 59:         Sen_Total += Sen_MS;
+[v _Sen_Total `ui ~T0 @X0 1 e ]
+"60
+[; ;Lab_04_Maestro.c: 60:         Sen_Total &= ~0b11;
+[v _Sen_Checksum `uc ~T0 @X0 1 e ]
+"61
+[; ;Lab_04_Maestro.c: 61:         Temperatura = -46.85 +(175.72*Sen_Total/65536);
+[v _Temperatura `d ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"65
-[; ;Lab_04_Maestro.c: 65:          Write_LCD("S1:   S2:    S3:");
+"70
+[; ;Lab_04_Maestro.c: 70:         PORTB = Cont_Slave_II;
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"68
-[; ;Lab_04_Maestro.c: 68:          Print_Cont(temp);
+"73
+[; ;Lab_04_Maestro.c: 73: 
 [e ( _config ..  ]
-"70
-[; ;Lab_04_Maestro.c: 70:          temp = PORTB;
+"75
+[; ;Lab_04_Maestro.c: 75:          Lcd_Set_Cursor(2,1);
 [e ( _Config_Oscilador ..  ]
-"71
-[; ;Lab_04_Maestro.c: 71:          Print_Cont(temp);
-[e ( _LCD_Init_8bits ..  ]
-"72
-[; ;Lab_04_Maestro.c: 72:          RE2 = ~RE2;
-[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
 "76
-[; ;Lab_04_Maestro.c: 76: }
+[; ;Lab_04_Maestro.c: 76:          temp = PORTD;
+[e ( _LCD_Init_8bits ..  ]
+"77
+[; ;Lab_04_Maestro.c: 77:          Print_Cont(temp);
+[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
+"78
+[; ;Lab_04_Maestro.c: 78:          Lcd_Set_Cursor(2,7);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"79
+[; ;Lab_04_Maestro.c: 79:          temp = PORTB;
+[e ( _Write_LCD (1 :s 1C ]
+"82
+[; ;Lab_04_Maestro.c: 82:          Lcd_Set_Cursor(2,13);
 [e :U 140 ]
 {
-"78
-[; ;Lab_04_Maestro.c: 78: void config(void){
+"84
+[; ;Lab_04_Maestro.c: 84: 
 [e ( _I2C_Master_Start ..  ]
-"79
-[; ;Lab_04_Maestro.c: 79:     TRISA = 0;
-[e ( _I2C_Master_Write (1 -> -> 81 `i `ui ]
-"80
-[; ;Lab_04_Maestro.c: 80:     TRISB = 0;
-[e = _PORTD -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
-"81
-[; ;Lab_04_Maestro.c: 81:     TRISE = 0;
-[e ( _I2C_Master_Stop ..  ]
-"82
-[; ;Lab_04_Maestro.c: 82:     TRISD = 0;
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "85
-[; ;Lab_04_Maestro.c: 85:     ANSELH = 0;
-[e ( _I2C_Master_Start ..  ]
+[; ;Lab_04_Maestro.c: 85: 
+[e ( _I2C_Master_Write (1 -> -> 81 `i `ui ]
 "86
 [; ;Lab_04_Maestro.c: 86: 
-[e ( _I2C_Master_Write (1 -> -> 64 `i `ui ]
+[e = _PORTD -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
 "87
-[; ;Lab_04_Maestro.c: 87: 
-[e ( _I2C_Master_Write (1 -> -> 243 `i `ui ]
-"89
-[; ;Lab_04_Maestro.c: 89:     PORTB = 0;
+[; ;Lab_04_Maestro.c: 87:     }
+[e ( _I2C_Master_Stop ..  ]
+"88
+[; ;Lab_04_Maestro.c: 88: }
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "91
-[; ;Lab_04_Maestro.c: 91:     PORTD = 0;
-[e ( _I2C_Master_RepeatedStart ..  ]
-"92
-[; ;Lab_04_Maestro.c: 92:     PORTE = 0;
-[e ( _I2C_Master_Write (1 -> -> 65 `i `ui ]
-"93
-[; ;Lab_04_Maestro.c: 93: }
-[e ( _I2C_Master_RepeatedStart ..  ]
-"94
-[e ( _I2C_Master_Write (1 -> -> 65 `i `ui ]
-"95
-[e = _PORTD -> ( _I2C_Master_Read (1 -> -> 1 `i `us `uc ]
-"96
-[e = _PORTB -> ( _I2C_Master_Read (1 -> -> 1 `i `us `uc ]
-"97
-[e = _PORTB -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
-"98
-[e ( _I2C_Master_Stop ..  ]
-"99
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"102
+[; ;Lab_04_Maestro.c: 91:     TRISA = 0;
 [e ( _I2C_Master_Start ..  ]
-"103
-[e ( _I2C_Master_Write (1 -> -> 97 `i `ui ]
-"104
-[e = _Cont_Slave_II -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
-"105
+"92
+[; ;Lab_04_Maestro.c: 92:     TRISB = 0;
+[e ( _I2C_Master_Write (1 -> -> 128 `i `ui ]
+"93
+[; ;Lab_04_Maestro.c: 93:     TRISE = 0;
+[e ( _I2C_Master_Write (1 -> -> 227 `i `ui ]
+"94
+[; ;Lab_04_Maestro.c: 94:     TRISD = 0;
+[e ( _I2C_Master_RepeatedStart ..  ]
+"95
+[; ;Lab_04_Maestro.c: 95: 
+[e ( _I2C_Master_Write (1 -> -> 129 `i `ui ]
+"96
+[; ;Lab_04_Maestro.c: 96:     ANSEL = 0;
+[e ( _I2C_Master_RepeatedStart ..  ]
+"97
+[; ;Lab_04_Maestro.c: 97:     ANSELH = 0;
+[e ( _I2C_Master_Write (1 -> -> 129 `i `ui ]
+"98
+[; ;Lab_04_Maestro.c: 98: 
+[e = _Sen_MS -> ( _I2C_Master_Read (1 -> -> 1 `i `us `ui ]
+"99
+[; ;Lab_04_Maestro.c: 99: 
+[e = _Sen_LS -> ( _I2C_Master_Read (1 -> -> 1 `i `us `ui ]
+"101
+[; ;Lab_04_Maestro.c: 101:     PORTB = 0;
 [e ( _I2C_Master_Stop ..  ]
-"106
+"102
+[; ;Lab_04_Maestro.c: 102: 
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"105
+[; ;Lab_04_Maestro.c: 105: }
+[e = _Sen_Total << _Sen_MS -> 8 `i ]
+"106
+[e =+ _Sen_Total _Sen_MS ]
 "107
-[e = _PORTB -> _Cont_Slave_II `uc ]
-"111
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[e =& _Sen_Total -> ~ -> 3 `i `ui ]
+"108
+[e = _Temperatura + -U .46.85 / * .175.72 -> _Sen_Total `d -> -> 65536 `l `d ]
 "112
-[e ( _Write_LCD (1 :s 1C ]
+[e ( _I2C_Master_Start ..  ]
 "113
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[e ( _I2C_Master_Write (1 -> -> 97 `i `ui ]
 "114
-[e = _temp -> _PORTD `uc ]
+[e = _Cont_Slave_II -> ( _I2C_Master_Read (1 -> -> 0 `i `us `uc ]
 "115
-[e ( _Print_Cont (1 _temp ]
+[e ( _I2C_Master_Stop ..  ]
 "116
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 7 `i `uc ]
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "117
-[e = _temp -> _PORTB `uc ]
-"118
-[e ( _Print_Cont (1 _temp ]
-"119
-[e = _RE2 -> ~ -> _RE2 `ui `b ]
+[e = _PORTB _Cont_Slave_II ]
 "122
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"123
+[e = _temp _PORTD ]
+"124
+[e ( _Print_Cont (1 -> _temp `uc ]
+"125
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 7 `i `uc ]
+"126
+[e = _temp _PORTB ]
+"127
+[e ( _Print_Cont (1 -> _temp `uc ]
+"128
+[e = _RE2 -> ~ -> _RE2 `ui `b ]
+"129
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 13 `i `uc ]
+"130
+[e ( _Print_Cont (1 -> _Temperatura `uc ]
+"134
 }
 [e :U 139 ]
 [e $U 140  ]
 [e :U 141 ]
-"123
+"135
 [e :UE 138 ]
 }
-"125
+"137
 [v _config `(v ~T0 @X0 1 ef ]
 {
 [e :U _config ]
 [f ]
-"126
-[e = _TRISA -> -> 0 `i `uc ]
-"127
-[e = _TRISB -> -> 0 `i `uc ]
-"128
-[e = _TRISE -> -> 0 `i `uc ]
-"129
-[e = _TRISD -> -> 0 `i `uc ]
-"131
-[e = _ANSEL -> -> 0 `i `uc ]
-"132
-[e = _ANSELH -> -> 0 `i `uc ]
-"135
-[e = _PORTA -> -> 0 `i `uc ]
-"136
-[e = _PORTB -> -> 0 `i `uc ]
 "138
-[e = _PORTD -> -> 0 `i `uc ]
+[e = _TRISA -> -> 0 `i `uc ]
 "139
-[e = _PORTE -> -> 0 `i `uc ]
+[e = _TRISB -> -> 0 `i `uc ]
 "140
+[e = _TRISE -> -> 0 `i `uc ]
+"141
+[e = _TRISD -> -> 0 `i `uc ]
+"143
+[e = _ANSEL -> -> 0 `i `uc ]
+"144
+[e = _ANSELH -> -> 0 `i `uc ]
+"147
+[e = _PORTA -> -> 0 `i `uc ]
+"148
+[e = _PORTB -> -> 0 `i `uc ]
+"150
+[e = _PORTD -> -> 0 `i `uc ]
+"151
+[e = _PORTE -> -> 0 `i `uc ]
+"152
 [e :UE 142 ]
 }
 [a 1C 83 49 58 32 32 32 83 50 58 32 32 32 32 83 51 58 0 ]
