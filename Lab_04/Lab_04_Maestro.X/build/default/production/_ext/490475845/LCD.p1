@@ -424,270 +424,278 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _Clear_LCD ]
 [f ]
 "49
-[; ;../../LIB/LIB.X/LCD.c: 49:     CMD_LCD(0);
-[e ( _CMD_LCD (1 -> -> 0 `i `uc ]
-"50
-[; ;../../LIB/LIB.X/LCD.c: 50:     CMD_LCD(1);
+[; ;../../LIB/LIB.X/LCD.c: 49:     CMD_LCD(0b1);
 [e ( _CMD_LCD (1 -> -> 1 `i `uc ]
-"51
-[; ;../../LIB/LIB.X/LCD.c: 51: }
+"50
+[; ;../../LIB/LIB.X/LCD.c: 50: }
 [e :UE 145 ]
 }
-"52
-[; ;../../LIB/LIB.X/LCD.c: 52: void Char_LCD(char a){
+"51
+[; ;../../LIB/LIB.X/LCD.c: 51: void Char_LCD(char a){
 [v _Char_LCD `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Char_LCD ]
 [v _a `uc ~T0 @X0 1 r1 ]
 [f ]
-"53
-[; ;../../LIB/LIB.X/LCD.c: 53:     PORTEbits.RE0 = 1;
+"52
+[; ;../../LIB/LIB.X/LCD.c: 52:     PORTEbits.RE0 = 1;
 [e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-"54
-[; ;../../LIB/LIB.X/LCD.c: 54:     PORT_LCD(a);
+"53
+[; ;../../LIB/LIB.X/LCD.c: 53:     PORT_LCD(a);
 [e ( _PORT_LCD (1 _a ]
-"55
-[; ;../../LIB/LIB.X/LCD.c: 55:     PORTEbits.RE1 = 1;
+"54
+[; ;../../LIB/LIB.X/LCD.c: 54:     PORTEbits.RE1 = 1;
 [e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-"56
-[; ;../../LIB/LIB.X/LCD.c: 56:     _delay((unsigned long)((500)*(8000000/4000000.0)));
+"55
+[; ;../../LIB/LIB.X/LCD.c: 55:     _delay((unsigned long)((500)*(8000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"57
-[; ;../../LIB/LIB.X/LCD.c: 57:     PORTEbits.RE1 = 0;
+"56
+[; ;../../LIB/LIB.X/LCD.c: 56:     PORTEbits.RE1 = 0;
 [e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
-"58
-[; ;../../LIB/LIB.X/LCD.c: 58: }
+"57
+[; ;../../LIB/LIB.X/LCD.c: 57: }
 [e :UE 146 ]
 }
-"59
-[; ;../../LIB/LIB.X/LCD.c: 59: void Write_LCD(char *a) {
+"58
+[; ;../../LIB/LIB.X/LCD.c: 58: void Write_LCD(char *a) {
 [v _Write_LCD `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _Write_LCD ]
 [v _a `*uc ~T0 @X0 1 r1 ]
 [f ]
-"60
-[; ;../../LIB/LIB.X/LCD.c: 60:     char i;
+"59
+[; ;../../LIB/LIB.X/LCD.c: 59:     char i;
 [v _i `uc ~T0 @X0 1 a ]
-"61
-[; ;../../LIB/LIB.X/LCD.c: 61:     for (i = 0; a[i] != '\0'; i++){
+"60
+[; ;../../LIB/LIB.X/LCD.c: 60:     for (i = 0; a[i] != '\0'; i++){
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 151  ]
 [e :U 148 ]
 {
-"62
-[; ;../../LIB/LIB.X/LCD.c: 62:         Char_LCD(a[i]);
+"61
+[; ;../../LIB/LIB.X/LCD.c: 61:         Char_LCD(a[i]);
 [e ( _Char_LCD (1 *U + _a * -> _i `ux -> -> # *U _a `ui `ux ]
-"64
-[; ;../../LIB/LIB.X/LCD.c: 64:     }
+"63
+[; ;../../LIB/LIB.X/LCD.c: 63:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 151 ]
 [e $ != -> *U + _a * -> _i `ux -> -> # *U _a `ui `ux `ui -> 0 `ui 148  ]
 [e :U 149 ]
 }
-"66
-[; ;../../LIB/LIB.X/LCD.c: 66: }
+"65
+[; ;../../LIB/LIB.X/LCD.c: 65: }
 [e :UE 147 ]
 }
-"68
-[; ;../../LIB/LIB.X/LCD.c: 68: void Print_Num(char valor){
+"67
+[; ;../../LIB/LIB.X/LCD.c: 67: void Print_Num(char valor){
 [v _Print_Num `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Print_Num ]
 [v _valor `uc ~T0 @X0 1 r1 ]
 [f ]
-"69
-[; ;../../LIB/LIB.X/LCD.c: 69:     int temp;
+"68
+[; ;../../LIB/LIB.X/LCD.c: 68:     int temp;
 [v _temp `i ~T0 @X0 1 a ]
-"70
-[; ;../../LIB/LIB.X/LCD.c: 70:     int unidad, decena, centena;
+"69
+[; ;../../LIB/LIB.X/LCD.c: 69:     int unidad, decena, centena;
 [v _unidad `i ~T0 @X0 1 a ]
 [v _decena `i ~T0 @X0 1 a ]
 [v _centena `i ~T0 @X0 1 a ]
-"71
-[; ;../../LIB/LIB.X/LCD.c: 71:     temp = valor * 2;
+"70
+[; ;../../LIB/LIB.X/LCD.c: 70:     temp = valor * 2;
 [e = _temp * -> _valor `i -> 2 `i ]
-"72
-[; ;../../LIB/LIB.X/LCD.c: 72:     temp = valor;
+"71
+[; ;../../LIB/LIB.X/LCD.c: 71:     temp = valor;
 [e = _temp -> _valor `i ]
-"73
-[; ;../../LIB/LIB.X/LCD.c: 73:     centena = temp/100;
+"72
+[; ;../../LIB/LIB.X/LCD.c: 72:     centena = temp/100;
 [e = _centena / _temp -> 100 `i ]
-"74
-[; ;../../LIB/LIB.X/LCD.c: 74:     temp = temp - centena*100;
+"73
+[; ;../../LIB/LIB.X/LCD.c: 73:     temp = temp - centena*100;
 [e = _temp - _temp * _centena -> 100 `i ]
-"75
-[; ;../../LIB/LIB.X/LCD.c: 75:     decena = temp/10;
+"74
+[; ;../../LIB/LIB.X/LCD.c: 74:     decena = temp/10;
 [e = _decena / _temp -> 10 `i ]
-"76
-[; ;../../LIB/LIB.X/LCD.c: 76:     unidad = temp - decena*10;
+"75
+[; ;../../LIB/LIB.X/LCD.c: 75:     unidad = temp - decena*10;
 [e = _unidad - _temp * _decena -> 10 `i ]
-"77
-[; ;../../LIB/LIB.X/LCD.c: 77:     tabla_num(centena);
+"76
+[; ;../../LIB/LIB.X/LCD.c: 76:     tabla_num(centena);
 [e ( _tabla_num (1 _centena ]
-"78
-[; ;../../LIB/LIB.X/LCD.c: 78:     Write_LCD(".");
+"77
+[; ;../../LIB/LIB.X/LCD.c: 77:     Write_LCD(".");
 [e ( _Write_LCD (1 :s 1C ]
-"79
-[; ;../../LIB/LIB.X/LCD.c: 79:     tabla_num(decena);
+"78
+[; ;../../LIB/LIB.X/LCD.c: 78:     tabla_num(decena);
 [e ( _tabla_num (1 _decena ]
-"80
-[; ;../../LIB/LIB.X/LCD.c: 80:     tabla_num(unidad);
+"79
+[; ;../../LIB/LIB.X/LCD.c: 79:     tabla_num(unidad);
 [e ( _tabla_num (1 _unidad ]
-"82
-[; ;../../LIB/LIB.X/LCD.c: 82: }
+"81
+[; ;../../LIB/LIB.X/LCD.c: 81: }
 [e :UE 152 ]
 }
-"83
-[; ;../../LIB/LIB.X/LCD.c: 83: void Print_Cont(char valor){
+"82
+[; ;../../LIB/LIB.X/LCD.c: 82: void Print_Cont(char valor){
 [v _Print_Cont `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Print_Cont ]
 [v _valor `uc ~T0 @X0 1 r1 ]
 [f ]
-"84
-[; ;../../LIB/LIB.X/LCD.c: 84:     int temp;
+"83
+[; ;../../LIB/LIB.X/LCD.c: 83:     int temp;
 [v _temp `i ~T0 @X0 1 a ]
-"85
-[; ;../../LIB/LIB.X/LCD.c: 85:     int unidad, decena, centena;
+"84
+[; ;../../LIB/LIB.X/LCD.c: 84:     int unidad, decena, centena;
 [v _unidad `i ~T0 @X0 1 a ]
 [v _decena `i ~T0 @X0 1 a ]
 [v _centena `i ~T0 @X0 1 a ]
-"86
-[; ;../../LIB/LIB.X/LCD.c: 86:     centena = valor/100;
+"85
+[; ;../../LIB/LIB.X/LCD.c: 85:     centena = valor/100;
 [e = _centena / -> _valor `i -> 100 `i ]
-"87
-[; ;../../LIB/LIB.X/LCD.c: 87:     temp = valor - centena*100;
+"86
+[; ;../../LIB/LIB.X/LCD.c: 86:     temp = valor - centena*100;
 [e = _temp - -> _valor `i * _centena -> 100 `i ]
-"88
-[; ;../../LIB/LIB.X/LCD.c: 88:     decena = temp/10;
+"87
+[; ;../../LIB/LIB.X/LCD.c: 87:     decena = temp/10;
 [e = _decena / _temp -> 10 `i ]
-"89
-[; ;../../LIB/LIB.X/LCD.c: 89:     unidad = temp - decena*10;
+"88
+[; ;../../LIB/LIB.X/LCD.c: 88:     unidad = temp - decena*10;
 [e = _unidad - _temp * _decena -> 10 `i ]
-"90
-[; ;../../LIB/LIB.X/LCD.c: 90:     tabla_num(centena);
+"89
+[; ;../../LIB/LIB.X/LCD.c: 89:     tabla_num(centena);
 [e ( _tabla_num (1 _centena ]
-"91
-[; ;../../LIB/LIB.X/LCD.c: 91:     tabla_num(decena);
+"90
+[; ;../../LIB/LIB.X/LCD.c: 90:     tabla_num(decena);
 [e ( _tabla_num (1 _decena ]
-"92
-[; ;../../LIB/LIB.X/LCD.c: 92:     tabla_num(unidad);
+"91
+[; ;../../LIB/LIB.X/LCD.c: 91:     tabla_num(unidad);
 [e ( _tabla_num (1 _unidad ]
-"93
-[; ;../../LIB/LIB.X/LCD.c: 93: }
+"92
+[; ;../../LIB/LIB.X/LCD.c: 92: }
 [e :UE 153 ]
 }
-"95
-[; ;../../LIB/LIB.X/LCD.c: 95: void tabla_num(int numero){
+"94
+[; ;../../LIB/LIB.X/LCD.c: 94: void tabla_num(int numero){
 [v _tabla_num `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _tabla_num ]
 [v _numero `i ~T0 @X0 1 r1 ]
 [f ]
-"98
-[; ;../../LIB/LIB.X/LCD.c: 98:     if (numero == 1){
+"97
+[; ;../../LIB/LIB.X/LCD.c: 97:     if (numero == 1){
 [e $ ! == _numero -> 1 `i 155  ]
 {
-"99
-[; ;../../LIB/LIB.X/LCD.c: 99:         Char_LCD('1');
+"98
+[; ;../../LIB/LIB.X/LCD.c: 98:         Char_LCD('1');
 [e ( _Char_LCD (1 -> -> 49 `ui `uc ]
-"100
-[; ;../../LIB/LIB.X/LCD.c: 100:     } else if (numero == 2){
+"99
+[; ;../../LIB/LIB.X/LCD.c: 99:     } else if (numero == 2){
 }
 [e $U 156  ]
 [e :U 155 ]
 [e $ ! == _numero -> 2 `i 157  ]
 {
-"101
-[; ;../../LIB/LIB.X/LCD.c: 101:         Char_LCD('2');
+"100
+[; ;../../LIB/LIB.X/LCD.c: 100:         Char_LCD('2');
 [e ( _Char_LCD (1 -> -> 50 `ui `uc ]
-"102
-[; ;../../LIB/LIB.X/LCD.c: 102:     } else if (numero == 3){
+"101
+[; ;../../LIB/LIB.X/LCD.c: 101:     } else if (numero == 3){
 }
 [e $U 158  ]
 [e :U 157 ]
 [e $ ! == _numero -> 3 `i 159  ]
 {
-"103
-[; ;../../LIB/LIB.X/LCD.c: 103:         Char_LCD('3');
+"102
+[; ;../../LIB/LIB.X/LCD.c: 102:         Char_LCD('3');
 [e ( _Char_LCD (1 -> -> 51 `ui `uc ]
-"104
-[; ;../../LIB/LIB.X/LCD.c: 104:     } else if (numero == 4){
+"103
+[; ;../../LIB/LIB.X/LCD.c: 103:     } else if (numero == 4){
 }
 [e $U 160  ]
 [e :U 159 ]
 [e $ ! == _numero -> 4 `i 161  ]
 {
-"105
-[; ;../../LIB/LIB.X/LCD.c: 105:         Char_LCD('4');
+"104
+[; ;../../LIB/LIB.X/LCD.c: 104:         Char_LCD('4');
 [e ( _Char_LCD (1 -> -> 52 `ui `uc ]
-"106
-[; ;../../LIB/LIB.X/LCD.c: 106:     } else if (numero == 5){
+"105
+[; ;../../LIB/LIB.X/LCD.c: 105:     } else if (numero == 5){
 }
 [e $U 162  ]
 [e :U 161 ]
 [e $ ! == _numero -> 5 `i 163  ]
 {
-"107
-[; ;../../LIB/LIB.X/LCD.c: 107:         Char_LCD('5');
+"106
+[; ;../../LIB/LIB.X/LCD.c: 106:         Char_LCD('5');
 [e ( _Char_LCD (1 -> -> 53 `ui `uc ]
-"108
-[; ;../../LIB/LIB.X/LCD.c: 108:     } else if (numero == 6){
+"107
+[; ;../../LIB/LIB.X/LCD.c: 107:     } else if (numero == 6){
 }
 [e $U 164  ]
 [e :U 163 ]
 [e $ ! == _numero -> 6 `i 165  ]
 {
-"109
-[; ;../../LIB/LIB.X/LCD.c: 109:         Char_LCD('6');
+"108
+[; ;../../LIB/LIB.X/LCD.c: 108:         Char_LCD('6');
 [e ( _Char_LCD (1 -> -> 54 `ui `uc ]
-"110
-[; ;../../LIB/LIB.X/LCD.c: 110:     } else if (numero == 7){
+"109
+[; ;../../LIB/LIB.X/LCD.c: 109:     } else if (numero == 7){
 }
 [e $U 166  ]
 [e :U 165 ]
 [e $ ! == _numero -> 7 `i 167  ]
 {
-"111
-[; ;../../LIB/LIB.X/LCD.c: 111:         Char_LCD('7');
+"110
+[; ;../../LIB/LIB.X/LCD.c: 110:         Char_LCD('7');
 [e ( _Char_LCD (1 -> -> 55 `ui `uc ]
-"112
-[; ;../../LIB/LIB.X/LCD.c: 112:     } else if (numero == 8){
+"111
+[; ;../../LIB/LIB.X/LCD.c: 111:     } else if (numero == 8){
 }
 [e $U 168  ]
 [e :U 167 ]
 [e $ ! == _numero -> 8 `i 169  ]
 {
-"113
-[; ;../../LIB/LIB.X/LCD.c: 113:         Char_LCD('8');
+"112
+[; ;../../LIB/LIB.X/LCD.c: 112:         Char_LCD('8');
 [e ( _Char_LCD (1 -> -> 56 `ui `uc ]
-"114
-[; ;../../LIB/LIB.X/LCD.c: 114:     } else if (numero == 9){
+"113
+[; ;../../LIB/LIB.X/LCD.c: 113:     } else if (numero == 9){
 }
 [e $U 170  ]
 [e :U 169 ]
 [e $ ! == _numero -> 9 `i 171  ]
 {
-"115
-[; ;../../LIB/LIB.X/LCD.c: 115:         Char_LCD('9');
+"114
+[; ;../../LIB/LIB.X/LCD.c: 114:         Char_LCD('9');
 [e ( _Char_LCD (1 -> -> 57 `ui `uc ]
-"116
-[; ;../../LIB/LIB.X/LCD.c: 116:     } else if (numero == 0){
+"115
+[; ;../../LIB/LIB.X/LCD.c: 115:     } else if (numero == 0){
 }
 [e $U 172  ]
 [e :U 171 ]
 [e $ ! == _numero -> 0 `i 173  ]
 {
-"117
-[; ;../../LIB/LIB.X/LCD.c: 117:         Char_LCD('0');
+"116
+[; ;../../LIB/LIB.X/LCD.c: 116:         Char_LCD('0');
 [e ( _Char_LCD (1 -> -> 48 `ui `uc ]
-"118
-[; ;../../LIB/LIB.X/LCD.c: 118:     }
+"117
+[; ;../../LIB/LIB.X/LCD.c: 117:     } else if (numero == '.'){
 }
+[e $U 174  ]
 [e :U 173 ]
+[e $ ! == -> _numero `ui -> 46 `ui 175  ]
+{
+"118
+[; ;../../LIB/LIB.X/LCD.c: 118:         Char_LCD('.');
+[e ( _Char_LCD (1 -> -> 46 `ui `uc ]
+"119
+[; ;../../LIB/LIB.X/LCD.c: 119:     }
+}
+[e :U 175 ]
+[e :U 174 ]
 [e :U 172 ]
 [e :U 170 ]
 [e :U 168 ]
@@ -697,8 +705,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 160 ]
 [e :U 158 ]
 [e :U 156 ]
-"119
-[; ;../../LIB/LIB.X/LCD.c: 119: }
+"121
+[; ;../../LIB/LIB.X/LCD.c: 121: }
 [e :UE 154 ]
 }
 [a 1C 46 0 ]

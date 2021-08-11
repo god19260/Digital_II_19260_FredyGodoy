@@ -2549,8 +2549,7 @@ void Lcd_Set_Cursor(char a, char b) {
     }
 }
 void Clear_LCD(void){
-    CMD_LCD(0);
-    CMD_LCD(1);
+    CMD_LCD(0b1);
 }
 void Char_LCD(char a){
     PORTEbits.RE0 = 1;
@@ -2618,5 +2617,8 @@ void tabla_num(int numero){
         Char_LCD('9');
     } else if (numero == 0){
         Char_LCD('0');
+    } else if (numero == '.'){
+        Char_LCD('.');
     }
+
 }

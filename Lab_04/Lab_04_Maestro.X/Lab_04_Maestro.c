@@ -11,6 +11,8 @@
 #include "../../LIB/LIB.X/LIB.h"
 #include "../../LIB/LIB.X/I2C.h"
 #include "../../LIB/LIB.X/LCD.h"
+#include <stdint.h>
+#include <stdio.h>
 // PIC16F887 Configuration Bit Settings
 
 // 'C' source line config statements
@@ -59,6 +61,7 @@ unsigned int Sen_LS;
 unsigned int Sen_Total;
 unsigned char Sen_Checksum;
 double Temperatura;
+char text[16];
 //--------------------- Prototipo función configuración ------------------------
 void config(void);
 //------------------------------------------------------------------------------
@@ -75,8 +78,7 @@ void main(void) {
     Config_Oscilador();
     LCD_Init_8bits();
     I2C_Master_Init(100000);        // Inicializar Comuncación I2C
-Lcd_Set_Cursor(1,1);
-         Write_LCD("S1:   S2:    S3:");
+
 //------------------------------------------------------------------------------
 //*************************** loop principal ***********************************   
     while(1){            
@@ -90,14 +92,13 @@ Lcd_Set_Cursor(1,1);
         // Dispositivo I2C (temp) - Hold
         I2C_Master_Start();
         I2C_Master_Write(0x80);
-        I2C_Master_Write(0xE3);        
-        I2C_Master_RepeatedStart();
+        I2C_Master_Write(0xF3);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        I2C_Master_Start();
         I2C_Master_Write(0x81);
-        I2C_Master_RepeatedStart();
-        I2C_Master_Write(0x81);
-        Sen_MS = I2C_Master_Read(1);
-        Sen_LS = I2C_Master_Read(1);
-        //Sen_Checksum = I2C_Master_Read(0);
+        Sen_MS = I2C_Master_Read(0);
+        Sen_LS = I2C_Master_Read(0);
         I2C_Master_Stop();
         __delay_ms(200);
         
@@ -106,7 +107,7 @@ Lcd_Set_Cursor(1,1);
         Sen_Total += Sen_MS;
         Sen_Total &= ~0b11;
         Temperatura = -46.85 +(175.72*Sen_Total/65536);
-        
+        sprintf(text, "%.0f", Temperatura);
         
         // Lectura Segundo Esclavo
         I2C_Master_Start();
@@ -117,20 +118,20 @@ Lcd_Set_Cursor(1,1);
         PORTB = Cont_Slave_II;
 
         
-        //------ LCD ------
+        //------ LCD -------
+        Lcd_Set_Cursor(1,1);
+        Write_LCD("S1:   S2:    S3:");
+        Lcd_Set_Cursor(2,1);
+        temp = PORTD;
+        Print_Cont(temp);
+        Lcd_Set_Cursor(2,7);
+        temp = PORTB;
+        Print_Cont(temp);
+        RE2 = ~RE2;
+        Lcd_Set_Cursor(2,13);
+        Write_LCD(text);
+        Write_LCD("C");
          
-         Lcd_Set_Cursor(2,1);
-         temp = PORTD;
-         Print_Cont(temp);
-         Lcd_Set_Cursor(2,7);
-         temp = PORTB;
-         Print_Cont(temp);
-         RE2 = ~RE2;
-         Lcd_Set_Cursor(2,13);
-         Print_Cont(Temperatura);
-         
-         
-        
     } // fin loop principal while 
 } // fin main
 
