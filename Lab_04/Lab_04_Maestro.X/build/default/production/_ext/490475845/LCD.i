@@ -2514,6 +2514,7 @@ void LCD_Init_8bits(void){
     _delay((unsigned long)((20)*(8000000/4000.0)));
     CMD_LCD(0b1);
 
+
     CMD_LCD(0b111000);
     CMD_LCD(0b1000);
     CMD_LCD(0b1);
@@ -2534,7 +2535,7 @@ void CMD_LCD(char v){
     PORTEbits.RE0 = 0;
     PORT_LCD(v);
     PORTEbits.RE1 = 1;
-    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    _delay((unsigned long)((500)*(8000000/4000000.0)));
     PORTEbits.RE1 = 0;
 }
 void Lcd_Set_Cursor(char a, char b) {
@@ -2555,13 +2556,14 @@ void Char_LCD(char a){
     PORTEbits.RE0 = 1;
     PORT_LCD(a);
     PORTEbits.RE1 = 1;
-    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    _delay((unsigned long)((500)*(8000000/4000000.0)));
     PORTEbits.RE1 = 0;
 }
 void Write_LCD(char *a) {
     char i;
     for (i = 0; a[i] != '\0'; i++){
         Char_LCD(a[i]);
+
     }
 
 }
@@ -2597,24 +2599,24 @@ void tabla_num(int numero){
 
 
     if (numero == 1){
-    Write_LCD("1");
+        Char_LCD('1');
     } else if (numero == 2){
-        Write_LCD("2");
+        Char_LCD('2');
     } else if (numero == 3){
-        Write_LCD("3");
+        Char_LCD('3');
     } else if (numero == 4){
-        Write_LCD("4");
+        Char_LCD('4');
     } else if (numero == 5){
-        Write_LCD("5");
+        Char_LCD('5');
     } else if (numero == 6){
-        Write_LCD("6");
+        Char_LCD('6');
     } else if (numero == 7){
-        Write_LCD("7");
+        Char_LCD('7');
     } else if (numero == 8){
-        Write_LCD("8");
+        Char_LCD('8');
     } else if (numero == 9){
-        Write_LCD("9");
+        Char_LCD('9');
     } else if (numero == 0){
-        Write_LCD("0");
+        Char_LCD('0');
     }
 }

@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Tue Aug 10 01:17:50 2021
+                                                                                               Tue Aug 10 19:36:18 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	16F887
@@ -463,9 +463,9 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    449  0001                     _TMR0	set	1
    450  000B                     _INTCON	set	11
    451  0009                     _PORTE	set	9
-   452  0007                     _PORTC	set	7
-   453  0005                     _PORTA	set	5
-   454  0008                     _PORTD	set	8
+   452  0008                     _PORTD	set	8
+   453  0007                     _PORTC	set	7
+   454  0005                     _PORTA	set	5
    455  0013                     _SSPBUF	set	19
    456  0014                     _SSPCONbits	set	20
    457  000C                     _PIR1bits	set	12
@@ -630,7 +630,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    616 ;;
    617 ;; *************** function _main *****************
    618 ;; Defined at:
-   619 ;;		line 110 in file "Lab_04_Esclavo_2.c"
+   619 ;;		line 111 in file "Lab_04_Esclavo_2.c"
    620 ;; Parameters:    Size  Location     Type
    621 ;;		None
    622 ;; Auto vars:     Size  Location     Type
@@ -686,7 +686,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    672  00A0  300F               	movlw	15
    673  00A1  1283               	bcf	3,5	;RP0=0, select bank0
    674  00A2  1303               	bcf	3,6	;RP1=0, select bank0
-   675  00A3  0608               	xorwf	8,w	;volatile
+   675  00A3  0605               	xorwf	5,w	;volatile
    676  00A4  1D03               	btfss	3,2
    677  00A5  28A7               	goto	u271
    678  00A6  28A8               	goto	u270
@@ -694,13 +694,13 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    680  00A7  28AA               	goto	l1084
    681  00A8                     u270:
    682  00A8                     l1082:
-   683  00A8  0188               	clrf	8	;volatile
+   683  00A8  0185               	clrf	5	;volatile
    684  00A9  28AE               	goto	l1086
    685  00AA                     l1084:
    686  00AA  3001               	movlw	1
    687  00AB  00F4               	movwf	??_main
    688  00AC  0874               	movf	??_main,w
-   689  00AD  0788               	addwf	8,f	;volatile
+   689  00AD  0785               	addwf	5,f	;volatile
    690  00AE                     l1086:
    691  00AE  01F7               	clrf	_Boton_0
    692  00AF  289B               	goto	l1078
@@ -715,7 +715,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    701  00B5                     l1090:
    702  00B5  1283               	bcf	3,5	;RP0=0, select bank0
    703  00B6  1303               	bcf	3,6	;RP1=0, select bank0
-   704  00B7  0808               	movf	8,w	;volatile
+   704  00B7  0805               	movf	5,w	;volatile
    705  00B8  1D03               	btfss	3,2
    706  00B9  28BB               	goto	u291
    707  00BA  28BC               	goto	u290
@@ -724,11 +724,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    710  00BC                     u290:
    711  00BC                     l1092:
    712  00BC  300F               	movlw	15
-   713  00BD  0088               	movwf	8	;volatile
+   713  00BD  0085               	movwf	5	;volatile
    714  00BE  28C1               	goto	l1096
    715  00BF                     l1094:
    716  00BF  3001               	movlw	1
-   717  00C0  0288               	subwf	8,f	;volatile
+   717  00C0  0285               	subwf	5,f	;volatile
    718  00C1                     l1096:
    719  00C1  01F6               	clrf	_Boton_1
    720  00C2  289B               	goto	l1078
@@ -739,7 +739,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    725  00F6                     __ptext1:	
    726 ;; *************** function _config *****************
    727 ;; Defined at:
-   728 ;;		line 142 in file "Lab_04_Esclavo_2.c"
+   728 ;;		line 143 in file "Lab_04_Esclavo_2.c"
    729 ;; Parameters:    Size  Location     Type
    730 ;;		None
    731 ;; Auto vars:     Size  Location     Type
@@ -1014,7 +1014,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1000  0016                     __ptext5:	
   1001 ;; *************** function _isr *****************
   1002 ;; Defined at:
-  1003 ;;		line 61 in file "Lab_04_Esclavo_2.c"
+  1003 ;;		line 62 in file "Lab_04_Esclavo_2.c"
   1004 ;; Parameters:    Size  Location     Type
   1005 ;;		None
   1006 ;; Auto vars:     Size  Location     Type
@@ -1046,7 +1046,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1032  0016                     _isr:
   1033  0016                     i1l1032:
   1034                           
-  1035                           ;Lab_04_Esclavo_2.c: 63: void main(void) {
+  1035                           ;Lab_04_Esclavo_2.c: 64: 
   1036  0016  1283               	bcf	3,5	;RP0=0, select bank0
   1037  0017  1303               	bcf	3,6	;RP1=0, select bank0
   1038  0018  1D8C               	btfss	12,3	;volatile
@@ -1057,10 +1057,10 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1043  001C                     u14_20:
   1044  001C                     i1l1034:
   1045                           
-  1046                           ;Lab_04_Esclavo_2.c: 65: 
+  1046                           ;Lab_04_Esclavo_2.c: 66:     config();
   1047  001C  1214               	bcf	20,4	;volatile
   1048                           
-  1049                           ;Lab_04_Esclavo_2.c: 67: 
+  1049                           ;Lab_04_Esclavo_2.c: 68:     Config_Oscilador();
   1050  001D  1B14               	btfsc	20,6	;volatile
   1051  001E  2820               	goto	u15_21
   1052  001F  2821               	goto	u15_20
@@ -1076,26 +1076,26 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1062  0025                     u16_20:
   1063  0025                     i1l1038:
   1064                           
-  1065                           ;Lab_04_Esclavo_2.c: 68:     Config_Oscilador();
+  1065                           ;Lab_04_Esclavo_2.c: 69:     Config_PORTB();
   1066  0025  0813               	movf	19,w	;volatile
   1067  0026  00F0               	movwf	??_isr
   1068  0027  0870               	movf	??_isr,w
   1069  0028  00F5               	movwf	_z
   1070  0029                     i1l1040:
   1071                           
-  1072                           ;Lab_04_Esclavo_2.c: 69:     Config_PORTB();
+  1072                           ;Lab_04_Esclavo_2.c: 70:     I2C_Slave_Init(0x60);
   1073  0029  1314               	bcf	20,6	;volatile
   1074  002A                     i1l1042:
   1075                           
-  1076                           ;Lab_04_Esclavo_2.c: 70:     I2C_Slave_Init(0x60);
+  1076                           ;Lab_04_Esclavo_2.c: 71: 
   1077  002A  1394               	bcf	20,7	;volatile
   1078  002B                     i1l1044:
   1079                           
-  1080                           ;Lab_04_Esclavo_2.c: 71: 
+  1080                           ;Lab_04_Esclavo_2.c: 72: 
   1081  002B  1614               	bsf	20,4	;volatile
   1082  002C                     i1l1046:
   1083                           
-  1084                           ;Lab_04_Esclavo_2.c: 74: 
+  1084                           ;Lab_04_Esclavo_2.c: 75:     while(1){
   1085  002C  1683               	bsf	3,5	;RP0=1, select bank1
   1086  002D  1303               	bcf	3,6	;RP1=0, select bank1
   1087  002E  1A94               	btfsc	20,5	;volatile
@@ -1113,7 +1113,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1099  0036                     u18_20:
   1100  0036                     i1l1050:
   1101                           
-  1102                           ;Lab_04_Esclavo_2.c: 76:         if (Boton_0 == 1){
+  1102                           ;Lab_04_Esclavo_2.c: 77:             if(PORTA == 0b00001111){
   1103  0036  1283               	bcf	3,5	;RP0=0, select bank0
   1104  0037  1303               	bcf	3,6	;RP1=0, select bank0
   1105  0038  0813               	movf	19,w	;volatile
@@ -1122,14 +1122,14 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1108  003B  00F5               	movwf	_z
   1109  003C                     i1l1052:
   1110                           
-  1111                           ;Lab_04_Esclavo_2.c: 78:                 PORTD = 0x00;
+  1111                           ;Lab_04_Esclavo_2.c: 79:             }else{
   1112  003C  118C               	bcf	12,3	;volatile
   1113  003D                     i1l1054:
   1114                           
-  1115                           ;Lab_04_Esclavo_2.c: 79:             }else{
+  1115                           ;Lab_04_Esclavo_2.c: 80:                 PORTA++;
   1116  003D  1614               	bsf	20,4	;volatile
   1117  003E                     i1l60:	
-  1118                           ;Lab_04_Esclavo_2.c: 80:                 PORTD++;
+  1118                           ;Lab_04_Esclavo_2.c: 81:             }
   1119                           
   1120  003E  1683               	bsf	3,5	;RP0=1, select bank1
   1121  003F  1303               	bcf	3,6	;RP1=0, select bank1
@@ -1141,7 +1141,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1127  0044                     u19_20:
   1128  0044                     i1l1056:
   1129                           
-  1130                           ;Lab_04_Esclavo_2.c: 83:         }else if(Boton_1 == 1){
+  1130                           ;Lab_04_Esclavo_2.c: 84:             if(PORTA == 0x00){
   1131  0044  30A6               	movlw	166
   1132  0045  00F0               	movwf	??_isr
   1133  0046                     u36_27:
@@ -1149,7 +1149,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1135  0047  2846               	goto	u36_27
   1136  0048  0000               	nop
   1137                           
-  1138                           ;Lab_04_Esclavo_2.c: 85:                 PORTD = 0b00001111;
+  1138                           ;Lab_04_Esclavo_2.c: 86:             }else{
   1139  0049  286B               	goto	i1l63
   1140  004A                     i1l59:
   1141  004A  1A94               	btfsc	20,5	;volatile
@@ -1167,7 +1167,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1153  0052                     u21_20:
   1154  0052                     i1l1060:
   1155                           
-  1156                           ;Lab_04_Esclavo_2.c: 86:             }else{
+  1156                           ;Lab_04_Esclavo_2.c: 87:                 PORTA--;
   1157  0052  1283               	bcf	3,5	;RP0=0, select bank0
   1158  0053  1303               	bcf	3,6	;RP1=0, select bank0
   1159  0054  0813               	movf	19,w	;volatile
@@ -1176,22 +1176,22 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1162  0057  00F5               	movwf	_z
   1163  0058                     i1l1062:
   1164                           
-  1165                           ;Lab_04_Esclavo_2.c: 87:                 PORTD--;
+  1165                           ;Lab_04_Esclavo_2.c: 88:             }
   1166  0058  1683               	bsf	3,5	;RP0=1, select bank1
   1167  0059  1303               	bcf	3,6	;RP1=0, select bank1
   1168  005A  1014               	bcf	20,0	;volatile
   1169                           
-  1170                           ;Lab_04_Esclavo_2.c: 89:             Boton_1 = 0;
+  1170                           ;Lab_04_Esclavo_2.c: 90:         }
   1171  005B  1283               	bcf	3,5	;RP0=0, select bank0
   1172  005C  1303               	bcf	3,6	;RP1=0, select bank0
-  1173  005D  0808               	movf	8,w	;volatile
+  1173  005D  0805               	movf	5,w	;volatile
   1174  005E  0093               	movwf	19	;volatile
   1175  005F                     i1l1064:
   1176                           
-  1177                           ;Lab_04_Esclavo_2.c: 90:         }
+  1177                           ;Lab_04_Esclavo_2.c: 91: 
   1178  005F  1614               	bsf	20,4	;volatile
   1179                           
-  1180                           ;Lab_04_Esclavo_2.c: 91: 
+  1180                           ;Lab_04_Esclavo_2.c: 92:     }
   1181  0060  30A6               	movlw	166
   1182  0061  00F0               	movwf	??_isr
   1183  0062                     u37_27:
@@ -1199,7 +1199,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1185  0063  2862               	goto	u37_27
   1186  0064  0000               	nop
   1187  0065                     i1l65:	
-  1188                           ;Lab_04_Esclavo_2.c: 92:     }
+  1188                           ;Lab_04_Esclavo_2.c: 93: }
   1189                           
   1190  0065  1683               	bsf	3,5	;RP0=1, select bank1
   1191  0066  1303               	bcf	3,6	;RP1=0, select bank1
@@ -1211,15 +1211,15 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1197  006B                     u22_20:
   1198  006B                     i1l63:
   1199                           
-  1200                           ;Lab_04_Esclavo_2.c: 95: void config(void){
+  1200                           ;Lab_04_Esclavo_2.c: 96:     TRISA = 0;
   1201  006B  1283               	bcf	3,5	;RP0=0, select bank0
   1202  006C  1303               	bcf	3,6	;RP1=0, select bank0
   1203  006D  118C               	bcf	12,3	;volatile
   1204  006E                     i1l55:	
-  1205                           ;Lab_04_Esclavo_2.c: 96:     TRISA = 0;
+  1205                           ;Lab_04_Esclavo_2.c: 97:     TRISE = 0;
   1206                           
   1207                           
-  1208                           ;Lab_04_Esclavo_2.c: 99: 
+  1208                           ;Lab_04_Esclavo_2.c: 100:     ANSEL = 0;
   1209  006E  1C0B               	btfss	11,0	;volatile
   1210  006F  2871               	goto	u23_21
   1211  0070  2872               	goto	u23_20
@@ -1228,7 +1228,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1214  0072                     u23_20:
   1215  0072                     i1l1066:
   1216                           
-  1217                           ;Lab_04_Esclavo_2.c: 100:     ANSEL = 0;
+  1217                           ;Lab_04_Esclavo_2.c: 101:     ANSELH = 0;
   1218  0072  1806               	btfsc	6,0	;volatile
   1219  0073  2875               	goto	u24_21
   1220  0074  2876               	goto	u24_20
@@ -1237,14 +1237,14 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1223  0076                     u24_20:
   1224  0076                     i1l1068:
   1225                           
-  1226                           ;Lab_04_Esclavo_2.c: 101:     ANSELH = 0;
+  1226                           ;Lab_04_Esclavo_2.c: 102: 
   1227  0076  01F7               	clrf	_Boton_0
   1228  0077  0AF7               	incf	_Boton_0,f
   1229  0078                     i1l69:	
-  1230                           ;Lab_04_Esclavo_2.c: 102: 
+  1230                           ;Lab_04_Esclavo_2.c: 103: 
   1231                           
   1232                           
-  1233                           ;Lab_04_Esclavo_2.c: 103: 
+  1233                           ;Lab_04_Esclavo_2.c: 104:     PORTA = 0;
   1234  0078  1886               	btfsc	6,1	;volatile
   1235  0079  287B               	goto	u25_21
   1236  007A  287C               	goto	u25_20
@@ -1253,14 +1253,14 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1239  007C                     u25_20:
   1240  007C                     i1l1070:
   1241                           
-  1242                           ;Lab_04_Esclavo_2.c: 104:     PORTA = 0;
+  1242                           ;Lab_04_Esclavo_2.c: 105: 
   1243  007C  01F6               	clrf	_Boton_1
   1244  007D  0AF6               	incf	_Boton_1,f
   1245  007E                     i1l70:	
-  1246                           ;Lab_04_Esclavo_2.c: 105: 
+  1246                           ;Lab_04_Esclavo_2.c: 106:     PORTC = 0;
   1247                           
   1248                           
-  1249                           ;Lab_04_Esclavo_2.c: 106:     PORTC = 0;
+  1249                           ;Lab_04_Esclavo_2.c: 107:     PORTD = 0;
   1250  007E  100B               	bcf	11,0	;volatile
   1251  007F                     i1l71:
   1252  007F  0872               	movf	??_isr+2,w
@@ -1455,7 +1455,7 @@ DATA                 0      0       8      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Tue Aug 10 01:17:50 2021
+Symbol Table                                                                                   Tue Aug 10 19:36:18 2021
 
                         _z 0075                          pc 0002                _SSPSTATbits 0094  
                        _BF 04A0                         l89 0105                         fsr 0004  

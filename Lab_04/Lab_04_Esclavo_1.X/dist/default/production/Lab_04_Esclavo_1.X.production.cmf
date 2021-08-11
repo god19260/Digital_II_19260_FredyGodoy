@@ -26,7 +26,7 @@ intentry CODE 0 4 4 8 2
 strings STRING 0 100 100 16 2
 bssCOMMON COMMON 1 76 76 2 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
+$C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -81,13 +81,13 @@ STRING 132-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab_04_Esclavo_1.X.production.o
-F cinit CODE >1062:C:\Users\fredy\AppData\Local\Temp\xcAsmfk.s
-F cinit CODE >1065:C:\Users\fredy\AppData\Local\Temp\xcAsmfk.s
-F cinit CODE >1079:C:\Users\fredy\AppData\Local\Temp\xcAsmfk.s
-10 cinit CODE >1080:C:\Users\fredy\AppData\Local\Temp\xcAsmfk.s
-11 cinit CODE >1086:C:\Users\fredy\AppData\Local\Temp\xcAsmfk.s
-11 cinit CODE >1088:C:\Users\fredy\AppData\Local\Temp\xcAsmfk.s
-12 cinit CODE >1089:C:\Users\fredy\AppData\Local\Temp\xcAsmfk.s
+F cinit CODE >1062:C:\Users\fredy\AppData\Local\Temp\xcAsh9o.s
+F cinit CODE >1065:C:\Users\fredy\AppData\Local\Temp\xcAsh9o.s
+F cinit CODE >1079:C:\Users\fredy\AppData\Local\Temp\xcAsh9o.s
+10 cinit CODE >1080:C:\Users\fredy\AppData\Local\Temp\xcAsh9o.s
+11 cinit CODE >1086:C:\Users\fredy\AppData\Local\Temp\xcAsh9o.s
+11 cinit CODE >1088:C:\Users\fredy\AppData\Local\Temp\xcAsh9o.s
+12 cinit CODE >1089:C:\Users\fredy\AppData\Local\Temp\xcAsh9o.s
 4 intentry CODE >61:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_04\Lab_04_Esclavo_1.X\Lab_04_Esclavo_1.c
 A5 text6 CODE >86:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy/LIB/LIB.X/LIB.c
 A6 text6 CODE >87:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy/LIB/LIB.X/LIB.c
@@ -209,21 +209,21 @@ _T0CS 40D 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
+___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
 _main 1BC 0 CODE 0 maintext dist/default/production\Lab_04_Esclavo_1.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
-start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
+start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _Config_Oscilador 254 0 CODE 0 text3 dist/default/production\Lab_04_Esclavo_1.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _Config_ADC 104 0 CODE 0 text4 dist/default/production\Lab_04_Esclavo_1.X.production.o
@@ -235,8 +235,8 @@ _SSPCONbits 14 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 __end_of_config 254 0 CODE 0 text1 dist/default/production\Lab_04_Esclavo_1.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
-___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
+___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
+___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
 __end_of_Config_ADC 14A 0 CODE 0 text4 dist/default/production\Lab_04_Esclavo_1.X.production.o
 __end_of_Config_Oscilador 264 0 CODE 0 text3 dist/default/production\Lab_04_Esclavo_1.X.production.o
 _I2C_Slave_Init 184 0 CODE 0 text2 dist/default/production\Lab_04_Esclavo_1.X.production.o
@@ -252,7 +252,7 @@ _SSPCON 14 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _TRISC4 43C 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
+___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -306,7 +306,7 @@ _config 22C 0 CODE 0 text1 dist/default/production\Lab_04_Esclavo_1.X.production
 __end_of_isr 104 0 CODE 0 text5 dist/default/production\Lab_04_Esclavo_1.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 200 0 STRING 0 strings dist/default/production\Lab_04_Esclavo_1.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAsmfk.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAsh9o.o
 Valor_ADC@canal 71 0 COMMON 1 cstackCOMMON dist/default/production\Lab_04_Esclavo_1.X.production.o
 __size_of_Config_ADC 0 0 ABS 0 - dist/default/production\Lab_04_Esclavo_1.X.production.o
 Valor_ADC@temp 72 0 COMMON 1 cstackCOMMON dist/default/production\Lab_04_Esclavo_1.X.production.o

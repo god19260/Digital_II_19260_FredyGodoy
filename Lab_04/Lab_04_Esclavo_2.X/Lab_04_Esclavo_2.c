@@ -87,7 +87,7 @@ void __interrupt() isr (void){
             z = SSPBUF;
             BF = 0;
             // SSPBUF
-            SSPBUF = PORTD;
+            SSPBUF = PORTA;
             SSPCONbits.CKP = 1;
             __delay_us(250);
             while(SSPSTATbits.BF);
@@ -122,17 +122,17 @@ void main(void) {
 //*************************** loop principal ***********************************   
     while(1){      
         if (Boton_0 == 1){
-            if(PORTD == 0b00001111){
-                PORTD = 0x00;
+            if(PORTA == 0b00001111){
+                PORTA = 0x00;
             }else{
-                PORTD++;
+                PORTA++;
             }
             Boton_0 = 0;
         }else if(Boton_1 == 1){
-            if(PORTD == 0x00){
-                PORTD = 0b00001111;
+            if(PORTA == 0x00){
+                PORTA = 0b00001111;
             }else{
-                PORTD--;    
+                PORTA--;    
             }
             Boton_1 = 0;
         }

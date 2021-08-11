@@ -2700,6 +2700,7 @@ void I2C_Slave_Init(uint8_t address);
 
 
 
+
 #pragma config FOSC = INTRC_NOCLKOUT
 
 
@@ -2770,7 +2771,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
             z = SSPBUF;
             BF = 0;
 
-            SSPBUF = PORTD;
+            SSPBUF = PORTA;
             SSPCONbits.CKP = 1;
             _delay((unsigned long)((250)*(8000000/4000000.0)));
             while(SSPSTATbits.BF);
@@ -2805,17 +2806,17 @@ void main(void) {
 
     while(1){
         if (Boton_0 == 1){
-            if(PORTD == 0b00001111){
-                PORTD = 0x00;
+            if(PORTA == 0b00001111){
+                PORTA = 0x00;
             }else{
-                PORTD++;
+                PORTA++;
             }
             Boton_0 = 0;
         }else if(Boton_1 == 1){
-            if(PORTD == 0x00){
-                PORTD = 0b00001111;
+            if(PORTA == 0x00){
+                PORTA = 0b00001111;
             }else{
-                PORTD--;
+                PORTA--;
             }
             Boton_1 = 0;
         }

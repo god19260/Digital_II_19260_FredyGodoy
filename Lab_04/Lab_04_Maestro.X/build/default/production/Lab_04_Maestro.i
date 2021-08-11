@@ -2749,14 +2749,15 @@ void tabla_num(int numero);
 
 
 char V_ADC_0 = 0;
+char Cont_Slave_II;
 char temp;
 
 void config(void);
 
 
-void __attribute__((picinterrupt(("")))) isr (void){
 
-}
+
+
 
 void main(void) {
 
@@ -2769,7 +2770,6 @@ void main(void) {
 
 
 
-
     while(1){
 
         I2C_Master_Start();
@@ -2777,13 +2777,45 @@ void main(void) {
         PORTD = I2C_Master_Read(0);
         I2C_Master_Stop();
         _delay((unsigned long)((200)*(8000000/4000.0)));
-# 102 "Lab_04_Maestro.c"
+
+
         I2C_Master_Start();
-        I2C_Master_Write(0x61);
+        I2C_Master_Write(0x40);
+        I2C_Master_Write(0xF3);
+
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+        I2C_Master_RepeatedStart();
+        I2C_Master_Write(0x41);
+        I2C_Master_RepeatedStart();
+        I2C_Master_Write(0x41);
+        PORTD = I2C_Master_Read(1);
+        PORTB = I2C_Master_Read(1);
         PORTB = I2C_Master_Read(0);
         I2C_Master_Stop();
-        _delay((unsigned long)((800)*(8000000/4000.0)));
-# 120 "Lab_04_Maestro.c"
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x61);
+        Cont_Slave_II = I2C_Master_Read(0);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        PORTB = Cont_Slave_II;
+
+
+
+         Lcd_Set_Cursor(1,1);
+         Write_LCD("S1:   S2:    S3:");
+         Lcd_Set_Cursor(2,1);
+         temp = PORTD;
+         Print_Cont(temp);
+         Lcd_Set_Cursor(2,7);
+         temp = PORTB;
+         Print_Cont(temp);
+         RE2 = ~RE2;
+
+
     }
 }
 
