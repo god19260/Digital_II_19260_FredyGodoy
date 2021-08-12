@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
+$C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -74,14 +74,14 @@ STRING 118-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab_04_Esclavo_2.X.production.o
-F cinit CODE >1069:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
-F cinit CODE >1072:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
-F cinit CODE >1089:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
-10 cinit CODE >1090:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
-11 cinit CODE >1091:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
-12 cinit CODE >1097:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
-12 cinit CODE >1099:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
-13 cinit CODE >1100:C:\Users\fredy\AppData\Local\Temp\xcAsmc8.s
+F cinit CODE >1069:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
+F cinit CODE >1072:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
+F cinit CODE >1089:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
+10 cinit CODE >1090:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
+11 cinit CODE >1091:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
+12 cinit CODE >1097:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
+12 cinit CODE >1099:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
+13 cinit CODE >1100:C:\Users\fredy\AppData\Local\Temp\xcAs2sg.s
 4 intentry CODE >62:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_04\Lab_04_Esclavo_2.X\Lab_04_Esclavo_2.c
 16 text5 CODE >62:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_04\Lab_04_Esclavo_2.X\Lab_04_Esclavo_2.c
 16 text5 CODE >64:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_04\Lab_04_Esclavo_2.X\Lab_04_Esclavo_2.c
@@ -204,21 +204,21 @@ _T0CS 40D 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
+___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
 _main 10C 0 CODE 0 maintext dist/default/production\Lab_04_Esclavo_2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
-start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
+start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 _Config_Oscilador 220 0 CODE 0 text4 dist/default/production\Lab_04_Esclavo_2.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -229,8 +229,8 @@ _SSPCONbits 14 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 __end_of_config 20E 0 CODE 0 text1 dist/default/production\Lab_04_Esclavo_2.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
-___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
+___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
+___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
 __end_of_Config_Oscilador 230 0 CODE 0 text4 dist/default/production\Lab_04_Esclavo_2.X.production.o
 _I2C_Slave_Init 18C 0 CODE 0 text2 dist/default/production\Lab_04_Esclavo_2.X.production.o
 __size_of_Config_Oscilador 0 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
@@ -244,7 +244,7 @@ _SSPCON 14 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 _TRISC4 43C 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
+___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -301,7 +301,7 @@ __size_of_Config_PORTB 0 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.pr
 __end_of_isr 10C 0 CODE 0 text5 dist/default/production\Lab_04_Esclavo_2.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 1C0 0 STRING 0 strings dist/default/production\Lab_04_Esclavo_2.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAsmc8.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs2sg.o
 __end_of_Config_PORTB 220 0 CODE 0 text3 dist/default/production\Lab_04_Esclavo_2.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
 __size_of_config 0 0 ABS 0 - dist/default/production\Lab_04_Esclavo_2.X.production.o
