@@ -2851,6 +2851,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (RCIF == 1){
 
         PORTA = RCREG;
+        RE0 = ~RE0;
 
         RCIF = 0;
     }

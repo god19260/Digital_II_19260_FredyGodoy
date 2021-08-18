@@ -1,12 +1,11 @@
 # Fredy Godoy 19260
 # Laboratorio 4 - Digital II
-
 from Adafruit_IO import Client, Feed
 import serial
 import time
  
 ADAFRUIT_IO_USERNAME = "Fredy_Godoy"
-ADAFRUIT_IO_KEY = "aio_lfok06FVQKaK7ZnhmscVek0WxcwQ"
+ADAFRUIT_IO_KEY = "aio_gazO61lxv1bMAbPqcOPUkIqisoSp"
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 # Claves Feeds
 # Contador_1 Feed - Contador Pic
@@ -26,13 +25,14 @@ while True:
             print(f'Valor Serial: {int(Var)}')
             V_Cont_1 = int(Var)
             aio.send_data(Contador_1.key,V_Cont_1)  # Enviar datos a la variable 1
-            serial_com4.write(2)
             time.sleep(0.2)
             
         else:
             print('No hay conexión')
             aio.send_data(Contador_1.key,V_Cont_1)  # Enviar datos a la variable 1
-    
+    Valor_Cont_2 = aio.receive(Contador_2.key) # Leer datos de la variable
+    Puerto_Pic = int(Valor_Cont_2.value)
+    serial_com4.write([Puerto_Pic])
 
 
 

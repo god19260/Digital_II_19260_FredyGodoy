@@ -35,9 +35,9 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "64 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
 [v _isr isr `II(v  1 e 1 0 ]
-"85
+"86
 [v _main main `(v  1 e 1 0 ]
-"112
+"113
 [v _config config `(v  1 e 1 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -47,7 +47,7 @@
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
-[s S312 . 1 `uc 1 RC0 1 0 :1:0 
+[s S313 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -57,15 +57,15 @@
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S321 . 1 `S312 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES321  1 e 1 @7 ]
+[u S322 . 1 `S313 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES322  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "459
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-[s S234 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S235 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -75,14 +75,14 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "482
-[s S243 . 1 `uc 1 . 1 0 :2:0 
+[s S244 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S248 . 1 `S234 1 . 1 0 `S243 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES248  1 e 1 @11 ]
-[s S272 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S249 . 1 `S235 1 . 1 0 `S244 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES249  1 e 1 @11 ]
+[s S273 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -91,21 +91,21 @@
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S280 . 1 `S272 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES280  1 e 1 @12 ]
+[u S281 . 1 `S273 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES281  1 e 1 @12 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1140
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-[s S153 . 1 `uc 1 ADON 1 0 :1:0 
+[s S154 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1276
-[s S158 . 1 `uc 1 . 1 0 :1:0 
+[s S159 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -114,15 +114,15 @@
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S167 . 1 `uc 1 . 1 0 :1:0 
+[s S168 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S170 . 1 `uc 1 . 1 0 :1:0 
+[s S171 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S173 . 1 `S153 1 . 1 0 `S158 1 . 1 0 `S167 1 . 1 0 `S170 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES173  1 e 1 @31 ]
-[s S96 . 1 `uc 1 PS 1 0 :3:0 
+[u S174 . 1 `S154 1 . 1 0 `S159 1 . 1 0 `S168 1 . 1 0 `S171 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES174  1 e 1 @31 ]
+[s S97 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -130,12 +130,12 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1366
-[s S103 . 1 `uc 1 PS0 1 0 :1:0 
+[s S104 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S107 . 1 `S96 1 . 1 0 `S103 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES107  1 e 1 @129 ]
+[u S108 . 1 `S97 1 . 1 0 `S104 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES108  1 e 1 @129 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
@@ -146,7 +146,7 @@
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S215 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S216 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -155,12 +155,12 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S223 . 1 `S215 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES223  1 e 1 @140 ]
-[s S122 . 1 `uc 1 WPUB 1 0 :8:0 
+[u S224 . 1 `S216 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES224  1 e 1 @140 ]
+[s S123 . 1 `uc 1 WPUB 1 0 :8:0 
 ]
 "2366
-[s S124 . 1 `uc 1 WPUB0 1 0 :1:0 
+[s S125 . 1 `uc 1 WPUB0 1 0 :1:0 
 `uc 1 WPUB1 1 0 :1:1 
 `uc 1 WPUB2 1 0 :1:2 
 `uc 1 WPUB3 1 0 :1:3 
@@ -169,19 +169,19 @@
 `uc 1 WPUB6 1 0 :1:6 
 `uc 1 WPUB7 1 0 :1:7 
 ]
-[u S133 . 1 `S122 1 . 1 0 `S124 1 . 1 0 ]
-[v _WPUBbits WPUBbits `VES133  1 e 1 @149 ]
+[u S134 . 1 `S123 1 . 1 0 `S125 1 . 1 0 ]
+[v _WPUBbits WPUBbits `VES134  1 e 1 @149 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
-[s S199 . 1 `uc 1 . 1 0 :4:0 
+[s S200 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2991
-[u S205 . 1 `S199 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES205  1 e 1 @159 ]
+[u S206 . 1 `S200 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES206  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -220,6 +220,8 @@
 [v _RBIF RBIF `VEb  1 e 0 @88 ]
 "4175
 [v _RCIF RCIF `VEb  1 e 0 @101 ]
+"4205
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
 "4259
 [v _SPEN SPEN `VEb  1 e 0 @199 ]
 "4313
@@ -238,10 +240,10 @@
 [v _Contador Contador `uc  1 e 1 0 ]
 "59
 [v _text text `[16]uc  1 e 16 0 ]
-"85
+"86
 [v _main main `(v  1 e 1 0 ]
 {
-"110
+"111
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -286,10 +288,10 @@
 [v ___lwdiv@dividend dividend `ui  1 p 2 4 ]
 "30
 } 0
-"112 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
+"113 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
 [v _config config `(v  1 e 1 0 ]
 {
-"128
+"129
 } 0
 "160 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy/LIB/LIB.X/LIB.c
 [v _Texto_USART Texto_USART `(v  1 e 1 0 ]
@@ -318,5 +320,5 @@
 "64 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"83
+"84
 } 0

@@ -77,6 +77,7 @@ void __interrupt() isr (void){
     if (RCIF == 1){
         // RCREG (Receptor)
         PORTA = RCREG; // Valor del sensor Adafruit
+        RE0 = ~RE0;
         // TXREG (Transmisor)
         RCIF = 0; 
     } // Fin Interrupci?n USART
