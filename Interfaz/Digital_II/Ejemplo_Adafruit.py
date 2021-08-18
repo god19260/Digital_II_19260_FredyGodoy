@@ -1,7 +1,7 @@
 from Adafruit_IO import Client, Feed
  
 ADAFRUIT_IO_USERNAME = "Fredy_Godoy"
-ADAFRUIT_IO_KEY = "aio_lucj71yKDlH3n2PKryZmmv8BzQO0"
+ADAFRUIT_IO_KEY = "aio_lfok06FVQKaK7ZnhmscVek0WxcwQ"
 
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 

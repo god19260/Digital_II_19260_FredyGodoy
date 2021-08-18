@@ -30,7 +30,7 @@ bssBANK0 BANK0 1 34 34 13 1
 strings STRING 0 217 217 2D 2
 clrtext CODE 0 29A 29A 8 2
 config CONFIG 4 2007 2007 2 2
-$C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
+$C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -80,16 +80,16 @@ STRING 2AA-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab_05.X.production.o
-F cinit CODE >768:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-F cinit CODE >771:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-F cinit CODE >806:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-10 cinit CODE >807:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-11 cinit CODE >808:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-12 cinit CODE >809:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-13 cinit CODE >810:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-18 cinit CODE >816:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-18 cinit CODE >818:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-19 cinit CODE >819:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
+F cinit CODE >768:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+F cinit CODE >771:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+F cinit CODE >806:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+10 cinit CODE >807:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+11 cinit CODE >808:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+12 cinit CODE >809:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+13 cinit CODE >810:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+18 cinit CODE >816:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+18 cinit CODE >818:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+19 cinit CODE >819:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
 4 intentry CODE >64:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
 244 text9 CODE >64:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
 244 text9 CODE >66:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
@@ -247,16 +247,16 @@ EF text1 CODE >553:C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\d
 138 maintext CODE >105:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
 149 maintext CODE >106:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
 152 maintext CODE >107:C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Lab_05\Lab_05.X\Lab_05.c
-29A clrtext CODE >793:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-29A clrtext CODE >794:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-29B clrtext CODE >795:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-29B clrtext CODE >796:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-29C clrtext CODE >797:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-29D clrtext CODE >798:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-29E clrtext CODE >799:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-29F clrtext CODE >800:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-2A0 clrtext CODE >801:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
-2A1 clrtext CODE >802:C:\Users\fredy\AppData\Local\Temp\xcAsgdg.s
+29A clrtext CODE >793:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+29A clrtext CODE >794:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+29B clrtext CODE >795:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+29B clrtext CODE >796:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+29C clrtext CODE >797:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+29D clrtext CODE >798:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+29E clrtext CODE >799:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+29F clrtext CODE >800:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+2A0 clrtext CODE >801:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
+2A1 clrtext CODE >802:C:\Users\fredy\AppData\Local\Temp\xcAs9u8.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -290,23 +290,23 @@ _T0CS 40D 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 _SYNC 4C4 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 _TXEN 4C5 0 ABS 0 - dist/default/production\Lab_05.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
+___sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
 _main 20C 0 CODE 0 maintext dist/default/production\Lab_05.X.production.o
 _text 37 0 BANK0 1 bssBANK0 dist/default/production\Lab_05.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab_05.X.production.o
-start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
+start 18 0 CODE 0 init C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 __size_of___lwdiv 0 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 __size_of___lwmod 0 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 _Config_Oscilador 544 0 CODE 0 text8 dist/default/production\Lab_05.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 Texto_USART@texto 72 0 COMMON 1 cstackCOMMON dist/default/production\Lab_05.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -321,8 +321,8 @@ __end_of___lwdiv 352 0 CODE 0 text3 dist/default/production\Lab_05.X.production.
 __end_of___lwmod 3CA 0 CODE 0 text2 dist/default/production\Lab_05.X.production.o
 __end_of_config 51A 0 CODE 0 text4 dist/default/production\Lab_05.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\Lab_05.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
-___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
+___stackhi 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
+___stacklo 0 0 ABS 0 - C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
 _dpowers 44E 0 STRING 0 strings dist/default/production\Lab_05.X.production.o
 __end_of_Config_Oscilador 554 0 CODE 0 text8 dist/default/production\Lab_05.X.production.o
 ___lwdiv@quotient 77 0 COMMON 1 cstackCOMMON dist/default/production\Lab_05.X.production.o
@@ -332,7 +332,7 @@ _WPUBbits 95 0 ABS 0 - dist/default/production\Lab_05.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Lab_05.X.production.o
 clear_ram0 534 0 CODE 0 clrtext dist/default/production\Lab_05.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Lab_05.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
+___int_sp 0 0 STACK 2 stack C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -395,7 +395,7 @@ sprintf@val 2D 0 BANK0 1 cstackBANK0 dist/default/production\Lab_05.X.production
 __end_of_isr 4CE 0 CODE 0 text9 dist/default/production\Lab_05.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 42E 0 STRING 0 strings dist/default/production\Lab_05.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAsgdg.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\fredy\AppData\Local\Temp\xcAs9u8.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __end_of_Config_PORTB 534 0 CODE 0 text7 dist/default/production\Lab_05.X.production.o
 __end_of_Config_USART 4F8 0 CODE 0 text6 dist/default/production\Lab_05.X.production.o
