@@ -34,7 +34,21 @@ void Config_PORTB(void){
     // Activación Interrup on change
     IOCB0 = 1;
     IOCB1 = 1;
+    RB0 = 0; // Instruccion para primer funcionamiento 
+    RB1 = 0;
     RBIE = 1;
+    /* Ejemplo de la interrupción puerto B
+    // Interrupcion del PORTB
+    if (RBIF == 1){
+        if(RB0 == 0){
+            Boton_0 = 1;
+        }
+        if(RB1 == 0){
+            Boton_1 = 1;
+        }
+        RBIF = 0; // Apagar bandera del puerto B
+    }// Fin de interrupción del PORTB  
+    */
 }
 void Config_ADC(void){
     ADCON0bits.ADCS0 = 0;
@@ -63,6 +77,15 @@ void Config_USART(void){
     PIE1bits.RCIE = 1;
     PIR1bits.RCIF = 0;
     SPBRG=12;  // baudrate 9600 para 8MHz
+    TRISC = 0b10000000;
+    /* Ejemplo Interrupción USART
+    // Interrupcion USART
+    if (RCIF == 1){
+        // RCREG (Receptor)
+        // TXREG (Transmisor)
+        RCIF = 0; 
+    } // Fin Interrupción USART
+    */
 }
 
 void Config_Puertos(void){
@@ -142,6 +165,8 @@ void Texto_USART(char texto[]){
         i++;
         __delay_ms(5);
     }
+    //TXREG = '\r';  // Proteous
+    TXREG = '\n';  // FTDI
 }
 //------------------------------------------------------------------------------
 //--------------- Funciones especificas ----------------------------------------

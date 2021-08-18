@@ -3,10 +3,11 @@ import tkinter as tk
 import serial
 import time
 
+
 serial_com4 = serial.Serial('COM4',baudrate = 9600, timeout = 1) # port = 'COM4' S
 
-#--------------------------- Funciones -----------------------------------
-#-------------------------------------------------------------------------
+#--------------------------- Funciones --------------------------------------------
+#----------------------------------------------------------------------------------
 def inc():
     #ser.write(root.contador)
     serial_com4.write(b'Hola a todos')      
@@ -15,7 +16,7 @@ def inc():
 
 
     
-#--------------------- Configuracion ventana -----------------------------
+#--------------------- Configuracion ventana -------------------------------------
 root =Tk()
 root.title('Prueba')
 
