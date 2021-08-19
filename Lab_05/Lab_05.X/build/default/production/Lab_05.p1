@@ -345,16 +345,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Lab_05.c: 56:         }
 [v _Boton_0 `uc ~T0 @X0 1 e ]
 "57
-[; ;Lab_05.c: 57:         sprintf(text,"%d",Contador);
+[; ;Lab_05.c: 57: 
 [v _Boton_1 `uc ~T0 @X0 1 e ]
 "58
-[; ;Lab_05.c: 58:         Texto_USART(text);
+[; ;Lab_05.c: 58:         sprintf(text,"%d",Contador);
 [v _Contador `uc ~T0 @X0 1 e ]
 [i _Contador
 -> -> 0 `i `uc
 ]
 "59
-[; ;Lab_05.c: 59:         _delay((unsigned long)((200)*(8000000/4000.0)));
+[; ;Lab_05.c: 59:         Texto_USART(text);
 [v _text `uc ~T0 @X0 -> 16 `i e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
 "64
@@ -456,12 +456,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 150 ]
 [e :U 149 ]
-"106
-[e ( _sprintf (1 , (. , &U _text :s 1C -> _Contador `i ]
 "107
-[e ( _Texto_USART (1 &U _text ]
+[e ( _sprintf (1 , (. , &U _text :s 1C -> _Contador `i ]
 "108
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( _Texto_USART (1 &U _text ]
+"109
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "110
 }
 [e :U 145 ]

@@ -97,16 +97,16 @@ void main(void) {
         if (Boton_0 == 1 && RB0 == 1){
             Contador++;
             Boton_0 = 0;
-            Boton_1 = 0;
+            Boton_1 = 0;            
         }else if(Boton_1 == 1 && RB1 == 1){
             Contador--;
             Boton_0 = 0;
             Boton_1 = 0;
         }
+        
         sprintf(text,"%d",Contador);
         Texto_USART(text);
-        __delay_ms(200);
-         
+        __delay_ms(1000);
     } // fin loop principal while 
 } // fin main
 

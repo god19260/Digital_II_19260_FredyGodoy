@@ -2877,10 +2877,10 @@ void main(void) {
             Boton_0 = 0;
             Boton_1 = 0;
         }
+
         sprintf(text,"%d",Contador);
         Texto_USART(text);
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-
+        _delay((unsigned long)((1000)*(8000000/4000.0)));
     }
 }
 
