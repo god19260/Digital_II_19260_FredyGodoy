@@ -59,7 +59,7 @@ void Write_LCD(char *a) {
     char i;
     for (i = 0; a[i] != '\0'; i++){
         Char_LCD(a[i]);
-        
+        __delay_us(10);
     }
             
 }

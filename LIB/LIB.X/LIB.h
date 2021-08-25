@@ -13,7 +13,7 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 // Configuraciones de modulos
 void Config_Oscilador(void);
-void Config_TMR0(void);
+char Config_TMR0(void);
 void Config_PORTB(void);
 void Config_ADC(void);
 void Config_USART(void);
@@ -29,5 +29,9 @@ void SPI(volatile char *v1,volatile char *v2);
 void USART_Num(char valor);
 void texto_Programa(char v1, char v2);
 void Interfaz(char v1, char v2);
+
+// Funciones de sensores
+int Ultrasonico(void);
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

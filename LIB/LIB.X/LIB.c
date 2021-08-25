@@ -11,7 +11,8 @@ void Config_Oscilador(void){
     IRCF2 = 1;       // 8 Mhz   
     INTCON = 0b11101000;    
 }
-void Config_TMR0(void){
+char Config_TMR0(void){
+    // Interrupcion cada 20ms: tmr0 100, prescaler 256, 8MHz de oscilador
     // 20 ms de interrupcion
     // Configurar Timer0
     char valor_tmr0;
@@ -23,6 +24,7 @@ void Config_TMR0(void){
     INTCON = 0b10101000;
     valor_tmr0 = 100;
     TMR0 = valor_tmr0;
+    return valor_tmr0;
     
 }
 void Config_PORTB(void){
@@ -165,7 +167,7 @@ void Texto_USART(char texto[]){
         i++;
         __delay_ms(5);
     }
-    //TXREG = '\r';  // Proteous
+    TXREG = '\r';  // Proteous
     TXREG = '\n';  // FTDI
 }
 //------------------------------------------------------------------------------
@@ -211,4 +213,25 @@ void texto_Programa(char v1, char v2){
 void Interfaz(char v1, char v2){
     USART_Num(v1);
     USART_Num(v2);
+}
+//------------------------------------------------------------------------------
+//--------------- Funciones de sensores ----------------------------------------
+int Ultrasonico(void){
+    // Trigger RA1
+    // Echo RD0
+    unsigned char cont;
+    int tiempo;
+    int dist;
+    cont = 0;
+    RA1 = 1;
+    __delay_us(10);
+    RA1 = 0;
+    while(!RD0){} // Espera a que la señal sea 1 
+    while(RD0){   // Espera a que la señal sea 0
+        cont++;
+    }
+    tiempo = 25*cont; // Tiempo en microsegundos
+    dist = (tiempo/29)/2;
+    return dist;
+    
 }
