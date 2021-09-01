@@ -1075,8 +1075,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 174 ]
 }
 "219
-[; ;../../LIB/LIB.X/LIB.c: 219: int Ultrasonico(void){
-[v _Ultrasonico `(i ~T0 @X0 1 ef ]
+[; ;../../LIB/LIB.X/LIB.c: 219: char Ultrasonico(void){
+[v _Ultrasonico `(uc ~T0 @X0 1 ef ]
 {
 [e :U _Ultrasonico ]
 [f ]
@@ -1084,11 +1084,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../../LIB/LIB.X/LIB.c: 222:     unsigned char cont;
 [v _cont `uc ~T0 @X0 1 a ]
 "223
-[; ;../../LIB/LIB.X/LIB.c: 223:     int tiempo;
-[v _tiempo `i ~T0 @X0 1 a ]
+[; ;../../LIB/LIB.X/LIB.c: 223:     unsigned int tiempo;
+[v _tiempo `ui ~T0 @X0 1 a ]
 "224
-[; ;../../LIB/LIB.X/LIB.c: 224:     int dist;
-[v _dist `i ~T0 @X0 1 a ]
+[; ;../../LIB/LIB.X/LIB.c: 224:     unsigned int dist;
+[v _dist `ui ~T0 @X0 1 a ]
 "225
 [; ;../../LIB/LIB.X/LIB.c: 225:     cont = 0;
 [e = _cont -> -> 0 `i `uc ]
@@ -1127,14 +1127,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ _RD0 180  ]
 [e :U 181 ]
 "233
-[; ;../../LIB/LIB.X/LIB.c: 233:     tiempo = 25*cont;
-[e = _tiempo * -> 25 `i -> _cont `i ]
+[; ;../../LIB/LIB.X/LIB.c: 233:     tiempo = 27*cont;
+[e = _tiempo -> * -> 27 `i -> _cont `i `ui ]
 "234
 [; ;../../LIB/LIB.X/LIB.c: 234:     dist = (tiempo/29)/2;
-[e = _dist / / _tiempo -> 29 `i -> 2 `i ]
+[e = _dist / / _tiempo -> -> 29 `i `ui -> -> 2 `i `ui ]
 "235
 [; ;../../LIB/LIB.X/LIB.c: 235:     return dist;
-[e ) _dist ]
+[e ) -> _dist `uc ]
 [e $UE 175  ]
 "237
 [; ;../../LIB/LIB.X/LIB.c: 237: }

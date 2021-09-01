@@ -55,6 +55,7 @@
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
 char text[16];
+char temp;
 //--------------------- Prototipo función configuración ------------------------
 void config(void);
 //------------------------------------------------------------------------------
@@ -76,6 +77,7 @@ void main(void) {
         // -------- LCD ---------
         Lcd_Set_Cursor(1,1);
         Write_LCD("Hola Mundo");
+        RD1 = ~RD1;
         __delay_ms(200);
     } // fin loop principal while 
 } // fin main

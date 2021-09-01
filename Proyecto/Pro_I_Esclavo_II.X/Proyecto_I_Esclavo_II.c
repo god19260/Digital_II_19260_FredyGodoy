@@ -56,7 +56,7 @@
 //********************* Declaraciones de variables *****************************
 char text[16];
 unsigned char CNY70 = 0;
-unsigned char Distancia;
+char Distancia;
 //--------------------- Prototipo función configuración ------------------------
 void config(void);
 //------------------------------------------------------------------------------

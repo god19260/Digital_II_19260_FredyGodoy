@@ -232,6 +232,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17
 [; ;../../LIB/LIB.X/SPI.h: 17: char spiRead();
 [v _spiRead `(uc ~T0 @X0 0 e? ]
+"4082 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4082: extern volatile __bit RA1 __attribute__((address(0x29)));
+[v _RA1 `Vb ~T0 @X0 0 e@41 ]
+"4181
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4181: extern volatile __bit RD0 __attribute__((address(0x40)));
+[v _RD0 `Vb ~T0 @X0 0 e@64 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -935,6 +941,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../../LIB/LIB.X/LIB.c: 165:     while(texto[i] != '\0'){
 [e $ != -> *U + _texto * -> _i `ux -> -> # *U _texto `ui `ux `ui -> 0 `ui 168  ]
 [e :U 169 ]
+"170
+[; ;../../LIB/LIB.X/LIB.c: 170:     TXREG = '\r';
+[e = _TXREG -> -> 13 `ui `uc ]
 "171
 [; ;../../LIB/LIB.X/LIB.c: 171:     TXREG = '\n';
 [e = _TXREG -> -> 10 `ui `uc ]
@@ -1064,6 +1073,72 @@ Version 4.0 HI-TECH Software Intermediate Code
 "216
 [; ;../../LIB/LIB.X/LIB.c: 216: }
 [e :UE 174 ]
+}
+"219
+[; ;../../LIB/LIB.X/LIB.c: 219: char Ultrasonico(void){
+[v _Ultrasonico `(uc ~T0 @X0 1 ef ]
+{
+[e :U _Ultrasonico ]
+[f ]
+"222
+[; ;../../LIB/LIB.X/LIB.c: 222:     unsigned char cont;
+[v _cont `uc ~T0 @X0 1 a ]
+"223
+[; ;../../LIB/LIB.X/LIB.c: 223:     unsigned int tiempo;
+[v _tiempo `ui ~T0 @X0 1 a ]
+"224
+[; ;../../LIB/LIB.X/LIB.c: 224:     unsigned int dist;
+[v _dist `ui ~T0 @X0 1 a ]
+"225
+[; ;../../LIB/LIB.X/LIB.c: 225:     cont = 0;
+[e = _cont -> -> 0 `i `uc ]
+"226
+[; ;../../LIB/LIB.X/LIB.c: 226:     RA1 = 1;
+[e = _RA1 -> -> 1 `i `b ]
+"227
+[; ;../../LIB/LIB.X/LIB.c: 227:     _delay((unsigned long)((10)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"228
+[; ;../../LIB/LIB.X/LIB.c: 228:     RA1 = 0;
+[e = _RA1 -> -> 0 `i `b ]
+"229
+[; ;../../LIB/LIB.X/LIB.c: 229:     while(!RD0){}
+[e $U 176  ]
+[e :U 177 ]
+{
+}
+[e :U 176 ]
+[e $ ! _RD0 177  ]
+[e :U 178 ]
+"230
+[; ;../../LIB/LIB.X/LIB.c: 230:     while(RD0){
+[e $U 179  ]
+[e :U 180 ]
+{
+"231
+[; ;../../LIB/LIB.X/LIB.c: 231:         cont++;
+[e ++ _cont -> -> 1 `i `uc ]
+"232
+[; ;../../LIB/LIB.X/LIB.c: 232:     }
+}
+[e :U 179 ]
+"230
+[; ;../../LIB/LIB.X/LIB.c: 230:     while(RD0){
+[e $ _RD0 180  ]
+[e :U 181 ]
+"233
+[; ;../../LIB/LIB.X/LIB.c: 233:     tiempo = 27*cont;
+[e = _tiempo -> * -> 27 `i -> _cont `i `ui ]
+"234
+[; ;../../LIB/LIB.X/LIB.c: 234:     dist = (tiempo/29)/2;
+[e = _dist / / _tiempo -> -> 29 `i `ui -> -> 2 `i `ui ]
+"235
+[; ;../../LIB/LIB.X/LIB.c: 235:     return dist;
+[e ) -> _dist `uc ]
+[e $UE 175  ]
+"237
+[; ;../../LIB/LIB.X/LIB.c: 237: }
+[e :UE 175 ]
 }
 [a 2C 80 79 84 32 50 58 32 0 ]
 [a 1C 80 79 84 32 49 58 32 0 ]

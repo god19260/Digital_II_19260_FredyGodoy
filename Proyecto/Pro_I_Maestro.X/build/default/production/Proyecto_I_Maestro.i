@@ -2510,6 +2510,9 @@ void SPI(volatile char *v1,volatile char *v2);
 void USART_Num(char valor);
 void texto_Programa(char v1, char v2);
 void Interfaz(char v1, char v2);
+
+
+char Ultrasonico(void);
 # 12 "Proyecto_I_Maestro.c" 2
 
 # 1 "./../../LIB/LIB.X/LCD.h" 1
@@ -2802,6 +2805,7 @@ extern int printf(const char *, ...);
 
 
 char text[16];
+char temp;
 
 void config(void);
 
@@ -2823,6 +2827,7 @@ void main(void) {
 
         Lcd_Set_Cursor(1,1);
         Write_LCD("Hola Mundo");
+        RD1 = ~RD1;
         _delay((unsigned long)((200)*(8000000/4000.0)));
     }
 }

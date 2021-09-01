@@ -31,7 +31,7 @@ void texto_Programa(char v1, char v2);
 void Interfaz(char v1, char v2);
 
 // Funciones de sensores
-int Ultrasonico(void);
+char Ultrasonico(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

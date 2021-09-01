@@ -21,7 +21,7 @@
 [v _Texto_USART Texto_USART `(v  1 e 1 0 ]
 [v i1_Texto_USART Texto_USART `(v  1 e 1 0 ]
 "219
-[v _Ultrasonico Ultrasonico `(i  1 e 2 0 ]
+[v _Ultrasonico Ultrasonico `(uc  1 e 1 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awdiv.c
@@ -332,32 +332,20 @@
 [v ___lwmod@dividend dividend `ui  1 p 2 30 ]
 "25
 } 0
-"5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"10
-[v ___lwdiv@quotient quotient `ui  1 a 2 26 ]
-"11
-[v ___lwdiv@counter counter `uc  1 a 1 25 ]
-"5
-[v ___lwdiv@divisor divisor `ui  1 p 2 20 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 22 ]
-"30
-} 0
 "101 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy\Proyecto\Pro_I_Esclavo_II.X\Proyecto_I_Esclavo_II.c
 [v _config config `(v  1 e 1 0 ]
 {
 "116
 } 0
 "219 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy/LIB/LIB.X/LIB.c
-[v _Ultrasonico Ultrasonico `(i  1 e 2 0 ]
+[v _Ultrasonico Ultrasonico `(uc  1 e 1 0 ]
 {
 "224
-[v Ultrasonico@dist dist `i  1 a 2 35 ]
+[v Ultrasonico@dist dist `ui  1 a 2 32 ]
 "223
-[v Ultrasonico@tiempo tiempo `i  1 a 2 33 ]
+[v Ultrasonico@tiempo tiempo `ui  1 a 2 30 ]
 "222
-[v Ultrasonico@cont cont `uc  1 a 1 39 ]
+[v Ultrasonico@cont cont `uc  1 a 1 34 ]
 "237
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul16.c
@@ -370,18 +358,17 @@
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 22 ]
 "53
 } 0
-"5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 27 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 26 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 26 ]
-[v ___awdiv@counter counter `uc  1 a 1 25 ]
+[v ___lwdiv@counter counter `uc  1 a 1 25 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 20 ]
-[v ___awdiv@dividend dividend `i  1 p 2 22 ]
-"41
+[v ___lwdiv@divisor divisor `ui  1 p 2 20 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 22 ]
+"30
 } 0
 "162 C:\UVG\Ciclo_II_2021\Digital_II\Digital_II_19260_FredyGodoy/LIB/LIB.X/LIB.c
 [v _Texto_USART Texto_USART `(v  1 e 1 0 ]

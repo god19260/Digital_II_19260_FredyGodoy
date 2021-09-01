@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"59 Proyecto_I_Maestro.c
+"60 Proyecto_I_Maestro.c
 [v _config `(v ~T0 @X0 0 ef ]
 "15 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
@@ -14,6 +14,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;./../../LIB/LIB.X/LCD.h: 33: void Write_LCD(char *a);
 [v _Write_LCD `(v ~T0 @X0 0 ef1`*uc ]
+"4184 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4184: extern volatile __bit RD1 __attribute__((address(0x41)));
+[v _RD1 `Vb ~T0 @X0 0 e@65 ]
 [v F1256 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
@@ -283,98 +286,102 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "22 Proyecto_I_Maestro.c
-[; ;Proyecto_I_Maestro.c: 22:     LCD_Init_8bits();
+[; ;Proyecto_I_Maestro.c: 22:     Config_Oscilador();
 [p x FOSC  =  INTRC_NOCLKOUT  ]
 "25
-[; ;Proyecto_I_Maestro.c: 25:     while(1){
+[; ;Proyecto_I_Maestro.c: 25: 
 [p x WDTE  =  OFF        ]
 "28
-[; ;Proyecto_I_Maestro.c: 28:         Write_LCD("Hola Mundo");
+[; ;Proyecto_I_Maestro.c: 28:         Lcd_Set_Cursor(1,1);
 [p x PWRTE  =  OFF       ]
 "29
-[; ;Proyecto_I_Maestro.c: 29:         _delay((unsigned long)((200)*(8000000/4000.0)));
+[; ;Proyecto_I_Maestro.c: 29:         Write_LCD("Hola Mundo");
 [p x MCLRE  =  OFF       ]
 "32
-[; ;Proyecto_I_Maestro.c: 32: 
+[; ;Proyecto_I_Maestro.c: 32:     }
 [p x CP  =  OFF           ]
 "34
-[; ;Proyecto_I_Maestro.c: 34:     TRISA = 0;
+[; ;Proyecto_I_Maestro.c: 34: 
 [p x CPD  =  OFF          ]
 "36
-[; ;Proyecto_I_Maestro.c: 36:     TRISE = 0;
+[; ;Proyecto_I_Maestro.c: 36:     TRISA = 0;
 [p x BOREN  =  OFF       ]
 "37
-[; ;Proyecto_I_Maestro.c: 37:     TRISD = 0;
+[; ;Proyecto_I_Maestro.c: 37:     TRISB = 0;
 [p x IESO  =  OFF        ]
 "39
-[; ;Proyecto_I_Maestro.c: 39:     ANSEL = 0;
+[; ;Proyecto_I_Maestro.c: 39:     TRISD = 0;
 [p x FCMEN  =  OFF       ]
 "41
-[; ;Proyecto_I_Maestro.c: 41: 
+[; ;Proyecto_I_Maestro.c: 41:     ANSEL = 0;
 [p x LVP  =  OFF         ]
 "46
-[; ;Proyecto_I_Maestro.c: 46:     PORTD = 0;
+[; ;Proyecto_I_Maestro.c: 46:     PORTB = 0;
 [p x BOR4V  =  BOR40V    ]
 "48
-[; ;Proyecto_I_Maestro.c: 48: }
+[; ;Proyecto_I_Maestro.c: 48:     PORTD = 0;
 [p x WRT  =  OFF         ]
 "57
 [v _text `uc ~T0 @X0 -> 16 `i e ]
+"58
+[v _temp `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"66
+"67
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"69
+"70
 [e ( _config ..  ]
-"71
-[e ( _Config_Oscilador ..  ]
 "72
+[e ( _Config_Oscilador ..  ]
+"73
 [e ( _LCD_Init_8bits ..  ]
-"75
+"76
 [e :U 141 ]
 {
-"77
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "78
-[e ( _Write_LCD (1 :s 1C ]
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "79
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( _Write_LCD (1 :s 1C ]
 "80
+[e = _RD1 -> ~ -> _RD1 `ui `b ]
+"81
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"82
 }
 [e :U 140 ]
 [e $U 141  ]
 [e :U 142 ]
-"81
+"83
 [e :UE 139 ]
 }
-"83
+"85
 [v _config `(v ~T0 @X0 1 ef ]
 {
 [e :U _config ]
 [f ]
-"84
-[e = _TRISA -> -> 0 `i `uc ]
-"85
-[e = _TRISB -> -> 0 `i `uc ]
 "86
-[e = _TRISE -> -> 0 `i `uc ]
+[e = _TRISA -> -> 0 `i `uc ]
 "87
-[e = _TRISD -> -> 0 `i `uc ]
+[e = _TRISB -> -> 0 `i `uc ]
+"88
+[e = _TRISE -> -> 0 `i `uc ]
 "89
+[e = _TRISD -> -> 0 `i `uc ]
+"91
 [e = _ANSEL -> -> 0 `i `uc ]
-"90
+"92
 [e = _ANSELH -> -> 0 `i `uc ]
-"93
+"95
 [e = _PORTA -> -> 0 `i `uc ]
-"94
-[e = _PORTB -> -> 0 `i `uc ]
 "96
-[e = _PORTD -> -> 0 `i `uc ]
-"97
-[e = _PORTE -> -> 0 `i `uc ]
+[e = _PORTB -> -> 0 `i `uc ]
 "98
+[e = _PORTD -> -> 0 `i `uc ]
+"99
+[e = _PORTE -> -> 0 `i `uc ]
+"100
 [e :UE 143 ]
 }
 [a 1C 72 111 108 97 32 77 117 110 100 111 0 ]

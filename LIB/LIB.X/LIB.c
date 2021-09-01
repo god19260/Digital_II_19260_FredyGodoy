@@ -216,12 +216,12 @@ void Interfaz(char v1, char v2){
 }
 //------------------------------------------------------------------------------
 //--------------- Funciones de sensores ----------------------------------------
-int Ultrasonico(void){
+char Ultrasonico(void){
     // Trigger RA1
     // Echo RD0
     unsigned char cont;
-    int tiempo;
-    int dist;
+    unsigned int tiempo;
+    unsigned int dist;
     cont = 0;
     RA1 = 1;
     __delay_us(10);
@@ -230,7 +230,7 @@ int Ultrasonico(void){
     while(RD0){   // Espera a que la señal sea 0
         cont++;
     }
-    tiempo = 25*cont; // Tiempo en microsegundos
+    tiempo = 27*cont; // Tiempo en microsegundos
     dist = (tiempo/29)/2;
     return dist;
     

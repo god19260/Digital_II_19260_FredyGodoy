@@ -2512,7 +2512,7 @@ void texto_Programa(char v1, char v2);
 void Interfaz(char v1, char v2);
 
 
-int Ultrasonico(void);
+char Ultrasonico(void);
 # 12 "Proyecto_I_Esclavo_II.c" 2
 
 # 1 "./../../LIB/LIB.X/LCD.h" 1
@@ -2806,7 +2806,7 @@ extern int printf(const char *, ...);
 
 char text[16];
 unsigned char CNY70 = 0;
-unsigned char Distancia;
+char Distancia;
 
 void config(void);
 

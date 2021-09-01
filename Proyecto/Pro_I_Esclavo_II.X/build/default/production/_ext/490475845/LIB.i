@@ -2510,7 +2510,7 @@ void texto_Programa(char v1, char v2);
 void Interfaz(char v1, char v2);
 
 
-int Ultrasonico(void);
+char Ultrasonico(void);
 # 2 "../../LIB/LIB.X/LIB.c" 2
 
 # 1 "../../LIB/LIB.X/SPI.h" 1
@@ -2719,12 +2719,12 @@ void Interfaz(char v1, char v2){
 }
 
 
-int Ultrasonico(void){
+char Ultrasonico(void){
 
 
     unsigned char cont;
-    int tiempo;
-    int dist;
+    unsigned int tiempo;
+    unsigned int dist;
     cont = 0;
     RA1 = 1;
     _delay((unsigned long)((10)*(8000000/4000000.0)));
@@ -2733,7 +2733,7 @@ int Ultrasonico(void){
     while(RD0){
         cont++;
     }
-    tiempo = 25*cont;
+    tiempo = 27*cont;
     dist = (tiempo/29)/2;
     return dist;
 

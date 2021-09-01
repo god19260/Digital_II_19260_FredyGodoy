@@ -32,8 +32,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./../../LIB/LIB.X/LIB.h: 19: void Config_USART(void);
 [v _Config_USART `(v ~T0 @X0 0 ef ]
 "34
-[; ;./../../LIB/LIB.X/LIB.h: 34: int Ultrasonico(void);
-[v _Ultrasonico `(i ~T0 @X0 0 ef ]
+[; ;./../../LIB/LIB.X/LIB.h: 34: char Ultrasonico(void);
+[v _Ultrasonico `(uc ~T0 @X0 0 ef ]
 [v F1256 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
@@ -407,7 +407,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 145 ]
 {
 "94
-[e = _Distancia -> ( _Ultrasonico ..  `uc ]
+[e = _Distancia ( _Ultrasonico ..  ]
 "95
 [e ( _sprintf (1 , (. , &U _text :s 2C -> _Distancia `i ]
 "96
