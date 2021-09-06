@@ -2736,5 +2736,4 @@ char Ultrasonico(void){
     tiempo = 27*cont;
     dist = (tiempo/29)/2;
     return dist;
-
 }

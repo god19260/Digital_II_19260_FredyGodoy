@@ -22,10 +22,12 @@ while True:
     time.sleep(0.1)
     Var = serial_com4.readline()
     if Var:
-        V_Cont_1 = int(Var)
+        Var = Var.split(sep = '=')
+        V_Cont_1 = int(Var[0])
         print(f'Valor Serial(Contador 1): {V_Cont_1}')                
     else:
         print("No hay conexion")
+
     # Solicitar datos y enviarlos a adafruit
     try:
         time.sleep(0.1)

@@ -11,6 +11,7 @@
 #define _XTAL_FREQ 8000000
 #include "../../LIB/LIB.X/LIB.h"
 #include "../../LIB/LIB.X/LCD.h"
+#include "../../LIB/LIB.X/I2C.h"
 #include <stdint.h>
 #include <stdio.h>
 
@@ -56,6 +57,13 @@
 //********************* Declaraciones de variables *****************************
 char text[16];
 char temp;
+char Seg; 
+char Min;
+char Hora; 
+char Dia;
+char Fecha;
+char Mes;
+char Year;
 //--------------------- Prototipo función configuración ------------------------
 void config(void);
 //------------------------------------------------------------------------------
@@ -70,13 +78,36 @@ void main(void) {
     config(); // Configuración del progama
     
     Config_Oscilador();
+    Config_USART();
     LCD_Init_8bits();
+    I2C_Master_Init(100000);     // Inicializar Comuncación I2C
 //------------------------------------------------------------------------------
 //*************************** loop principal ***********************************   
-    while(1){                    
+    while(1){   
+        // Sensor I2C - RTC
+        I2C_Master_Start();
+        I2C_Master_Write(0xD0); // Direccion Sensor I2C - RTC
+        I2C_Master_Write(0);        // comando para segundos
+        I2C_Master_Start();
+        I2C_Master_Write(0xD1);
+        Seg    = I2C_Master_Read(1);       // Read seconds from register 0
+        Min    = I2C_Master_Read(1);       // Read minutes from register 1
+        Hora   = I2C_Master_Read(0);       // Read hour from register 2
+//        Dia    = I2C_Master_Read(1);       // Read day from register 3
+//        Fecha  = I2C_Master_Read(1);       // Read date from register 4
+//        Mes    = I2C_Master_Read(1);       // Read month from register 5
+//        Year   = I2C_Master_Read(0);       // Read year from register 6
+        I2C_Master_Stop();                 // Stop I2C protocol
+        
+        Seg = (Seg>>4) * 10 + (Seg & 0x0f);
+        Min = (Min>>4) * 10 + (Min & 0x0f);
+        Hora = (Hora>>4) * 10 + (Hora & 0x0f);
+        sprintf(text, "%d:%d:%d",Hora, Min, Seg);
+        Texto_USART(text);
+        
         // -------- LCD ---------
         Lcd_Set_Cursor(1,1);
-        Write_LCD("Hola Mundo");
+        Write_LCD(text);
         RD1 = ~RD1;
         __delay_ms(200);
     } // fin loop principal while 

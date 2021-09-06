@@ -1,4 +1,4 @@
-# 1 "Proyecto_I_Esclavo_I.c"
+# 1 "../../LIB/LIB.X/I2C.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,11 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Proyecto_I_Esclavo_I.c" 2
-# 10 "Proyecto_I_Esclavo_I.c"
+# 1 "../../LIB/LIB.X/I2C.c" 2
+
+
+# 1 "../../LIB/LIB.X/I2C.h" 1
+# 33 "../../LIB/LIB.X/I2C.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,31 +2491,8 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 10 "Proyecto_I_Esclavo_I.c" 2
+# 33 "../../LIB/LIB.X/I2C.h" 2
 
-# 1 "./../../LIB/LIB.X/LIB.h" 1
-# 15 "./../../LIB/LIB.X/LIB.h"
-void Config_Oscilador(void);
-char Config_TMR0(void);
-void Config_PORTB(void);
-void Config_ADC(void);
-void Config_USART(void);
-void Config_Puertos(void);
-
-
-char Valor_ADC(char canal);
-void tabla_USART(int numero);
-void Texto_USART(char texto[]);
-
-
-void SPI(volatile char *v1,volatile char *v2);
-void USART_Num(char valor);
-void texto_Programa(char v1, char v2);
-void Interfaz(char v1, char v2);
-
-
-char Ultrasonico(void);
-# 11 "Proyecto_I_Esclavo_I.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
@@ -2647,321 +2627,128 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 12 "Proyecto_I_Esclavo_I.c" 2
+# 35 "../../LIB/LIB.X/I2C.h" 2
+# 44 "../../LIB/LIB.X/I2C.h"
+void I2C_Master_Init(const unsigned long c);
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 1 3
 
 
 
-# 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__size_t.h" 1 3
 
 
 
-typedef unsigned size_t;
-# 4 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 2 3
+void I2C_Master_Wait(void);
 
-# 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__null.h" 1 3
-# 5 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 2 3
 
 
+void I2C_Master_Start(void);
 
 
 
+void I2C_Master_RepeatedStart(void);
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdarg.h" 1 3
 
 
+void I2C_Master_Stop(void);
 
 
 
 
-typedef void * va_list[1];
 
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
+void I2C_Master_Write(unsigned d);
 
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-# 11 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 2 3
-# 43 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 3
-struct __prbuf
-{
- char * ptr;
- void (* func)(char);
-};
-# 85 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\conio.h" 1 3
 
 
 
+unsigned short I2C_Master_Read(unsigned short a);
 
 
 
+void I2C_Slave_Init(uint8_t address);
+# 3 "../../LIB/LIB.X/I2C.c" 2
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\errno.h" 1 3
-# 29 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\errno.h" 3
-extern int errno;
-# 8 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\conio.h" 2 3
 
 
 
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-
-
-extern char * cgets(char *);
-extern void cputs(const char *);
-# 85 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-# 180 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 3
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-# 13 "Proyecto_I_Esclavo_I.c" 2
-
-
-
-
-
-
-
-#pragma config FOSC = INTRC_NOCLKOUT
-
-
-#pragma config WDTE = OFF
-
-
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-
-
-#pragma config CP = OFF
-
-#pragma config CPD = OFF
-
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-
-#pragma config FCMEN = OFF
-
-#pragma config LVP = OFF
-
-
-
-
-#pragma config BOR4V = BOR40V
-
-#pragma config WRT = OFF
-# 57 "Proyecto_I_Esclavo_I.c"
-char Valor_TMR0;
-
-signed int DifServo1 = 0;
-signed int DifServo2 = 0;
-signed int DifServo3 = 0;
-signed int DifServo4 = 0;
-signed int DifServo5 = 0;
-signed int DifServo6 = 0;
-
-
-unsigned char Pos_neutra_Servo1 = 193;
-unsigned char Pos_neutra_Servo2 = 208;
-unsigned char Pos_neutra_Servo3 = 197;
-unsigned char Pos_neutra_Servo4 = 160;
-unsigned char Pos_neutra_Servo5 = 212;
-unsigned char Pos_neutra_Servo6 = 183;
-
-
-char Pos_Servos1 = 193;
-char Pos_Servos2 = 208;
-char Pos_Servos3 = 197;
-char Pos_Servos4 = 160;
-char Pos_Servos5 = 212;
-char Pos_Servos6 = 183;
-
-unsigned char izq_der = 0;
-
-
-void config(void);
-
-
-
-
-void __attribute__((picinterrupt(("")))) isr (void){
-
-    if (T0IF == 1){
-
-        T0IF = 0;
-        TMR0 = Valor_TMR0;
-
-
-        RD0 = 1;
-        for(int i = 0; i<Pos_Servos1;i++){}
-        RD0=0;
-
-        RD1 = 1;
-        for(int i = 0; i<Pos_Servos2;i++){}
-        RD1=0;
-
-        RD2 = 1;
-        for(int i = 0; i<Pos_Servos3;i++){}
-        RD2=0;
-
-        RD3 = 1;
-        for(int i = 0; i<Pos_Servos4;i++){}
-        RD3=0;
-
-        RD4 = 1;
-        for(int i = 0; i<Pos_Servos5;i++){}
-        RD4=0;
-
-        RD5 = 1;
-        for(int i = 0; i<Pos_Servos6;i++){}
-        RD5=0;
-    }
-
+void I2C_Master_Init(const unsigned long c){
+    SSPCON = 0b00101000;
+    SSPCON2 = 0;
+    SSPADD = (8000000/(4*c))-1;
+    SSPSTAT = 0;
+    TRISCbits.TRISC3 = 1;
+    TRISCbits.TRISC4 = 1;
 }
 
-void main(void) {
 
 
-    config();
-
-    Config_Oscilador();
-    Valor_TMR0 = Config_TMR0();
 
 
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
 
 
-    while(1){
-        if (izq_der == 0){
-            if (Pos_Servos1 > 127){
-                Pos_Servos1--;
-            }
-            if (Pos_Servos2 > 204){
-                Pos_Servos2--;
-            }
-            if (Pos_Servos3 < 212){
-                Pos_Servos3++;
-            }
-            if (Pos_Servos4 < 200){
-                Pos_Servos4++;
-            }
-            if (Pos_Servos5 > 185){
-                Pos_Servos5--;
-            }
-            if (Pos_Servos6 < 190){
-                Pos_Servos6++;
-            }
-            if (Pos_Servos1 == 127 && Pos_Servos2 == 204 && Pos_Servos3 == 212 && Pos_Servos4 == 200 && Pos_Servos5 == 185 && Pos_Servos6 == 190){
-                izq_der = 2;
-            }
-            _delay((unsigned long)((35)*(8000000/4000.0)));
-        }else if (izq_der == 2){
-            DifServo1 = Pos_neutra_Servo1 - Pos_Servos1;
-            DifServo2 = Pos_neutra_Servo2 - Pos_Servos2;
-            DifServo3 = Pos_neutra_Servo3 - Pos_Servos3;
-            DifServo4 = Pos_neutra_Servo4 - Pos_Servos4;
-            DifServo5 = Pos_neutra_Servo5 - Pos_Servos5;
-            DifServo6 = Pos_neutra_Servo6 - Pos_Servos6;
-            if (DifServo1 < 0){
-                DifServo1 = DifServo1 * (-1);
-            }
-            if (DifServo2 < 0){
-                DifServo2 = DifServo2 * (-1);
-            }
-            if (DifServo3 < 0){
-                DifServo3 = DifServo3 * (-1);
-            }
-            if (DifServo4 < 0){
-                DifServo4 = DifServo4 * (-1);
-            }
-            if (DifServo5 < 0){
-                DifServo5 = DifServo5 * (-1);
-            }
-            if (DifServo6 < 0){
-                DifServo6 = DifServo6 * (-1);
-            }
-
-            if (DifServo1 > DifServo2 && DifServo1 > DifServo3 && DifServo1 > DifServo4 && DifServo1 > DifServo5 && DifServo1 > DifServo6 ){
-                if (Pos_Servos1 < Pos_neutra_Servo1){
-                    Pos_Servos1++;
-                }else if (Pos_Servos1 > Pos_neutra_Servo1){
-                    Pos_Servos1--;
-                }
-            }else if (DifServo2 > DifServo1 && DifServo2 > DifServo3 && DifServo2 > DifServo4 && DifServo2 > DifServo5 && DifServo2 > DifServo6 ){
-                if (Pos_Servos2 < Pos_neutra_Servo2){
-                    Pos_Servos2++;
-                }else if (Pos_Servos2 > Pos_neutra_Servo2){
-                    Pos_Servos2--;
-                }
-            }else if (DifServo3 > DifServo1 && DifServo3 > DifServo2 && DifServo3 > DifServo4 && DifServo3 > DifServo5 && DifServo3 > DifServo6 ){
-                if (Pos_Servos3 < Pos_neutra_Servo3){
-                    Pos_Servos3++;
-                }else if (Pos_Servos3 > Pos_neutra_Servo3){
-                    Pos_Servos3--;
-                }
-            }else if (DifServo4 > DifServo1 && DifServo4 > DifServo2 && DifServo4 > DifServo3 && DifServo4 > DifServo5 && DifServo4 > DifServo6 ){
-                if (Pos_Servos4 < Pos_neutra_Servo4){
-                    Pos_Servos4++;
-                }else if (Pos_Servos4 > Pos_neutra_Servo4){
-                    Pos_Servos4--;
-                }
-            }else if (DifServo5 > DifServo1 && DifServo5 > DifServo2 && DifServo5 > DifServo3 && DifServo5 > DifServo4 && DifServo5 > DifServo6 ){
-                if (Pos_Servos5 < Pos_neutra_Servo5){
-                    Pos_Servos5++;
-                }else if (Pos_Servos5 > Pos_neutra_Servo5){
-                    Pos_Servos5--;
-                }
-            }else if (DifServo6 > DifServo1 && DifServo6 > DifServo2 && DifServo6 > DifServo3 && DifServo6 > DifServo4 && DifServo6 > DifServo5 ){
-                if (Pos_Servos6 < Pos_neutra_Servo6){
-                    Pos_Servos6++;
-                }else if (Pos_Servos6 > Pos_neutra_Servo6){
-                    Pos_Servos6--;
-                }
-            }
-            _delay((unsigned long)((35)*(8000000/4000.0)));
-        }
-
-    }
+void I2C_Master_Wait(){
+    while ((SSPSTAT & 0x04) || (SSPCON2 & 0x1F));
 }
 
-void config(void){
-    TRISD = 0;
-
-    ANSEL = 0;
-    ANSELH = 0;
 
 
-    PORTD = 0;
+void I2C_Master_Start(){
+    I2C_Master_Wait();
+    SSPCON2bits.SEN = 1;
+}
+
+
+
+void I2C_Master_RepeatedStart(){
+    I2C_Master_Wait();
+    SSPCON2bits.RSEN = 1;
+}
+
+
+
+void I2C_Master_Stop(){
+    I2C_Master_Wait();
+    SSPCON2bits.PEN = 1;
+}
+
+
+
+
+
+void I2C_Master_Write(unsigned d) {
+    I2C_Master_Wait();
+    SSPBUF = d;
+}
+
+
+
+
+unsigned short I2C_Master_Read(unsigned short a){
+    unsigned short temp;
+    I2C_Master_Wait();
+    SSPCON2bits.RCEN = 1;
+    I2C_Master_Wait();
+    temp = SSPBUF;
+    I2C_Master_Wait();
+    if(a == 1){
+        SSPCON2bits.ACKDT = 0;
+    }else{
+        SSPCON2bits.ACKDT = 1;
+    }
+    SSPCON2bits.ACKEN = 1;
+    return temp;
+}
+
+
+
+void I2C_Slave_Init(uint8_t address){
+    SSPADD = address;
+    SSPCON = 0x36;
+    SSPSTAT = 0x80;
+    SSPCON2 = 0x01;
+    TRISC3 = 1;
+    TRISC4 = 1;
+    GIE = 1;
+    PEIE = 1;
+    SSPIF = 0;
+    SSPIE = 1;
 }

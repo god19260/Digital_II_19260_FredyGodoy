@@ -2529,6 +2529,8 @@ void Print_Cont(char valor);
 void tabla_num(int numero);
 # 13 "Proyecto_I_Maestro.c" 2
 
+# 1 "./../../LIB/LIB.X/I2C.h" 1
+# 35 "./../../LIB/LIB.X/I2C.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2662,7 +2664,48 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
+# 35 "./../../LIB/LIB.X/I2C.h" 2
+# 44 "./../../LIB/LIB.X/I2C.h"
+void I2C_Master_Init(const unsigned long c);
+
+
+
+
+
+
+
+void I2C_Master_Wait(void);
+
+
+
+void I2C_Master_Start(void);
+
+
+
+void I2C_Master_RepeatedStart(void);
+
+
+
+void I2C_Master_Stop(void);
+
+
+
+
+
+void I2C_Master_Write(unsigned d);
+
+
+
+
+unsigned short I2C_Master_Read(unsigned short a);
+
+
+
+void I2C_Slave_Init(uint8_t address);
 # 14 "Proyecto_I_Maestro.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
+# 15 "Proyecto_I_Maestro.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2761,7 +2804,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 15 "Proyecto_I_Maestro.c" 2
+# 16 "Proyecto_I_Maestro.c" 2
 
 
 
@@ -2806,6 +2849,13 @@ extern int printf(const char *, ...);
 
 char text[16];
 char temp;
+char Seg;
+char Min;
+char Hora;
+char Dia;
+char Fecha;
+char Mes;
+char Year;
 
 void config(void);
 
@@ -2820,13 +2870,22 @@ void main(void) {
     config();
 
     Config_Oscilador();
+    Config_USART();
     LCD_Init_8bits();
+    I2C_Master_Init(100000);
 
 
     while(1){
+# 102 "Proyecto_I_Maestro.c"
+        Seg = (Seg>>4) * 10 + (Seg & 0x0f);
+        Min = (Min>>4) * 10 + (Min & 0x0f);
+        Hora = (Hora>>4) * 10 + (Hora & 0x0f);
+        sprintf(text, "%d:%d:%d",Hora, Min, Seg);
+        Texto_USART(text);
+
 
         Lcd_Set_Cursor(1,1);
-        Write_LCD("Hola Mundo");
+        Write_LCD(text);
         RD1 = ~RD1;
         _delay((unsigned long)((200)*(8000000/4000.0)));
     }
