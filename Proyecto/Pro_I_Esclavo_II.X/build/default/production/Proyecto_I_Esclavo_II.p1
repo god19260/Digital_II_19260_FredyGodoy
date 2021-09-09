@@ -78,20 +78,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3641 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3641: extern volatile __bit BF __attribute__((address(0x4A0)));
 [v _BF `Vb ~T0 @X0 0 e@1184 ]
-[p mainexit ]
-"72 Proyecto_I_Esclavo_II.c
-[; ;Proyecto_I_Esclavo_II.c: 72:                 SSPBUF = Distancia;
-[v _config `(v ~T0 @X0 0 ef ]
-"15 ./../../LIB/LIB.X/LIB.h
-[; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
-[v _Config_Oscilador `(v ~T0 @X0 0 ef ]
-"18
-[; ;./../../LIB/LIB.X/LIB.h: 18: void Config_ADC(void);
-[v _Config_ADC `(v ~T0 @X0 0 ef ]
-"79 ./../../LIB/LIB.X/I2C.h
-[; ;./../../LIB/LIB.X/I2C.h: 79: void I2C_Slave_Init(uint8_t address);
-[v _I2C_Slave_Init `(v ~T0 @X0 0 ef1`uc ]
-"234 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+"234
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 234:     struct {
 [s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -102,13 +89,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "245
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"34 ./../../LIB/LIB.X/LIB.h
-[; ;./../../LIB/LIB.X/LIB.h: 34: char Ultrasonico(void);
+[p mainexit ]
+"73 Proyecto_I_Esclavo_II.c
+[; ;Proyecto_I_Esclavo_II.c: 73:             PORTBbits.RB4 = ~PORTBbits.RB4;
+[v _config `(v ~T0 @X0 0 ef ]
+"15 ./../../LIB/LIB.X/LIB.h
+[; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
+[v _Config_Oscilador `(v ~T0 @X0 0 ef ]
+"18
+[; ;./../../LIB/LIB.X/LIB.h: 18: void Config_ADC(void);
+[v _Config_ADC `(v ~T0 @X0 0 ef ]
+"79 ./../../LIB/LIB.X/I2C.h
+[; ;./../../LIB/LIB.X/I2C.h: 79: void I2C_Slave_Init(uint8_t address);
+[v _I2C_Slave_Init `(v ~T0 @X0 0 ef1`uc ]
+"4118 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4118: extern volatile __bit RB5 __attribute__((address(0x35)));
+[v _RB5 `Vb ~T0 @X0 0 e@53 ]
+"4121
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4121: extern volatile __bit RB6 __attribute__((address(0x36)));
+[v _RB6 `Vb ~T0 @X0 0 e@54 ]
+"74 Proyecto_I_Esclavo_II.c
+[; ;Proyecto_I_Esclavo_II.c: 74:             SSPCONbits.CKP = 1;
 [v _Ultrasonico `(uc ~T0 @X0 0 ef ]
-"4115 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4115: extern volatile __bit RB4 __attribute__((address(0x34)));
-[v _RB4 `Vb ~T0 @X0 0 e@52 ]
-"4112
+"4112 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4112: extern volatile __bit RB3 __attribute__((address(0x33)));
 [v _RB3 `Vb ~T0 @X0 0 e@51 ]
 "1416
@@ -117,18 +120,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1478
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1478: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"1608
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1608:     struct {
+[s S59 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S59 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"1607
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1607: typedef union {
+[u S58 `S59 1 ]
+[n S58 . . ]
+"1619
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1619: extern volatile TRISDbits_t TRISDbits __attribute__((address(0x088)));
+[v _TRISDbits `VS58 ~T0 @X0 0 e@136 ]
 "3387
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
 "3449
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3449: extern volatile unsigned char ANSELH __attribute__((address(0x189)));
 [v _ANSELH `Vuc ~T0 @X0 0 e@393 ]
-"166
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "228
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"352
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -370,459 +384,507 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 "23 Proyecto_I_Esclavo_II.c
-[; ;Proyecto_I_Esclavo_II.c: 23: 
+[; ;Proyecto_I_Esclavo_II.c: 23: char Ultrasonico(void);
 [p x FOSC  =  INTRC_NOCLKOUT  ]
 "26
-[; ;Proyecto_I_Esclavo_II.c: 26:     if (ADIF == 1){
+[; ;Proyecto_I_Esclavo_II.c: 26: 
 [p x WDTE  =  OFF        ]
 "29
-[; ;Proyecto_I_Esclavo_II.c: 29:         if (CNY70 > 40 && CNY70 < 55){
+[; ;Proyecto_I_Esclavo_II.c: 29:     if (ADIF == 1){
 [p x PWRTE  =  OFF       ]
 "30
-[; ;Proyecto_I_Esclavo_II.c: 30:             Con_CNY70++;
+[; ;Proyecto_I_Esclavo_II.c: 30: 
 [p x MCLRE  =  OFF       ]
 "33
-[; ;Proyecto_I_Esclavo_II.c: 33:         }
+[; ;Proyecto_I_Esclavo_II.c: 33:         if (CNY70 > 55 && CNY70 < 70){
 [p x CP  =  OFF           ]
 "35
-[; ;Proyecto_I_Esclavo_II.c: 35: 
+[; ;Proyecto_I_Esclavo_II.c: 35:             if (Con_CNY70 == 254){
 [p x CPD  =  OFF          ]
 "37
-[; ;Proyecto_I_Esclavo_II.c: 37:     if(PIR1bits.SSPIF == 1){
+[; ;Proyecto_I_Esclavo_II.c: 37:             }
 [p x BOREN  =  OFF       ]
 "38
-[; ;Proyecto_I_Esclavo_II.c: 38: 
+[; ;Proyecto_I_Esclavo_II.c: 38:         }else {
 [p x IESO  =  OFF        ]
 "40
-[; ;Proyecto_I_Esclavo_II.c: 40: 
+[; ;Proyecto_I_Esclavo_II.c: 40:         }
 [p x FCMEN  =  OFF       ]
 "42
-[; ;Proyecto_I_Esclavo_II.c: 42:             z = SSPBUF;
+[; ;Proyecto_I_Esclavo_II.c: 42: 
 [p x LVP  =  OFF         ]
 "47
-[; ;Proyecto_I_Esclavo_II.c: 47:         }
+[; ;Proyecto_I_Esclavo_II.c: 47:         if ((SSPCONbits.SSPOV) || (SSPCONbits.WCOL)){
 [p x BOR4V  =  BOR40V    ]
 "49
-[; ;Proyecto_I_Esclavo_II.c: 49:         if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW) {
+[; ;Proyecto_I_Esclavo_II.c: 49:             SSPCONbits.SSPOV = 0;
 [p x WRT  =  OFF         ]
 "58
-[; ;Proyecto_I_Esclavo_II.c: 58: 
+[; ;Proyecto_I_Esclavo_II.c: 58:             PIR1bits.SSPIF = 0;
 [v _text `uc ~T0 @X0 -> 16 `i e ]
 "59
-[; ;Proyecto_I_Esclavo_II.c: 59: 
+[; ;Proyecto_I_Esclavo_II.c: 59:             SSPCONbits.CKP = 1;
 [v _CNY70 `uc ~T0 @X0 1 e ]
 [i _CNY70
 -> -> 0 `i `uc
 ]
 "60
-[; ;Proyecto_I_Esclavo_II.c: 60:             _delay((unsigned long)((250)*(8000000/4000000.0)));
+[; ;Proyecto_I_Esclavo_II.c: 60:             while(!SSPSTATbits.BF);
 [v _env_CNY70 `uc ~T0 @X0 1 e ]
 [i _env_CNY70
 -> -> 0 `i `uc
 ]
 "61
-[; ;Proyecto_I_Esclavo_II.c: 61: 
+[; ;Proyecto_I_Esclavo_II.c: 61:             _delay((unsigned long)((250)*(8000000/4000000.0)));
 [v _Con_CNY70 `uc ~T0 @X0 1 e ]
 [i _Con_CNY70
 -> -> 0 `i `uc
 ]
 "62
-[; ;Proyecto_I_Esclavo_II.c: 62:         }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+[; ;Proyecto_I_Esclavo_II.c: 62: 
 [v _UltraFlag `uc ~T0 @X0 1 e ]
 [i _UltraFlag
 -> -> 0 `i `uc
 ]
 "63
-[; ;Proyecto_I_Esclavo_II.c: 63:             z = SSPBUF;
+[; ;Proyecto_I_Esclavo_II.c: 63:         }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
 [v _arriba_abajo `uc ~T0 @X0 1 e ]
 [i _arriba_abajo
 -> -> 0 `i `uc
 ]
 "64
-[; ;Proyecto_I_Esclavo_II.c: 64:             BF = 0;
-[v _arriba_abajo_flag `uc ~T0 @X0 1 e ]
-[i _arriba_abajo_flag
--> -> 0 `i `uc
-]
-"65
-[; ;Proyecto_I_Esclavo_II.c: 65: 
+[; ;Proyecto_I_Esclavo_II.c: 64:             z = SSPBUF;
 [v _arriba_abajo_enable `uc ~T0 @X0 1 e ]
 [i _arriba_abajo_enable
 -> -> 0 `i `uc
 ]
-"66
-[; ;Proyecto_I_Esclavo_II.c: 66:             if (env_master == 0)
+"65
+[; ;Proyecto_I_Esclavo_II.c: 65:             BF = 0;
 [v _env_master `uc ~T0 @X0 1 e ]
 [i _env_master
 -> -> 0 `i `uc
 ]
-"67
-[; ;Proyecto_I_Esclavo_II.c: 67:                 env_master = 1;
+"66
+[; ;Proyecto_I_Esclavo_II.c: 66:             if (env_master == 0){
 [v _z `uc ~T0 @X0 1 e ]
 [i _z
 -> -> 0 `i `uc
 ]
+"67
+[; ;Proyecto_I_Esclavo_II.c: 67:                 env_master = 1;
+[v _prueba `uc ~T0 @X0 1 e ]
+[i _prueba
+-> -> 50 `i `uc
+]
 "68
-[; ;Proyecto_I_Esclavo_II.c: 68:             else if (env_master == 1)
+[; ;Proyecto_I_Esclavo_II.c: 68:                 SSPBUF = Distancia;
 [v _inicio `uc ~T0 @X0 1 e ]
 [i _inicio
--> -> 2 `i `uc
+-> -> 1 `i `uc
 ]
 "69
-[; ;Proyecto_I_Esclavo_II.c: 69:                 env_master = 0;
+[; ;Proyecto_I_Esclavo_II.c: 69:             } else {
+[v _erguido `uc ~T0 @X0 1 e ]
+[i _erguido
+-> -> 1 `i `uc
+]
+"70
+[; ;Proyecto_I_Esclavo_II.c: 70:                 env_master = 0;
 [v _cont_miedo `uc ~T0 @X0 1 e ]
 [i _cont_miedo
 -> -> 0 `i `uc
 ]
-"70
-[; ;Proyecto_I_Esclavo_II.c: 70: 
+"71
+[; ;Proyecto_I_Esclavo_II.c: 71:                 SSPBUF = env_CNY70;
 [v _Distancia `uc ~T0 @X0 1 e ]
+[i _Distancia
+-> -> 0 `i `uc
+]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"75
-[; ;Proyecto_I_Esclavo_II.c: 75:             }
+"78
+[; ;Proyecto_I_Esclavo_II.c: 78: 
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"77
-[; ;Proyecto_I_Esclavo_II.c: 77:             SSPCONbits.CKP = 1;
+"80
+[; ;Proyecto_I_Esclavo_II.c: 80:     }
 [e $ ! == -> _ADIF `i -> 1 `i 140  ]
 {
-"78
-[; ;Proyecto_I_Esclavo_II.c: 78:             _delay((unsigned long)((250)*(8000000/4000000.0)));
-[e = _ADIF -> -> 0 `i `b ]
-"79
-[; ;Proyecto_I_Esclavo_II.c: 79:             while(SSPSTATbits.BF);
-[e = _CNY70 -> ( _Valor_ADC (1 -> -> 0 `i `uc `uc ]
-"80
-[; ;Proyecto_I_Esclavo_II.c: 80:         }
-[e $ ! && > -> _CNY70 `i -> 40 `i < -> _CNY70 `i -> 55 `i 141  ]
-{
-"81
-[; ;Proyecto_I_Esclavo_II.c: 81: 
-[e ++ _Con_CNY70 -> -> 1 `i `uc ]
 "82
 [; ;Proyecto_I_Esclavo_II.c: 82: 
-}
-[e $U 142  ]
-[e :U 141 ]
-{
+[e = _ADIF -> -> 0 `i `b ]
 "83
-[; ;Proyecto_I_Esclavo_II.c: 83: 
-[e = _Con_CNY70 -> -> 0 `i `uc ]
+[; ;Proyecto_I_Esclavo_II.c: 83: void main(void) {
+[e = _CNY70 -> ( _Valor_ADC (1 -> -> 0 `i `uc `uc ]
 "84
-[; ;Proyecto_I_Esclavo_II.c: 84:         PIR1bits.SSPIF = 0;
+[; ;Proyecto_I_Esclavo_II.c: 84: 
+[e $ ! && > -> _CNY70 `i -> 55 `i < -> _CNY70 `i -> 70 `i 141  ]
+{
+"85
+[; ;Proyecto_I_Esclavo_II.c: 85: 
+[e ++ _Con_CNY70 -> -> 1 `i `uc ]
+"86
+[; ;Proyecto_I_Esclavo_II.c: 86:     config();
+[e $ ! == -> _Con_CNY70 `i -> 254 `i 142  ]
+{
+"87
+[; ;Proyecto_I_Esclavo_II.c: 87:     Config_Oscilador();
+[e = _Con_CNY70 -> -> 253 `i `uc ]
+"88
+[; ;Proyecto_I_Esclavo_II.c: 88:     Config_ADC();
 }
 [e :U 142 ]
-"85
-[; ;Proyecto_I_Esclavo_II.c: 85:     }
+"89
+[; ;Proyecto_I_Esclavo_II.c: 89:     I2C_Slave_Init(0b11111110);
 }
-[e :U 140 ]
-"88
-[; ;Proyecto_I_Esclavo_II.c: 88: void main(void) {
-[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 143  ]
+[e $U 143  ]
+[e :U 141 ]
 {
 "90
-[; ;Proyecto_I_Esclavo_II.c: 90: 
-[e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
-"92
-[; ;Proyecto_I_Esclavo_II.c: 92:     Config_Oscilador();
-[e $ ! || != -> . . _SSPCONbits 0 3 `i -> 0 `i != -> . . _SSPCONbits 0 4 `i -> 0 `i 144  ]
-{
-"93
-[; ;Proyecto_I_Esclavo_II.c: 93:     Config_ADC();
-[e = _z _SSPBUF ]
-"95
-[; ;Proyecto_I_Esclavo_II.c: 95: 
-[e = . . _SSPCONbits 0 3 -> -> 0 `i `uc ]
-"96
-[; ;Proyecto_I_Esclavo_II.c: 96: 
-[e = . . _SSPCONbits 0 4 -> -> 0 `i `uc ]
-"97
-[; ;Proyecto_I_Esclavo_II.c: 97:     while(1){
-[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
-"98
-[; ;Proyecto_I_Esclavo_II.c: 98:         if (CNY70 > 40 && CNY70 < 55 && Con_CNY70 >= 200 && inicio == 0){
-}
-[e :U 144 ]
-"100
-[; ;Proyecto_I_Esclavo_II.c: 100:             UltraFlag = 1;
-[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i ! != -> . . _SSPSTATbits 0 2 `i -> 0 `i 145  ]
-{
-"102
-[; ;Proyecto_I_Esclavo_II.c: 102:             arriba_abajo_enable = 1;
-[e = _z _SSPBUF ]
-"103
-[; ;Proyecto_I_Esclavo_II.c: 103:             env_CNY70 = 1;
-[e = _inicio -> -> 1 `i `uc ]
-"104
-[; ;Proyecto_I_Esclavo_II.c: 104:         }
-[e = _env_master -> -> 1 `i `uc ]
-"106
-[; ;Proyecto_I_Esclavo_II.c: 106:         if (inicio == 1 ){
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"107
-[; ;Proyecto_I_Esclavo_II.c: 107:             arriba_abajo = 1;
-[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
-"108
-[; ;Proyecto_I_Esclavo_II.c: 108:             UltraFlag = 1;
-[e $U 146  ]
-[e :U 147 ]
-[e :U 146 ]
-[e $ ! != -> . . _SSPSTATbits 0 0 `i -> 0 `i 147  ]
-[e :U 148 ]
-"111
-[; ;Proyecto_I_Esclavo_II.c: 111:         if (cont_miedo == 1){
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"113
-[; ;Proyecto_I_Esclavo_II.c: 113:             arriba_abajo = 1;
-}
-[e $U 149  ]
-[e :U 145 ]
-[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i != -> . . _SSPSTATbits 0 2 `i -> 0 `i 150  ]
-{
-"114
-[; ;Proyecto_I_Esclavo_II.c: 114:             UltraFlag = 1;
-[e = _z _SSPBUF ]
-"115
-[; ;Proyecto_I_Esclavo_II.c: 115:             arriba_abajo_enable = 1;
-[e = _BF -> -> 0 `i `b ]
-"117
-[; ;Proyecto_I_Esclavo_II.c: 117: 
-[e $ ! == -> _env_master `i -> 0 `i 151  ]
-"118
-[; ;Proyecto_I_Esclavo_II.c: 118:         if (UltraFlag == 1){
-[e = _env_master -> -> 1 `i `uc ]
-[e $U 152  ]
-"119
-[; ;Proyecto_I_Esclavo_II.c: 119:            Distancia = Ultrasonico();
-[e :U 151 ]
-[e $ ! == -> _env_master `i -> 1 `i 153  ]
-"120
-[; ;Proyecto_I_Esclavo_II.c: 120: 
-[e = _env_master -> -> 0 `i `uc ]
-[e :U 153 ]
-[e :U 152 ]
-"122
-[; ;Proyecto_I_Esclavo_II.c: 122:                arriba_abajo_enable = 0;
-[e $ ! == -> _env_master `i -> 1 `i 154  ]
-{
-"123
-[; ;Proyecto_I_Esclavo_II.c: 123:                UltraFlag = 0;
-[e = _SSPBUF -> _Distancia `uc ]
-"124
-[; ;Proyecto_I_Esclavo_II.c: 124:                cont_miedo = 1;
-}
-[e $U 155  ]
-[e :U 154 ]
-[e $ ! == -> _env_master `i -> 0 `i 156  ]
-{
-"125
-[; ;Proyecto_I_Esclavo_II.c: 125:                env_CNY70 = 0;
-[e = _SSPBUF _env_CNY70 ]
-"126
-[; ;Proyecto_I_Esclavo_II.c: 126:            }else if (Distancia > 16 && arriba_abajo == 1){
-}
-[e :U 156 ]
-[e :U 155 ]
-"128
-[; ;Proyecto_I_Esclavo_II.c: 128:                inicio = 0;
-[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
-"129
-[; ;Proyecto_I_Esclavo_II.c: 129:                UltraFlag = 0;
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"130
-[; ;Proyecto_I_Esclavo_II.c: 130:                cont_miedo = 0;
-[e $U 157  ]
-[e :U 158 ]
-[e :U 157 ]
-[e $ != -> . . _SSPSTATbits 0 0 `i -> 0 `i 158  ]
-[e :U 159 ]
-"131
-[; ;Proyecto_I_Esclavo_II.c: 131:            }
-}
-[e :U 150 ]
-[e :U 149 ]
-"135
-[; ;Proyecto_I_Esclavo_II.c: 135:                PORTBbits.RB1 = 1;
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"136
-[; ;Proyecto_I_Esclavo_II.c: 136:            }else if (arriba_abajo == 0 && arriba_abajo_enable == 1 && PORTBbits.RB1 == 0){
+[; ;Proyecto_I_Esclavo_II.c: 90:     _delay((unsigned long)((5)*(8000000/4000.0)));
+[e = _Con_CNY70 -> -> 0 `i `uc ]
+"91
+[; ;Proyecto_I_Esclavo_II.c: 91: 
 }
 [e :U 143 ]
-"137
-[; ;Proyecto_I_Esclavo_II.c: 137:                PORTBbits.RB2 = 1;
+"92
+[; ;Proyecto_I_Esclavo_II.c: 92: 
+}
+[e :U 140 ]
+"95
+[; ;Proyecto_I_Esclavo_II.c: 95:             UltraFlag = 1;
+[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 144  ]
+{
+"96
+[; ;Proyecto_I_Esclavo_II.c: 96:             arriba_abajo = 0;
+[e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
+"98
+[; ;Proyecto_I_Esclavo_II.c: 98:             env_CNY70 = 1;
+[e $ ! || != -> . . _SSPCONbits 0 3 `i -> 0 `i != -> . . _SSPCONbits 0 4 `i -> 0 `i 145  ]
+{
+"99
+[; ;Proyecto_I_Esclavo_II.c: 99:             RB5 = 1;
+[e = _z _SSPBUF ]
+"100
+[; ;Proyecto_I_Esclavo_II.c: 100:             erguido = 0;
+[e = . . _SSPCONbits 0 3 -> -> 0 `i `uc ]
+"101
+[; ;Proyecto_I_Esclavo_II.c: 101:             _delay((unsigned long)((36)*(8000000/4000.0)));
+[e = . . _SSPCONbits 0 4 -> -> 0 `i `uc ]
+"102
+[; ;Proyecto_I_Esclavo_II.c: 102:             while (RB6 == 1);
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"103
+[; ;Proyecto_I_Esclavo_II.c: 103: 
+}
+[e :U 145 ]
+"105
+[; ;Proyecto_I_Esclavo_II.c: 105: 
+[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i ! != -> . . _SSPSTATbits 0 2 `i -> 0 `i 146  ]
+{
+"107
+[; ;Proyecto_I_Esclavo_II.c: 107:             arriba_abajo = 1;
+[e = _z _SSPBUF ]
+"109
+[; ;Proyecto_I_Esclavo_II.c: 109:             arriba_abajo_enable = 1;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"110
+[; ;Proyecto_I_Esclavo_II.c: 110:             RB5 = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"111
+[; ;Proyecto_I_Esclavo_II.c: 111:             erguido = 0;
+[e $U 147  ]
+[e :U 148 ]
+[e :U 147 ]
+[e $ ! != -> . . _SSPSTATbits 0 0 `i -> 0 `i 148  ]
+[e :U 149 ]
+"112
+[; ;Proyecto_I_Esclavo_II.c: 112:             _delay((unsigned long)((36)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"114
+[; ;Proyecto_I_Esclavo_II.c: 114:         }
+}
+[e $U 150  ]
+[e :U 146 ]
+[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i != -> . . _SSPSTATbits 0 2 `i -> 0 `i 151  ]
+{
+"115
+[; ;Proyecto_I_Esclavo_II.c: 115: 
+[e = _z _SSPBUF ]
+"116
+[; ;Proyecto_I_Esclavo_II.c: 116:         if (cont_miedo == 1){
+[e = _BF -> -> 0 `i `b ]
+"117
+[; ;Proyecto_I_Esclavo_II.c: 117:             _delay((unsigned long)((2500)*(8000000/4000.0)));
+[e $ ! == -> _env_master `i -> 0 `i 152  ]
+{
+"118
+[; ;Proyecto_I_Esclavo_II.c: 118:             arriba_abajo = 1;
+[e = _env_master -> -> 1 `i `uc ]
+"119
+[; ;Proyecto_I_Esclavo_II.c: 119:             UltraFlag = 1;
+[e = _SSPBUF -> _Distancia `uc ]
+"120
+[; ;Proyecto_I_Esclavo_II.c: 120:             arriba_abajo_enable = 1;
+}
+[e $U 153  ]
+[e :U 152 ]
+{
+"121
+[; ;Proyecto_I_Esclavo_II.c: 121:             cont_miedo = 0;
+[e = _env_master -> -> 0 `i `uc ]
+"122
+[; ;Proyecto_I_Esclavo_II.c: 122:         }
+[e = _SSPBUF _env_CNY70 ]
+"123
+[; ;Proyecto_I_Esclavo_II.c: 123: 
+}
+[e :U 153 ]
+"124
+[; ;Proyecto_I_Esclavo_II.c: 124:         if (UltraFlag == 1){
+[e = . . _PORTBbits 0 4 -> ~ -> . . _PORTBbits 0 4 `i `uc ]
+"125
+[; ;Proyecto_I_Esclavo_II.c: 125:            Distancia = Ultrasonico();
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"126
+[; ;Proyecto_I_Esclavo_II.c: 126: 
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"127
+[; ;Proyecto_I_Esclavo_II.c: 127:            if (Distancia < 6 && arriba_abajo == 0){
+[e $U 154  ]
+[e :U 155 ]
+[e :U 154 ]
+[e $ != -> . . _SSPSTATbits 0 0 `i -> 0 `i 155  ]
+[e :U 156 ]
+"128
+[; ;Proyecto_I_Esclavo_II.c: 128:                arriba_abajo_enable = 0;
+}
+[e :U 151 ]
+[e :U 150 ]
+"130
+[; ;Proyecto_I_Esclavo_II.c: 130:                cont_miedo = 1;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"131
+[; ;Proyecto_I_Esclavo_II.c: 131:                env_CNY70 = 0;
+}
+[e :U 144 ]
+"132
+[; ;Proyecto_I_Esclavo_II.c: 132: 
 [e :UE 139 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"139
-[; ;Proyecto_I_Esclavo_II.c: 139:                PORTBbits.RB1 = 0;
+"134
+[; ;Proyecto_I_Esclavo_II.c: 134:            }else if (Distancia > 15 && arriba_abajo == 1){
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"142
-[; ;Proyecto_I_Esclavo_II.c: 142:         }
+"137
+[; ;Proyecto_I_Esclavo_II.c: 137:                UltraFlag = 0;
 [e ( _config ..  ]
-"143
-[; ;Proyecto_I_Esclavo_II.c: 143:         RB4 = (inicio >>1) && 0x01;
+"138
+[; ;Proyecto_I_Esclavo_II.c: 138:                cont_miedo = 0;
 [e ( _Config_Oscilador ..  ]
-"144
-[; ;Proyecto_I_Esclavo_II.c: 144:         RB3 = ~RB3;
+"139
+[; ;Proyecto_I_Esclavo_II.c: 139:                RB5 = 0;
 [e ( _Config_ADC ..  ]
-"145
-[; ;Proyecto_I_Esclavo_II.c: 145:         _delay((unsigned long)((200)*(8000000/4000.0)));
+"140
+[; ;Proyecto_I_Esclavo_II.c: 140:                erguido = 1 ;
 [e ( _I2C_Slave_Init (1 -> -> 254 `i `uc ]
-"148
-[; ;Proyecto_I_Esclavo_II.c: 148: 
-[e :U 162 ]
+"141
+[; ;Proyecto_I_Esclavo_II.c: 141:            }
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"144
+[; ;Proyecto_I_Esclavo_II.c: 144:            if (arriba_abajo == 1 && arriba_abajo_enable == 1 && PORTBbits.RB2 == 0){
+[e :U 159 ]
 {
-"149
-[; ;Proyecto_I_Esclavo_II.c: 149: void config(void){
-[e $ ! && && && > -> _CNY70 `i -> 40 `i < -> _CNY70 `i -> 55 `i >= -> _Con_CNY70 `i -> 200 `i == -> _inicio `i -> 0 `i 164  ]
+"145
+[; ;Proyecto_I_Esclavo_II.c: 145:                PORTBbits.RB1 = 1;
+[e $ ! && && && && > -> _CNY70 `i -> 55 `i < -> _CNY70 `i -> 70 `i >= -> _Con_CNY70 `i -> 200 `i == -> _inicio `i -> 0 `i == -> _erguido `i -> 1 `i 161  ]
 {
-"150
-[; ;Proyecto_I_Esclavo_II.c: 150:     TRISA = 0b00000001;
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"151
-[; ;Proyecto_I_Esclavo_II.c: 151:     TRISB = 0;
+"146
+[; ;Proyecto_I_Esclavo_II.c: 146:            }else if (arriba_abajo == 0 && arriba_abajo_enable == 1 && PORTBbits.RB1 == 0){
 [e = _UltraFlag -> -> 1 `i `uc ]
-"152
-[; ;Proyecto_I_Esclavo_II.c: 152: 
+"147
+[; ;Proyecto_I_Esclavo_II.c: 147:                PORTBbits.RB2 = 1;
 [e = _arriba_abajo -> -> 0 `i `uc ]
-"153
-[; ;Proyecto_I_Esclavo_II.c: 153:     ANSEL = 0b0000001;
+"148
+[; ;Proyecto_I_Esclavo_II.c: 148:            }else{
 [e = _arriba_abajo_enable -> -> 1 `i `uc ]
-"154
-[; ;Proyecto_I_Esclavo_II.c: 154:     ANSELH = 0;
+"149
+[; ;Proyecto_I_Esclavo_II.c: 149:                PORTBbits.RB1 = 0;
 [e = _env_CNY70 -> -> 1 `i `uc ]
-"155
-[; ;Proyecto_I_Esclavo_II.c: 155: 
-}
+"150
+[; ;Proyecto_I_Esclavo_II.c: 150:                PORTBbits.RB2 = 0;
+[e = _RB5 -> -> 1 `i `b ]
+"151
+[; ;Proyecto_I_Esclavo_II.c: 151:            }
+[e = _erguido -> -> 0 `i `uc ]
+"152
+[; ;Proyecto_I_Esclavo_II.c: 152:         }
+[e ( __delay (1 -> * -> -> 36 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"153
+[; ;Proyecto_I_Esclavo_II.c: 153:         RB3 = ~RB3;
+[e $U 162  ]
+[e :U 163 ]
+[e :U 162 ]
+[e $ == -> _RB6 `i -> 1 `i 163  ]
 [e :U 164 ]
+"155
+[; ;Proyecto_I_Esclavo_II.c: 155:     }
+}
+[e :U 161 ]
 "157
-[; ;Proyecto_I_Esclavo_II.c: 157:     PORTA = 0;
+[; ;Proyecto_I_Esclavo_II.c: 157: 
 [e $ ! == -> _inicio `i -> 1 `i 165  ]
 {
 "158
-[; ;Proyecto_I_Esclavo_II.c: 158:     PORTB = 0;
+[; ;Proyecto_I_Esclavo_II.c: 158: void config(void){
 [e = _arriba_abajo -> -> 1 `i `uc ]
 "159
-[; ;Proyecto_I_Esclavo_II.c: 159: }
+[; ;Proyecto_I_Esclavo_II.c: 159:     TRISA = 0b00000001;
 [e = _UltraFlag -> -> 1 `i `uc ]
 "160
+[; ;Proyecto_I_Esclavo_II.c: 160:     TRISB = 0b01000000;
 [e = _arriba_abajo_enable -> -> 1 `i `uc ]
 "161
+[; ;Proyecto_I_Esclavo_II.c: 161:     TRISDbits.TRISD1 = 1;
+[e = _RB5 -> -> 1 `i `b ]
+"162
+[; ;Proyecto_I_Esclavo_II.c: 162: 
+[e = _erguido -> -> 0 `i `uc ]
+"163
+[; ;Proyecto_I_Esclavo_II.c: 163:     ANSEL = 0b0000001;
+[e ( __delay (1 -> * -> -> 36 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"164
+[; ;Proyecto_I_Esclavo_II.c: 164:     ANSELH = 0;
+[e $U 166  ]
+[e :U 167 ]
+[e :U 166 ]
+[e $ == -> _RB6 `i -> 1 `i 167  ]
+[e :U 168 ]
+"165
+[; ;Proyecto_I_Esclavo_II.c: 165: 
 }
 [e :U 165 ]
-"162
-[e $ ! == -> _cont_miedo `i -> 1 `i 166  ]
-{
-"163
-[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"164
-[e = _arriba_abajo -> -> 1 `i `uc ]
-"165
-[e = _UltraFlag -> -> 1 `i `uc ]
-"166
-[e = _arriba_abajo_enable -> -> 1 `i `uc ]
 "167
-}
-[e :U 166 ]
+[; ;Proyecto_I_Esclavo_II.c: 167:     PORTB = 0;
+[e $ ! == -> _cont_miedo `i -> 1 `i 169  ]
+{
+"168
+[; ;Proyecto_I_Esclavo_II.c: 168:     PORTD = 0;
+[e ( __delay (1 -> * -> -> 2500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "169
-[e $ ! == -> _UltraFlag `i -> 1 `i 167  ]
-{
+[; ;Proyecto_I_Esclavo_II.c: 169: }
+[e = _arriba_abajo -> -> 1 `i `uc ]
 "170
-[e = _Distancia ( _Ultrasonico ..  ]
+[e = _UltraFlag -> -> 1 `i `uc ]
+"171
+[e = _arriba_abajo_enable -> -> 1 `i `uc ]
 "172
-[e $ ! && < -> _Distancia `i -> 6 `i == -> _arriba_abajo `i -> 0 `i 168  ]
-{
+[e = _cont_miedo -> -> 0 `i `uc ]
 "173
-[e = _arriba_abajo_enable -> -> 0 `i `uc ]
-"174
-[e = _UltraFlag -> -> 0 `i `uc ]
-"175
-[e = _cont_miedo -> -> 1 `i `uc ]
-"176
-[e = _env_CNY70 -> -> 0 `i `uc ]
-"177
 }
-[e $U 169  ]
-[e :U 168 ]
-[e $ ! && > -> _Distancia `i -> 16 `i == -> _arriba_abajo `i -> 1 `i 170  ]
+[e :U 169 ]
+"175
+[e $ ! == -> _UltraFlag `i -> 1 `i 170  ]
 {
+"176
+[e = _Distancia ( _Ultrasonico ..  ]
 "178
-[e = _arriba_abajo_enable -> -> 0 `i `uc ]
+[e $ ! && < -> _Distancia `i -> 6 `i == -> _arriba_abajo `i -> 0 `i 171  ]
+{
 "179
-[e = _inicio -> -> 0 `i `uc ]
+[e = _arriba_abajo_enable -> -> 0 `i `uc ]
 "180
 [e = _UltraFlag -> -> 0 `i `uc ]
 "181
-[e = _cont_miedo -> -> 0 `i `uc ]
+[e = _cont_miedo -> -> 1 `i `uc ]
 "182
-}
-[e :U 170 ]
-[e :U 169 ]
+[e = _env_CNY70 -> -> 0 `i `uc ]
 "185
-[e $ ! && && == -> _arriba_abajo `i -> 1 `i == -> _arriba_abajo_enable `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i 171  ]
-{
-"186
-[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
-"187
 }
 [e $U 172  ]
 [e :U 171 ]
-[e $ ! && && == -> _arriba_abajo `i -> 0 `i == -> _arriba_abajo_enable `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 0 `i 173  ]
+[e $ ! && > -> _Distancia `i -> 15 `i == -> _arriba_abajo `i -> 1 `i 173  ]
 {
+"186
+[e = _arriba_abajo_enable -> -> 0 `i `uc ]
+"187
+[e = _inicio -> -> 0 `i `uc ]
 "188
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+[e = _UltraFlag -> -> 0 `i `uc ]
 "189
-}
-[e $U 174  ]
-[e :U 173 ]
-{
+[e = _cont_miedo -> -> 0 `i `uc ]
 "190
-[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+[e = _RB5 -> -> 0 `i `b ]
 "191
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[e = _erguido -> -> 1 `i `uc ]
 "192
 }
-[e :U 174 ]
+[e :U 173 ]
 [e :U 172 ]
-"193
-}
-[e :U 167 ]
-"194
-[e = _RB4 && != >> -> _inicio `i -> 1 `i -> 0 `i != -> 1 `i -> 0 `i ]
 "195
-[e = _RB3 -> ~ -> _RB3 `ui `b ]
+[e $ ! && && == -> _arriba_abajo `i -> 1 `i == -> _arriba_abajo_enable `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i 174  ]
+{
 "196
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
 "197
 }
-[e :U 161 ]
-[e $U 162  ]
-[e :U 163 ]
+[e $U 175  ]
+[e :U 174 ]
+[e $ ! && && == -> _arriba_abajo `i -> 0 `i == -> _arriba_abajo_enable `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 0 `i 176  ]
+{
 "198
-[e :UE 160 ]
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"199
 }
+[e $U 177  ]
+[e :U 176 ]
+{
 "200
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+"201
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"202
+}
+[e :U 177 ]
+[e :U 175 ]
+"203
+}
+[e :U 170 ]
+"204
+[e = _RB3 -> ~ -> _RB3 `ui `b ]
+"205
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"206
+}
+[e :U 158 ]
+[e $U 159  ]
+[e :U 160 ]
+"207
+[e :UE 157 ]
+}
+"209
 [v _config `(v ~T0 @X0 1 ef ]
 {
 [e :U _config ]
 [f ]
-"201
-[e = _TRISA -> -> 1 `i `uc ]
-"202
-[e = _TRISB -> -> 0 `i `uc ]
-"204
-[e = _ANSEL -> -> 1 `i `uc ]
-"205
-[e = _ANSELH -> -> 0 `i `uc ]
-"208
-[e = _PORTA -> -> 0 `i `uc ]
-"209
-[e = _PORTB -> -> 0 `i `uc ]
 "210
-[e :UE 175 ]
+[e = _TRISA -> -> 1 `i `uc ]
+"211
+[e = _TRISB -> -> 64 `i `uc ]
+"212
+[e = . . _TRISDbits 0 1 -> -> 1 `i `uc ]
+"214
+[e = _ANSEL -> -> 1 `i `uc ]
+"215
+[e = _ANSELH -> -> 0 `i `uc ]
+"218
+[e = _PORTB -> -> 0 `i `uc ]
+"219
+[e = _PORTD -> -> 0 `i `uc ]
+"220
+[e :UE 178 ]
 }

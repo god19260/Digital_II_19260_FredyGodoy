@@ -2642,7 +2642,7 @@ void Lcd_Init(void);
 
 void Lcd_Write_Char(char a);
 
-void Lcd_Write_String(char a);
+void Lcd_Write_String(char *a);
 
 void Lcd_Shift_Right(void);
 
@@ -2658,7 +2658,7 @@ void Lcd_Cmd(unsigned char a) {
     RE0 = 0;
     Lcd_Port(a);
     RE1 = 1;
-    delay_ms(4);
+    _delay((unsigned long)((4)*(8000000/4000.0)));
     RE1 = 0;
 }
 
@@ -2690,11 +2690,11 @@ void Lcd_Init(void) {
     INTCONbits.PEIE = 0;
     INTCONbits.GIE = 0;
     Lcd_Port(0);
-    delay_ms(20);
+    _delay((unsigned long)((20)*(8000000/4000.0)));
     Lcd_Cmd(48);
-    delay_ms(5);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
     Lcd_Cmd(48);
-    delay_ms(11);
+    _delay((unsigned long)((11)*(8000000/4000.0)));
     Lcd_Cmd(48);
 
     Lcd_Cmd(56);

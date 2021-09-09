@@ -231,6 +231,6 @@ char Ultrasonico(void){
         cont++;
     }
     tiempo = 27*cont; // Tiempo en microsegundos
-    dist = (tiempo/29)/2;
+    dist = (tiempo/29)/10;
     return dist;   
 }

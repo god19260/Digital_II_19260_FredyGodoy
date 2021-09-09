@@ -18,7 +18,7 @@ void Lcd_Cmd(unsigned char a) {//
     RS = 0; // => RS = 0 // Dato en el puerto lo va interpretar como comando
     Lcd_Port(a);
     EN = 1; // => E = 1
-    delay_ms(4);
+    __delay_ms(4);
     EN = 0; // => E = 0
 }
 
@@ -50,11 +50,11 @@ void Lcd_Init(void) {
     INTCONbits.PEIE = 0;
     INTCONbits.GIE = 0;
     Lcd_Port(0);
-    delay_ms(20);
+    __delay_ms(20);
     Lcd_Cmd(48);
-    delay_ms(5);
+    __delay_ms(5);
     Lcd_Cmd(48);
-    delay_ms(11);
+    __delay_ms(11);
     Lcd_Cmd(48);
     /////////////////////////////////////////////////////
     Lcd_Cmd(56);

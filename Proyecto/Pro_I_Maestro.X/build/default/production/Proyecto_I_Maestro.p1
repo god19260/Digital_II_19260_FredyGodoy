@@ -87,8 +87,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./../../LIB/LIB.X/LCD.h: 73: void Lcd_Write_Char(char a);
 [v _Lcd_Write_Char `(v ~T0 @X0 0 ef1`uc ]
 "75
-[; ;./../../LIB/LIB.X/LCD.h: 75: void Lcd_Write_String(char a);
-[v _Lcd_Write_String `(v ~T0 @X0 0 ef1`uc ]
+[; ;./../../LIB/LIB.X/LCD.h: 75: void Lcd_Write_String(char *a);
+[v _Lcd_Write_String `(v ~T0 @X0 0 ef1`*uc ]
 "194 C:\Program Files\Microchip\xc8\v2.32\pic\include\c90\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "25 ./../../LIB/LIB.X/LIB.h
@@ -713,7 +713,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "191
 [; ;Proyecto_I_Maestro.c: 191:                 Lcd_Write_String("PM");
-[e ( _Lcd_Write_String (1 -> :s 1C `uc ]
+[e ( _Lcd_Write_String (1 :s 1C ]
 "192
 [; ;Proyecto_I_Maestro.c: 192:             }else if (AM_PM == 2){
 }
@@ -723,7 +723,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "193
 [; ;Proyecto_I_Maestro.c: 193:                 Lcd_Write_String("AM");
-[e ( _Lcd_Write_String (1 -> :s 2C `uc ]
+[e ( _Lcd_Write_String (1 :s 2C ]
 "194
 [; ;Proyecto_I_Maestro.c: 194:             }
 }
@@ -768,7 +768,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "209
 [; ;Proyecto_I_Maestro.c: 209:             Lcd_Write_String("Ultrasonico: ");
-[e ( _Lcd_Write_String (1 -> :s 3C `uc ]
+[e ( _Lcd_Write_String (1 :s 3C ]
 "210
 [; ;Proyecto_I_Maestro.c: 210:             convdecimal (ultrasonico);
 [e ( _convdecimal (1 _ultrasonico ]
@@ -777,14 +777,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "212
 [; ;Proyecto_I_Maestro.c: 212:             Lcd_Write_String("Color Rosado: ");
-[e ( _Lcd_Write_String (1 -> :s 4C `uc ]
+[e ( _Lcd_Write_String (1 :s 4C ]
 "213
 [; ;Proyecto_I_Maestro.c: 213:             if (CNY70 == 1){
 [e $ ! == -> _CNY70 `i -> 1 `i 155  ]
 {
 "214
 [; ;Proyecto_I_Maestro.c: 214:                 Lcd_Write_String("SI");
-[e ( _Lcd_Write_String (1 -> :s 5C `uc ]
+[e ( _Lcd_Write_String (1 :s 5C ]
 "215
 [; ;Proyecto_I_Maestro.c: 215:             }else if (CNY70 == 0){
 }
@@ -794,7 +794,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "216
 [; ;Proyecto_I_Maestro.c: 216:                 Lcd_Write_String("NO");
-[e ( _Lcd_Write_String (1 -> :s 6C `uc ]
+[e ( _Lcd_Write_String (1 :s 6C ]
 "217
 [; ;Proyecto_I_Maestro.c: 217:             }
 }
