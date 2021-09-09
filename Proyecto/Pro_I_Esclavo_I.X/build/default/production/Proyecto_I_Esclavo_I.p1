@@ -25,9 +25,91 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4196
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4196: extern volatile __bit RD5 __attribute__((address(0x45)));
 [v _RD5 `Vb ~T0 @X0 0 e@69 ]
+"543
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 543:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"542
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 542: typedef union {
+[u S18 `S19 1 ]
+[n S18 . . ]
+"553
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"856
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 856:     struct {
+[s S30 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S30 . SSPM CKP SSPEN SSPOV WCOL ]
+"863
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 863:     struct {
+[s S31 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S31 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"855
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 855: typedef union {
+[u S29 `S30 1 `S31 1 ]
+[n S29 . . . ]
+"870
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 870: extern volatile SSPCONbits_t SSPCONbits __attribute__((address(0x014)));
+[v _SSPCONbits `VS29 ~T0 @X0 0 e@20 ]
+"843
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 843: extern volatile unsigned char SSPBUF __attribute__((address(0x013)));
+[v _SSPBUF `Vuc ~T0 @X0 0 e@19 ]
+"2183
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2183:     struct {
+[s S82 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S82 . BF UA R_nW S P D_nA CKE SMP ]
+"2193
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2193:     struct {
+[s S83 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S83 . . R . D ]
+"2199
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2199:     struct {
+[s S84 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S84 . . I2C_READ I2C_START I2C_STOP I2C_DATA ]
+"2206
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2206:     struct {
+[s S85 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S85 . . nW . nA ]
+"2212
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2212:     struct {
+[s S86 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S86 . . nWRITE . nADDRESS ]
+"2218
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2218:     struct {
+[s S87 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S87 . . R_W . D_A ]
+"2224
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2224:     struct {
+[s S88 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S88 . . READ_WRITE . DATA_ADDRESS ]
+"2182
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2182: typedef union {
+[u S81 `S82 1 `S83 1 `S84 1 `S85 1 `S86 1 `S87 1 `S88 1 ]
+[n S81 . . . . . . . . ]
+"2231
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2231: extern volatile SSPSTATbits_t SSPSTATbits __attribute__((address(0x094)));
+[v _SSPSTATbits `VS81 ~T0 @X0 0 e@148 ]
+"234
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 234:     struct {
+[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"233
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 233: typedef union {
+[u S7 `S8 1 ]
+[n S7 . . ]
+"245
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
+[v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
+"3641 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3641: extern volatile __bit BF __attribute__((address(0x4A0)));
+[v _BF `Vb ~T0 @X0 0 e@1184 ]
 [p mainexit ]
-"85 Proyecto_I_Esclavo_I.c
-[; ;Proyecto_I_Esclavo_I.c: 85: void config(void);
+"96 Proyecto_I_Esclavo_I.c
+[; ;Proyecto_I_Esclavo_I.c: 96: void config(void);
 [v _config `(v ~T0 @X0 0 ef ]
 "15 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
@@ -35,28 +117,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16
 [; ;./../../LIB/LIB.X/LIB.h: 16: char Config_TMR0(void);
 [v _Config_TMR0 `(uc ~T0 @X0 0 ef ]
-"465 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 465:     struct {
-[s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S16 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
-"475
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 475:     struct {
-[s S17 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S17 . . TMR0IF . TMR0IE ]
-"464
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 464: typedef union {
-[u S15 `S16 1 `S17 1 ]
-[n S15 . . . ]
-"482
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 482: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
-[v _INTCONbits `VS15 ~T0 @X0 0 e@11 ]
-[v F1256 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
-[v __delay `JF1256 ~T0 @X0 0 e ]
-[p i __delay ]
-"1602 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+"79 ./../../LIB/LIB.X/I2C.h
+[; ;./../../LIB/LIB.X/I2C.h: 79: void I2C_Slave_Init(uint8_t address);
+[v _I2C_Slave_Init `(v ~T0 @X0 0 ef1`uc ]
+"4112 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4112: extern volatile __bit RB3 __attribute__((address(0x33)));
+[v _RB3 `Vb ~T0 @X0 0 e@51 ]
+"4124
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4124: extern volatile __bit RB7 __attribute__((address(0x37)));
+[v _RB7 `Vb ~T0 @X0 0 e@55 ]
+"1602
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
+"1478
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1478: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "3387
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
@@ -66,6 +141,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "352
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"228
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -300,169 +378,235 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"20 Proyecto_I_Esclavo_I.c
+"21 Proyecto_I_Esclavo_I.c
 [p x FOSC  =  INTRC_NOCLKOUT  ]
-"23
+"24
 [p x WDTE  =  OFF        ]
-"26
-[p x PWRTE  =  OFF       ]
 "27
+[p x PWRTE  =  OFF       ]
+"28
 [p x MCLRE  =  OFF       ]
-"30
+"31
 [p x CP  =  OFF           ]
-"32
+"33
 [p x CPD  =  OFF          ]
-"34
-[p x BOREN  =  OFF       ]
 "35
+[p x BOREN  =  OFF       ]
+"36
 [p x IESO  =  OFF        ]
-"37
+"38
 [p x FCMEN  =  OFF       ]
-"39
+"40
 [p x LVP  =  OFF         ]
-"44
+"45
 [p x BOR4V  =  BOR40V    ]
-"46
+"47
 [p x WRT  =  OFF         ]
-"57
-[; ;Proyecto_I_Esclavo_I.c: 57: char Valor_TMR0;
+"58
+[; ;Proyecto_I_Esclavo_I.c: 58: char Valor_TMR0;
 [v _Valor_TMR0 `uc ~T0 @X0 1 e ]
-"59
-[; ;Proyecto_I_Esclavo_I.c: 59: signed int DifServo1 = 0;
+"60
+[; ;Proyecto_I_Esclavo_I.c: 60: signed int DifServo1 = 0;
 [v _DifServo1 `i ~T0 @X0 1 e ]
 [i _DifServo1
 -> 0 `i
 ]
-"60
-[; ;Proyecto_I_Esclavo_I.c: 60: signed int DifServo2 = 0;
+"61
+[; ;Proyecto_I_Esclavo_I.c: 61: unsigned char DifServo1_Mayor5 = 0;
+[v _DifServo1_Mayor5 `uc ~T0 @X0 1 e ]
+[i _DifServo1_Mayor5
+-> -> 0 `i `uc
+]
+"62
+[; ;Proyecto_I_Esclavo_I.c: 62: signed int DifServo2 = 0;
 [v _DifServo2 `i ~T0 @X0 1 e ]
 [i _DifServo2
 -> 0 `i
 ]
-"61
-[; ;Proyecto_I_Esclavo_I.c: 61: signed int DifServo3 = 0;
+"63
+[; ;Proyecto_I_Esclavo_I.c: 63: unsigned char DifServo2_Mayor5 = 0;
+[v _DifServo2_Mayor5 `uc ~T0 @X0 1 e ]
+[i _DifServo2_Mayor5
+-> -> 0 `i `uc
+]
+"64
+[; ;Proyecto_I_Esclavo_I.c: 64: signed int DifServo3 = 0;
 [v _DifServo3 `i ~T0 @X0 1 e ]
 [i _DifServo3
 -> 0 `i
 ]
-"62
-[; ;Proyecto_I_Esclavo_I.c: 62: signed int DifServo4 = 0;
+"65
+[; ;Proyecto_I_Esclavo_I.c: 65: unsigned char DifServo3_Mayor5 = 0;
+[v _DifServo3_Mayor5 `uc ~T0 @X0 1 e ]
+[i _DifServo3_Mayor5
+-> -> 0 `i `uc
+]
+"66
+[; ;Proyecto_I_Esclavo_I.c: 66: signed int DifServo4 = 0;
 [v _DifServo4 `i ~T0 @X0 1 e ]
 [i _DifServo4
 -> 0 `i
 ]
-"63
-[; ;Proyecto_I_Esclavo_I.c: 63: signed int DifServo5 = 0;
+"67
+[; ;Proyecto_I_Esclavo_I.c: 67: unsigned char DifServo4_Mayor5 = 0;
+[v _DifServo4_Mayor5 `uc ~T0 @X0 1 e ]
+[i _DifServo4_Mayor5
+-> -> 0 `i `uc
+]
+"68
+[; ;Proyecto_I_Esclavo_I.c: 68: signed int DifServo5 = 0;
 [v _DifServo5 `i ~T0 @X0 1 e ]
 [i _DifServo5
 -> 0 `i
 ]
-"64
-[; ;Proyecto_I_Esclavo_I.c: 64: signed int DifServo6 = 0;
+"69
+[; ;Proyecto_I_Esclavo_I.c: 69: unsigned char DifServo5_Mayor5 = 0;
+[v _DifServo5_Mayor5 `uc ~T0 @X0 1 e ]
+[i _DifServo5_Mayor5
+-> -> 0 `i `uc
+]
+"70
+[; ;Proyecto_I_Esclavo_I.c: 70: signed int DifServo6 = 0;
 [v _DifServo6 `i ~T0 @X0 1 e ]
 [i _DifServo6
 -> 0 `i
 ]
-"67
-[; ;Proyecto_I_Esclavo_I.c: 67: unsigned char Pos_neutra_Servo1 = 193;
-[v _Pos_neutra_Servo1 `uc ~T0 @X0 1 e ]
-[i _Pos_neutra_Servo1
--> -> 193 `i `uc
-]
-"68
-[; ;Proyecto_I_Esclavo_I.c: 68: unsigned char Pos_neutra_Servo2 = 208;
-[v _Pos_neutra_Servo2 `uc ~T0 @X0 1 e ]
-[i _Pos_neutra_Servo2
--> -> 208 `i `uc
-]
-"69
-[; ;Proyecto_I_Esclavo_I.c: 69: unsigned char Pos_neutra_Servo3 = 197;
-[v _Pos_neutra_Servo3 `uc ~T0 @X0 1 e ]
-[i _Pos_neutra_Servo3
--> -> 197 `i `uc
-]
-"70
-[; ;Proyecto_I_Esclavo_I.c: 70: unsigned char Pos_neutra_Servo4 = 160;
-[v _Pos_neutra_Servo4 `uc ~T0 @X0 1 e ]
-[i _Pos_neutra_Servo4
--> -> 160 `i `uc
-]
 "71
-[; ;Proyecto_I_Esclavo_I.c: 71: unsigned char Pos_neutra_Servo5 = 212;
-[v _Pos_neutra_Servo5 `uc ~T0 @X0 1 e ]
-[i _Pos_neutra_Servo5
--> -> 212 `i `uc
-]
-"72
-[; ;Proyecto_I_Esclavo_I.c: 72: unsigned char Pos_neutra_Servo6 = 183;
-[v _Pos_neutra_Servo6 `uc ~T0 @X0 1 e ]
-[i _Pos_neutra_Servo6
--> -> 183 `i `uc
-]
-"75
-[; ;Proyecto_I_Esclavo_I.c: 75: char Pos_Servos1 = 193;
-[v _Pos_Servos1 `uc ~T0 @X0 1 e ]
-[i _Pos_Servos1
--> -> 193 `i `uc
-]
-"76
-[; ;Proyecto_I_Esclavo_I.c: 76: char Pos_Servos2 = 208;
-[v _Pos_Servos2 `uc ~T0 @X0 1 e ]
-[i _Pos_Servos2
--> -> 208 `i `uc
-]
-"77
-[; ;Proyecto_I_Esclavo_I.c: 77: char Pos_Servos3 = 197;
-[v _Pos_Servos3 `uc ~T0 @X0 1 e ]
-[i _Pos_Servos3
--> -> 197 `i `uc
-]
-"78
-[; ;Proyecto_I_Esclavo_I.c: 78: char Pos_Servos4 = 160;
-[v _Pos_Servos4 `uc ~T0 @X0 1 e ]
-[i _Pos_Servos4
--> -> 160 `i `uc
-]
-"79
-[; ;Proyecto_I_Esclavo_I.c: 79: char Pos_Servos5 = 212;
-[v _Pos_Servos5 `uc ~T0 @X0 1 e ]
-[i _Pos_Servos5
--> -> 212 `i `uc
-]
-"80
-[; ;Proyecto_I_Esclavo_I.c: 80: char Pos_Servos6 = 183;
-[v _Pos_Servos6 `uc ~T0 @X0 1 e ]
-[i _Pos_Servos6
--> -> 183 `i `uc
-]
-"82
-[; ;Proyecto_I_Esclavo_I.c: 82: unsigned char izq_der = 0;
-[v _izq_der `uc ~T0 @X0 1 e ]
-[i _izq_der
+[; ;Proyecto_I_Esclavo_I.c: 71: unsigned char DifServo6_Mayor5 = 0;
+[v _DifServo6_Mayor5 `uc ~T0 @X0 1 e ]
+[i _DifServo6_Mayor5
 -> -> 0 `i `uc
 ]
+"72
+[; ;Proyecto_I_Esclavo_I.c: 72: signed char menos_uno = -1;
+[v _menos_uno `c ~T0 @X0 1 e ]
+[i _menos_uno
+-> -U -> 1 `i `c
+]
+"75
+[; ;Proyecto_I_Esclavo_I.c: 75: unsigned char Pos_neutra_Servo1 = 210;
+[v _Pos_neutra_Servo1 `uc ~T0 @X0 1 e ]
+[i _Pos_neutra_Servo1
+-> -> 210 `i `uc
+]
+"76
+[; ;Proyecto_I_Esclavo_I.c: 76: unsigned char Pos_neutra_Servo2 = 220;
+[v _Pos_neutra_Servo2 `uc ~T0 @X0 1 e ]
+[i _Pos_neutra_Servo2
+-> -> 220 `i `uc
+]
+"77
+[; ;Proyecto_I_Esclavo_I.c: 77: unsigned char Pos_neutra_Servo3 = 220;
+[v _Pos_neutra_Servo3 `uc ~T0 @X0 1 e ]
+[i _Pos_neutra_Servo3
+-> -> 220 `i `uc
+]
+"78
+[; ;Proyecto_I_Esclavo_I.c: 78: unsigned char Pos_neutra_Servo4 = 214;
+[v _Pos_neutra_Servo4 `uc ~T0 @X0 1 e ]
+[i _Pos_neutra_Servo4
+-> -> 214 `i `uc
+]
+"79
+[; ;Proyecto_I_Esclavo_I.c: 79: unsigned char Pos_neutra_Servo5 = 220;
+[v _Pos_neutra_Servo5 `uc ~T0 @X0 1 e ]
+[i _Pos_neutra_Servo5
+-> -> 220 `i `uc
+]
+"80
+[; ;Proyecto_I_Esclavo_I.c: 80: unsigned char Pos_neutra_Servo6 = 204;
+[v _Pos_neutra_Servo6 `uc ~T0 @X0 1 e ]
+[i _Pos_neutra_Servo6
+-> -> 204 `i `uc
+]
+"81
+[; ;Proyecto_I_Esclavo_I.c: 81: unsigned char Erguido = 0;
+[v _Erguido `uc ~T0 @X0 1 e ]
+[i _Erguido
+-> -> 0 `i `uc
+]
+"84
+[; ;Proyecto_I_Esclavo_I.c: 84: char Pos_Servos1 = 210;
+[v _Pos_Servos1 `uc ~T0 @X0 1 e ]
+[i _Pos_Servos1
+-> -> 210 `i `uc
+]
+"85
+[; ;Proyecto_I_Esclavo_I.c: 85: char Pos_Servos2 = 220;
+[v _Pos_Servos2 `uc ~T0 @X0 1 e ]
+[i _Pos_Servos2
+-> -> 220 `i `uc
+]
+"86
+[; ;Proyecto_I_Esclavo_I.c: 86: char Pos_Servos3 = 220;
+[v _Pos_Servos3 `uc ~T0 @X0 1 e ]
+[i _Pos_Servos3
+-> -> 220 `i `uc
+]
+"87
+[; ;Proyecto_I_Esclavo_I.c: 87: char Pos_Servos4 = 214;
+[v _Pos_Servos4 `uc ~T0 @X0 1 e ]
+[i _Pos_Servos4
+-> -> 214 `i `uc
+]
+"88
+[; ;Proyecto_I_Esclavo_I.c: 88: char Pos_Servos5 = 220;
+[v _Pos_Servos5 `uc ~T0 @X0 1 e ]
+[i _Pos_Servos5
+-> -> 220 `i `uc
+]
+"89
+[; ;Proyecto_I_Esclavo_I.c: 89: char Pos_Servos6 = 204;
+[v _Pos_Servos6 `uc ~T0 @X0 1 e ]
+[i _Pos_Servos6
+-> -> 204 `i `uc
+]
+"91
+[; ;Proyecto_I_Esclavo_I.c: 91: unsigned char izq_der = 3;
+[v _izq_der `uc ~T0 @X0 1 e ]
+[i _izq_der
+-> -> 3 `i `uc
+]
+"92
+[; ;Proyecto_I_Esclavo_I.c: 92: unsigned char izq_der_old = 0;
+[v _izq_der_old `uc ~T0 @X0 1 e ]
+[i _izq_der_old
+-> -> 0 `i `uc
+]
+"93
+[; ;Proyecto_I_Esclavo_I.c: 93: unsigned char z = 0;
+[v _z `uc ~T0 @X0 1 e ]
+[i _z
+-> -> 0 `i `uc
+]
+"94
+[; ;Proyecto_I_Esclavo_I.c: 94: unsigned char prueba = 50;
+[v _prueba `uc ~T0 @X0 1 e ]
+[i _prueba
+-> -> 50 `i `uc
+]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"90
-[; ;Proyecto_I_Esclavo_I.c: 90: void __attribute__((picinterrupt(("")))) isr (void){
+"101
+[; ;Proyecto_I_Esclavo_I.c: 101: void __attribute__((picinterrupt(("")))) isr (void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"92
-[; ;Proyecto_I_Esclavo_I.c: 92:     if (T0IF == 1){
+"103
+[; ;Proyecto_I_Esclavo_I.c: 103:     if (T0IF == 1){
 [e $ ! == -> _T0IF `i -> 1 `i 140  ]
 {
-"94
-[; ;Proyecto_I_Esclavo_I.c: 94:         T0IF = 0;
+"105
+[; ;Proyecto_I_Esclavo_I.c: 105:         T0IF = 0;
 [e = _T0IF -> -> 0 `i `b ]
-"95
-[; ;Proyecto_I_Esclavo_I.c: 95:         TMR0 = Valor_TMR0;
+"106
+[; ;Proyecto_I_Esclavo_I.c: 106:         TMR0 = Valor_TMR0;
 [e = _TMR0 -> _Valor_TMR0 `uc ]
-"98
-[; ;Proyecto_I_Esclavo_I.c: 98:         RD0 = 1;
+"109
+[; ;Proyecto_I_Esclavo_I.c: 109:         RD0 = 1;
 [e = _RD0 -> -> 1 `i `b ]
-"99
-[; ;Proyecto_I_Esclavo_I.c: 99:         for(int i = 0; i<Pos_Servos1;i++){}
+"110
+[; ;Proyecto_I_Esclavo_I.c: 110:         for(int i = 0; i<Pos_Servos1;i++){}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -475,14 +619,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> _Pos_Servos1 `i 141  ]
 [e :U 142 ]
 }
-"100
-[; ;Proyecto_I_Esclavo_I.c: 100:         RD0=0;
+"111
+[; ;Proyecto_I_Esclavo_I.c: 111:         RD0=0;
 [e = _RD0 -> -> 0 `i `b ]
-"102
-[; ;Proyecto_I_Esclavo_I.c: 102:         RD1 = 1;
+"113
+[; ;Proyecto_I_Esclavo_I.c: 113:         RD1 = 1;
 [e = _RD1 -> -> 1 `i `b ]
-"103
-[; ;Proyecto_I_Esclavo_I.c: 103:         for(int i = 0; i<Pos_Servos2;i++){}
+"114
+[; ;Proyecto_I_Esclavo_I.c: 114:         for(int i = 0; i<Pos_Servos2;i++){}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -495,14 +639,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> _Pos_Servos2 `i 145  ]
 [e :U 146 ]
 }
-"104
-[; ;Proyecto_I_Esclavo_I.c: 104:         RD1=0;
+"115
+[; ;Proyecto_I_Esclavo_I.c: 115:         RD1=0;
 [e = _RD1 -> -> 0 `i `b ]
-"106
-[; ;Proyecto_I_Esclavo_I.c: 106:         RD2 = 1;
+"117
+[; ;Proyecto_I_Esclavo_I.c: 117:         RD2 = 1;
 [e = _RD2 -> -> 1 `i `b ]
-"107
-[; ;Proyecto_I_Esclavo_I.c: 107:         for(int i = 0; i<Pos_Servos3;i++){}
+"118
+[; ;Proyecto_I_Esclavo_I.c: 118:         for(int i = 0; i<Pos_Servos3;i++){}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -515,14 +659,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> _Pos_Servos3 `i 149  ]
 [e :U 150 ]
 }
-"108
-[; ;Proyecto_I_Esclavo_I.c: 108:         RD2=0;
+"119
+[; ;Proyecto_I_Esclavo_I.c: 119:         RD2=0;
 [e = _RD2 -> -> 0 `i `b ]
-"110
-[; ;Proyecto_I_Esclavo_I.c: 110:         RD3 = 1;
+"121
+[; ;Proyecto_I_Esclavo_I.c: 121:         RD3 = 1;
 [e = _RD3 -> -> 1 `i `b ]
-"111
-[; ;Proyecto_I_Esclavo_I.c: 111:         for(int i = 0; i<Pos_Servos4;i++){}
+"122
+[; ;Proyecto_I_Esclavo_I.c: 122:         for(int i = 0; i<Pos_Servos4;i++){}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -535,14 +679,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> _Pos_Servos4 `i 153  ]
 [e :U 154 ]
 }
-"112
-[; ;Proyecto_I_Esclavo_I.c: 112:         RD3=0;
+"123
+[; ;Proyecto_I_Esclavo_I.c: 123:         RD3=0;
 [e = _RD3 -> -> 0 `i `b ]
-"114
-[; ;Proyecto_I_Esclavo_I.c: 114:         RD4 = 1;
+"125
+[; ;Proyecto_I_Esclavo_I.c: 125:         RD4 = 1;
 [e = _RD4 -> -> 1 `i `b ]
-"115
-[; ;Proyecto_I_Esclavo_I.c: 115:         for(int i = 0; i<Pos_Servos5;i++){}
+"126
+[; ;Proyecto_I_Esclavo_I.c: 126:         for(int i = 0; i<Pos_Servos5;i++){}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -555,14 +699,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> _Pos_Servos5 `i 157  ]
 [e :U 158 ]
 }
-"116
-[; ;Proyecto_I_Esclavo_I.c: 116:         RD4=0;
+"127
+[; ;Proyecto_I_Esclavo_I.c: 127:         RD4=0;
 [e = _RD4 -> -> 0 `i `b ]
-"118
-[; ;Proyecto_I_Esclavo_I.c: 118:         RD5 = 1;
+"129
+[; ;Proyecto_I_Esclavo_I.c: 129:         RD5 = 1;
 [e = _RD5 -> -> 1 `i `b ]
-"119
-[; ;Proyecto_I_Esclavo_I.c: 119:         for(int i = 0; i<Pos_Servos6;i++){}
+"130
+[; ;Proyecto_I_Esclavo_I.c: 130:         for(int i = 0; i<Pos_Servos6;i++){}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -575,435 +719,1014 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> _Pos_Servos6 `i 161  ]
 [e :U 162 ]
 }
-"120
-[; ;Proyecto_I_Esclavo_I.c: 120:         RD5=0;
+"131
+[; ;Proyecto_I_Esclavo_I.c: 131:         RD5=0;
 [e = _RD5 -> -> 0 `i `b ]
-"121
-[; ;Proyecto_I_Esclavo_I.c: 121:     }
+"132
+[; ;Proyecto_I_Esclavo_I.c: 132:     }
 }
 [e :U 140 ]
-"123
-[; ;Proyecto_I_Esclavo_I.c: 123: }
+"134
+[; ;Proyecto_I_Esclavo_I.c: 134:         if(PIR1bits.SSPIF == 1){
+[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 165  ]
+{
+"135
+[; ;Proyecto_I_Esclavo_I.c: 135:         SSPCONbits.CKP = 0;
+[e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
+"137
+[; ;Proyecto_I_Esclavo_I.c: 137:         if ((SSPCONbits.SSPOV) || (SSPCONbits.WCOL)){
+[e $ ! || != -> . . _SSPCONbits 0 3 `i -> 0 `i != -> . . _SSPCONbits 0 4 `i -> 0 `i 166  ]
+{
+"138
+[; ;Proyecto_I_Esclavo_I.c: 138:             z = SSPBUF;
+[e = _z _SSPBUF ]
+"139
+[; ;Proyecto_I_Esclavo_I.c: 139:             SSPCONbits.SSPOV = 0;
+[e = . . _SSPCONbits 0 3 -> -> 0 `i `uc ]
+"140
+[; ;Proyecto_I_Esclavo_I.c: 140:             SSPCONbits.WCOL = 0;
+[e = . . _SSPCONbits 0 4 -> -> 0 `i `uc ]
+"141
+[; ;Proyecto_I_Esclavo_I.c: 141:             SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"142
+[; ;Proyecto_I_Esclavo_I.c: 142:         }
+}
+[e :U 166 ]
+"144
+[; ;Proyecto_I_Esclavo_I.c: 144:         if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW) {
+[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i ! != -> . . _SSPSTATbits 0 2 `i -> 0 `i 167  ]
+{
+"146
+[; ;Proyecto_I_Esclavo_I.c: 146:             z = SSPBUF;
+[e = _z _SSPBUF ]
+"148
+[; ;Proyecto_I_Esclavo_I.c: 148:             PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"149
+[; ;Proyecto_I_Esclavo_I.c: 149:             SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"150
+[; ;Proyecto_I_Esclavo_I.c: 150:             while(!SSPSTATbits.BF);
+[e $U 168  ]
+[e :U 169 ]
+[e :U 168 ]
+[e $ ! != -> . . _SSPSTATbits 0 0 `i -> 0 `i 169  ]
+[e :U 170 ]
+"151
+[; ;Proyecto_I_Esclavo_I.c: 151:             PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"152
+[; ;Proyecto_I_Esclavo_I.c: 152:             _delay((unsigned long)((250)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"154
+[; ;Proyecto_I_Esclavo_I.c: 154:         }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+}
+[e $U 171  ]
+[e :U 167 ]
+[e $ ! && ! != -> . . _SSPSTATbits 0 5 `i -> 0 `i != -> . . _SSPSTATbits 0 2 `i -> 0 `i 172  ]
+{
+"155
+[; ;Proyecto_I_Esclavo_I.c: 155:             z = SSPBUF;
+[e = _z _SSPBUF ]
+"156
+[; ;Proyecto_I_Esclavo_I.c: 156:             BF = 0;
+[e = _BF -> -> 0 `i `b ]
+"157
+[; ;Proyecto_I_Esclavo_I.c: 157:             SSPBUF = prueba;
+[e = _SSPBUF _prueba ]
+"158
+[; ;Proyecto_I_Esclavo_I.c: 158:             PORTBbits.RB1 = ~PORTBbits.RB1;
+[e = . . _PORTBbits 0 1 -> ~ -> . . _PORTBbits 0 1 `i `uc ]
+"159
+[; ;Proyecto_I_Esclavo_I.c: 159:             SSPCONbits.CKP = 1;
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+"160
+[; ;Proyecto_I_Esclavo_I.c: 160:             _delay((unsigned long)((250)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"161
+[; ;Proyecto_I_Esclavo_I.c: 161:             while(SSPSTATbits.BF);
+[e $U 173  ]
+[e :U 174 ]
+[e :U 173 ]
+[e $ != -> . . _SSPSTATbits 0 0 `i -> 0 `i 174  ]
+[e :U 175 ]
+"162
+[; ;Proyecto_I_Esclavo_I.c: 162:         }
+}
+[e :U 172 ]
+[e :U 171 ]
+"164
+[; ;Proyecto_I_Esclavo_I.c: 164:         PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"165
+[; ;Proyecto_I_Esclavo_I.c: 165:     }
+}
+[e :U 165 ]
+"167
+[; ;Proyecto_I_Esclavo_I.c: 167: }
 [e :UE 139 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"125
-[; ;Proyecto_I_Esclavo_I.c: 125: void main(void) {
+"169
+[; ;Proyecto_I_Esclavo_I.c: 169: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"128
-[; ;Proyecto_I_Esclavo_I.c: 128:     config();
-[e ( _config ..  ]
-"130
-[; ;Proyecto_I_Esclavo_I.c: 130:     Config_Oscilador();
-[e ( _Config_Oscilador ..  ]
-"131
-[; ;Proyecto_I_Esclavo_I.c: 131:     Valor_TMR0 = Config_TMR0();
-[e = _Valor_TMR0 ( _Config_TMR0 ..  ]
-"134
-[; ;Proyecto_I_Esclavo_I.c: 134:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"135
-[; ;Proyecto_I_Esclavo_I.c: 135:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"138
-[; ;Proyecto_I_Esclavo_I.c: 138:     while(1){
-[e :U 167 ]
-{
-"139
-[; ;Proyecto_I_Esclavo_I.c: 139:         if (izq_der == 0){
-[e $ ! == -> _izq_der `i -> 0 `i 169  ]
-{
-"140
-[; ;Proyecto_I_Esclavo_I.c: 140:             if (Pos_Servos1 > 127){
-[e $ ! > -> _Pos_Servos1 `i -> 127 `i 170  ]
-{
-"141
-[; ;Proyecto_I_Esclavo_I.c: 141:                 Pos_Servos1--;
-[e -- _Pos_Servos1 -> -> 1 `i `uc ]
-"142
-[; ;Proyecto_I_Esclavo_I.c: 142:             }
-}
-[e :U 170 ]
-"143
-[; ;Proyecto_I_Esclavo_I.c: 143:             if (Pos_Servos2 > 204){
-[e $ ! > -> _Pos_Servos2 `i -> 204 `i 171  ]
-{
-"144
-[; ;Proyecto_I_Esclavo_I.c: 144:                 Pos_Servos2--;
-[e -- _Pos_Servos2 -> -> 1 `i `uc ]
-"145
-[; ;Proyecto_I_Esclavo_I.c: 145:             }
-}
-[e :U 171 ]
-"146
-[; ;Proyecto_I_Esclavo_I.c: 146:             if (Pos_Servos3 < 212){
-[e $ ! < -> _Pos_Servos3 `i -> 212 `i 172  ]
-{
-"147
-[; ;Proyecto_I_Esclavo_I.c: 147:                 Pos_Servos3++;
-[e ++ _Pos_Servos3 -> -> 1 `i `uc ]
-"148
-[; ;Proyecto_I_Esclavo_I.c: 148:             }
-}
-[e :U 172 ]
-"149
-[; ;Proyecto_I_Esclavo_I.c: 149:             if (Pos_Servos4 < 200){
-[e $ ! < -> _Pos_Servos4 `i -> 200 `i 173  ]
-{
-"150
-[; ;Proyecto_I_Esclavo_I.c: 150:                 Pos_Servos4++;
-[e ++ _Pos_Servos4 -> -> 1 `i `uc ]
-"151
-[; ;Proyecto_I_Esclavo_I.c: 151:             }
-}
-[e :U 173 ]
-"152
-[; ;Proyecto_I_Esclavo_I.c: 152:             if (Pos_Servos5 > 185){
-[e $ ! > -> _Pos_Servos5 `i -> 185 `i 174  ]
-{
-"153
-[; ;Proyecto_I_Esclavo_I.c: 153:                 Pos_Servos5--;
-[e -- _Pos_Servos5 -> -> 1 `i `uc ]
-"154
-[; ;Proyecto_I_Esclavo_I.c: 154:             }
-}
-[e :U 174 ]
-"155
-[; ;Proyecto_I_Esclavo_I.c: 155:             if (Pos_Servos6 < 190){
-[e $ ! < -> _Pos_Servos6 `i -> 190 `i 175  ]
-{
-"156
-[; ;Proyecto_I_Esclavo_I.c: 156:                 Pos_Servos6++;
-[e ++ _Pos_Servos6 -> -> 1 `i `uc ]
-"157
-[; ;Proyecto_I_Esclavo_I.c: 157:             }
-}
-[e :U 175 ]
-"158
-[; ;Proyecto_I_Esclavo_I.c: 158:             if (Pos_Servos1 == 127 && Pos_Servos2 == 204 && Pos_Servos3 == 212 && Pos_Servos4 == 200 && Pos_Servos5 == 185 && Pos_Servos6 == 190){
-[e $ ! && && && && && == -> _Pos_Servos1 `i -> 127 `i == -> _Pos_Servos2 `i -> 204 `i == -> _Pos_Servos3 `i -> 212 `i == -> _Pos_Servos4 `i -> 200 `i == -> _Pos_Servos5 `i -> 185 `i == -> _Pos_Servos6 `i -> 190 `i 176  ]
-{
-"159
-[; ;Proyecto_I_Esclavo_I.c: 159:                 izq_der = 2;
-[e = _izq_der -> -> 2 `i `uc ]
-"160
-[; ;Proyecto_I_Esclavo_I.c: 160:             }
-}
-[e :U 176 ]
-"161
-[; ;Proyecto_I_Esclavo_I.c: 161:             _delay((unsigned long)((35)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 35 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"162
-[; ;Proyecto_I_Esclavo_I.c: 162:         }else if (izq_der == 2){
-}
-[e $U 177  ]
-[e :U 169 ]
-[e $ ! == -> _izq_der `i -> 2 `i 178  ]
-{
-"163
-[; ;Proyecto_I_Esclavo_I.c: 163:             DifServo1 = Pos_neutra_Servo1 - Pos_Servos1;
-[e = _DifServo1 - -> _Pos_neutra_Servo1 `i -> _Pos_Servos1 `i ]
-"164
-[; ;Proyecto_I_Esclavo_I.c: 164:             DifServo2 = Pos_neutra_Servo2 - Pos_Servos2;
-[e = _DifServo2 - -> _Pos_neutra_Servo2 `i -> _Pos_Servos2 `i ]
-"165
-[; ;Proyecto_I_Esclavo_I.c: 165:             DifServo3 = Pos_neutra_Servo3 - Pos_Servos3;
-[e = _DifServo3 - -> _Pos_neutra_Servo3 `i -> _Pos_Servos3 `i ]
-"166
-[; ;Proyecto_I_Esclavo_I.c: 166:             DifServo4 = Pos_neutra_Servo4 - Pos_Servos4;
-[e = _DifServo4 - -> _Pos_neutra_Servo4 `i -> _Pos_Servos4 `i ]
-"167
-[; ;Proyecto_I_Esclavo_I.c: 167:             DifServo5 = Pos_neutra_Servo5 - Pos_Servos5;
-[e = _DifServo5 - -> _Pos_neutra_Servo5 `i -> _Pos_Servos5 `i ]
-"168
-[; ;Proyecto_I_Esclavo_I.c: 168:             DifServo6 = Pos_neutra_Servo6 - Pos_Servos6;
-[e = _DifServo6 - -> _Pos_neutra_Servo6 `i -> _Pos_Servos6 `i ]
-"169
-[; ;Proyecto_I_Esclavo_I.c: 169:             if (DifServo1 < 0){
-[e $ ! < _DifServo1 -> 0 `i 179  ]
-{
-"170
-[; ;Proyecto_I_Esclavo_I.c: 170:                 DifServo1 = DifServo1 * (-1);
-[e = _DifServo1 * _DifServo1 -U -> 1 `i ]
-"171
-[; ;Proyecto_I_Esclavo_I.c: 171:             }
-}
-[e :U 179 ]
 "172
-[; ;Proyecto_I_Esclavo_I.c: 172:             if (DifServo2 < 0){
-[e $ ! < _DifServo2 -> 0 `i 180  ]
-{
-"173
-[; ;Proyecto_I_Esclavo_I.c: 173:                 DifServo2 = DifServo2 * (-1);
-[e = _DifServo2 * _DifServo2 -U -> 1 `i ]
+[; ;Proyecto_I_Esclavo_I.c: 172:     config();
+[e ( _config ..  ]
 "174
-[; ;Proyecto_I_Esclavo_I.c: 174:             }
-}
-[e :U 180 ]
+[; ;Proyecto_I_Esclavo_I.c: 174:     Config_Oscilador();
+[e ( _Config_Oscilador ..  ]
 "175
-[; ;Proyecto_I_Esclavo_I.c: 175:             if (DifServo3 < 0){
-[e $ ! < _DifServo3 -> 0 `i 181  ]
-{
+[; ;Proyecto_I_Esclavo_I.c: 175:     Valor_TMR0 = Config_TMR0();
+[e = _Valor_TMR0 ( _Config_TMR0 ..  ]
 "176
-[; ;Proyecto_I_Esclavo_I.c: 176:                 DifServo3 = DifServo3 * (-1);
-[e = _DifServo3 * _DifServo3 -U -> 1 `i ]
-"177
-[; ;Proyecto_I_Esclavo_I.c: 177:             }
-}
-[e :U 181 ]
-"178
-[; ;Proyecto_I_Esclavo_I.c: 178:             if (DifServo4 < 0){
-[e $ ! < _DifServo4 -> 0 `i 182  ]
-{
-"179
-[; ;Proyecto_I_Esclavo_I.c: 179:                 DifServo4 = DifServo4 * (-1);
-[e = _DifServo4 * _DifServo4 -U -> 1 `i ]
+[; ;Proyecto_I_Esclavo_I.c: 176:     I2C_Slave_Init(0x70);
+[e ( _I2C_Slave_Init (1 -> -> 112 `i `uc ]
 "180
-[; ;Proyecto_I_Esclavo_I.c: 180:             }
-}
-[e :U 182 ]
+[; ;Proyecto_I_Esclavo_I.c: 180:     while(1){
+[e :U 178 ]
+{
 "181
-[; ;Proyecto_I_Esclavo_I.c: 181:             if (DifServo5 < 0){
-[e $ ! < _DifServo5 -> 0 `i 183  ]
+[; ;Proyecto_I_Esclavo_I.c: 181:         if(RB3 == 1){
+[e $ ! == -> _RB3 `i -> 1 `i 180  ]
 {
 "182
-[; ;Proyecto_I_Esclavo_I.c: 182:                 DifServo5 = DifServo5 * (-1);
-[e = _DifServo5 * _DifServo5 -U -> 1 `i ]
-"183
-[; ;Proyecto_I_Esclavo_I.c: 183:             }
-}
-[e :U 183 ]
-"184
-[; ;Proyecto_I_Esclavo_I.c: 184:             if (DifServo6 < 0){
-[e $ ! < _DifServo6 -> 0 `i 184  ]
+[; ;Proyecto_I_Esclavo_I.c: 182:             if(izq_der == 0 || izq_der == 2){
+[e $ ! || == -> _izq_der `i -> 0 `i == -> _izq_der `i -> 2 `i 181  ]
 {
+"183
+[; ;Proyecto_I_Esclavo_I.c: 183:                 izq_der = 3;
+[e = _izq_der -> -> 3 `i `uc ]
+"184
+[; ;Proyecto_I_Esclavo_I.c: 184:                 RB7 = 1;
+[e = _RB7 -> -> 1 `i `b ]
 "185
-[; ;Proyecto_I_Esclavo_I.c: 185:                 DifServo6 = DifServo6 * (-1);
-[e = _DifServo6 * _DifServo6 -U -> 1 `i ]
+[; ;Proyecto_I_Esclavo_I.c: 185:             }else if (izq_der == 3){
+}
+[e $U 182  ]
+[e :U 181 ]
+[e $ ! == -> _izq_der `i -> 3 `i 183  ]
+{
 "186
-[; ;Proyecto_I_Esclavo_I.c: 186:             }
+[; ;Proyecto_I_Esclavo_I.c: 186:                 if (Erguido == 1){
+[e $ ! == -> _Erguido `i -> 1 `i 184  ]
+{
+"187
+[; ;Proyecto_I_Esclavo_I.c: 187:                     RB7 = 0;
+[e = _RB7 -> -> 0 `i `b ]
+"188
+[; ;Proyecto_I_Esclavo_I.c: 188:                 }
 }
 [e :U 184 ]
-"188
-[; ;Proyecto_I_Esclavo_I.c: 188:             if (DifServo1 > DifServo2 && DifServo1 > DifServo3 && DifServo1 > DifServo4 && DifServo1 > DifServo5 && DifServo1 > DifServo6 ){
-[e $ ! && && && && > _DifServo1 _DifServo2 > _DifServo1 _DifServo3 > _DifServo1 _DifServo4 > _DifServo1 _DifServo5 > _DifServo1 _DifServo6 185  ]
-{
 "189
-[; ;Proyecto_I_Esclavo_I.c: 189:                 if (Pos_Servos1 < Pos_neutra_Servo1){
-[e $ ! < -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i 186  ]
-{
+[; ;Proyecto_I_Esclavo_I.c: 189:             }
+}
+[e :U 183 ]
+[e :U 182 ]
 "190
-[; ;Proyecto_I_Esclavo_I.c: 190:                     Pos_Servos1++;
-[e ++ _Pos_Servos1 -> -> 1 `i `uc ]
-"191
-[; ;Proyecto_I_Esclavo_I.c: 191:                 }else if (Pos_Servos1 > Pos_neutra_Servo1){
+[; ;Proyecto_I_Esclavo_I.c: 190:         }
 }
-[e $U 187  ]
-[e :U 186 ]
-[e $ ! > -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i 188  ]
-{
-"192
-[; ;Proyecto_I_Esclavo_I.c: 192:                     Pos_Servos1--;
-[e -- _Pos_Servos1 -> -> 1 `i `uc ]
+[e :U 180 ]
 "193
-[; ;Proyecto_I_Esclavo_I.c: 193:                 }
-}
-[e :U 188 ]
-[e :U 187 ]
-"194
-[; ;Proyecto_I_Esclavo_I.c: 194:             }else if (DifServo2 > DifServo1 && DifServo2 > DifServo3 && DifServo2 > DifServo4 && DifServo2 > DifServo5 && DifServo2 > DifServo6 ){
-}
-[e $U 189  ]
-[e :U 185 ]
-[e $ ! && && && && > _DifServo2 _DifServo1 > _DifServo2 _DifServo3 > _DifServo2 _DifServo4 > _DifServo2 _DifServo5 > _DifServo2 _DifServo6 190  ]
-{
-"195
-[; ;Proyecto_I_Esclavo_I.c: 195:                 if (Pos_Servos2 < Pos_neutra_Servo2){
-[e $ ! < -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i 191  ]
+[; ;Proyecto_I_Esclavo_I.c: 193:         if (izq_der == 0){
+[e $ ! == -> _izq_der `i -> 0 `i 185  ]
 {
 "196
-[; ;Proyecto_I_Esclavo_I.c: 196:                     Pos_Servos2++;
-[e ++ _Pos_Servos2 -> -> 1 `i `uc ]
+[; ;Proyecto_I_Esclavo_I.c: 196:             if (Pos_Servos1 < 212 && Pos_Servos5 == 195){
+[e $ ! && < -> _Pos_Servos1 `i -> 212 `i == -> _Pos_Servos5 `i -> 195 `i 186  ]
+{
 "197
-[; ;Proyecto_I_Esclavo_I.c: 197:                 }else if (Pos_Servos2 > Pos_neutra_Servo2){
-}
-[e $U 192  ]
-[e :U 191 ]
-[e $ ! > -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i 193  ]
-{
+[; ;Proyecto_I_Esclavo_I.c: 197:                 Pos_Servos1++;
+[e ++ _Pos_Servos1 -> -> 1 `i `uc ]
 "198
-[; ;Proyecto_I_Esclavo_I.c: 198:                     Pos_Servos2--;
-[e -- _Pos_Servos2 -> -> 1 `i `uc ]
+[; ;Proyecto_I_Esclavo_I.c: 198:             }
+}
+[e :U 186 ]
 "199
-[; ;Proyecto_I_Esclavo_I.c: 199:                 }
-}
-[e :U 193 ]
-[e :U 192 ]
+[; ;Proyecto_I_Esclavo_I.c: 199:             if (Pos_Servos4 > 50 && Pos_Servos5 == 195){
+[e $ ! && > -> _Pos_Servos4 `i -> 50 `i == -> _Pos_Servos5 `i -> 195 `i 187  ]
+{
 "200
-[; ;Proyecto_I_Esclavo_I.c: 200:             }else if (DifServo3 > DifServo1 && DifServo3 > DifServo2 && DifServo3 > DifServo4 && DifServo3 > DifServo5 && DifServo3 > DifServo6 ){
-}
-[e $U 194  ]
-[e :U 190 ]
-[e $ ! && && && && > _DifServo3 _DifServo1 > _DifServo3 _DifServo2 > _DifServo3 _DifServo4 > _DifServo3 _DifServo5 > _DifServo3 _DifServo6 195  ]
-{
+[; ;Proyecto_I_Esclavo_I.c: 200:                 Pos_Servos4 = Pos_Servos4 - 2;
+[e = _Pos_Servos4 -> - -> _Pos_Servos4 `i -> 2 `i `uc ]
 "201
-[; ;Proyecto_I_Esclavo_I.c: 201:                 if (Pos_Servos3 < Pos_neutra_Servo3){
-[e $ ! < -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i 196  ]
-{
+[; ;Proyecto_I_Esclavo_I.c: 201:             }
+}
+[e :U 187 ]
 "202
-[; ;Proyecto_I_Esclavo_I.c: 202:                     Pos_Servos3++;
-[e ++ _Pos_Servos3 -> -> 1 `i `uc ]
+[; ;Proyecto_I_Esclavo_I.c: 202:             if (Pos_Servos6 < 216 && Pos_Servos5 == 195){
+[e $ ! && < -> _Pos_Servos6 `i -> 216 `i == -> _Pos_Servos5 `i -> 195 `i 188  ]
+{
 "203
-[; ;Proyecto_I_Esclavo_I.c: 203:                 }else if (Pos_Servos3 > Pos_neutra_Servo3){
-}
-[e $U 197  ]
-[e :U 196 ]
-[e $ ! > -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i 198  ]
-{
+[; ;Proyecto_I_Esclavo_I.c: 203:                 Pos_Servos6 = Pos_Servos6 + 2;
+[e = _Pos_Servos6 -> + -> _Pos_Servos6 `i -> 2 `i `uc ]
 "204
-[; ;Proyecto_I_Esclavo_I.c: 204:                     Pos_Servos3--;
-[e -- _Pos_Servos3 -> -> 1 `i `uc ]
-"205
-[; ;Proyecto_I_Esclavo_I.c: 205:                 }
+[; ;Proyecto_I_Esclavo_I.c: 204:             }
 }
-[e :U 198 ]
-[e :U 197 ]
-"206
-[; ;Proyecto_I_Esclavo_I.c: 206:             }else if (DifServo4 > DifServo1 && DifServo4 > DifServo2 && DifServo4 > DifServo3 && DifServo4 > DifServo5 && DifServo4 > DifServo6 ){
-}
-[e $U 199  ]
-[e :U 195 ]
-[e $ ! && && && && > _DifServo4 _DifServo1 > _DifServo4 _DifServo2 > _DifServo4 _DifServo3 > _DifServo4 _DifServo5 > _DifServo4 _DifServo6 200  ]
-{
+[e :U 188 ]
 "207
-[; ;Proyecto_I_Esclavo_I.c: 207:                 if (Pos_Servos4 < Pos_neutra_Servo4){
-[e $ ! < -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i 201  ]
+[; ;Proyecto_I_Esclavo_I.c: 207:             if (Pos_Servos2 < 225){
+[e $ ! < -> _Pos_Servos2 `i -> 225 `i 189  ]
 {
 "208
-[; ;Proyecto_I_Esclavo_I.c: 208:                     Pos_Servos4++;
-[e ++ _Pos_Servos4 -> -> 1 `i `uc ]
+[; ;Proyecto_I_Esclavo_I.c: 208:                 Pos_Servos2++;
+[e ++ _Pos_Servos2 -> -> 1 `i `uc ]
 "209
-[; ;Proyecto_I_Esclavo_I.c: 209:                 }else if (Pos_Servos4 > Pos_neutra_Servo4){
+[; ;Proyecto_I_Esclavo_I.c: 209:             }
 }
-[e $U 202  ]
-[e :U 201 ]
-[e $ ! > -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i 203  ]
-{
+[e :U 189 ]
 "210
-[; ;Proyecto_I_Esclavo_I.c: 210:                     Pos_Servos4--;
-[e -- _Pos_Servos4 -> -> 1 `i `uc ]
-"211
-[; ;Proyecto_I_Esclavo_I.c: 211:                 }
-}
-[e :U 203 ]
-[e :U 202 ]
-"212
-[; ;Proyecto_I_Esclavo_I.c: 212:             }else if (DifServo5 > DifServo1 && DifServo5 > DifServo2 && DifServo5 > DifServo3 && DifServo5 > DifServo4 && DifServo5 > DifServo6 ){
-}
-[e $U 204  ]
-[e :U 200 ]
-[e $ ! && && && && > _DifServo5 _DifServo1 > _DifServo5 _DifServo2 > _DifServo5 _DifServo3 > _DifServo5 _DifServo4 > _DifServo5 _DifServo6 205  ]
+[; ;Proyecto_I_Esclavo_I.c: 210:             if (Pos_Servos3 < 225){
+[e $ ! < -> _Pos_Servos3 `i -> 225 `i 190  ]
 {
+"211
+[; ;Proyecto_I_Esclavo_I.c: 211:                 Pos_Servos3++;
+[e ++ _Pos_Servos3 -> -> 1 `i `uc ]
+"212
+[; ;Proyecto_I_Esclavo_I.c: 212:             }
+}
+[e :U 190 ]
 "213
-[; ;Proyecto_I_Esclavo_I.c: 213:                 if (Pos_Servos5 < Pos_neutra_Servo5){
-[e $ ! < -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i 206  ]
+[; ;Proyecto_I_Esclavo_I.c: 213:             if (Pos_Servos5 > 195){
+[e $ ! > -> _Pos_Servos5 `i -> 195 `i 191  ]
 {
 "214
-[; ;Proyecto_I_Esclavo_I.c: 214:                     Pos_Servos5++;
-[e ++ _Pos_Servos5 -> -> 1 `i `uc ]
-"215
-[; ;Proyecto_I_Esclavo_I.c: 215:                 }else if (Pos_Servos5 > Pos_neutra_Servo5){
-}
-[e $U 207  ]
-[e :U 206 ]
-[e $ ! > -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i 208  ]
-{
-"216
-[; ;Proyecto_I_Esclavo_I.c: 216:                     Pos_Servos5--;
+[; ;Proyecto_I_Esclavo_I.c: 214:                 Pos_Servos5--;
 [e -- _Pos_Servos5 -> -> 1 `i `uc ]
-"217
-[; ;Proyecto_I_Esclavo_I.c: 217:                 }
+"215
+[; ;Proyecto_I_Esclavo_I.c: 215:             }
 }
-[e :U 208 ]
-[e :U 207 ]
+[e :U 191 ]
 "218
-[; ;Proyecto_I_Esclavo_I.c: 218:             }else if (DifServo6 > DifServo1 && DifServo6 > DifServo2 && DifServo6 > DifServo3 && DifServo6 > DifServo4 && DifServo6 > DifServo5 ){
-}
-[e $U 209  ]
-[e :U 205 ]
-[e $ ! && && && && > _DifServo6 _DifServo1 > _DifServo6 _DifServo2 > _DifServo6 _DifServo3 > _DifServo6 _DifServo4 > _DifServo6 _DifServo5 210  ]
+[; ;Proyecto_I_Esclavo_I.c: 218:             if (Pos_Servos1 == 212 && Pos_Servos2 == 225 && Pos_Servos3 == 225 && Pos_Servos4 == 50 && Pos_Servos5 == 195 && Pos_Servos6 == 216){
+[e $ ! && && && && && == -> _Pos_Servos1 `i -> 212 `i == -> _Pos_Servos2 `i -> 225 `i == -> _Pos_Servos3 `i -> 225 `i == -> _Pos_Servos4 `i -> 50 `i == -> _Pos_Servos5 `i -> 195 `i == -> _Pos_Servos6 `i -> 216 `i 192  ]
 {
 "219
-[; ;Proyecto_I_Esclavo_I.c: 219:                 if (Pos_Servos6 < Pos_neutra_Servo6){
-[e $ ! < -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 211  ]
-{
+[; ;Proyecto_I_Esclavo_I.c: 219:                 izq_der = 1;
+[e = _izq_der -> -> 1 `i `uc ]
 "220
-[; ;Proyecto_I_Esclavo_I.c: 220:                     Pos_Servos6++;
-[e ++ _Pos_Servos6 -> -> 1 `i `uc ]
+[; ;Proyecto_I_Esclavo_I.c: 220:                 izq_der_old = 0;
+[e = _izq_der_old -> -> 0 `i `uc ]
 "221
-[; ;Proyecto_I_Esclavo_I.c: 221:                 }else if (Pos_Servos6 > Pos_neutra_Servo6){
+[; ;Proyecto_I_Esclavo_I.c: 221:             }
 }
-[e $U 212  ]
-[e :U 211 ]
-[e $ ! > -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 213  ]
-{
+[e :U 192 ]
 "222
-[; ;Proyecto_I_Esclavo_I.c: 222:                     Pos_Servos6--;
-[e -- _Pos_Servos6 -> -> 1 `i `uc ]
-"223
-[; ;Proyecto_I_Esclavo_I.c: 223:                 }
-}
-[e :U 213 ]
-[e :U 212 ]
+[; ;Proyecto_I_Esclavo_I.c: 222:             _delay((unsigned long)((35)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 35 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "224
-[; ;Proyecto_I_Esclavo_I.c: 224:             }
+[; ;Proyecto_I_Esclavo_I.c: 224:         }else if (izq_der == 1){
+}
+[e $U 193  ]
+[e :U 185 ]
+[e $ ! == -> _izq_der `i -> 1 `i 194  ]
+{
+"227
+[; ;Proyecto_I_Esclavo_I.c: 227:             DifServo1 = Pos_neutra_Servo1 - Pos_Servos1;
+[e = _DifServo1 - -> _Pos_neutra_Servo1 `i -> _Pos_Servos1 `i ]
+"228
+[; ;Proyecto_I_Esclavo_I.c: 228:             if (DifServo1 < 0){
+[e $ ! < _DifServo1 -> 0 `i 195  ]
+{
+"229
+[; ;Proyecto_I_Esclavo_I.c: 229:                 DifServo1 = DifServo1 * menos_uno;
+[e = _DifServo1 * _DifServo1 -> _menos_uno `i ]
+"230
+[; ;Proyecto_I_Esclavo_I.c: 230:             }if (DifServo1 < 5){
+}
+[e :U 195 ]
+[e $ ! < _DifServo1 -> 5 `i 196  ]
+{
+"231
+[; ;Proyecto_I_Esclavo_I.c: 231:                 DifServo1_Mayor5 = 1;
+[e = _DifServo1_Mayor5 -> -> 1 `i `uc ]
+"232
+[; ;Proyecto_I_Esclavo_I.c: 232:             }
+}
+[e :U 196 ]
+"234
+[; ;Proyecto_I_Esclavo_I.c: 234:             DifServo2 = Pos_neutra_Servo2 - Pos_Servos2;
+[e = _DifServo2 - -> _Pos_neutra_Servo2 `i -> _Pos_Servos2 `i ]
+"235
+[; ;Proyecto_I_Esclavo_I.c: 235:             if (DifServo2 < 0){
+[e $ ! < _DifServo2 -> 0 `i 197  ]
+{
+"236
+[; ;Proyecto_I_Esclavo_I.c: 236:                 DifServo2 = DifServo2 * menos_uno;
+[e = _DifServo2 * _DifServo2 -> _menos_uno `i ]
+"237
+[; ;Proyecto_I_Esclavo_I.c: 237:             }if (DifServo2 < 5){
+}
+[e :U 197 ]
+[e $ ! < _DifServo2 -> 5 `i 198  ]
+{
+"238
+[; ;Proyecto_I_Esclavo_I.c: 238:                 DifServo2_Mayor5 = 1;
+[e = _DifServo2_Mayor5 -> -> 1 `i `uc ]
+"239
+[; ;Proyecto_I_Esclavo_I.c: 239:             }
+}
+[e :U 198 ]
+"241
+[; ;Proyecto_I_Esclavo_I.c: 241:             DifServo3 = Pos_neutra_Servo3 - Pos_Servos3;
+[e = _DifServo3 - -> _Pos_neutra_Servo3 `i -> _Pos_Servos3 `i ]
+"242
+[; ;Proyecto_I_Esclavo_I.c: 242:             if (DifServo3 < 0){
+[e $ ! < _DifServo3 -> 0 `i 199  ]
+{
+"243
+[; ;Proyecto_I_Esclavo_I.c: 243:                 DifServo3 = DifServo3 * menos_uno;
+[e = _DifServo3 * _DifServo3 -> _menos_uno `i ]
+"244
+[; ;Proyecto_I_Esclavo_I.c: 244:             }if (DifServo3 < 5){
+}
+[e :U 199 ]
+[e $ ! < _DifServo3 -> 5 `i 200  ]
+{
+"245
+[; ;Proyecto_I_Esclavo_I.c: 245:                 DifServo3_Mayor5 = 1;
+[e = _DifServo3_Mayor5 -> -> 1 `i `uc ]
+"246
+[; ;Proyecto_I_Esclavo_I.c: 246:             }
+}
+[e :U 200 ]
+"248
+[; ;Proyecto_I_Esclavo_I.c: 248:             DifServo4 = Pos_neutra_Servo4 - Pos_Servos4;
+[e = _DifServo4 - -> _Pos_neutra_Servo4 `i -> _Pos_Servos4 `i ]
+"249
+[; ;Proyecto_I_Esclavo_I.c: 249:             if (DifServo4 < 0){
+[e $ ! < _DifServo4 -> 0 `i 201  ]
+{
+"250
+[; ;Proyecto_I_Esclavo_I.c: 250:                 DifServo4 = DifServo4 * menos_uno;
+[e = _DifServo4 * _DifServo4 -> _menos_uno `i ]
+"251
+[; ;Proyecto_I_Esclavo_I.c: 251:             }if (DifServo4 < 5){
+}
+[e :U 201 ]
+[e $ ! < _DifServo4 -> 5 `i 202  ]
+{
+"252
+[; ;Proyecto_I_Esclavo_I.c: 252:                 DifServo4_Mayor5 = 1;
+[e = _DifServo4_Mayor5 -> -> 1 `i `uc ]
+"253
+[; ;Proyecto_I_Esclavo_I.c: 253:             }
+}
+[e :U 202 ]
+"255
+[; ;Proyecto_I_Esclavo_I.c: 255:             DifServo5 = Pos_neutra_Servo5 - Pos_Servos5;
+[e = _DifServo5 - -> _Pos_neutra_Servo5 `i -> _Pos_Servos5 `i ]
+"256
+[; ;Proyecto_I_Esclavo_I.c: 256:             if (DifServo5 < 0){
+[e $ ! < _DifServo5 -> 0 `i 203  ]
+{
+"257
+[; ;Proyecto_I_Esclavo_I.c: 257:                 DifServo5 = DifServo5 * menos_uno;
+[e = _DifServo5 * _DifServo5 -> _menos_uno `i ]
+"258
+[; ;Proyecto_I_Esclavo_I.c: 258:             }if (DifServo5 < 5){
+}
+[e :U 203 ]
+[e $ ! < _DifServo5 -> 5 `i 204  ]
+{
+"259
+[; ;Proyecto_I_Esclavo_I.c: 259:                 DifServo5_Mayor5 = 1;
+[e = _DifServo5_Mayor5 -> -> 1 `i `uc ]
+"260
+[; ;Proyecto_I_Esclavo_I.c: 260:             }
+}
+[e :U 204 ]
+"262
+[; ;Proyecto_I_Esclavo_I.c: 262:             DifServo6 = Pos_neutra_Servo6 - Pos_Servos6;
+[e = _DifServo6 - -> _Pos_neutra_Servo6 `i -> _Pos_Servos6 `i ]
+"263
+[; ;Proyecto_I_Esclavo_I.c: 263:             if (DifServo6 < 0){
+[e $ ! < _DifServo6 -> 0 `i 205  ]
+{
+"264
+[; ;Proyecto_I_Esclavo_I.c: 264:                 DifServo6 = DifServo6 * menos_uno;
+[e = _DifServo6 * _DifServo6 -> _menos_uno `i ]
+"265
+[; ;Proyecto_I_Esclavo_I.c: 265:             }if (DifServo6 < 5){
+}
+[e :U 205 ]
+[e $ ! < _DifServo6 -> 5 `i 206  ]
+{
+"266
+[; ;Proyecto_I_Esclavo_I.c: 266:                 DifServo6_Mayor5 = 1;
+[e = _DifServo6_Mayor5 -> -> 1 `i `uc ]
+"267
+[; ;Proyecto_I_Esclavo_I.c: 267:             }
+}
+[e :U 206 ]
+"270
+[; ;Proyecto_I_Esclavo_I.c: 270:             if (DifServo1 > DifServo2 && DifServo1 > DifServo3 && DifServo1 > DifServo4 && DifServo1 > DifServo5 && DifServo1 > DifServo6 && DifServo1_Mayor5 == 0){
+[e $ ! && && && && && > _DifServo1 _DifServo2 > _DifServo1 _DifServo3 > _DifServo1 _DifServo4 > _DifServo1 _DifServo5 > _DifServo1 _DifServo6 == -> _DifServo1_Mayor5 `i -> 0 `i 207  ]
+{
+"271
+[; ;Proyecto_I_Esclavo_I.c: 271:                 if (Pos_Servos1 < Pos_neutra_Servo1){
+[e $ ! < -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i 208  ]
+{
+"272
+[; ;Proyecto_I_Esclavo_I.c: 272:                     Pos_Servos1 = Pos_Servos1 + 4;
+[e = _Pos_Servos1 -> + -> _Pos_Servos1 `i -> 4 `i `uc ]
+"273
+[; ;Proyecto_I_Esclavo_I.c: 273:                 }else if (Pos_Servos1 > Pos_neutra_Servo1){
+}
+[e $U 209  ]
+[e :U 208 ]
+[e $ ! > -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i 210  ]
+{
+"274
+[; ;Proyecto_I_Esclavo_I.c: 274:                     Pos_Servos1 = Pos_Servos1 - 4;
+[e = _Pos_Servos1 -> - -> _Pos_Servos1 `i -> 4 `i `uc ]
+"275
+[; ;Proyecto_I_Esclavo_I.c: 275:                 }
 }
 [e :U 210 ]
 [e :U 209 ]
-[e :U 204 ]
-[e :U 199 ]
-[e :U 194 ]
-[e :U 189 ]
-"225
-[; ;Proyecto_I_Esclavo_I.c: 225:             _delay((unsigned long)((35)*(8000000/4000.0)));
+"276
+[; ;Proyecto_I_Esclavo_I.c: 276:             }else if (DifServo2 > DifServo1 && DifServo2 > DifServo3 && DifServo2 > DifServo4 && DifServo2 > DifServo5 && DifServo2 > DifServo6 && DifServo2_Mayor5 == 0){
+}
+[e $U 211  ]
+[e :U 207 ]
+[e $ ! && && && && && > _DifServo2 _DifServo1 > _DifServo2 _DifServo3 > _DifServo2 _DifServo4 > _DifServo2 _DifServo5 > _DifServo2 _DifServo6 == -> _DifServo2_Mayor5 `i -> 0 `i 212  ]
+{
+"277
+[; ;Proyecto_I_Esclavo_I.c: 277:                 if (Pos_Servos2 < Pos_neutra_Servo2){
+[e $ ! < -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i 213  ]
+{
+"278
+[; ;Proyecto_I_Esclavo_I.c: 278:                     Pos_Servos2 = Pos_Servos2 + 4;
+[e = _Pos_Servos2 -> + -> _Pos_Servos2 `i -> 4 `i `uc ]
+"279
+[; ;Proyecto_I_Esclavo_I.c: 279:                 }else if (Pos_Servos2 > Pos_neutra_Servo2){
+}
+[e $U 214  ]
+[e :U 213 ]
+[e $ ! > -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i 215  ]
+{
+"280
+[; ;Proyecto_I_Esclavo_I.c: 280:                     Pos_Servos2 = Pos_Servos2 - 4;
+[e = _Pos_Servos2 -> - -> _Pos_Servos2 `i -> 4 `i `uc ]
+"281
+[; ;Proyecto_I_Esclavo_I.c: 281:                 }
+}
+[e :U 215 ]
+[e :U 214 ]
+"282
+[; ;Proyecto_I_Esclavo_I.c: 282:             }else if (DifServo3 > DifServo1 && DifServo3 > DifServo2 && DifServo3 > DifServo4 && DifServo3 > DifServo5 && DifServo3 > DifServo6 && DifServo3_Mayor5 == 0){
+}
+[e $U 216  ]
+[e :U 212 ]
+[e $ ! && && && && && > _DifServo3 _DifServo1 > _DifServo3 _DifServo2 > _DifServo3 _DifServo4 > _DifServo3 _DifServo5 > _DifServo3 _DifServo6 == -> _DifServo3_Mayor5 `i -> 0 `i 217  ]
+{
+"283
+[; ;Proyecto_I_Esclavo_I.c: 283:                 if (Pos_Servos3 < Pos_neutra_Servo3){
+[e $ ! < -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i 218  ]
+{
+"284
+[; ;Proyecto_I_Esclavo_I.c: 284:                     Pos_Servos3 = Pos_Servos3 + 4;
+[e = _Pos_Servos3 -> + -> _Pos_Servos3 `i -> 4 `i `uc ]
+"285
+[; ;Proyecto_I_Esclavo_I.c: 285:                 }else if (Pos_Servos3 > Pos_neutra_Servo3){
+}
+[e $U 219  ]
+[e :U 218 ]
+[e $ ! > -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i 220  ]
+{
+"286
+[; ;Proyecto_I_Esclavo_I.c: 286:                     Pos_Servos3 = Pos_Servos3 - 4;
+[e = _Pos_Servos3 -> - -> _Pos_Servos3 `i -> 4 `i `uc ]
+"287
+[; ;Proyecto_I_Esclavo_I.c: 287:                 }
+}
+[e :U 220 ]
+[e :U 219 ]
+"288
+[; ;Proyecto_I_Esclavo_I.c: 288:             }else if (DifServo4 > DifServo1 && DifServo4 > DifServo2 && DifServo4 > DifServo3 && DifServo4 > DifServo5 && DifServo4 > DifServo6 && DifServo4_Mayor5 == 0){
+}
+[e $U 221  ]
+[e :U 217 ]
+[e $ ! && && && && && > _DifServo4 _DifServo1 > _DifServo4 _DifServo2 > _DifServo4 _DifServo3 > _DifServo4 _DifServo5 > _DifServo4 _DifServo6 == -> _DifServo4_Mayor5 `i -> 0 `i 222  ]
+{
+"289
+[; ;Proyecto_I_Esclavo_I.c: 289:                 if (Pos_Servos4 < Pos_neutra_Servo4){
+[e $ ! < -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i 223  ]
+{
+"290
+[; ;Proyecto_I_Esclavo_I.c: 290:                     Pos_Servos4 = Pos_Servos4 + 4;
+[e = _Pos_Servos4 -> + -> _Pos_Servos4 `i -> 4 `i `uc ]
+"291
+[; ;Proyecto_I_Esclavo_I.c: 291:                 }else if (Pos_Servos4 > Pos_neutra_Servo4){
+}
+[e $U 224  ]
+[e :U 223 ]
+[e $ ! > -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i 225  ]
+{
+"292
+[; ;Proyecto_I_Esclavo_I.c: 292:                     Pos_Servos4 = Pos_Servos4 - 4;
+[e = _Pos_Servos4 -> - -> _Pos_Servos4 `i -> 4 `i `uc ]
+"293
+[; ;Proyecto_I_Esclavo_I.c: 293:                 }
+}
+[e :U 225 ]
+[e :U 224 ]
+"294
+[; ;Proyecto_I_Esclavo_I.c: 294:             }else if (DifServo5 > DifServo1 && DifServo5 > DifServo2 && DifServo5 > DifServo3 && DifServo5 > DifServo4 && DifServo5 > DifServo6 && DifServo5_Mayor5 == 0){
+}
+[e $U 226  ]
+[e :U 222 ]
+[e $ ! && && && && && > _DifServo5 _DifServo1 > _DifServo5 _DifServo2 > _DifServo5 _DifServo3 > _DifServo5 _DifServo4 > _DifServo5 _DifServo6 == -> _DifServo5_Mayor5 `i -> 0 `i 227  ]
+{
+"295
+[; ;Proyecto_I_Esclavo_I.c: 295:                 if (Pos_Servos5 < Pos_neutra_Servo5){
+[e $ ! < -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i 228  ]
+{
+"296
+[; ;Proyecto_I_Esclavo_I.c: 296:                     Pos_Servos5 = Pos_Servos5 + 4;
+[e = _Pos_Servos5 -> + -> _Pos_Servos5 `i -> 4 `i `uc ]
+"297
+[; ;Proyecto_I_Esclavo_I.c: 297:                 }else if (Pos_Servos5 > Pos_neutra_Servo5){
+}
+[e $U 229  ]
+[e :U 228 ]
+[e $ ! > -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i 230  ]
+{
+"298
+[; ;Proyecto_I_Esclavo_I.c: 298:                     Pos_Servos5 = Pos_Servos5 - 4;
+[e = _Pos_Servos5 -> - -> _Pos_Servos5 `i -> 4 `i `uc ]
+"299
+[; ;Proyecto_I_Esclavo_I.c: 299:                 }
+}
+[e :U 230 ]
+[e :U 229 ]
+"300
+[; ;Proyecto_I_Esclavo_I.c: 300:             }else if (DifServo6 > DifServo1 && DifServo6 > DifServo2 && DifServo6 > DifServo3 && DifServo6 > DifServo4 && DifServo6 > DifServo5 && DifServo6_Mayor5 == 0){
+}
+[e $U 231  ]
+[e :U 227 ]
+[e $ ! && && && && && > _DifServo6 _DifServo1 > _DifServo6 _DifServo2 > _DifServo6 _DifServo3 > _DifServo6 _DifServo4 > _DifServo6 _DifServo5 == -> _DifServo6_Mayor5 `i -> 0 `i 232  ]
+{
+"301
+[; ;Proyecto_I_Esclavo_I.c: 301:                 if (Pos_Servos6 < Pos_neutra_Servo6){
+[e $ ! < -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 233  ]
+{
+"302
+[; ;Proyecto_I_Esclavo_I.c: 302:                     Pos_Servos6 = Pos_Servos6 + 4;
+[e = _Pos_Servos6 -> + -> _Pos_Servos6 `i -> 4 `i `uc ]
+"303
+[; ;Proyecto_I_Esclavo_I.c: 303:                 }else if (Pos_Servos6 > Pos_neutra_Servo6){
+}
+[e $U 234  ]
+[e :U 233 ]
+[e $ ! > -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 235  ]
+{
+"304
+[; ;Proyecto_I_Esclavo_I.c: 304:                     Pos_Servos6 = Pos_Servos6 - 4;
+[e = _Pos_Servos6 -> - -> _Pos_Servos6 `i -> 4 `i `uc ]
+"305
+[; ;Proyecto_I_Esclavo_I.c: 305:                 }
+}
+[e :U 235 ]
+[e :U 234 ]
+"306
+[; ;Proyecto_I_Esclavo_I.c: 306:             }
+}
+[e :U 232 ]
+[e :U 231 ]
+[e :U 226 ]
+[e :U 221 ]
+[e :U 216 ]
+[e :U 211 ]
+"309
+[; ;Proyecto_I_Esclavo_I.c: 309:             if (Pos_Servos1 != Pos_neutra_Servo1){
+[e $ ! != -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i 236  ]
+{
+"310
+[; ;Proyecto_I_Esclavo_I.c: 310:                 if (Pos_Servos1 < Pos_neutra_Servo1){
+[e $ ! < -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i 237  ]
+{
+"311
+[; ;Proyecto_I_Esclavo_I.c: 311:                     Pos_Servos1++;
+[e ++ _Pos_Servos1 -> -> 1 `i `uc ]
+"312
+[; ;Proyecto_I_Esclavo_I.c: 312:                 }else if (Pos_Servos1 > Pos_neutra_Servo1){
+}
+[e $U 238  ]
+[e :U 237 ]
+[e $ ! > -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i 239  ]
+{
+"313
+[; ;Proyecto_I_Esclavo_I.c: 313:                     Pos_Servos1--;
+[e -- _Pos_Servos1 -> -> 1 `i `uc ]
+"314
+[; ;Proyecto_I_Esclavo_I.c: 314:                 }
+}
+[e :U 239 ]
+[e :U 238 ]
+"315
+[; ;Proyecto_I_Esclavo_I.c: 315:             }
+}
+[e :U 236 ]
+"316
+[; ;Proyecto_I_Esclavo_I.c: 316:             if (Pos_Servos2 != Pos_neutra_Servo2){
+[e $ ! != -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i 240  ]
+{
+"317
+[; ;Proyecto_I_Esclavo_I.c: 317:                 if (Pos_Servos2 < Pos_neutra_Servo2){
+[e $ ! < -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i 241  ]
+{
+"318
+[; ;Proyecto_I_Esclavo_I.c: 318:                     Pos_Servos2++;
+[e ++ _Pos_Servos2 -> -> 1 `i `uc ]
+"319
+[; ;Proyecto_I_Esclavo_I.c: 319:                 }else if (Pos_Servos2 > Pos_neutra_Servo2){
+}
+[e $U 242  ]
+[e :U 241 ]
+[e $ ! > -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i 243  ]
+{
+"320
+[; ;Proyecto_I_Esclavo_I.c: 320:                     Pos_Servos2--;
+[e -- _Pos_Servos2 -> -> 1 `i `uc ]
+"321
+[; ;Proyecto_I_Esclavo_I.c: 321:                 }
+}
+[e :U 243 ]
+[e :U 242 ]
+"322
+[; ;Proyecto_I_Esclavo_I.c: 322:             }
+}
+[e :U 240 ]
+"323
+[; ;Proyecto_I_Esclavo_I.c: 323:             if (Pos_Servos3 != Pos_neutra_Servo3){
+[e $ ! != -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i 244  ]
+{
+"324
+[; ;Proyecto_I_Esclavo_I.c: 324:                 if (Pos_Servos3 < Pos_neutra_Servo3){
+[e $ ! < -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i 245  ]
+{
+"325
+[; ;Proyecto_I_Esclavo_I.c: 325:                     Pos_Servos3++;
+[e ++ _Pos_Servos3 -> -> 1 `i `uc ]
+"326
+[; ;Proyecto_I_Esclavo_I.c: 326:                 }else if (Pos_Servos3 > Pos_neutra_Servo3){
+}
+[e $U 246  ]
+[e :U 245 ]
+[e $ ! > -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i 247  ]
+{
+"327
+[; ;Proyecto_I_Esclavo_I.c: 327:                     Pos_Servos3--;
+[e -- _Pos_Servos3 -> -> 1 `i `uc ]
+"328
+[; ;Proyecto_I_Esclavo_I.c: 328:                 }
+}
+[e :U 247 ]
+[e :U 246 ]
+"329
+[; ;Proyecto_I_Esclavo_I.c: 329:             }
+}
+[e :U 244 ]
+"330
+[; ;Proyecto_I_Esclavo_I.c: 330:             if (Pos_Servos4 != Pos_neutra_Servo4){
+[e $ ! != -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i 248  ]
+{
+"331
+[; ;Proyecto_I_Esclavo_I.c: 331:                 if (Pos_Servos4 < Pos_neutra_Servo4){
+[e $ ! < -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i 249  ]
+{
+"332
+[; ;Proyecto_I_Esclavo_I.c: 332:                     Pos_Servos4++;
+[e ++ _Pos_Servos4 -> -> 1 `i `uc ]
+"333
+[; ;Proyecto_I_Esclavo_I.c: 333:                 }else if (Pos_Servos4 > Pos_neutra_Servo4){
+}
+[e $U 250  ]
+[e :U 249 ]
+[e $ ! > -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i 251  ]
+{
+"334
+[; ;Proyecto_I_Esclavo_I.c: 334:                     Pos_Servos4--;
+[e -- _Pos_Servos4 -> -> 1 `i `uc ]
+"335
+[; ;Proyecto_I_Esclavo_I.c: 335:                 }
+}
+[e :U 251 ]
+[e :U 250 ]
+"336
+[; ;Proyecto_I_Esclavo_I.c: 336:             }
+}
+[e :U 248 ]
+"337
+[; ;Proyecto_I_Esclavo_I.c: 337:             if (Pos_Servos5 != Pos_neutra_Servo5){
+[e $ ! != -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i 252  ]
+{
+"338
+[; ;Proyecto_I_Esclavo_I.c: 338:                 if (Pos_Servos5 < Pos_neutra_Servo5){
+[e $ ! < -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i 253  ]
+{
+"339
+[; ;Proyecto_I_Esclavo_I.c: 339:                     Pos_Servos5++;
+[e ++ _Pos_Servos5 -> -> 1 `i `uc ]
+"340
+[; ;Proyecto_I_Esclavo_I.c: 340:                 }else if (Pos_Servos5 > Pos_neutra_Servo5){
+}
+[e $U 254  ]
+[e :U 253 ]
+[e $ ! > -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i 255  ]
+{
+"341
+[; ;Proyecto_I_Esclavo_I.c: 341:                     Pos_Servos5--;
+[e -- _Pos_Servos5 -> -> 1 `i `uc ]
+"342
+[; ;Proyecto_I_Esclavo_I.c: 342:                 }
+}
+[e :U 255 ]
+[e :U 254 ]
+"343
+[; ;Proyecto_I_Esclavo_I.c: 343:             }
+}
+[e :U 252 ]
+"344
+[; ;Proyecto_I_Esclavo_I.c: 344:             if (Pos_Servos6 != Pos_neutra_Servo6){
+[e $ ! != -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 256  ]
+{
+"345
+[; ;Proyecto_I_Esclavo_I.c: 345:                 if (Pos_Servos6 < Pos_neutra_Servo6){
+[e $ ! < -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 257  ]
+{
+"346
+[; ;Proyecto_I_Esclavo_I.c: 346:                     Pos_Servos6++;
+[e ++ _Pos_Servos6 -> -> 1 `i `uc ]
+"347
+[; ;Proyecto_I_Esclavo_I.c: 347:                 }else if (Pos_Servos6 > Pos_neutra_Servo6){
+}
+[e $U 258  ]
+[e :U 257 ]
+[e $ ! > -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 259  ]
+{
+"348
+[; ;Proyecto_I_Esclavo_I.c: 348:                     Pos_Servos6--;
+[e -- _Pos_Servos6 -> -> 1 `i `uc ]
+"349
+[; ;Proyecto_I_Esclavo_I.c: 349:                 }
+}
+[e :U 259 ]
+[e :U 258 ]
+"350
+[; ;Proyecto_I_Esclavo_I.c: 350:             }
+}
+[e :U 256 ]
+"353
+[; ;Proyecto_I_Esclavo_I.c: 353:             if (Pos_Servos2 == Pos_neutra_Servo2 && Pos_Servos3 == Pos_neutra_Servo3 && Pos_Servos5 == Pos_neutra_Servo5 && Pos_Servos1 == Pos_neutra_Servo1 && Pos_Servos4 == Pos_neutra_Servo4 && Pos_Servos6 == Pos_neutra_Servo6){
+[e $ ! && && && && && == -> _Pos_Servos2 `i -> _Pos_neutra_Servo2 `i == -> _Pos_Servos3 `i -> _Pos_neutra_Servo3 `i == -> _Pos_Servos5 `i -> _Pos_neutra_Servo5 `i == -> _Pos_Servos1 `i -> _Pos_neutra_Servo1 `i == -> _Pos_Servos4 `i -> _Pos_neutra_Servo4 `i == -> _Pos_Servos6 `i -> _Pos_neutra_Servo6 `i 260  ]
+{
+"355
+[; ;Proyecto_I_Esclavo_I.c: 355:                 if (izq_der < izq_der_old){
+[e $ ! < -> _izq_der `i -> _izq_der_old `i 261  ]
+{
+"356
+[; ;Proyecto_I_Esclavo_I.c: 356:                     izq_der = 0;
+[e = _izq_der -> -> 0 `i `uc ]
+"357
+[; ;Proyecto_I_Esclavo_I.c: 357:                 }else if (izq_der > izq_der_old){
+}
+[e $U 262  ]
+[e :U 261 ]
+[e $ ! > -> _izq_der `i -> _izq_der_old `i 263  ]
+{
+"358
+[; ;Proyecto_I_Esclavo_I.c: 358:                     izq_der = 2;
+[e = _izq_der -> -> 2 `i `uc ]
+"359
+[; ;Proyecto_I_Esclavo_I.c: 359:                 }
+}
+[e :U 263 ]
+[e :U 262 ]
+"361
+[; ;Proyecto_I_Esclavo_I.c: 361:                 if (RB3 == 1){
+[e $ ! == -> _RB3 `i -> 1 `i 264  ]
+{
+"362
+[; ;Proyecto_I_Esclavo_I.c: 362:                 izq_der = 3;
+[e = _izq_der -> -> 3 `i `uc ]
+"363
+[; ;Proyecto_I_Esclavo_I.c: 363:                 }
+}
+[e :U 264 ]
+"365
+[; ;Proyecto_I_Esclavo_I.c: 365:             }
+}
+[e :U 260 ]
+"366
+[; ;Proyecto_I_Esclavo_I.c: 366:             _delay((unsigned long)((35)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 35 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"226
-[; ;Proyecto_I_Esclavo_I.c: 226:         }
+"367
+[; ;Proyecto_I_Esclavo_I.c: 367:         }else if (izq_der == 2){
 }
-[e :U 178 ]
+[e $U 265  ]
+[e :U 194 ]
+[e $ ! == -> _izq_der `i -> 2 `i 266  ]
+{
+"370
+[; ;Proyecto_I_Esclavo_I.c: 370:             if (Pos_Servos1 < 212 && Pos_Servos3 == 160){
+[e $ ! && < -> _Pos_Servos1 `i -> 212 `i == -> _Pos_Servos3 `i -> 160 `i 267  ]
+{
+"371
+[; ;Proyecto_I_Esclavo_I.c: 371:                 Pos_Servos1++;
+[e ++ _Pos_Servos1 -> -> 1 `i `uc ]
+"372
+[; ;Proyecto_I_Esclavo_I.c: 372:             }
+}
+[e :U 267 ]
+"373
+[; ;Proyecto_I_Esclavo_I.c: 373:             if (Pos_Servos4 < 216 && Pos_Servos3 == 160){
+[e $ ! && < -> _Pos_Servos4 `i -> 216 `i == -> _Pos_Servos3 `i -> 160 `i 268  ]
+{
+"374
+[; ;Proyecto_I_Esclavo_I.c: 374:                 Pos_Servos4 = Pos_Servos4 + 2;
+[e = _Pos_Servos4 -> + -> _Pos_Servos4 `i -> 2 `i `uc ]
+"375
+[; ;Proyecto_I_Esclavo_I.c: 375:             }
+}
+[e :U 268 ]
+"376
+[; ;Proyecto_I_Esclavo_I.c: 376:             if (Pos_Servos6 > 50 && Pos_Servos3 == 160){
+[e $ ! && > -> _Pos_Servos6 `i -> 50 `i == -> _Pos_Servos3 `i -> 160 `i 269  ]
+{
+"377
+[; ;Proyecto_I_Esclavo_I.c: 377:                 Pos_Servos6 = Pos_Servos6 - 2;
+[e = _Pos_Servos6 -> - -> _Pos_Servos6 `i -> 2 `i `uc ]
+"378
+[; ;Proyecto_I_Esclavo_I.c: 378:             }
+}
+[e :U 269 ]
+"381
+[; ;Proyecto_I_Esclavo_I.c: 381:             if (Pos_Servos2 < 225){
+[e $ ! < -> _Pos_Servos2 `i -> 225 `i 270  ]
+{
+"382
+[; ;Proyecto_I_Esclavo_I.c: 382:                 Pos_Servos2++;
+[e ++ _Pos_Servos2 -> -> 1 `i `uc ]
+"383
+[; ;Proyecto_I_Esclavo_I.c: 383:             }
+}
+[e :U 270 ]
+"384
+[; ;Proyecto_I_Esclavo_I.c: 384:             if (Pos_Servos3 > 160){
+[e $ ! > -> _Pos_Servos3 `i -> 160 `i 271  ]
+{
+"385
+[; ;Proyecto_I_Esclavo_I.c: 385:                 Pos_Servos3--;
+[e -- _Pos_Servos3 -> -> 1 `i `uc ]
+"386
+[; ;Proyecto_I_Esclavo_I.c: 386:             }
+}
+[e :U 271 ]
+"387
+[; ;Proyecto_I_Esclavo_I.c: 387:             if (Pos_Servos5 < 225){
+[e $ ! < -> _Pos_Servos5 `i -> 225 `i 272  ]
+{
+"388
+[; ;Proyecto_I_Esclavo_I.c: 388:                 Pos_Servos5++;
+[e ++ _Pos_Servos5 -> -> 1 `i `uc ]
+"389
+[; ;Proyecto_I_Esclavo_I.c: 389:             }
+}
+[e :U 272 ]
+"392
+[; ;Proyecto_I_Esclavo_I.c: 392:             if (Pos_Servos1 == 212 && Pos_Servos2 == 225 && Pos_Servos3 == 160 && Pos_Servos4 == 216 && Pos_Servos5 == 225 && Pos_Servos6 == 50){
+[e $ ! && && && && && == -> _Pos_Servos1 `i -> 212 `i == -> _Pos_Servos2 `i -> 225 `i == -> _Pos_Servos3 `i -> 160 `i == -> _Pos_Servos4 `i -> 216 `i == -> _Pos_Servos5 `i -> 225 `i == -> _Pos_Servos6 `i -> 50 `i 273  ]
+{
+"393
+[; ;Proyecto_I_Esclavo_I.c: 393:                 izq_der = 1;
+[e = _izq_der -> -> 1 `i `uc ]
+"394
+[; ;Proyecto_I_Esclavo_I.c: 394:                 izq_der_old = 2;
+[e = _izq_der_old -> -> 2 `i `uc ]
+"395
+[; ;Proyecto_I_Esclavo_I.c: 395:             }
+}
+[e :U 273 ]
+"396
+[; ;Proyecto_I_Esclavo_I.c: 396:             _delay((unsigned long)((35)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 35 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"397
+[; ;Proyecto_I_Esclavo_I.c: 397:         }else if (izq_der == 3){
+}
+[e $U 274  ]
+[e :U 266 ]
+[e $ ! == -> _izq_der `i -> 3 `i 275  ]
+{
+"400
+[; ;Proyecto_I_Esclavo_I.c: 400:             if(Pos_Servos2 > 195){
+[e $ ! > -> _Pos_Servos2 `i -> 195 `i 276  ]
+{
+"401
+[; ;Proyecto_I_Esclavo_I.c: 401:             Pos_Servos2--;
+[e -- _Pos_Servos2 -> -> 1 `i `uc ]
+"402
+[; ;Proyecto_I_Esclavo_I.c: 402:             }
+}
+[e :U 276 ]
+"403
+[; ;Proyecto_I_Esclavo_I.c: 403:             if(Pos_Servos3 > 195){
+[e $ ! > -> _Pos_Servos3 `i -> 195 `i 277  ]
+{
+"404
+[; ;Proyecto_I_Esclavo_I.c: 404:             Pos_Servos3--;
+[e -- _Pos_Servos3 -> -> 1 `i `uc ]
+"405
+[; ;Proyecto_I_Esclavo_I.c: 405:             }
+}
+[e :U 277 ]
+"406
+[; ;Proyecto_I_Esclavo_I.c: 406:             if(Pos_Servos5 > 195){
+[e $ ! > -> _Pos_Servos5 `i -> 195 `i 278  ]
+{
+"407
+[; ;Proyecto_I_Esclavo_I.c: 407:             Pos_Servos5--;
+[e -- _Pos_Servos5 -> -> 1 `i `uc ]
+"408
+[; ;Proyecto_I_Esclavo_I.c: 408:             }
+}
+[e :U 278 ]
+"411
+[; ;Proyecto_I_Esclavo_I.c: 411:             if (Pos_Servos2 == 195 && Pos_Servos3 == 195 && Pos_Servos5 == 195){
+[e $ ! && && == -> _Pos_Servos2 `i -> 195 `i == -> _Pos_Servos3 `i -> 195 `i == -> _Pos_Servos5 `i -> 195 `i 279  ]
+{
+"412
+[; ;Proyecto_I_Esclavo_I.c: 412:                 Erguido = 1;
+[e = _Erguido -> -> 1 `i `uc ]
+"413
+[; ;Proyecto_I_Esclavo_I.c: 413:             }
+}
+[e :U 279 ]
+"416
+[; ;Proyecto_I_Esclavo_I.c: 416:             if (RB3 == 0){
+[e $ ! == -> _RB3 `i -> 0 `i 280  ]
+{
+"417
+[; ;Proyecto_I_Esclavo_I.c: 417:                 izq_der = 0;
+[e = _izq_der -> -> 0 `i `uc ]
+"418
+[; ;Proyecto_I_Esclavo_I.c: 418:                 Erguido = 0;
+[e = _Erguido -> -> 0 `i `uc ]
+"419
+[; ;Proyecto_I_Esclavo_I.c: 419:             }
+}
+[e :U 280 ]
+"420
+[; ;Proyecto_I_Esclavo_I.c: 420:             _delay((unsigned long)((35)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 35 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"421
+[; ;Proyecto_I_Esclavo_I.c: 421:         }
+}
+[e :U 275 ]
+[e :U 274 ]
+[e :U 265 ]
+[e :U 193 ]
+"423
+[; ;Proyecto_I_Esclavo_I.c: 423:     }
+}
 [e :U 177 ]
-"228
-[; ;Proyecto_I_Esclavo_I.c: 228:     }
+[e $U 178  ]
+[e :U 179 ]
+"424
+[; ;Proyecto_I_Esclavo_I.c: 424: }
+[e :UE 176 ]
 }
-[e :U 166 ]
-[e $U 167  ]
-[e :U 168 ]
-"229
-[; ;Proyecto_I_Esclavo_I.c: 229: }
-[e :UE 165 ]
-}
-"231
-[; ;Proyecto_I_Esclavo_I.c: 231: void config(void){
+"426
+[; ;Proyecto_I_Esclavo_I.c: 426: void config(void){
 [v _config `(v ~T0 @X0 1 ef ]
 {
 [e :U _config ]
 [f ]
-"232
-[; ;Proyecto_I_Esclavo_I.c: 232:     TRISD = 0;
+"427
+[; ;Proyecto_I_Esclavo_I.c: 427:     TRISD = 0;
 [e = _TRISD -> -> 0 `i `uc ]
-"234
-[; ;Proyecto_I_Esclavo_I.c: 234:     ANSEL = 0;
+"428
+[; ;Proyecto_I_Esclavo_I.c: 428:     TRISB = 0b00001000;
+[e = _TRISB -> -> 8 `i `uc ]
+"430
+[; ;Proyecto_I_Esclavo_I.c: 430:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"235
-[; ;Proyecto_I_Esclavo_I.c: 235:     ANSELH = 0;
+"431
+[; ;Proyecto_I_Esclavo_I.c: 431:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"238
-[; ;Proyecto_I_Esclavo_I.c: 238:     PORTD = 0;
+"434
+[; ;Proyecto_I_Esclavo_I.c: 434:     PORTD = 0;
 [e = _PORTD -> -> 0 `i `uc ]
-"239
-[; ;Proyecto_I_Esclavo_I.c: 239: }
-[e :UE 214 ]
+"435
+[; ;Proyecto_I_Esclavo_I.c: 435:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
+"436
+[; ;Proyecto_I_Esclavo_I.c: 436: }
+[e :UE 281 ]
 }

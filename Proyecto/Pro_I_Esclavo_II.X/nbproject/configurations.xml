@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>../../LIB/LIB.X/LIB.h</itemPath>
       <itemPath>../../LIB/LIB.X/I2C.h</itemPath>
+      <itemPath>../../LIB/LIB.X/LCD.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,6 +18,7 @@
       <itemPath>Proyecto_I_Esclavo_II.c</itemPath>
       <itemPath>../../LIB/LIB.X/LIB.c</itemPath>
       <itemPath>../../LIB/LIB.X/I2C.c</itemPath>
+      <itemPath>../../LIB/LIB.X/LCD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

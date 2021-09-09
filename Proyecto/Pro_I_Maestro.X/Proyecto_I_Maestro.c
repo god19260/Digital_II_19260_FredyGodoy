@@ -1,6 +1,6 @@
 /*
- * Proyecto I MAESTRO
- * File:   Proyecto_I.c
+ * Proyecto I ESCLAVO II
+ * File:   Proyecto_I.c 
  * Author: Fredy Godoy 19260
  *
  * Created on August 23, 2021, 9:07 AM
@@ -56,76 +56,188 @@
 //------------------------------------------------------------------------------
 //********************* Declaraciones de variables *****************************
 char text[16];
-char temp;
-char Seg; 
-char Min;
-char Hora; 
-char Dia;
-char Fecha;
-char Mes;
-char Year;
+unsigned char CNY70 = 0;                //sensor de color
+unsigned char env_CNY70 = 0;            //dato enviado al master, 1 = rosado, 0 = no rosado
+unsigned char Con_CNY70 = 0;            //contador para asegurar que sea rosado
+unsigned char UltraFlag = 0;            //controlador de la lectura del ultrasónico
+unsigned char arriba_abajo = 0;         //hacia arriba = 1, Hacia abajo = 0
+unsigned char arriba_abajo_enable = 0;  //bandera para parar los motores
+unsigned char env_master= 0;            // 1: inicio = 1; 2: enviar Ultra; 3: enviar CNY70
+unsigned char z = 0;                    // lectura subbufer
+unsigned char prueba = 50;              // lectura subbufer
+unsigned char inicio = 1;               //utilizado para secuencia de inicio
+unsigned char erguido = 1;      
+unsigned char cont_miedo = 0;           //tiempo de espera para esconderse
+char Distancia = 0;
 //--------------------- Prototipo función configuración ------------------------
 void config(void);
+char Ultrasonico(void);
+
 //------------------------------------------------------------------------------
 //*************************** Interrupciones ***********************************
-//void __interrupt() isr (void){ 
-//    
-//}    
+void __interrupt() isr (void){ 
+      //Interrupcion del ADC module
+    if (ADIF == 1){
+        //Lectura del CNY70
+        ADIF = 0;
+        CNY70 = Valor_ADC(0); 
+        if  (CNY70 > 55 && CNY70 < 70){     //Rango calculado en base experimentación del color rosado
+            Con_CNY70++;
+            if (Con_CNY70 == 254){          //detectar durante varios segundos que es rosado para evitar colores parecidos
+                Con_CNY70 = 253;
+            }
+        }else {
+            Con_CNY70 = 0;
+        }
+    } // Fin Interrupcion ADC
+    
+    // Inicio Interrupcion I2C
+    if(PIR1bits.SSPIF == 1){ 
+        SSPCONbits.CKP = 0;
+       
+        if ((SSPCONbits.SSPOV) || (SSPCONbits.WCOL)){
+            z = SSPBUF;                 // Read the previous value to clear the buffer
+            SSPCONbits.SSPOV = 0;       // Clear the overflow flag
+            SSPCONbits.WCOL = 0;        // Clear the collision bit
+            SSPCONbits.CKP = 1;         // Enables SCL (Clock)
+        }
+
+        if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW) {
+            //__delay_us(7);
+            z = SSPBUF;                 // Lectura del SSBUF para limpiar el buffer y la bandera BF
+            //__delay_us(2);
+            PIR1bits.SSPIF = 0;         // Limpia bandera de interrupción recepción/transmisión SSP
+            SSPCONbits.CKP = 1;         // Habilita entrada de pulsos de reloj SCL
+            while(!SSPSTATbits.BF);     // Esperar a que la recepción se complete
+            __delay_us(250);
+            
+        }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+            z = SSPBUF;
+            BF = 0;
+            if (env_master == 0){
+                env_master = 1;
+                SSPBUF = Distancia;
+            } else {
+                env_master = 0;
+                SSPBUF = env_CNY70;
+            }
+            PORTBbits.RB4 = ~PORTBbits.RB4;
+            SSPCONbits.CKP = 1;
+            __delay_us(250);
+            while(SSPSTATbits.BF);
+        }
+       
+        PIR1bits.SSPIF = 0;    
+    }
+}    
 
 void main(void) {
 //------------------------------------------------------------------------------
 //*************************** Configuraciones **********************************        
     config(); // Configuración del progama
-    
-    Config_Oscilador();
-    Config_USART();
-    LCD_Init_8bits();
-    I2C_Master_Init(100000);     // Inicializar Comuncación I2C
+    Config_Oscilador(); 
+    Config_ADC();
+    I2C_Slave_Init(0b11111110);     //dirección Slave II
+    __delay_ms(5);
 //------------------------------------------------------------------------------
 //*************************** loop principal ***********************************   
-    while(1){   
-        // Sensor I2C - RTC
-        I2C_Master_Start();
-        I2C_Master_Write(0xD0); // Direccion Sensor I2C - RTC
-        I2C_Master_Write(0);        // comando para segundos
-        I2C_Master_Start();
-        I2C_Master_Write(0xD1);
-        Seg    = I2C_Master_Read(1);       // Read seconds from register 0
-        Min    = I2C_Master_Read(1);       // Read minutes from register 1
-        Hora   = I2C_Master_Read(0);       // Read hour from register 2
-//        Dia    = I2C_Master_Read(1);       // Read day from register 3
-//        Fecha  = I2C_Master_Read(1);       // Read date from register 4
-//        Mes    = I2C_Master_Read(1);       // Read month from register 5
-//        Year   = I2C_Master_Read(0);       // Read year from register 6
-        I2C_Master_Stop();                 // Stop I2C protocol
+    while(1){  
+        if  (CNY70 > 55 && CNY70 < 70 && Con_CNY70 >= 200 && inicio == 0 && erguido == 1){ // detectar rosado
+            UltraFlag = 1;
+            arriba_abajo = 0;       //baja por miedo
+            arriba_abajo_enable = 1;
+            env_CNY70 = 1;
+            RB5 = 1;
+            erguido = 0;
+            __delay_ms(36);
+            while (RB6 == 1);
+            
+        }
         
-        Seg = (Seg>>4) * 10 + (Seg & 0x0f);
-        Min = (Min>>4) * 10 + (Min & 0x0f);
-        Hora = (Hora>>4) * 10 + (Hora & 0x0f);
-        sprintf(text, "%d:%d:%d",Hora, Min, Seg);
-        Texto_USART(text);
+        if (inicio == 1 ){          //secuencia de inicio
+            arriba_abajo = 1;
+            UltraFlag = 1;
+            arriba_abajo_enable = 1;
+            RB5 = 1;
+            erguido = 0;
+            __delay_ms(36);
+            while (RB6 == 1);       //esperar a que el animatrónico este erguido
+        }
         
-        // -------- LCD ---------
-        Lcd_Set_Cursor(1,1);
-        Write_LCD(text);
-        RD1 = ~RD1;
+        if (cont_miedo == 1){
+            __delay_ms(2500);
+            arriba_abajo = 1;       //sube luego de 2.5s
+            UltraFlag = 1;
+            arriba_abajo_enable = 1;
+            cont_miedo = 0;
+        }
+        
+        if (UltraFlag == 1){ 
+           Distancia = Ultrasonico();   //lectura del ultrasonico
+           //Control de banderas
+           if (Distancia < 6 && arriba_abajo == 0){             //hasta abajo
+               arriba_abajo_enable = 0;
+               UltraFlag = 0;
+               cont_miedo = 1;          //inicio de secuencia para volver a subir
+               env_CNY70 = 0;
+               
+               
+           }else if (Distancia > 15 && arriba_abajo == 1){      //hasta arriba
+               arriba_abajo_enable = 0;
+               inicio = 0;
+               UltraFlag = 0;
+               cont_miedo = 0;
+               RB5 = 0;                 //avisarle al animatrónico que ya puede moverse de nuevo
+               erguido = 1 ;
+           }
+
+           //Control de motores
+           if (arriba_abajo == 1 && arriba_abajo_enable == 1 && PORTBbits.RB2 == 0){
+               PORTBbits.RB1 = 1;       //hacer que el puente H  mueva los DC hacia arriba
+           }else if (arriba_abajo == 0 && arriba_abajo_enable == 1 && PORTBbits.RB1 == 0){
+               PORTBbits.RB2 = 1;       //hacer que el puente H mueva los DC hacia abajo
+           }else{
+               PORTBbits.RB1 = 0;
+               PORTBbits.RB2 = 0;
+           }
+        }
+        RB3 = ~RB3;                     //manera de visualizar si el pic no se traba
         __delay_ms(200);
     } // fin loop principal while 
 } // fin main
 
 void config(void){    
-    TRISA  = 0;
-    TRISB  = 0;
-    TRISE  = 0;
-    TRISD  = 0;
+    TRISA  = 0b00000001;
+    TRISB  = 0b01000000;
+    TRISDbits.TRISD1 = 1;
     
-    ANSEL  = 0;
+    ANSEL  = 0b0000001;
     ANSELH = 0;
     
     //Limpieza de puertos
-    PORTA = 0;
     PORTB = 0;
-   // PORTC = 0;
     PORTD = 0;
-    PORTE = 0;
+}
+char Ultrasonico(void){
+     INTCONbits.PEIE = 0;
+    INTCONbits.GIE = 0;
+    // Trigger RA1
+    // Echo RD0
+    unsigned char cont;
+    unsigned int tiempo;
+    unsigned int dist;
+    cont = 0;
+    RA2 = 1;
+    __delay_us(10);
+    RA2 = 0;
+    while(!RD1){} // Espera a que la seÃ±al sea 1 
+    while(RD1){   // Espera a que la seÃ±al sea 0
+        cont++;
+    }
+    tiempo = 27*cont; // Tiempo en microsegundos
+    dist = (tiempo/29)/10;
+    __delay_ms(10);
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+    return dist;   
 }

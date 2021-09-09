@@ -1081,17 +1081,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _Ultrasonico ]
 [f ]
 "222
-[; ;../../LIB/LIB.X/LIB.c: 222:     unsigned char cont;
-[v _cont `uc ~T0 @X0 1 a ]
+[; ;../../LIB/LIB.X/LIB.c: 222:     unsigned int cont;
+[v _cont `ui ~T0 @X0 1 a ]
 "223
 [; ;../../LIB/LIB.X/LIB.c: 223:     unsigned int tiempo;
 [v _tiempo `ui ~T0 @X0 1 a ]
 "224
-[; ;../../LIB/LIB.X/LIB.c: 224:     unsigned int dist;
-[v _dist `ui ~T0 @X0 1 a ]
+[; ;../../LIB/LIB.X/LIB.c: 224:     unsigned char dist;
+[v _dist `uc ~T0 @X0 1 a ]
 "225
 [; ;../../LIB/LIB.X/LIB.c: 225:     cont = 0;
-[e = _cont -> -> 0 `i `uc ]
+[e = _cont -> -> 0 `i `ui ]
 "226
 [; ;../../LIB/LIB.X/LIB.c: 226:     RA1 = 1;
 [e = _RA1 -> -> 1 `i `b ]
@@ -1117,7 +1117,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "231
 [; ;../../LIB/LIB.X/LIB.c: 231:         cont++;
-[e ++ _cont -> -> 1 `i `uc ]
+[e ++ _cont -> -> 1 `i `ui ]
 "232
 [; ;../../LIB/LIB.X/LIB.c: 232:     }
 }
@@ -1128,10 +1128,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 181 ]
 "233
 [; ;../../LIB/LIB.X/LIB.c: 233:     tiempo = 27*cont;
-[e = _tiempo -> * -> 27 `i -> _cont `i `ui ]
+[e = _tiempo * -> -> 27 `i `ui _cont ]
 "234
 [; ;../../LIB/LIB.X/LIB.c: 234:     dist = (tiempo/29)/2;
-[e = _dist / / _tiempo -> -> 29 `i `ui -> -> 2 `i `ui ]
+[e = _dist -> / / _tiempo -> -> 29 `i `ui -> -> 2 `i `ui `uc ]
 "235
 [; ;../../LIB/LIB.X/LIB.c: 235:     return dist;
 [e ) -> _dist `uc ]

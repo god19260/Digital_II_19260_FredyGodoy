@@ -2514,6 +2514,8 @@ void Interfaz(char v1, char v2);
 char Ultrasonico(void);
 # 11 "Proyecto_I_Esclavo_I.c" 2
 
+# 1 "./../../LIB/LIB.X/I2C.h" 1
+# 35 "./../../LIB/LIB.X/I2C.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2647,7 +2649,48 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
+# 35 "./../../LIB/LIB.X/I2C.h" 2
+# 44 "./../../LIB/LIB.X/I2C.h"
+void I2C_Master_Init(const unsigned long c);
+
+
+
+
+
+
+
+void I2C_Master_Wait(void);
+
+
+
+void I2C_Master_Start(void);
+
+
+
+void I2C_Master_RepeatedStart(void);
+
+
+
+void I2C_Master_Stop(void);
+
+
+
+
+
+void I2C_Master_Write(unsigned d);
+
+
+
+
+unsigned short I2C_Master_Read(unsigned short a);
+
+
+
+void I2C_Slave_Init(uint8_t address);
 # 12 "Proyecto_I_Esclavo_I.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "Proyecto_I_Esclavo_I.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2746,7 +2789,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 13 "Proyecto_I_Esclavo_I.c" 2
+# 14 "Proyecto_I_Esclavo_I.c" 2
 
 
 
@@ -2781,34 +2824,44 @@ extern int printf(const char *, ...);
 #pragma config BOR4V = BOR40V
 
 #pragma config WRT = OFF
-# 57 "Proyecto_I_Esclavo_I.c"
+# 58 "Proyecto_I_Esclavo_I.c"
 char Valor_TMR0;
 
 signed int DifServo1 = 0;
+unsigned char DifServo1_Mayor5 = 0;
 signed int DifServo2 = 0;
+unsigned char DifServo2_Mayor5 = 0;
 signed int DifServo3 = 0;
+unsigned char DifServo3_Mayor5 = 0;
 signed int DifServo4 = 0;
+unsigned char DifServo4_Mayor5 = 0;
 signed int DifServo5 = 0;
+unsigned char DifServo5_Mayor5 = 0;
 signed int DifServo6 = 0;
+unsigned char DifServo6_Mayor5 = 0;
+signed char menos_uno = -1;
 
 
-unsigned char Pos_neutra_Servo1 = 193;
-unsigned char Pos_neutra_Servo2 = 208;
-unsigned char Pos_neutra_Servo3 = 197;
-unsigned char Pos_neutra_Servo4 = 160;
-unsigned char Pos_neutra_Servo5 = 212;
-unsigned char Pos_neutra_Servo6 = 183;
+unsigned char Pos_neutra_Servo1 = 210;
+unsigned char Pos_neutra_Servo2 = 220;
+unsigned char Pos_neutra_Servo3 = 220;
+unsigned char Pos_neutra_Servo4 = 214;
+unsigned char Pos_neutra_Servo5 = 220;
+unsigned char Pos_neutra_Servo6 = 204;
+unsigned char Erguido = 0;
 
 
-char Pos_Servos1 = 193;
-char Pos_Servos2 = 208;
-char Pos_Servos3 = 197;
-char Pos_Servos4 = 160;
-char Pos_Servos5 = 212;
-char Pos_Servos6 = 183;
+char Pos_Servos1 = 210;
+char Pos_Servos2 = 220;
+char Pos_Servos3 = 220;
+char Pos_Servos4 = 214;
+char Pos_Servos5 = 220;
+char Pos_Servos6 = 204;
 
-unsigned char izq_der = 0;
-
+unsigned char izq_der = 3;
+unsigned char izq_der_old = 0;
+unsigned char z = 0;
+unsigned char prueba = 50;
 
 void config(void);
 
@@ -2848,6 +2901,39 @@ void __attribute__((picinterrupt(("")))) isr (void){
         RD5=0;
     }
 
+        if(PIR1bits.SSPIF == 1){
+        SSPCONbits.CKP = 0;
+
+        if ((SSPCONbits.SSPOV) || (SSPCONbits.WCOL)){
+            z = SSPBUF;
+            SSPCONbits.SSPOV = 0;
+            SSPCONbits.WCOL = 0;
+            SSPCONbits.CKP = 1;
+        }
+
+        if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW) {
+
+            z = SSPBUF;
+
+            PIR1bits.SSPIF = 0;
+            SSPCONbits.CKP = 1;
+            while(!SSPSTATbits.BF);
+            PORTBbits.RB1 = 1;
+            _delay((unsigned long)((250)*(8000000/4000000.0)));
+
+        }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+            z = SSPBUF;
+            BF = 0;
+            SSPBUF = prueba;
+            PORTBbits.RB1 = ~PORTBbits.RB1;
+            SSPCONbits.CKP = 1;
+            _delay((unsigned long)((250)*(8000000/4000000.0)));
+            while(SSPSTATbits.BF);
+        }
+
+        PIR1bits.SSPIF = 0;
+    }
+
 }
 
 void main(void) {
@@ -2857,98 +2943,249 @@ void main(void) {
 
     Config_Oscilador();
     Valor_TMR0 = Config_TMR0();
+    I2C_Slave_Init(0x70);
 
-
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
 
 
     while(1){
+        if(RB3 == 1){
+            if(izq_der == 0 || izq_der == 2){
+                izq_der = 3;
+                RB7 = 1;
+            }else if (izq_der == 3){
+                if (Erguido == 1){
+                    RB7 = 0;
+                }
+            }
+        }
+
+
         if (izq_der == 0){
-            if (Pos_Servos1 > 127){
-                Pos_Servos1--;
+
+
+            if (Pos_Servos1 < 212 && Pos_Servos5 == 195){
+                Pos_Servos1++;
             }
-            if (Pos_Servos2 > 204){
-                Pos_Servos2--;
+            if (Pos_Servos4 > 50 && Pos_Servos5 == 195){
+                Pos_Servos4 = Pos_Servos4 - 2;
             }
-            if (Pos_Servos3 < 212){
-                Pos_Servos3++;
-            }
-            if (Pos_Servos4 < 200){
-                Pos_Servos4++;
-            }
-            if (Pos_Servos5 > 185){
-                Pos_Servos5--;
-            }
-            if (Pos_Servos6 < 190){
-                Pos_Servos6++;
-            }
-            if (Pos_Servos1 == 127 && Pos_Servos2 == 204 && Pos_Servos3 == 212 && Pos_Servos4 == 200 && Pos_Servos5 == 185 && Pos_Servos6 == 190){
-                izq_der = 2;
-            }
-            _delay((unsigned long)((35)*(8000000/4000.0)));
-        }else if (izq_der == 2){
-            DifServo1 = Pos_neutra_Servo1 - Pos_Servos1;
-            DifServo2 = Pos_neutra_Servo2 - Pos_Servos2;
-            DifServo3 = Pos_neutra_Servo3 - Pos_Servos3;
-            DifServo4 = Pos_neutra_Servo4 - Pos_Servos4;
-            DifServo5 = Pos_neutra_Servo5 - Pos_Servos5;
-            DifServo6 = Pos_neutra_Servo6 - Pos_Servos6;
-            if (DifServo1 < 0){
-                DifServo1 = DifServo1 * (-1);
-            }
-            if (DifServo2 < 0){
-                DifServo2 = DifServo2 * (-1);
-            }
-            if (DifServo3 < 0){
-                DifServo3 = DifServo3 * (-1);
-            }
-            if (DifServo4 < 0){
-                DifServo4 = DifServo4 * (-1);
-            }
-            if (DifServo5 < 0){
-                DifServo5 = DifServo5 * (-1);
-            }
-            if (DifServo6 < 0){
-                DifServo6 = DifServo6 * (-1);
+            if (Pos_Servos6 < 216 && Pos_Servos5 == 195){
+                Pos_Servos6 = Pos_Servos6 + 2;
             }
 
-            if (DifServo1 > DifServo2 && DifServo1 > DifServo3 && DifServo1 > DifServo4 && DifServo1 > DifServo5 && DifServo1 > DifServo6 ){
+
+            if (Pos_Servos2 < 225){
+                Pos_Servos2++;
+            }
+            if (Pos_Servos3 < 225){
+                Pos_Servos3++;
+            }
+            if (Pos_Servos5 > 195){
+                Pos_Servos5--;
+            }
+
+
+            if (Pos_Servos1 == 212 && Pos_Servos2 == 225 && Pos_Servos3 == 225 && Pos_Servos4 == 50 && Pos_Servos5 == 195 && Pos_Servos6 == 216){
+                izq_der = 1;
+                izq_der_old = 0;
+            }
+            _delay((unsigned long)((35)*(8000000/4000.0)));
+
+        }else if (izq_der == 1){
+
+
+            DifServo1 = Pos_neutra_Servo1 - Pos_Servos1;
+            if (DifServo1 < 0){
+                DifServo1 = DifServo1 * menos_uno;
+            }if (DifServo1 < 5){
+                DifServo1_Mayor5 = 1;
+            }
+
+            DifServo2 = Pos_neutra_Servo2 - Pos_Servos2;
+            if (DifServo2 < 0){
+                DifServo2 = DifServo2 * menos_uno;
+            }if (DifServo2 < 5){
+                DifServo2_Mayor5 = 1;
+            }
+
+            DifServo3 = Pos_neutra_Servo3 - Pos_Servos3;
+            if (DifServo3 < 0){
+                DifServo3 = DifServo3 * menos_uno;
+            }if (DifServo3 < 5){
+                DifServo3_Mayor5 = 1;
+            }
+
+            DifServo4 = Pos_neutra_Servo4 - Pos_Servos4;
+            if (DifServo4 < 0){
+                DifServo4 = DifServo4 * menos_uno;
+            }if (DifServo4 < 5){
+                DifServo4_Mayor5 = 1;
+            }
+
+            DifServo5 = Pos_neutra_Servo5 - Pos_Servos5;
+            if (DifServo5 < 0){
+                DifServo5 = DifServo5 * menos_uno;
+            }if (DifServo5 < 5){
+                DifServo5_Mayor5 = 1;
+            }
+
+            DifServo6 = Pos_neutra_Servo6 - Pos_Servos6;
+            if (DifServo6 < 0){
+                DifServo6 = DifServo6 * menos_uno;
+            }if (DifServo6 < 5){
+                DifServo6_Mayor5 = 1;
+            }
+
+
+            if (DifServo1 > DifServo2 && DifServo1 > DifServo3 && DifServo1 > DifServo4 && DifServo1 > DifServo5 && DifServo1 > DifServo6 && DifServo1_Mayor5 == 0){
+                if (Pos_Servos1 < Pos_neutra_Servo1){
+                    Pos_Servos1 = Pos_Servos1 + 4;
+                }else if (Pos_Servos1 > Pos_neutra_Servo1){
+                    Pos_Servos1 = Pos_Servos1 - 4;
+                }
+            }else if (DifServo2 > DifServo1 && DifServo2 > DifServo3 && DifServo2 > DifServo4 && DifServo2 > DifServo5 && DifServo2 > DifServo6 && DifServo2_Mayor5 == 0){
+                if (Pos_Servos2 < Pos_neutra_Servo2){
+                    Pos_Servos2 = Pos_Servos2 + 4;
+                }else if (Pos_Servos2 > Pos_neutra_Servo2){
+                    Pos_Servos2 = Pos_Servos2 - 4;
+                }
+            }else if (DifServo3 > DifServo1 && DifServo3 > DifServo2 && DifServo3 > DifServo4 && DifServo3 > DifServo5 && DifServo3 > DifServo6 && DifServo3_Mayor5 == 0){
+                if (Pos_Servos3 < Pos_neutra_Servo3){
+                    Pos_Servos3 = Pos_Servos3 + 4;
+                }else if (Pos_Servos3 > Pos_neutra_Servo3){
+                    Pos_Servos3 = Pos_Servos3 - 4;
+                }
+            }else if (DifServo4 > DifServo1 && DifServo4 > DifServo2 && DifServo4 > DifServo3 && DifServo4 > DifServo5 && DifServo4 > DifServo6 && DifServo4_Mayor5 == 0){
+                if (Pos_Servos4 < Pos_neutra_Servo4){
+                    Pos_Servos4 = Pos_Servos4 + 4;
+                }else if (Pos_Servos4 > Pos_neutra_Servo4){
+                    Pos_Servos4 = Pos_Servos4 - 4;
+                }
+            }else if (DifServo5 > DifServo1 && DifServo5 > DifServo2 && DifServo5 > DifServo3 && DifServo5 > DifServo4 && DifServo5 > DifServo6 && DifServo5_Mayor5 == 0){
+                if (Pos_Servos5 < Pos_neutra_Servo5){
+                    Pos_Servos5 = Pos_Servos5 + 4;
+                }else if (Pos_Servos5 > Pos_neutra_Servo5){
+                    Pos_Servos5 = Pos_Servos5 - 4;
+                }
+            }else if (DifServo6 > DifServo1 && DifServo6 > DifServo2 && DifServo6 > DifServo3 && DifServo6 > DifServo4 && DifServo6 > DifServo5 && DifServo6_Mayor5 == 0){
+                if (Pos_Servos6 < Pos_neutra_Servo6){
+                    Pos_Servos6 = Pos_Servos6 + 4;
+                }else if (Pos_Servos6 > Pos_neutra_Servo6){
+                    Pos_Servos6 = Pos_Servos6 - 4;
+                }
+            }
+
+
+            if (Pos_Servos1 != Pos_neutra_Servo1){
                 if (Pos_Servos1 < Pos_neutra_Servo1){
                     Pos_Servos1++;
                 }else if (Pos_Servos1 > Pos_neutra_Servo1){
                     Pos_Servos1--;
                 }
-            }else if (DifServo2 > DifServo1 && DifServo2 > DifServo3 && DifServo2 > DifServo4 && DifServo2 > DifServo5 && DifServo2 > DifServo6 ){
+            }
+            if (Pos_Servos2 != Pos_neutra_Servo2){
                 if (Pos_Servos2 < Pos_neutra_Servo2){
                     Pos_Servos2++;
                 }else if (Pos_Servos2 > Pos_neutra_Servo2){
                     Pos_Servos2--;
                 }
-            }else if (DifServo3 > DifServo1 && DifServo3 > DifServo2 && DifServo3 > DifServo4 && DifServo3 > DifServo5 && DifServo3 > DifServo6 ){
+            }
+            if (Pos_Servos3 != Pos_neutra_Servo3){
                 if (Pos_Servos3 < Pos_neutra_Servo3){
                     Pos_Servos3++;
                 }else if (Pos_Servos3 > Pos_neutra_Servo3){
                     Pos_Servos3--;
                 }
-            }else if (DifServo4 > DifServo1 && DifServo4 > DifServo2 && DifServo4 > DifServo3 && DifServo4 > DifServo5 && DifServo4 > DifServo6 ){
+            }
+            if (Pos_Servos4 != Pos_neutra_Servo4){
                 if (Pos_Servos4 < Pos_neutra_Servo4){
                     Pos_Servos4++;
                 }else if (Pos_Servos4 > Pos_neutra_Servo4){
                     Pos_Servos4--;
                 }
-            }else if (DifServo5 > DifServo1 && DifServo5 > DifServo2 && DifServo5 > DifServo3 && DifServo5 > DifServo4 && DifServo5 > DifServo6 ){
+            }
+            if (Pos_Servos5 != Pos_neutra_Servo5){
                 if (Pos_Servos5 < Pos_neutra_Servo5){
                     Pos_Servos5++;
                 }else if (Pos_Servos5 > Pos_neutra_Servo5){
                     Pos_Servos5--;
                 }
-            }else if (DifServo6 > DifServo1 && DifServo6 > DifServo2 && DifServo6 > DifServo3 && DifServo6 > DifServo4 && DifServo6 > DifServo5 ){
+            }
+            if (Pos_Servos6 != Pos_neutra_Servo6){
                 if (Pos_Servos6 < Pos_neutra_Servo6){
                     Pos_Servos6++;
                 }else if (Pos_Servos6 > Pos_neutra_Servo6){
                     Pos_Servos6--;
                 }
+            }
+
+
+            if (Pos_Servos2 == Pos_neutra_Servo2 && Pos_Servos3 == Pos_neutra_Servo3 && Pos_Servos5 == Pos_neutra_Servo5 && Pos_Servos1 == Pos_neutra_Servo1 && Pos_Servos4 == Pos_neutra_Servo4 && Pos_Servos6 == Pos_neutra_Servo6){
+
+                if (izq_der < izq_der_old){
+                    izq_der = 0;
+                }else if (izq_der > izq_der_old){
+                    izq_der = 2;
+                }
+
+                if (RB3 == 1){
+                izq_der = 3;
+                }
+
+            }
+            _delay((unsigned long)((35)*(8000000/4000.0)));
+        }else if (izq_der == 2){
+
+
+            if (Pos_Servos1 < 212 && Pos_Servos3 == 160){
+                Pos_Servos1++;
+            }
+            if (Pos_Servos4 < 216 && Pos_Servos3 == 160){
+                Pos_Servos4 = Pos_Servos4 + 2;
+            }
+            if (Pos_Servos6 > 50 && Pos_Servos3 == 160){
+                Pos_Servos6 = Pos_Servos6 - 2;
+            }
+
+
+            if (Pos_Servos2 < 225){
+                Pos_Servos2++;
+            }
+            if (Pos_Servos3 > 160){
+                Pos_Servos3--;
+            }
+            if (Pos_Servos5 < 225){
+                Pos_Servos5++;
+            }
+
+
+            if (Pos_Servos1 == 212 && Pos_Servos2 == 225 && Pos_Servos3 == 160 && Pos_Servos4 == 216 && Pos_Servos5 == 225 && Pos_Servos6 == 50){
+                izq_der = 1;
+                izq_der_old = 2;
+            }
+            _delay((unsigned long)((35)*(8000000/4000.0)));
+        }else if (izq_der == 3){
+
+
+            if(Pos_Servos2 > 195){
+            Pos_Servos2--;
+            }
+            if(Pos_Servos3 > 195){
+            Pos_Servos3--;
+            }
+            if(Pos_Servos5 > 195){
+            Pos_Servos5--;
+            }
+
+
+            if (Pos_Servos2 == 195 && Pos_Servos3 == 195 && Pos_Servos5 == 195){
+                Erguido = 1;
+            }
+
+
+            if (RB3 == 0){
+                izq_der = 0;
+                Erguido = 0;
             }
             _delay((unsigned long)((35)*(8000000/4000.0)));
         }
@@ -2958,10 +3195,12 @@ void main(void) {
 
 void config(void){
     TRISD = 0;
+    TRISB = 0b00001000;
 
     ANSEL = 0;
     ANSELH = 0;
 
 
     PORTD = 0;
+    PORTB = 0;
 }

@@ -8,54 +8,54 @@ import serial
 import time
  
 ADAFRUIT_IO_USERNAME = "Fredy_Godoy"
-ADAFRUIT_IO_KEY = "aio_Kaac27EXBiKG7NBfLc3ndriFcaeS"
+ADAFRUIT_IO_KEY = "aio_eMmU82WiKfr1bs6IqsebjSW1LZb1"
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 # Claves Feeds
 # Contador_1 Feed - Contador Pic
-#Contador_1 = aio.feeds('lab-04-digital-ii.contador-1')  # Enlazar feed (clave)
+Distancia = aio.feeds('proyecto-i-digital-ii.distancia')  # Enlazar feed (clave)
+Color = aio.feeds('proyecto-i-digital-ii.color')          # Enlazar feed (clave)
+Hora = aio.feeds('proyecto-i-digital-ii.hora')            # Enlazar feed (clave)
+Modo = aio.feeds('proyecto-i-digital-ii.modo')            # Enlazar feed (clave)
 
-serial_com4 = serial.Serial('COM4',baudrate = 9600, timeout = 1) # port = 'COM4' S
+serial_com = serial.Serial('COM4',baudrate = 9600, timeout = 1) # port = 'COM4' S
 
-V_Cont_1=0
+V_Distancia=0
+V_Color = 0
+V_Hora = ''
+V_Modo = 0
 while True:
-    serial_com4.flushInput()
+    serial_com.flushInput()
     time.sleep(0.1)
-    Var = serial_com4.readline()
-    if Var:
-        Var = Var.split(sep = '=')
-        V_Cont_1 = int(Var[0])
-        print(f'Valor Serial(Contador 1): {V_Cont_1}')                
-    else:
-        print("No hay conexion")
-
-    # Solicitar datos y enviarlos a adafruit
+    Var = serial_com.readline()
     try:
-        time.sleep(0.1)
-        # lab
-        #V_Contador_2 = int(input("Ingrese Valor Contador 2: "))
-        #V_Contador_3 = int(input("Ingrese Valor Contador 3: "))
-        # Postlab
-        #V_Contador_2 = 30
-        #V_Contador_3 = 50
-        #if (V_Contador_2 <= 256) & (V_Contador_2 <= 256):
-        #    V_Contador_2 = 0
-        #    V_Contador_2 = V_Contador_3  
-        NullHandler
+        if Var:
+            Var = Var.split()
+            V_Distancia = int(Var[0])
+            V_Color = int(Var[1])
+            V_Hora = str(Var[2])
+            print(f'Distancia: {V_Distancia}, Color: {V_Color}, Hora: {V_Hora} ')
+        else:
+            print("No hay conexion")
     except:
-        exit()
+        print("Hubo error")
 
-    
     # Probar lectura y escritura a Adafruit
     try:
         # Esctritura
-        # aio.send_data(Contador_1.key,V_Cont_1)      # Enviar datos a la variable 1 - Del PIC a Adafruit
-        
-        # Lectura
-        #Valor_Cont_2 = aio.receive(Contador_2.key)  # Leer datos de la variable
-        NullHandler
-    except:
-        NullHandler
+        aio.send_data(Distancia.key,V_Distancia)      # Enviar datos a la variable 1 - Del PIC a Adafruit
+        aio.send_data(Color.key,V_Color)              # Enviar datos a la variable 1 - Del PIC a Adafruit
+        aio.send_data(Hora.key,V_Hora)                # Enviar datos a la variable 1 - Del PIC a Adafruit
 
-    #Puerto_Pic = int(Valor_Cont_2.value)
-    serial_com4.write([]) # Enviar valor del contador 2 a puerto del PIC
-    time.sleep(6)
+        # Lectura
+        V_Modo = aio.receive(Modo.key)  # Leer datos de la variable
+
+        # Escritura Serial
+        Valor_Pic = str(V_Modo.value)
+        Valor_Pic = Valor_Pic.encode('utf-8')
+        serial_com.write(Valor_Pic) # Enviar valor del contador 2 a puerto del PIC
+        print(f'Modo: {Valor_Pic}')
+    except:
+        print("Hubo error enviando")
+
+
+    time.sleep(8)

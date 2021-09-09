@@ -2516,19 +2516,7 @@ char Ultrasonico(void);
 # 12 "Proyecto_I_Esclavo_II.c" 2
 
 # 1 "./../../LIB/LIB.X/LCD.h" 1
-# 27 "./../../LIB/LIB.X/LCD.h"
-void LCD_Init_8bits(void);
-void PORT_LCD(char v);
-void CMD_LCD(char v);
-void Lcd_Set_Cursor(char a, char b);
-void Clear_LCD(void);
-void Char_LCD(char a);
-void Write_LCD(char *a);
-void Print_Num(char valor);
-void Print_Cont(char valor);
-void tabla_num(int numero);
-# 13 "Proyecto_I_Esclavo_II.c" 2
-
+# 59 "./../../LIB/LIB.X/LCD.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2662,7 +2650,75 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
+# 59 "./../../LIB/LIB.X/LCD.h" 2
+
+
+
+unsigned char a = 0;
+void Lcd_Port(unsigned char a);
+
+void Lcd_Cmd(unsigned char a);
+
+void Lcd_Clear(void);
+
+void Lcd_Set_Cursor(unsigned char a,unsigned char b);
+
+void Lcd_Init(void);
+
+void Lcd_Write_Char(char a);
+
+void Lcd_Write_String(char a);
+
+void Lcd_Shift_Right(void);
+
+void Lcd_Shift_Left(void);
+# 13 "Proyecto_I_Esclavo_II.c" 2
+
+# 1 "./../../LIB/LIB.X/I2C.h" 1
+# 35 "./../../LIB/LIB.X/I2C.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
+# 35 "./../../LIB/LIB.X/I2C.h" 2
+# 44 "./../../LIB/LIB.X/I2C.h"
+void I2C_Master_Init(const unsigned long c);
+
+
+
+
+
+
+
+void I2C_Master_Wait(void);
+
+
+
+void I2C_Master_Start(void);
+
+
+
+void I2C_Master_RepeatedStart(void);
+
+
+
+void I2C_Master_Stop(void);
+
+
+
+
+
+void I2C_Master_Write(unsigned d);
+
+
+
+
+unsigned short I2C_Master_Read(unsigned short a);
+
+
+
+void I2C_Slave_Init(uint8_t address);
 # 14 "Proyecto_I_Esclavo_II.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
+# 15 "Proyecto_I_Esclavo_II.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2761,7 +2817,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 15 "Proyecto_I_Esclavo_II.c" 2
+# 16 "Proyecto_I_Esclavo_II.c" 2
 
 
 
@@ -2806,6 +2862,16 @@ extern int printf(const char *, ...);
 
 char text[16];
 unsigned char CNY70 = 0;
+unsigned char env_CNY70 = 0;
+unsigned char Con_CNY70 = 0;
+unsigned char UltraFlag = 0;
+unsigned char arriba_abajo = 0;
+unsigned char arriba_abajo_flag = 0;
+unsigned char arriba_abajo_enable = 0;
+unsigned char env_master= 0;
+unsigned char z = 0;
+unsigned char inicio = 2;
+unsigned char cont_miedo = 0;
 char Distancia;
 
 void config(void);
@@ -2816,16 +2882,62 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (ADIF == 1){
         ADIF = 0;
         CNY70 = Valor_ADC(0);
+        if (CNY70 > 40 && CNY70 < 55){
+            Con_CNY70++;
+        }else {
+            Con_CNY70 = 0;
+        }
     }
 
-    if (RCIF == 1){
 
+    if(PIR1bits.SSPIF == 1){
 
-        if (RCREG == 'c'){
-            sprintf(text,"Valor CN70 %d",CNY70);
-            Texto_USART(text);
+        SSPCONbits.CKP = 0;
+
+        if ((SSPCONbits.SSPOV) || (SSPCONbits.WCOL)){
+            z = SSPBUF;
+
+            SSPCONbits.SSPOV = 0;
+            SSPCONbits.WCOL = 0;
+            SSPCONbits.CKP = 1;
         }
-        RCIF = 0;
+
+        if(!SSPSTATbits.D_nA && !SSPSTATbits.R_nW) {
+
+            z = SSPBUF;
+            inicio =1;
+            env_master = 1;
+
+            PIR1bits.SSPIF = 0;
+            SSPCONbits.CKP = 1;
+            while(!SSPSTATbits.BF);
+
+
+            _delay((unsigned long)((250)*(8000000/4000000.0)));
+
+        }else if(!SSPSTATbits.D_nA && SSPSTATbits.R_nW){
+            z = SSPBUF;
+            BF = 0;
+
+            if (env_master == 0)
+                env_master = 1;
+            else if (env_master == 1)
+                env_master = 0;
+
+            if (env_master == 1){
+                SSPBUF = Distancia;
+            }else if (env_master == 0){
+                SSPBUF = env_CNY70;
+            }
+
+            SSPCONbits.CKP = 1;
+            _delay((unsigned long)((250)*(8000000/4000000.0)));
+            while(SSPSTATbits.BF);
+        }
+
+
+
+        PIR1bits.SSPIF = 0;
     }
 }
 
@@ -2833,34 +2945,71 @@ void main(void) {
 
 
     config();
-
     Config_Oscilador();
     Config_ADC();
-    Config_USART();
+    I2C_Slave_Init(0b11111110);
 
 
     while(1){
+        if (CNY70 > 40 && CNY70 < 55 && Con_CNY70 >= 200 && inicio == 0){
+            PORTBbits.RB0 = 1;
+            UltraFlag = 1;
+            arriba_abajo = 0;
+            arriba_abajo_enable = 1;
+            env_CNY70 = 1;
+        }
 
-        Distancia = Ultrasonico();
-        sprintf(text,"Distancia: %d",Distancia);
-        Texto_USART(text);
+        if (inicio == 1 ){
+            arriba_abajo = 1;
+            UltraFlag = 1;
+            arriba_abajo_enable = 1;
+        }
+        if (cont_miedo == 1){
+            _delay((unsigned long)((5000)*(8000000/4000.0)));
+            arriba_abajo = 1;
+            UltraFlag = 1;
+            arriba_abajo_enable = 1;
+        }
+
+        if (UltraFlag == 1){
+           Distancia = Ultrasonico();
+
+           if (Distancia < 6 && arriba_abajo == 0){
+               arriba_abajo_enable = 0;
+               UltraFlag = 0;
+               cont_miedo = 1;
+               env_CNY70 = 0;
+           }else if (Distancia > 16 && arriba_abajo == 1){
+               arriba_abajo_enable = 0;
+               inicio = 0;
+               UltraFlag = 0;
+               cont_miedo = 0;
+           }
+
+
+           if (arriba_abajo == 1 && arriba_abajo_enable == 1 && PORTBbits.RB2 == 0){
+               PORTBbits.RB1 = 1;
+           }else if (arriba_abajo == 0 && arriba_abajo_enable == 1 && PORTBbits.RB1 == 0){
+               PORTBbits.RB2 = 1;
+           }else{
+               PORTBbits.RB1 = 0;
+               PORTBbits.RB2 = 0;
+           }
+        }
+        RB4 = (inicio >>1) && 0x01;
+        RB3 = ~RB3;
         _delay((unsigned long)((200)*(8000000/4000.0)));
     }
 }
 
 void config(void){
-    TRISA = 0b1;
+    TRISA = 0b00000001;
     TRISB = 0;
-    TRISE = 0;
-    TRISD = 0xff;
 
-    ANSEL = 0b1;
+    ANSEL = 0b0000001;
     ANSELH = 0;
 
 
     PORTA = 0;
     PORTB = 0;
-
-    PORTD = 0;
-    PORTE = 0;
 }

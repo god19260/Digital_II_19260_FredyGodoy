@@ -1,121 +1,93 @@
-#include <xc.h>
+/* 
+ * File: LCD.c
+ * Se utiliz? y se adaptaron las librer?as de Ligo George 
+ * de la p?gina www.electrosome.com
+ * Enlace: https://electrosome.com/lcd-pic-mplab-xc8/
+ * Revision history: 
+ */
+
+//LCD Functions Developed by electroSome
+
 #include "LCD.h"
-#define _XTAL_FREQ 8000000
 
-void LCD_Init_8bits(void){
-    PORT_LCD(0); // Limpiamos el puerto de conexión a LCD
-    __delay_ms(20);
-    CMD_LCD(0b111000);
-    __delay_ms(20);
-    CMD_LCD(0b1100);
-    __delay_ms(20);
-    CMD_LCD(0b1);
-    //*-*-*-*-*-*-*-*-*-*
-    
-    CMD_LCD(0b111000);
-    CMD_LCD(0b1000);
-    CMD_LCD(0b1);
-    CMD_LCD(0b110);
+void Lcd_Port(unsigned char a) {
+    PORTA = a;
 }
 
-void PORT_LCD(char v){
-    D0 = v & 1 ? 1 : 0;
-    D1 = v & 2 ? 1 : 0;
-    D2 = v & 4 ? 1 : 0;
-    D3 = v & 8 ? 1 : 0;
-    D4 = v & 16 ? 1 : 0;
-    D5 = v & 32 ? 1 : 0;
-    D6 = v & 64 ? 1 : 0;
-    D7 = v & 128 ? 1 : 0;
+void Lcd_Cmd(unsigned char a) {//
+    RS = 0; // => RS = 0 // Dato en el puerto lo va interpretar como comando
+    Lcd_Port(a);
+    EN = 1; // => E = 1
+    delay_ms(4);
+    EN = 0; // => E = 0
 }
-void CMD_LCD(char v){
-    RS = 0; // Comando
-    PORT_LCD(v);
-    EN = 1; // E = 1
-    __delay_us(500);
-    EN = 0; // E = 0
+
+void Lcd_Clear(void) {
+    INTCONbits.PEIE = 0;
+    INTCONbits.GIE = 0;
+    Lcd_Cmd(0x01);
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
 }
-void Lcd_Set_Cursor(char a, char b) {
-    char temp, z, y;
+
+void Lcd_Set_Cursor(unsigned char a,unsigned char b) {//
+    INTCONbits.PEIE = 0;
+    INTCONbits.GIE = 0;
+    unsigned char temp;
     if (a == 1) {
         temp = 0x80 + b - 1;
-        CMD_LCD(temp);
+        Lcd_Cmd(temp);
+
     } else if (a == 2) {
         temp = 0xC0 + b - 1;
-        CMD_LCD(temp);
+        Lcd_Cmd(temp);
     }
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
 }
-void Clear_LCD(void){
-    CMD_LCD(0b1);
+
+void Lcd_Init(void) {
+    INTCONbits.PEIE = 0;
+    INTCONbits.GIE = 0;
+    Lcd_Port(0);
+    delay_ms(20);
+    Lcd_Cmd(48);
+    delay_ms(5);
+    Lcd_Cmd(48);
+    delay_ms(11);
+    Lcd_Cmd(48);
+    /////////////////////////////////////////////////////
+    Lcd_Cmd(56);
+    Lcd_Cmd(8);
+    Lcd_Cmd(1);
+    Lcd_Cmd(6);
+    Lcd_Cmd(12);
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
 }
-void Char_LCD(char a){
-    RS = 1; // RS = 1
-    PORT_LCD(a);
+
+void Lcd_Write_Char(char a) {
+    RS = 1; // => RS = 1
+    Lcd_Port(a); //Data transfer
     EN = 1;
-    __delay_us(500);
+    __delay_us(40);
     EN = 0;
 }
-void Write_LCD(char *a) {
-    char i;
-    for (i = 0; a[i] != '\0'; i++){
-        Char_LCD(a[i]);
-        __delay_us(10);
-    }
-            
+
+void Lcd_Write_String(char *a) {
+    INTCONbits.PEIE = 0;
+    INTCONbits.GIE = 0;
+    int i;
+    for (i = 0; a[i] != '\0'; i++)
+        Lcd_Write_Char(a[i]);
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
 }
 
-void Print_Num(char valor){ // imprimir numero LCD
-    int temp;
-    int unidad, decena, centena;
-    temp = valor * 2;
-    temp = valor;
-    centena = temp/100;
-    temp = temp - centena*100;
-    decena = temp/10;
-    unidad = temp - decena*10; 
-    tabla_num(centena);
-    Write_LCD(".");
-    tabla_num(decena);
-    tabla_num(unidad);  
-    
-}
-void Print_Cont(char valor){ // imprimir numero LCD
-    int temp;
-    int unidad, decena, centena;
-    centena = valor/100;
-    temp = valor - centena*100;
-    decena = temp/10;
-    unidad = temp - decena*10; 
-    tabla_num(centena);
-    tabla_num(decena);
-    tabla_num(unidad);     
+void Lcd_Shift_Right(void) {
+    Lcd_Cmd(28);
 }
 
-void tabla_num(int numero){
-    // forma == 0 LCD
-    // forma == 1 USART
-    if (numero == 1){
-        Char_LCD('1');
-    } else if (numero == 2){
-        Char_LCD('2');
-    } else if (numero == 3){
-        Char_LCD('3');
-    } else if (numero == 4){
-        Char_LCD('4');
-    } else if (numero == 5){
-        Char_LCD('5');
-    } else if (numero == 6){
-        Char_LCD('6');
-    } else if (numero == 7){
-        Char_LCD('7');
-    } else if (numero == 8){
-        Char_LCD('8');
-    } else if (numero == 9){
-        Char_LCD('9');
-    } else if (numero == 0){
-        Char_LCD('0');
-    } else if (numero == '.'){
-        Char_LCD('.');
-    }
-    
+void Lcd_Shift_Left(void) {
+    Lcd_Cmd(24);
 }

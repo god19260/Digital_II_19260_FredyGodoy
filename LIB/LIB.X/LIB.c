@@ -219,11 +219,11 @@ void Interfaz(char v1, char v2){
 char Ultrasonico(void){
     // Trigger RA1
     // Echo RD0
-    unsigned char cont;
+    unsigned int cont;
     unsigned int tiempo;
-    unsigned int dist;
+    unsigned char dist;
     cont = 0;
-    RA1 = 1;
+    RA1 = 1;   
     __delay_us(10);
     RA1 = 0;
     while(!RD0){} // Espera a que la señal sea 1 

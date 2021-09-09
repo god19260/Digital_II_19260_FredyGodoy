@@ -2722,9 +2722,9 @@ void Interfaz(char v1, char v2){
 char Ultrasonico(void){
 
 
-    unsigned char cont;
+    unsigned int cont;
     unsigned int tiempo;
-    unsigned int dist;
+    unsigned char dist;
     cont = 0;
     RA1 = 1;
     _delay((unsigned long)((10)*(8000000/4000000.0)));
@@ -2736,5 +2736,4 @@ char Ultrasonico(void){
     tiempo = 27*cont;
     dist = (tiempo/29)/2;
     return dist;
-
 }
