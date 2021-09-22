@@ -27,32 +27,36 @@ void loop() {
       if(digitalRead(PUSH1) == LOW){
         if(Cont_1 == 0){
           Cont_1 = 1;
-          analogWrite(RED_LED, 255);
+          analogWrite(RED_LED, 155);  // verde claro
+          analogWrite(GREEN_LED, 255);
         }else if(digitalRead(PUSH1) == LOW){
           Cont_1 = Cont_1*2 ;
-          analogWrite(RED_LED, 255);
+          analogWrite(RED_LED, 155); // verde claro
+          analogWrite(GREEN_LED, 255);
         }
       }
       // Acción Jugador 2
       if(digitalRead(PUSH2) == LOW){
         if(Cont_2 == 0){
           Cont_2 = 1;
-          analogWrite(BLUE_LED, 255);
+          analogWrite(RED_LED, 255);
         }else if(digitalRead(PUSH2) == LOW){
           Cont_2 = Cont_2*2 ;
-          analogWrite(BLUE_LED, 255);
+          analogWrite(RED_LED, 255);
         }
       }
       
       delay(100);
-      analogWrite(RED_LED, 0);  // Acción del Jugador 1
-      analogWrite(BLUE_LED, 0); // Acción del Jugador 2
+      analogWrite(RED_LED, 0);  
+      analogWrite(GREEN_LED, 0);
+      analogWrite(BLUE_LED, 0);
+       
     }
    
     if(Cont_1 >= 255){  // Ganador Jugador 1 - Color Celeste
-      analogWrite(RED_LED, 44);
-      analogWrite(GREEN_LED, 199);
-      analogWrite(BLUE_LED, 211);
+      analogWrite(RED_LED, 10);
+      analogWrite(GREEN_LED, 100);
+      analogWrite(BLUE_LED, 140);
       
     }else if(Cont_2 >= 255){ // Ganador Jugador 2 - Color Rosa
       analogWrite(RED_LED, 220);
@@ -77,7 +81,7 @@ void Semaforo(void){
   analogWrite(BLUE_LED, 0);
   analogWrite(GREEN_LED, 0);
   delay(tiempo);
-  analogWrite(RED_LED, 150);
+  analogWrite(RED_LED, 150);    // Amarillo
   analogWrite(BLUE_LED, 0);
   analogWrite(GREEN_LED, 150);
   delay(tiempo);
