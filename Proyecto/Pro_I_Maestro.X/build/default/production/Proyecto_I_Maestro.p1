@@ -24,9 +24,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 15: void Config_Oscilador(void);
 [v _Config_Oscilador `(v ~T0 @X0 0 ef ]
-"71 ./../../LIB/LIB.X/LCD.h
-[; ;./../../LIB/LIB.X/LCD.h: 71: void Lcd_Init(void);
-[v _Lcd_Init `(v ~T0 @X0 0 ef ]
+"100 Proyecto_I_Maestro.c
+[v _Lcd_Init `(i ~T0 @X0 0 e? ]
 "19 ./../../LIB/LIB.X/LIB.h
 [; ;./../../LIB/LIB.X/LIB.h: 19: void Config_USART(void);
 [v _Config_USART `(v ~T0 @X0 0 ef ]
@@ -75,20 +74,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"67 ./../../LIB/LIB.X/LCD.h
-[; ;./../../LIB/LIB.X/LCD.h: 67: void Lcd_Clear(void);
-[v _Lcd_Clear `(v ~T0 @X0 0 ef ]
-"69
-[; ;./../../LIB/LIB.X/LCD.h: 69: void Lcd_Set_Cursor(unsigned char a,unsigned char b);
+"177 Proyecto_I_Maestro.c
+[; ;Proyecto_I_Maestro.c: 177:                 Lcd_Clear();
+[v _Lcd_Clear `(i ~T0 @X0 0 e? ]
+"30 ./../../LIB/LIB.X/LCD.h
+[; ;./../../LIB/LIB.X/LCD.h: 30: void Lcd_Set_Cursor(char a, char b);
 [v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
 "78 Proyecto_I_Maestro.c
 [v _convdecimal `(v ~T0 @X0 0 ef1`uc ]
-"73 ./../../LIB/LIB.X/LCD.h
-[; ;./../../LIB/LIB.X/LCD.h: 73: void Lcd_Write_Char(char a);
-[v _Lcd_Write_Char `(v ~T0 @X0 0 ef1`uc ]
-"75
-[; ;./../../LIB/LIB.X/LCD.h: 75: void Lcd_Write_String(char *a);
-[v _Lcd_Write_String `(v ~T0 @X0 0 ef1`*uc ]
+"184
+[; ;Proyecto_I_Maestro.c: 184:             Lcd_Write_Char(':');
+[v _Lcd_Write_Char `(i ~T0 @X0 0 e? ]
+"191
+[; ;Proyecto_I_Maestro.c: 191:                 Lcd_Write_String("PM");
+[v _Lcd_Write_String `(i ~T0 @X0 0 e? ]
 "194 C:\Program Files\Microchip\xc8\v2.32\pic\include\c90\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "25 ./../../LIB/LIB.X/LIB.h
@@ -355,12 +354,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"62 ./../../LIB/LIB.X/LCD.h
-[; ;./../../LIB/LIB.X/LCD.h: 62: unsigned char a = 0;
-[v _a `uc ~T0 @X0 1 e ]
-[i _a
--> -> 0 `i `uc
-]
 "23 Proyecto_I_Maestro.c
 [; ;Proyecto_I_Maestro.c: 23: char text [16];
 [p x FOSC  =  INTRC_NOCLKOUT  ]
@@ -691,13 +684,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _convdecimal (1 _hour ]
 "184
 [; ;Proyecto_I_Maestro.c: 184:             Lcd_Write_Char(':');
-[e ( _Lcd_Write_Char (1 -> -> 58 `ui `uc ]
+[e ( _Lcd_Write_Char -> 58 `ui ]
 "185
 [; ;Proyecto_I_Maestro.c: 185:             convdecimal (minute);
 [e ( _convdecimal (1 _minute ]
 "186
 [; ;Proyecto_I_Maestro.c: 186:             Lcd_Write_Char(':');
-[e ( _Lcd_Write_Char (1 -> -> 58 `ui `uc ]
+[e ( _Lcd_Write_Char -> 58 `ui ]
 "187
 [; ;Proyecto_I_Maestro.c: 187:             convdecimal (second);
 [e ( _convdecimal (1 _second ]
@@ -713,7 +706,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "191
 [; ;Proyecto_I_Maestro.c: 191:                 Lcd_Write_String("PM");
-[e ( _Lcd_Write_String (1 :s 1C ]
+[e ( _Lcd_Write_String :s 1C ]
 "192
 [; ;Proyecto_I_Maestro.c: 192:             }else if (AM_PM == 2){
 }
@@ -723,7 +716,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "193
 [; ;Proyecto_I_Maestro.c: 193:                 Lcd_Write_String("AM");
-[e ( _Lcd_Write_String (1 :s 2C ]
+[e ( _Lcd_Write_String :s 2C ]
 "194
 [; ;Proyecto_I_Maestro.c: 194:             }
 }
@@ -740,19 +733,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _convdecimal (1 _date ]
 "200
 [; ;Proyecto_I_Maestro.c: 200:             Lcd_Write_Char('/');
-[e ( _Lcd_Write_Char (1 -> -> 47 `ui `uc ]
+[e ( _Lcd_Write_Char -> 47 `ui ]
 "201
 [; ;Proyecto_I_Maestro.c: 201:             convdecimal (month);
 [e ( _convdecimal (1 _month ]
 "202
 [; ;Proyecto_I_Maestro.c: 202:             Lcd_Write_Char('/');
-[e ( _Lcd_Write_Char (1 -> -> 47 `ui `uc ]
+[e ( _Lcd_Write_Char -> 47 `ui ]
 "203
 [; ;Proyecto_I_Maestro.c: 203:             Lcd_Write_Char('2');
-[e ( _Lcd_Write_Char (1 -> -> 50 `ui `uc ]
+[e ( _Lcd_Write_Char -> 50 `ui ]
 "204
 [; ;Proyecto_I_Maestro.c: 204:             Lcd_Write_Char('0');
-[e ( _Lcd_Write_Char (1 -> -> 48 `ui `uc ]
+[e ( _Lcd_Write_Char -> 48 `ui ]
 "205
 [; ;Proyecto_I_Maestro.c: 205:             convdecimal (year);
 [e ( _convdecimal (1 _year ]
@@ -768,7 +761,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "209
 [; ;Proyecto_I_Maestro.c: 209:             Lcd_Write_String("Ultrasonico: ");
-[e ( _Lcd_Write_String (1 :s 3C ]
+[e ( _Lcd_Write_String :s 3C ]
 "210
 [; ;Proyecto_I_Maestro.c: 210:             convdecimal (ultrasonico);
 [e ( _convdecimal (1 _ultrasonico ]
@@ -777,14 +770,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "212
 [; ;Proyecto_I_Maestro.c: 212:             Lcd_Write_String("Color Rosado: ");
-[e ( _Lcd_Write_String (1 :s 4C ]
+[e ( _Lcd_Write_String :s 4C ]
 "213
 [; ;Proyecto_I_Maestro.c: 213:             if (CNY70 == 1){
 [e $ ! == -> _CNY70 `i -> 1 `i 155  ]
 {
 "214
 [; ;Proyecto_I_Maestro.c: 214:                 Lcd_Write_String("SI");
-[e ( _Lcd_Write_String (1 :s 5C ]
+[e ( _Lcd_Write_String :s 5C ]
 "215
 [; ;Proyecto_I_Maestro.c: 215:             }else if (CNY70 == 0){
 }
@@ -794,7 +787,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "216
 [; ;Proyecto_I_Maestro.c: 216:                 Lcd_Write_String("NO");
-[e ( _Lcd_Write_String (1 :s 6C ]
+[e ( _Lcd_Write_String :s 6C ]
 "217
 [; ;Proyecto_I_Maestro.c: 217:             }
 }
@@ -879,10 +872,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _unidad -> % -> _valor `i -> 10 `i `uc ]
 "247
 [; ;Proyecto_I_Maestro.c: 247:         Lcd_Write_Char(ASCII[decena]);
-[e ( _Lcd_Write_Char (1 *U + &U _ASCII * -> _decena `ux -> -> # *U &U _ASCII `ui `ux ]
+[e ( _Lcd_Write_Char -> *U + &U _ASCII * -> _decena `ux -> -> # *U &U _ASCII `ui `ux `i ]
 "248
 [; ;Proyecto_I_Maestro.c: 248:         Lcd_Write_Char(ASCII[unidad]);
-[e ( _Lcd_Write_Char (1 *U + &U _ASCII * -> _unidad `ux -> -> # *U &U _ASCII `ui `ux ]
+[e ( _Lcd_Write_Char -> *U + &U _ASCII * -> _unidad `ux -> -> # *U &U _ASCII `ui `ux `i ]
 "249
 [; ;Proyecto_I_Maestro.c: 249: }
 [e :UE 159 ]

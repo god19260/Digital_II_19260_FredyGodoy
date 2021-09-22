@@ -2492,7 +2492,45 @@ extern __bank0 __bit __timeout;
 
 
 # 1 "./../../LIB/LIB.X/LCD.h" 1
-# 59 "./../../LIB/LIB.X/LCD.h"
+# 27 "./../../LIB/LIB.X/LCD.h"
+void LCD_Init_8bits(void);
+void PORT_LCD(char v);
+void CMD_LCD(char v);
+void Lcd_Set_Cursor(char a, char b);
+void Clear_LCD(void);
+void Char_LCD(char a);
+void Write_LCD(char *a);
+void Print_Num(char valor);
+void Print_Cont(char valor);
+void tabla_num(int numero);
+# 12 "Proyecto_I_Maestro.c" 2
+
+# 1 "./../../LIB/LIB.X/LIB.h" 1
+# 15 "./../../LIB/LIB.X/LIB.h"
+void Config_Oscilador(void);
+char Config_TMR0(void);
+void Config_PORTB(void);
+void Config_ADC(void);
+void Config_USART(void);
+void Config_Puertos(void);
+
+
+char Valor_ADC(char canal);
+void tabla_USART(int numero);
+void Texto_USART(char texto[]);
+
+
+void SPI(volatile char *v1,volatile char *v2);
+void USART_Num(char valor);
+void texto_Programa(char v1, char v2);
+void Interfaz(char v1, char v2);
+
+
+char Ultrasonico(void);
+# 13 "Proyecto_I_Maestro.c" 2
+
+# 1 "./../../LIB/LIB.X/I2C.h" 1
+# 35 "./../../LIB/LIB.X/I2C.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2626,57 +2664,6 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 59 "./../../LIB/LIB.X/LCD.h" 2
-
-
-
-unsigned char a = 0;
-void Lcd_Port(unsigned char a);
-
-void Lcd_Cmd(unsigned char a);
-
-void Lcd_Clear(void);
-
-void Lcd_Set_Cursor(unsigned char a,unsigned char b);
-
-void Lcd_Init(void);
-
-void Lcd_Write_Char(char a);
-
-void Lcd_Write_String(char *a);
-
-void Lcd_Shift_Right(void);
-
-void Lcd_Shift_Left(void);
-# 12 "Proyecto_I_Maestro.c" 2
-
-# 1 "./../../LIB/LIB.X/LIB.h" 1
-# 15 "./../../LIB/LIB.X/LIB.h"
-void Config_Oscilador(void);
-char Config_TMR0(void);
-void Config_PORTB(void);
-void Config_ADC(void);
-void Config_USART(void);
-void Config_Puertos(void);
-
-
-char Valor_ADC(char canal);
-void tabla_USART(int numero);
-void Texto_USART(char texto[]);
-
-
-void SPI(volatile char *v1,volatile char *v2);
-void USART_Num(char valor);
-void texto_Programa(char v1, char v2);
-void Interfaz(char v1, char v2);
-
-
-char Ultrasonico(void);
-# 13 "Proyecto_I_Maestro.c" 2
-
-# 1 "./../../LIB/LIB.X/I2C.h" 1
-# 35 "./../../LIB/LIB.X/I2C.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 35 "./../../LIB/LIB.X/I2C.h" 2
 # 44 "./../../LIB/LIB.X/I2C.h"
 void I2C_Master_Init(const unsigned long c);

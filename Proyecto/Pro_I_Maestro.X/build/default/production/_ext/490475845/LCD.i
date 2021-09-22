@@ -7,9 +7,6 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "../../LIB/LIB.X/LCD.c" 2
-# 11 "../../LIB/LIB.X/LCD.c"
-# 1 "../../LIB/LIB.X/LCD.h" 1
-# 58 "../../LIB/LIB.X/LCD.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2490,244 +2487,138 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 58 "../../LIB/LIB.X/LCD.h" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
-
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 59 "../../LIB/LIB.X/LCD.h" 2
-
-
-
-unsigned char a = 0;
-void Lcd_Port(unsigned char a);
-
-void Lcd_Cmd(unsigned char a);
-
-void Lcd_Clear(void);
-
-void Lcd_Set_Cursor(unsigned char a,unsigned char b);
-
-void Lcd_Init(void);
-
-void Lcd_Write_Char(char a);
-
-void Lcd_Write_String(char *a);
-
-void Lcd_Shift_Right(void);
-
-void Lcd_Shift_Left(void);
-# 11 "../../LIB/LIB.X/LCD.c" 2
-
-
-void Lcd_Port(unsigned char a) {
-    PORTA = a;
+# 1 "../../LIB/LIB.X/LCD.c" 2
+
+# 1 "../../LIB/LIB.X/LCD.h" 1
+# 27 "../../LIB/LIB.X/LCD.h"
+void LCD_Init_8bits(void);
+void PORT_LCD(char v);
+void CMD_LCD(char v);
+void Lcd_Set_Cursor(char a, char b);
+void Clear_LCD(void);
+void Char_LCD(char a);
+void Write_LCD(char *a);
+void Print_Num(char valor);
+void Print_Cont(char valor);
+void tabla_num(int numero);
+# 2 "../../LIB/LIB.X/LCD.c" 2
+
+
+
+void LCD_Init_8bits(void){
+    PORT_LCD(0);
+    _delay((unsigned long)((20)*(8000000/4000.0)));
+    CMD_LCD(0b111000);
+    _delay((unsigned long)((20)*(8000000/4000.0)));
+    CMD_LCD(0b1100);
+    _delay((unsigned long)((20)*(8000000/4000.0)));
+    CMD_LCD(0b1);
+
+
+    CMD_LCD(0b111000);
+    CMD_LCD(0b1000);
+    CMD_LCD(0b1);
+    CMD_LCD(0b110);
 }
 
-void Lcd_Cmd(unsigned char a) {
-    RE0 = 0;
-    Lcd_Port(a);
-    RE1 = 1;
-    _delay((unsigned long)((4)*(8000000/4000.0)));
-    RE1 = 0;
+void PORT_LCD(char v){
+    PORTAbits.RA0 = v & 1 ? 1 : 0;
+    PORTAbits.RA1 = v & 2 ? 1 : 0;
+    PORTAbits.RA2 = v & 4 ? 1 : 0;
+    PORTAbits.RA3 = v & 8 ? 1 : 0;
+    PORTAbits.RA4 = v & 16 ? 1 : 0;
+    PORTAbits.RA5 = v & 32 ? 1 : 0;
+    PORTAbits.RA6 = v & 64 ? 1 : 0;
+    PORTAbits.RA7 = v & 128 ? 1 : 0;
 }
-
-void Lcd_Clear(void) {
-    INTCONbits.PEIE = 0;
-    INTCONbits.GIE = 0;
-    Lcd_Cmd(0x01);
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
+void CMD_LCD(char v){
+    PORTEbits.RE0 = 0;
+    PORT_LCD(v);
+    PORTEbits.RE1 = 1;
+    _delay((unsigned long)((500)*(8000000/4000000.0)));
+    PORTEbits.RE1 = 0;
 }
-
-void Lcd_Set_Cursor(unsigned char a,unsigned char b) {
-    INTCONbits.PEIE = 0;
-    INTCONbits.GIE = 0;
-    unsigned char temp;
+void Lcd_Set_Cursor(char a, char b) {
+    char temp, z, y;
     if (a == 1) {
         temp = 0x80 + b - 1;
-        Lcd_Cmd(temp);
-
+        CMD_LCD(temp);
     } else if (a == 2) {
         temp = 0xC0 + b - 1;
-        Lcd_Cmd(temp);
+        CMD_LCD(temp);
     }
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
+}
+void Clear_LCD(void){
+    CMD_LCD(0b1);
+}
+void Char_LCD(char a){
+    PORTEbits.RE0 = 1;
+    PORT_LCD(a);
+    PORTEbits.RE1 = 1;
+    _delay((unsigned long)((500)*(8000000/4000000.0)));
+    PORTEbits.RE1 = 0;
+}
+void Write_LCD(char *a) {
+    char i;
+    for (i = 0; a[i] != '\0'; i++){
+        Char_LCD(a[i]);
+        _delay((unsigned long)((10)*(8000000/4000000.0)));
+    }
+
 }
 
-void Lcd_Init(void) {
-    INTCONbits.PEIE = 0;
-    INTCONbits.GIE = 0;
-    Lcd_Port(0);
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-    Lcd_Cmd(48);
-    _delay((unsigned long)((5)*(8000000/4000.0)));
-    Lcd_Cmd(48);
-    _delay((unsigned long)((11)*(8000000/4000.0)));
-    Lcd_Cmd(48);
+void Print_Num(char valor){
+    int temp;
+    int unidad, decena, centena;
+    temp = valor * 2;
+    temp = valor;
+    centena = temp/100;
+    temp = temp - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10;
+    tabla_num(centena);
+    Write_LCD(".");
+    tabla_num(decena);
+    tabla_num(unidad);
 
-    Lcd_Cmd(56);
-    Lcd_Cmd(8);
-    Lcd_Cmd(1);
-    Lcd_Cmd(6);
-    Lcd_Cmd(12);
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
+}
+void Print_Cont(char valor){
+    int temp;
+    int unidad, decena, centena;
+    centena = valor/100;
+    temp = valor - centena*100;
+    decena = temp/10;
+    unidad = temp - decena*10;
+    tabla_num(centena);
+    tabla_num(decena);
+    tabla_num(unidad);
 }
 
-void Lcd_Write_Char(char a) {
-    RE0 = 1;
-    Lcd_Port(a);
-    RE1 = 1;
-    _delay((unsigned long)((40)*(8000000/4000000.0)));
-    RE1 = 0;
-}
+void tabla_num(int numero){
 
-void Lcd_Write_String(char *a) {
-    INTCONbits.PEIE = 0;
-    INTCONbits.GIE = 0;
-    int i;
-    for (i = 0; a[i] != '\0'; i++)
-        Lcd_Write_Char(a[i]);
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
-}
 
-void Lcd_Shift_Right(void) {
-    Lcd_Cmd(28);
-}
+    if (numero == 1){
+        Char_LCD('1');
+    } else if (numero == 2){
+        Char_LCD('2');
+    } else if (numero == 3){
+        Char_LCD('3');
+    } else if (numero == 4){
+        Char_LCD('4');
+    } else if (numero == 5){
+        Char_LCD('5');
+    } else if (numero == 6){
+        Char_LCD('6');
+    } else if (numero == 7){
+        Char_LCD('7');
+    } else if (numero == 8){
+        Char_LCD('8');
+    } else if (numero == 9){
+        Char_LCD('9');
+    } else if (numero == 0){
+        Char_LCD('0');
+    } else if (numero == '.'){
+        Char_LCD('.');
+    }
 
-void Lcd_Shift_Left(void) {
-    Lcd_Cmd(24);
 }
