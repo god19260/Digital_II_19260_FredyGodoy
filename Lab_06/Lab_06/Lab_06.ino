@@ -7,7 +7,8 @@ Autor: Fredy Godoy 19260
 // ------------------------------------- Variables --------------------------------------
 //int ledRed = 30, ledBlue = 40, ledGreen = 39;    // LED connected to digital pin 9
 int tiempo = 800;
-int Sem_Flag = 0;
+int Sw1_Flag = 0;
+int Sw2_Flag = 0;
 int Cont_1, Cont_2 = 0;
 // --------------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------------
@@ -18,35 +19,45 @@ void setup() {
 }
 // ----------------------------------- Loop Principal -----------------------------------
 // --------------------------------------------------------------------------------------
-void loop() {  
-  if(digitalRead(PUSH1) == LOW or digitalRead(PUSH2) == LOW){
+void loop() { 
+  Sw_Flags(); 
+  if((digitalRead(PUSH1) == LOW or digitalRead(PUSH2) == LOW) && (Sw1_Flag == 0 && Sw2_Flag == 0)){
     Semaforo();
-    Cont_1 = Cont_2 = 0;
+    Cont_1 = 0;
+    Cont_2 = 0;
+    // antirrebote para el inicio de la competencia
+    Sw1_Flag = 1;
+    Sw2_Flag = 1;
     while (Cont_1 <= 255 && Cont_2 <= 255){
+      Sw_Flags();
+      
       // Acción Jugador 1
-      if(digitalRead(PUSH1) == LOW){
+      if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
+        Sw1_Flag = 1;
         if(Cont_1 == 0){
           Cont_1 = 1;
           analogWrite(RED_LED, 155);  // verde claro
           analogWrite(GREEN_LED, 255);
-        }else if(digitalRead(PUSH1) == LOW){
+        }else {
           Cont_1 = Cont_1*2 ;
           analogWrite(RED_LED, 155); // verde claro
           analogWrite(GREEN_LED, 255);
         }
       }
       // Acción Jugador 2
-      if(digitalRead(PUSH2) == LOW){
+      if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
+        Sw2_Flag = 1;
         if(Cont_2 == 0){
           Cont_2 = 1;
           analogWrite(RED_LED, 255);
-        }else if(digitalRead(PUSH2) == LOW){
+        }else {
           Cont_2 = Cont_2*2 ;
           analogWrite(RED_LED, 255);
         }
       }
       
-      delay(100);
+      delay(50);   // ---- corregir ----
+      
       analogWrite(RED_LED, 0);  
       analogWrite(GREEN_LED, 0);
       analogWrite(BLUE_LED, 0);
@@ -68,6 +79,10 @@ void loop() {
     analogWrite(RED_LED, 0);
     analogWrite(BLUE_LED, 0);
     analogWrite(GREEN_LED, 0);
+    
+    // antirrebote para el inicio de la secuencia
+    Sw1_Flag = 1;
+    Sw2_Flag = 1;
   }
   
 }
@@ -94,4 +109,13 @@ void Semaforo(void){
   analogWrite(GREEN_LED, 0);    
 }
 
+void Sw_Flags(void){
+  // Actualización bandera de botones
+  if(digitalRead(PUSH1) == HIGH){ // Boton 1
+    Sw1_Flag = 0;
+  }
+  if(digitalRead(PUSH2) == HIGH){ // Boton 2
+    Sw2_Flag = 0;
+  }
+}
 // ---------------------------------------------------------------------------------------
