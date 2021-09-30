@@ -13,7 +13,7 @@ void setup() {
 
   // --- Config Pines --- 
   pinMode(PA_3, OUTPUT); // CS pin modulo SD
-  
+  Serial.println("Seleccione 1:Mario, 2:Guitarra, 3:Einstein");
   if (!SD.begin(PA_3)) {
     Serial.println("initialization failed!");
     return;
