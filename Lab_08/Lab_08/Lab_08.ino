@@ -1,11 +1,11 @@
 //***************************************************************************************************************************************
 /* Librería para el uso de la pantalla ILI9341 en modo 8 bits
- * Basado en el código de martinayotte - https://www.stm32duino.com/viewtopic.php?t=637
- * Adaptación, migración y creación de nuevas funciones: Pablo Mazariegos y José Morales
- * Con ayuda de: José Guerra
- * Modificaciones y adaptación: Diego Morales
- * IE3027: Electrónica Digital 2 - 2021
- */
+   Basado en el código de martinayotte - https://www.stm32duino.com/viewtopic.php?t=637
+   Adaptación, migración y creación de nuevas funciones: Pablo Mazariegos y José Morales
+   Con ayuda de: José Guerra
+   Modificaciones y adaptación: Diego Morales
+   IE3027: Electrónica Digital 2 - 2021
+*/
 //***************************************************************************************************************************************
 #include <SPI.h>
 #include <SD.h>
@@ -35,10 +35,12 @@
 #define LCD_RS PD_2
 #define LCD_WR PD_3
 #define LCD_RD PE_1
-int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};  
+int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};
 File myFile;
 File root;
 String Numero;
+extern uint8_t Imagen_1 [];
+unsigned char temp_2 [25000] PROGMEM = {};
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -54,22 +56,24 @@ void FillRect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, un
 void LCD_Print(String text, int x, int y, int fontSize, int color, int background);
 
 void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
-void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
+void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int columns, int index, char flip, char offset);
 
 
 //extern uint8_t fondo[];
-extern uint8_t uv[];
+//extern uint8_t Imagen_1[];
+//extern uint8_t Imagen_2[];
+//extern uint8_t Imagen_3[];
 //***************************************************************************************************************************************
 // Initialization
 //***************************************************************************************************************************************
 void setup() {
-  SysCtlClockSet(SYSCTL_SYSDIV_2_5|SYSCTL_USE_PLL|SYSCTL_OSC_MAIN|SYSCTL_XTAL_16MHZ);
+  SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
   Serial.begin(9600);
   GPIOPadConfigSet(GPIO_PORTB_BASE, 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPU);
   Serial.println("Start");
   LCD_Init();
   LCD_Clear(0x00);
-  
+
   // SD
   SPI.setModule(0);
   pinMode(PA_3, OUTPUT); // CS pin modulo SD
@@ -81,47 +85,48 @@ void setup() {
   root = SD.open("/");
   printDirectory(root, 0);
   //-------------------------------------------------------------
-  
+
   //FillRect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int c)
   FillRect(80, 60, 160, 120, 0x0400);
 
   //LCD_Print(String text, int x, int y, int fontSize, int color, int background)
   String text1 = "Iniciando";
   LCD_Print(text1, 85, 110, 2, 0xffff, 0x0000);
-  
+
   delay(1000);
-    
-  //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
-  LCD_Bitmap(0, 0, 320, 240, uv);
+
+  //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
+  LCD_Bitmap(0, 0, 320, 240, Imagen_1);
   
-  for(int x = 0; x <319; x++){
+  for (int x = 0; x < 319; x++) {
     LCD_Bitmap(x, 175, 16, 16, tile2);
     LCD_Bitmap(x, 191, 16, 16, tile);
     LCD_Bitmap(x, 207, 16, 16, tile);
     LCD_Bitmap(x, 223, 16, 16, tile);
     x += 15;
- }
- 
+  }
+
 }
 //***************************************************************************************************************************************
 // Loop
 //***************************************************************************************************************************************
 void loop() {
-  if (Serial.available()){
+  if (Serial.available()) {
     Numero = Serial.read();
-    if (Numero == "49"){
-      Serial.println("Hola a todos");
-      Lectura_SD("prueba.txt");
-     // String text1 = "Hola";
-     // LCD_Print(text1, 0, 0, 2, 0xffff, 0x0000);
-    } else if(Numero == "50"){
+    if (Numero == "49") {
+      Serial.println("Opción 1");
+      //Lectura_SD("prueba.txt");
+      Cargar_Imagen("prueba.txt", "1");
+      // String text1 = "Hola";
+      // LCD_Print(text1, 0, 0, 2, 0xffff, 0x0000);
+    } else if (Numero == "50") {
       Lectura_SD("Guitarra.txt");
-    } else if(Numero == "51"){
+    } else if (Numero == "51") {
       //Lectura_SD("Einstein.txt");
-    } 
-        
+    }
+
   }
-  
+
 }
 //***************************************************************************************************************************************
 // Función para inicializar LCD
@@ -132,7 +137,7 @@ void LCD_Init(void) {
   pinMode(LCD_RS, OUTPUT);
   pinMode(LCD_WR, OUTPUT);
   pinMode(LCD_RD, OUTPUT);
-  for (uint8_t i = 0; i < 8; i++){
+  for (uint8_t i = 0; i < 8; i++) {
     pinMode(DPINS[i], OUTPUT);
   }
   //****************************************
@@ -161,13 +166,13 @@ void LCD_Init(void) {
   LCD_DATA(0x71);
   LCD_DATA(0x19);
   //****************************************
-  LCD_CMD(0xD0);   // (SETPOWER) 
+  LCD_CMD(0xD0);   // (SETPOWER)
   LCD_DATA(0x07);
   LCD_DATA(0x01);
   LCD_DATA(0x08);
   //****************************************
   LCD_CMD(0x36);  // (MEMORYACCESS)
-  LCD_DATA(0x40|0x80|0x20|0x08); // LCD_DATA(0x19);
+  LCD_DATA(0x40 | 0x80 | 0x20 | 0x08); // LCD_DATA(0x19);
   //****************************************
   LCD_CMD(0x3A); // Set_pixel_format (PIXELFORMAT)
   LCD_DATA(0x05); // color setings, 05h - 16bit pixel, 11h - 3bit pixel
@@ -221,8 +226,8 @@ void LCD_Init(void) {
   LCD_DATA(0x00);
   LCD_DATA(0x01);
   LCD_DATA(0xE0);
-//  LCD_DATA(0x8F);
-  LCD_CMD(0x29); //display on 
+  //  LCD_DATA(0x8F);
+  LCD_CMD(0x29); //display on
   LCD_CMD(0x2C); //display on
 
   LCD_CMD(ILI9341_INVOFF); //Invert Off
@@ -256,36 +261,36 @@ void LCD_DATA(uint8_t data) {
 void SetWindows(unsigned int x1, unsigned int y1, unsigned int x2, unsigned int y2) {
   LCD_CMD(0x2a); // Set_column_address 4 parameters
   LCD_DATA(x1 >> 8);
-  LCD_DATA(x1);   
+  LCD_DATA(x1);
   LCD_DATA(x2 >> 8);
-  LCD_DATA(x2);   
+  LCD_DATA(x2);
   LCD_CMD(0x2b); // Set_page_address 4 parameters
   LCD_DATA(y1 >> 8);
-  LCD_DATA(y1);   
+  LCD_DATA(y1);
   LCD_DATA(y2 >> 8);
-  LCD_DATA(y2);   
+  LCD_DATA(y2);
   LCD_CMD(0x2c); // Write_memory_start
 }
 //***************************************************************************************************************************************
 // Función para borrar la pantalla - parámetros (color)
 //***************************************************************************************************************************************
-void LCD_Clear(unsigned int c){  
+void LCD_Clear(unsigned int c) {
   unsigned int x, y;
   LCD_CMD(0x02c); // write_memory_start
   digitalWrite(LCD_RS, HIGH);
-  digitalWrite(LCD_CS, LOW);   
+  digitalWrite(LCD_CS, LOW);
   SetWindows(0, 0, 319, 239); // 479, 319);
   for (x = 0; x < 320; x++)
     for (y = 0; y < 240; y++) {
-      LCD_DATA(c >> 8); 
-      LCD_DATA(c); 
+      LCD_DATA(c >> 8);
+      LCD_DATA(c);
     }
   digitalWrite(LCD_CS, HIGH);
-} 
+}
 //***************************************************************************************************************************************
 // Función para dibujar una línea horizontal - parámetros ( coordenada x, cordenada y, longitud, color)
-//*************************************************************************************************************************************** 
-void H_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c) {  
+//***************************************************************************************************************************************
+void H_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c) {
   unsigned int i, j;
   LCD_CMD(0x02c); //write_memory_start
   digitalWrite(LCD_RS, HIGH);
@@ -294,16 +299,16 @@ void H_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c) {
   SetWindows(x, y, l, y);
   j = l;// * 2;
   for (i = 0; i < l; i++) {
-      LCD_DATA(c >> 8); 
-      LCD_DATA(c); 
+    LCD_DATA(c >> 8);
+    LCD_DATA(c);
   }
   digitalWrite(LCD_CS, HIGH);
 }
 //***************************************************************************************************************************************
 // Función para dibujar una línea vertical - parámetros ( coordenada x, cordenada y, longitud, color)
-//*************************************************************************************************************************************** 
-void V_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c) {  
-  unsigned int i,j;
+//***************************************************************************************************************************************
+void V_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c) {
+  unsigned int i, j;
   LCD_CMD(0x02c); //write_memory_start
   digitalWrite(LCD_RS, HIGH);
   digitalWrite(LCD_CS, LOW);
@@ -311,19 +316,19 @@ void V_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c) {
   SetWindows(x, y, x, l);
   j = l; //* 2;
   for (i = 1; i <= j; i++) {
-    LCD_DATA(c >> 8); 
+    LCD_DATA(c >> 8);
     LCD_DATA(c);
   }
-  digitalWrite(LCD_CS, HIGH);  
+  digitalWrite(LCD_CS, HIGH);
 }
 //***************************************************************************************************************************************
 // Función para dibujar un rectángulo - parámetros ( coordenada x, cordenada y, ancho, alto, color)
 //***************************************************************************************************************************************
 void Rect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int c) {
   H_line(x  , y  , w, c);
-  H_line(x  , y+h, w, c);
+  H_line(x  , y + h, w, c);
   V_line(x  , y  , h, c);
-  V_line(x+w, y  , h, c);
+  V_line(x + w, y  , h, c);
 }
 //***************************************************************************************************************************************
 // Función para dibujar un rectángulo relleno - parámetros ( coordenada x, cordenada y, ancho, alto, color)
@@ -331,47 +336,47 @@ void Rect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsign
 void FillRect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int c) {
   LCD_CMD(0x02c); // write_memory_start
   digitalWrite(LCD_RS, HIGH);
-  digitalWrite(LCD_CS, LOW); 
-  
+  digitalWrite(LCD_CS, LOW);
+
   unsigned int x2, y2;
-  x2 = x+w;
-  y2 = y+h;
-  SetWindows(x, y, x2-1, y2-1);
-  unsigned int k = w*h*2-1;
+  x2 = x + w;
+  y2 = y + h;
+  SetWindows(x, y, x2 - 1, y2 - 1);
+  unsigned int k = w * h * 2 - 1;
   unsigned int i, j;
   for (int i = 0; i < w; i++) {
     for (int j = 0; j < h; j++) {
       LCD_DATA(c >> 8);
-      LCD_DATA(c); 
+      LCD_DATA(c);
       k = k - 2;
-     } 
+    }
   }
   digitalWrite(LCD_CS, HIGH);
 }
 //***************************************************************************************************************************************
-// Función para dibujar texto - parámetros ( texto, coordenada x, cordenada y, color, background) 
+// Función para dibujar texto - parámetros ( texto, coordenada x, cordenada y, color, background)
 //***************************************************************************************************************************************
 void LCD_Print(String text, int x, int y, int fontSize, int color, int background) {
   int fontXSize ;
   int fontYSize ;
-  
-  if(fontSize == 1){
+
+  if (fontSize == 1) {
     fontXSize = fontXSizeSmal ;
     fontYSize = fontYSizeSmal ;
   }
-  if(fontSize == 2){
+  if (fontSize == 2) {
     fontXSize = fontXSizeBig ;
     fontYSize = fontYSizeBig ;
   }
-  
+
   char charInput ;
   int cLength = text.length();
   //Serial.println(cLength,DEC);
   int charDec ;
   int c ;
   int charHex ;
-  char char_array[cLength+1];
-  text.toCharArray(char_array, cLength+1) ;
+  char char_array[cLength + 1];
+  text.toCharArray(char_array, cLength + 1) ;
   for (int i = 0; i < cLength ; i++) {
     charInput = char_array[i];
     //Serial.println(char_array[i]);
@@ -380,10 +385,10 @@ void LCD_Print(String text, int x, int y, int fontSize, int color, int backgroun
     SetWindows(x + (i * fontXSize), y, x + (i * fontXSize) + fontXSize - 1, y + fontYSize );
     long charHex1 ;
     for ( int n = 0 ; n < fontYSize ; n++ ) {
-      if (fontSize == 1){
+      if (fontSize == 1) {
         charHex1 = pgm_read_word_near(smallFont + ((charDec - 32) * fontYSize) + n);
       }
-      if (fontSize == 2){
+      if (fontSize == 2) {
         charHex1 = pgm_read_word_near(bigFont + ((charDec - 32) * fontYSize) + n);
       }
       for (int t = 1; t < fontXSize + 1 ; t++) {
@@ -402,61 +407,61 @@ void LCD_Print(String text, int x, int y, int fontSize, int color, int backgroun
 //***************************************************************************************************************************************
 // Función para dibujar una imagen a partir de un arreglo de colores (Bitmap) Formato (Color 16bit R 5bits G 6bits B 5bits)
 //***************************************************************************************************************************************
-void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]){  
+void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height,  unsigned char bitmap[]) {
   LCD_CMD(0x02c); // write_memory_start
   digitalWrite(LCD_RS, HIGH);
-  digitalWrite(LCD_CS, LOW); 
-  
+  digitalWrite(LCD_CS, LOW);
+
   unsigned int x2, y2;
-  x2 = x+width;
-  y2 = y+height;
-  SetWindows(x, y, x2-1, y2-1);
+  x2 = x + width;
+  y2 = y + height;
+  SetWindows(x, y, x2 - 1, y2 - 1);
   unsigned int k = 0;
   unsigned int i, j;
 
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {
       LCD_DATA(bitmap[k]);
-      LCD_DATA(bitmap[k+1]);
-      //LCD_DATA(bitmap[k]);    
+      LCD_DATA(bitmap[k + 1]);
+      //LCD_DATA(bitmap[k]);
       k = k + 2;
-     } 
+    }
   }
   digitalWrite(LCD_CS, HIGH);
 }
 //***************************************************************************************************************************************
 // Función para dibujar una imagen sprite - los parámetros columns = número de imagenes en el sprite, index = cual desplegar, flip = darle vuelta
 //***************************************************************************************************************************************
-void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset){
+void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int columns, int index, char flip, char offset) {
   LCD_CMD(0x02c); // write_memory_start
   digitalWrite(LCD_RS, HIGH);
-  digitalWrite(LCD_CS, LOW); 
+  digitalWrite(LCD_CS, LOW);
 
   unsigned int x2, y2;
-  x2 =   x+width;
-  y2=    y+height;
-  SetWindows(x, y, x2-1, y2-1);
+  x2 =   x + width;
+  y2 =    y + height;
+  SetWindows(x, y, x2 - 1, y2 - 1);
   int k = 0;
-  int ancho = ((width*columns));
-  if(flip){
-    for (int j = 0; j < height; j++){
-        k = (j*(ancho) + index*width -1 - offset)*2;
-        k = k+width*2;
-       for (int i = 0; i < width; i++){
+  int ancho = ((width * columns));
+  if (flip) {
+    for (int j = 0; j < height; j++) {
+      k = (j * (ancho) + index * width - 1 - offset) * 2;
+      k = k + width * 2;
+      for (int i = 0; i < width; i++) {
         LCD_DATA(bitmap[k]);
-        LCD_DATA(bitmap[k+1]);
+        LCD_DATA(bitmap[k + 1]);
         k = k - 2;
-       } 
+      }
     }
   }
-  else{
-     for (int j = 0; j < height; j++){
-      k = (j*(ancho) + index*width + 1 + offset)*2;
-     for (int i = 0; i < width; i++){
-      LCD_DATA(bitmap[k]);
-      LCD_DATA(bitmap[k+1]);
-      k = k + 2;
-     } 
+  else {
+    for (int j = 0; j < height; j++) {
+      k = (j * (ancho) + index * width + 1 + offset) * 2;
+      for (int i = 0; i < width; i++) {
+        LCD_DATA(bitmap[k]);
+        LCD_DATA(bitmap[k + 1]);
+        k = k + 2;
+      }
     }
   }
   digitalWrite(LCD_CS, HIGH);
@@ -465,55 +470,55 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
 //-------------------------------- Funciones SD ----------------------------------------------
 // ---------------- Funciones ----------------
 void printDirectory(File dir, int numTabs) {
-   Serial.println("");
-   Serial.println(""); 
-   while(true) {
-     File entry =  dir.openNextFile();
-     if (! entry) {
-       // no more files
-       break;
-     }
-     for (uint8_t i=0; i<numTabs; i++) {
-       Serial.print('\t');
-     }
-     Serial.print(entry.name());
-     if (entry.isDirectory()) {
-       Serial.println("/");
-       //printDirectory(entry, numTabs+1);
-     } else {
-       // files have sizes, directories do not
-       Serial.print("\t\t");
-       Serial.println(entry.size(), DEC);
-     }
-     entry.close();
-   }
-   Serial.println("");
-   Serial.println("");
+  Serial.println("");
+  Serial.println("");
+  while (true) {
+    File entry =  dir.openNextFile();
+    if (! entry) {
+      // no more files
+      break;
+    }
+    for (uint8_t i = 0; i < numTabs; i++) {
+      Serial.print('\t');
+    }
+    Serial.print(entry.name());
+    if (entry.isDirectory()) {
+      Serial.println("/");
+      //printDirectory(entry, numTabs+1);
+    } else {
+      // files have sizes, directories do not
+      Serial.print("\t\t");
+      Serial.println(entry.size(), DEC);
+    }
+    entry.close();
+  }
+  Serial.println("");
+  Serial.println("");
 }
 
-void Lectura_SD(String nombre){
+void Lectura_SD(String nombre) {
   char temp;
   int y = 0;
-  char Nombre_Archivo[nombre.length()+1];
-  nombre.toCharArray(Nombre_Archivo,sizeof(Nombre_Archivo));
+  char Nombre_Archivo[nombre.length() + 1];
+  nombre.toCharArray(Nombre_Archivo, sizeof(Nombre_Archivo));
   // re-open the file for reading:
   myFile = SD.open(Nombre_Archivo);
   if (myFile) {
     Serial.println("");
     Serial.println("");
-    Serial.println("Imagen: "+nombre);
+    Serial.println("Imagen: " + nombre);
     Serial.println("");
 
     // read from the file until there's nothing else in it:
-    for(int x = 0; myFile.available();x = x+7){
-    //while (myFile.available()) {
-     temp = char(myFile.read());
-     Serial.print(temp);
-     if(String(temp) == "\n"){
-      y=y+12;
-      x=-1;
-     }
-     LCD_Print(String(temp), x, y, 1, 0xffff, 0x0000);
+    for (int x = 0; myFile.available(); x = x + 7) {
+      //while (myFile.available()) {
+      temp = char(myFile.read());
+      Serial.print(temp);
+      if (String(temp) == "\n") {
+        y = y + 12;
+        x = -1;
+      }
+      LCD_Print(String(temp), x, y, 1, 0xffff, 0x0000);
     }
     // close the file:
     myFile.close();
@@ -522,6 +527,89 @@ void Lectura_SD(String nombre){
     Serial.println("");
     Serial.println("");
     Serial.println("");
-    Serial.println("No se encontró "+nombre);
+    Serial.println("No se encontró " + nombre);
   }
+}
+
+void Cargar_Imagen(String nombre, String no) {
+  char Nombre_Archivo[nombre.length() + 1];
+  unsigned char temp; 
+  int Resultado,V_MS,V_LS;
+  nombre.toCharArray(Nombre_Archivo, sizeof(Nombre_Archivo));
+  // re-open the file for reading:
+  myFile = SD.open(Nombre_Archivo);
+  if (myFile) {
+    Serial.println("");
+    Serial.println("");
+    Serial.println("Imagen: " + nombre);
+    Serial.println("");
+
+
+
+    // read from the file until there's nothing else in it:
+    //for (unsigned int x = 0; myFile.available(); x++) {
+    unsigned long x = 0;
+    myFile.seek(20000);
+    //myFile.available()
+    LCD_Clear(0x00);
+    while (x<19000) {
+      temp = myFile.read();
+      //Serial.println(temp);
+      if(temp == 32){
+        x++;   
+      }else if(temp != 48 && temp != 120 && temp != 44){
+        V_MS = HexToInt(temp);
+        temp = myFile.read();
+        V_LS = HexToInt(temp);
+        Resultado = V_MS*16+V_LS;
+        temp_2[x] = Resultado;
+      }
+      //Serial.println(temp);
+    }
+    
+    
+    // Mostrar la imagen
+    Serial.println("Imagen cargada");
+    for (int i = 0; i<1025; i++){
+      //Serial.print(temp_2[i]);  
+    }
+    Serial.println("");
+    Serial.println(temp_2[0]);
+    Serial.println(temp_2[1]);
+    Serial.println(temp_2[2]);
+    Serial.println(temp_2[3]);
+    
+    
+    LCD_Bitmap(0, 0, 320, 32, temp_2);
+    // close the file:
+    myFile.close();
+  } else {
+    // if the file didn't open, print an error:
+    Serial.println("");
+    Serial.println("");
+    Serial.println("");
+    Serial.println("No se encontró " + nombre);
+  }
+}
+
+int HexToInt(char hexa){ 
+  int entero;
+  if(hexa == '0'){entero=0;}
+  else if(hexa == '1'){entero=1;}
+  else if(hexa == '2'){entero=2;}
+  else if(hexa == '3'){entero=3;}
+  else if(hexa == '4'){entero=4;}
+  else if(hexa == '5'){entero=5;}
+  else if(hexa == '6'){entero=6;}
+  else if(hexa == '7'){entero=7;}
+  else if(hexa == '8'){entero=8;}
+  else if(hexa == '9'){entero=9;}
+  else if(hexa == 'a'){entero=10;}
+  else if(hexa == 'b'){entero=11;}
+  else if(hexa == 'c'){entero=12;}
+  else if(hexa == 'd'){entero=13;}
+  else if(hexa == 'e'){entero=14;}
+  else if(hexa == 'f'){entero=15;}
+  
+  return entero;
 }
