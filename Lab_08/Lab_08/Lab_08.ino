@@ -578,7 +578,11 @@ void Cargar_Imagen(String nombre) {
     unsigned int Ultima_Posicion = 0;
     unsigned int Size = myFile.size();
     
-    
+    if(nombre == "casa.txt"){
+      y = 22;
+    }else if(nombre =="paisaje.txt"){
+      y = 39;
+    }
     //myFile.available()
     LCD_Clear(0x00);
     myFile.seek(2);
