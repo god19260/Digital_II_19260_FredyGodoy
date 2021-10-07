@@ -548,11 +548,16 @@ void Cargar_Imagen(String nombre, String no) {
 
     // read from the file until there's nothing else in it:
     //for (unsigned int x = 0; myFile.available(); x++) {
-    unsigned long x = 0;
-    myFile.seek(20000);
+    unsigned int x = 0;
+    unsigned int y = 0;
+    unsigned int Contador_General = 0;
+    unsigned int Ultima_Posicion = 0;
+    unsigned int Size = myFile.size();
+    
+    myFile.seek(Ultima_Posicion);
     //myFile.available()
     LCD_Clear(0x00);
-    while (x<19000) {
+    while (Contador_General <= Size) {
       temp = myFile.read();
       //Serial.println(temp);
       if(temp == 32){
@@ -564,21 +569,25 @@ void Cargar_Imagen(String nombre, String no) {
         Resultado = V_MS*16+V_LS;
         temp_2[x] = Resultado;
       }
+      if(Contador_General >= 20480){
+        LCD_Bitmap(0, y, 320, 32, temp_2);
+        y += 32;
+        Contador_General = 0;
+        Ultima_Posicion = myFile.position();
+      }
       //Serial.println(temp);
+      Contador_General++;
     }
-    
-    
     // Mostrar la imagen
     Serial.println("Imagen cargada");
     for (int i = 0; i<1025; i++){
-      //Serial.print(temp_2[i]);  
+      Serial.print(temp_2[i]);  
     }
     Serial.println("");
     Serial.println(temp_2[0]);
     Serial.println(temp_2[1]);
     Serial.println(temp_2[2]);
     Serial.println(temp_2[3]);
-    
     
     LCD_Bitmap(0, 0, 320, 32, temp_2);
     // close the file:
