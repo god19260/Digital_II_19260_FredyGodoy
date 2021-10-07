@@ -564,12 +564,7 @@ void Cargar_Imagen(String nombre) {
   // re-open the file for reading:
   myFile = SD.open(Nombre_Archivo);
   if (myFile) {
-    Serial.println("");
-    Serial.println("");
     Serial.println("Imagen: " + nombre);
-    Serial.println("");
-
-
     // read from the file until there's nothing else in it:
     //for (unsigned int x = 0; myFile.available(); x++) {
     unsigned int x = 0;
@@ -614,15 +609,8 @@ void Cargar_Imagen(String nombre) {
     }
     // Mostrar la imagen
     Serial.println("Imagen cargada");
-    for (int i = 0; i<1025; i++){
-      Serial.print(temp_2[i]);  
-    }
     Serial.println("");
-    Serial.println(temp_2[0]);
-    Serial.println(temp_2[1]);
-    Serial.println(temp_2[2]);
-    Serial.println(temp_2[3]);
-    
+    Serial.println("");
     //LCD_Bitmap(0, 0, 320, 32, temp_2);
     // close the file:
     myFile.close();
