@@ -41,6 +41,10 @@ File root;
 String Numero;
 extern uint8_t Imagen_1 [];
 unsigned char temp_2 [25000] PROGMEM = {};
+int Sw1_Flag = 0;
+int Sw2_Flag = 0;
+int N_Imagen=0;
+boolean Mostrar;
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -67,6 +71,9 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int
 // Initialization
 //***************************************************************************************************************************************
 void setup() {
+  pinMode(PUSH1,INPUT_PULLUP);
+  pinMode(PUSH2,INPUT_PULLUP);
+  
   SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
   Serial.begin(9600);
   GPIOPadConfigSet(GPIO_PORTB_BASE, 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPU);
@@ -111,21 +118,39 @@ void setup() {
 // Loop
 //***************************************************************************************************************************************
 void loop() {
-  if (Serial.available()) {
-    Numero = Serial.read();
-    if (Numero == "49") {
-      Serial.println("Opción 1");
-      //Lectura_SD("prueba.txt");
-      Cargar_Imagen("prueba.txt", "1");
-      // String text1 = "Hola";
-      // LCD_Print(text1, 0, 0, 2, 0xffff, 0x0000);
-    } else if (Numero == "50") {
-      Lectura_SD("Guitarra.txt");
-    } else if (Numero == "51") {
-      //Lectura_SD("Einstein.txt");
+  if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
+    if(N_Imagen>0){
+      N_Imagen--;
+    }else{
+      N_Imagen = 3;
     }
 
+    Mostrar = true;
   }
+  if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
+    if(N_Imagen<4){
+      N_Imagen++;
+    }else{
+      N_Imagen = 1;
+    }    
+    Mostrar = true;
+  }
+    
+    if (N_Imagen == 1 && Mostrar == true) {
+      Serial.println("Imagen 1 seleccionada");
+      Cargar_Imagen("carro.txt");
+      Mostrar = false;
+    } else if (N_Imagen == 2 && Mostrar == true) {
+      Serial.println("Imagen 2 seleccionada");
+      Cargar_Imagen("casa.txt");
+      Mostrar = false;
+    } else if (N_Imagen == 3 && Mostrar == true) {
+      Serial.println("Imagen 3 seleccionada");
+      Cargar_Imagen("paisaje.txt");
+      Mostrar = false;
+    }
+
+  
 
 }
 //***************************************************************************************************************************************
@@ -531,7 +556,7 @@ void Lectura_SD(String nombre) {
   }
 }
 
-void Cargar_Imagen(String nombre, String no) {
+void Cargar_Imagen(String nombre) {
   char Nombre_Archivo[nombre.length() + 1];
   unsigned char temp; 
   int Resultado,V_MS,V_LS;
@@ -626,4 +651,14 @@ int HexToInt(char hexa){
   else if(hexa == 'f'){entero=15;}
   
   return entero;
+}
+
+void Sw_Flags(void){
+  // Actualización bandera de botones
+  if(digitalRead(PUSH1) == HIGH){ // Boton 1
+    Sw1_Flag = 0;
+  }
+  if(digitalRead(PUSH2) == HIGH){ // Boton 2
+    Sw2_Flag = 0;
+  }
 }
