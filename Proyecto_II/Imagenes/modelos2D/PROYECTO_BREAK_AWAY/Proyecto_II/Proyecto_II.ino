@@ -35,11 +35,6 @@
 #define LCD_RS PD_2
 #define LCD_WR PD_3
 #define LCD_RD PE_1
-
-#define Joystick_X PE_3
-#define Joystick_Y PE_2
-#define Joystick_Push PA_7
- 
 int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};
 File myFile;
 File root;
@@ -51,12 +46,6 @@ int Sw2_Flag = 0;
 int N_Imagen=0;
 boolean Mostrar;
 int vidaa = 100;
-
-//--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
-int mario_pos = 1;
-int mario_index = 1;
-int pos_x = 10;
-int pos_y = 10;
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -83,9 +72,6 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int
 // Initialization
 //***************************************************************************************************************************************
 void setup() {
-  //pinMode(Joystick_X, INPUT);
-  //pinMode(Joystick_Y, INPUT);
-  pinMode(Joystick_Push, INPUT_PULLUP);
   pinMode(PUSH1,INPUT_PULLUP);
   pinMode(PUSH2,INPUT_PULLUP);
   
@@ -121,31 +107,49 @@ void setup() {
   LCD_Clear(0x00);
 
   Mapa();
-    
+  LCD_Bitmap(20, 20, 10, 10, J1);
+  
 }
 //***************************************************************************************************************************************
 // Loop
 //***************************************************************************************************************************************
 void loop() {
+  vidaa-=10;
+  Informacion_J1(vidaa);
+  delay(300);
   if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
-    // Accion del primer boton
-    mario_pos += 1; 
-    //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
-    LCD_Sprite(mario_pos, 20, 16, 32, mario, 8, mario_index, 1, 0);
-    //V_line( x -1, 20, 32, 0x0000);
-    delay(10);
+    if(N_Imagen>0){
+      N_Imagen--;
+    }else{
+      N_Imagen = 3;
+    }
+
+    Mostrar = true;
   }
   if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
-    // Accion del segundo boton
-    mario_pos -= 1; 
-    //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
-    LCD_Sprite(mario_pos, 20, 16, 32, mario, 8, mario_index, 0, 0);
-    //V_line( x -1, 20, 32, 0x0000);
-    delay(10);
+    if(N_Imagen<4){
+      N_Imagen++;
+    }else{
+      N_Imagen = 1;
+    }    
+    Mostrar = true;
   }
+    
+    if (N_Imagen == 1 && Mostrar == true) {
+      Serial.println("Imagen de prueba 320x480");
+      Cargar_Imagen("avengers.txt");
+      Mostrar = false;
+    } else if (N_Imagen == 2 && Mostrar == true) {
+      Serial.println("Imagen 2 seleccionada");
+      Cargar_Imagen("casa.txt");
+      Mostrar = false;
+    } else if (N_Imagen == 3 && Mostrar == true) {
+      Serial.println("Imagen 3 seleccionada");
+      Cargar_Imagen("paisaje.txt");
+      Mostrar = false;
+    }
 
-  // Prueba de funciones
-  Movimiento("J1");
+  
 
 }
 //***************************************************************************************************************************************
@@ -665,7 +669,6 @@ void Sw_Flags(void){
 }
 
 void Mapa(void){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
-  // bloques verticales
   for(int y = 16; y<=51;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
   for(int y = 36; y<=46;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
   for(int y = 16; y<=51;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
@@ -681,8 +684,7 @@ void Mapa(void){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
   for(int y = 186; y<=221;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
   for(int y = 191; y<=201;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
   for(int y = 191; y<=221;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
-
-  // bloques horizontales
+  
   for(int x = 53; x<=78;x+=5){ LCD_Bitmap(x, 51, 5, 5, ladrillo_gris); }
   for(int x = 103; x<=213;x+=5){ LCD_Bitmap(x, 51, 5, 5, ladrillo_gris); }
   for(int x = 1; x<=51;x+=5){ LCD_Bitmap(x, 118, 5, 5, ladrillo_gris); }
@@ -695,14 +697,14 @@ void Mapa(void){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
   for(int x = 238; x<=263;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
 }
 
-void Informacion_J2(int vida){
+void Informacion_J1(int vida){
   //int barra = map(vida,0,100,130,200);
   LCD_Print("Vida del Doctor", 0, 0, 1, 0xffff, 0x0000);
   // Rojo 0x19e92e, Verde 0xed1c24
-  H_line(129,3,101,0x5419);
-  H_line(129,9,101,0x5419);
-  V_line(129,3,6,0x5419);
-  V_line(231,3,6,0x5419);
+  H_line(129,3,101,0xf0);
+  H_line(129,9,101,0xf0);
+  V_line(129,3,6,0xf0);
+  V_line(231,3,6,0xf0);
   H_line(130, 4, 100, 0x00);
   H_line(130, 5, 100, 0x00);
   H_line(130, 6, 100, 0x00);
@@ -710,185 +712,11 @@ void Informacion_J2(int vida){
   H_line(130, 8, 100, 0x00);
   
   if(vida >= 0){
-    H_line(130, 4, vida, 0xE800);
-    H_line(130, 5, vida, 0xE800);
-    H_line(130, 6, vida, 0xE800);
-    H_line(130, 7, vida, 0xE800);
-    H_line(130, 8, vida, 0xE800); 
+   H_line(130, 4, vida, 0x00f000);
+    H_line(130, 5, vida, 0x00f000);
+    H_line(130, 6, vida, 0x00f000);
+    H_line(130, 7, vida, 0x00f000);
+    H_line(130, 8, vida, 0x00f000); 
   }
   //for(int x = 130; x<=barra;x+=5){ LCD_Bitmap(x, 4, 5, 5, cuadro_vida); }
-}
-
-void Menu(void){
-  
-}
-
-void Movimiento(String jugador){ // J1, J2
-  int copia_x,copia_y;
-  int valido;
-  copia_x = pos_x;
-  copia_y = pos_y;
-  if(analogRead(Joystick_X) >= 3800 && analogRead(Joystick_Y) <= 2500 && analogRead(Joystick_Y) >= 1500 ){ // Joystick X 
-    valido = Restriccion_Movimiento(pos_x+1,pos_y);
-    if(valido == 1){
-      pos_x += 1; 
-    } 
-  } else if (analogRead(Joystick_X) <= 200 && analogRead(Joystick_Y) <= 2500 && analogRead(Joystick_Y) >= 1500){  
-    valido = Restriccion_Movimiento(pos_x-1,pos_y);
-    if(valido == 1){
-      pos_x -= 1; 
-    } 
-    
-  } if(analogRead(Joystick_Y) >= 3800 && analogRead(Joystick_X) <= 2500 && analogRead(Joystick_X) >= 1500){ // Joystick Y
-    valido = Restriccion_Movimiento(pos_x,pos_y+1);
-    if(valido == 1){
-      pos_y += 1; 
-    } 
-  } else if (analogRead(Joystick_Y) <= 200 && analogRead(Joystick_X) <= 2500 && analogRead(Joystick_X) >= 1500){  
-    valido = Restriccion_Movimiento(pos_x,pos_y-1);
-    if(valido == 1){
-      pos_y -= 1; 
-    } 
-  } 
-    
-  //Movimiento en el eje x
-  if(pos_x > copia_x){ // movimiento derecha
-    //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
-    if(jugador == "J1"){
-      LCD_Sprite(pos_x, copia_y, 10, 10, J1, 3, 1, 0, 0);  
-    }else{
-      LCD_Sprite(pos_x, copia_y, 10, 10, J2, 3, 1, 0, 0);
-    }
-    V_line(pos_x-1 , pos_y, 10, 0x0000);
-    V_line(pos_x+11 , pos_y, 10, 0x0000);
-  } else if(pos_x <copia_x){ // movimiento izquierda
-    //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
-    if(jugador == "J1"){
-      LCD_Sprite(pos_x, copia_y, 10, 10, J1, 3, 1, 1, 0);  
-    }else{
-      LCD_Sprite(pos_x, copia_y, 10, 10, J2, 3, 1, 1, 0);
-    }
-    V_line(pos_x-1 , pos_y, 10, 0x0000);
-    V_line(pos_x+11 , pos_y, 10, 0x0000);
-  } 
-  // Movimiento en el eje y
-  else if (pos_y > copia_y){  // movimiento arriba
-    H_line(pos_x, pos_y-1, 10, 0x0000);
-    H_line(pos_x, pos_y+10, 10, 0x0000);
-    if(jugador == "J1"){
-      LCD_Sprite(copia_x, pos_y, 10, 10, J1, 3, 0, 0, 0);  
-    }else{
-      LCD_Sprite(copia_x, pos_y, 10, 10, J2, 3, 0, 0, 0);
-    }
-  }else if (pos_y < copia_y){  // movimiento en abajo
-    H_line(pos_x, pos_y-1, 10, 0x0000);
-    H_line(pos_x, pos_y+10, 10, 0x0000);
-    if(jugador == "J1"){
-      LCD_Sprite(copia_x, pos_y, 10, 10, J1, 3, 2, 0, 0);  
-    }else {
-      LCD_Sprite(copia_x, pos_y, 10, 10, J2, 3, 2, 0, 0);
-    }
-  } 
-  delay(20);
-}
-
-int Restriccion_Movimiento(int x,int y){
-  int valido = 1;
-  // Horizontales
-  for(int i = 53-10; i<=78+5;i++){  // horizontal abajo +5,  Horizontal arriba -10
-    if(i == x){
-      if(y == 51+5 || y == 51-10 ){
-        valido = 0; 
-      }        
-    }
-  }  
-  for(int i = 53-10; i<=78+5;i++){
-    if(i == x){
-      if(y == 51+5 || y == 51-10){
-        valido = 0; 
-      }
-    }
-  }
-  for(int i = 103-10; i<=213+5;i++){
-      if(i == x){
-        if(y == 51+5 || y == 51-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 1-10; i<= 51 +5;i++){
-      if(i == x){
-        if(y == 118+5 || y == 118-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 266-10; i<= 316+5;i++){
-      if(i == x){
-        if(y == 118+5 || y == 118-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 83-10; i<= 143+5;i++){
-      if(i == x){
-        if(y == 78 +5 || y == 78-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 173-10; i<= 223 +5;i++){
-      if(i == x){
-        if(y == 78 +5 || y == 78-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 83-10; i<= 143+5;i++){
-      if(i == x){
-        if(y == 158+5 || y == 158-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 173-10; i<= 223 +5;i++){
-      if(i == x){
-        if(y == 158+5 || y == 158-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 103-10; i<= 213+5;i++){
-      if(i == x){
-        if(y == 186 +5 || y == 186-10){
-          valido = 0; 
-        }
-      }
-    }
-  for(int i = 238-10; i<= 263 +5;i++){
-      if(i == x){
-        if(y == 186 +5 || y == 186-10){
-          valido = 0; 
-        }
-      }
-    }
-
-  // Verticales
-  for(int i = 16-10; i<=51+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
-    if(i == y){
-      if(x == 78-11 || x == 78+5){
-        valido = 0; 
-      }        
-    }
-  }
-  for(int i = 36-10; i<=46+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
-    if(i == y){
-      if(x == 158-11 || x == 158+5){
-        valido = 0; 
-      }        
-    }
-  }
-  
-
-  return valido;
 }
