@@ -800,85 +800,123 @@ int Restriccion_Movimiento(int x,int y){
     valido = 0;
   }
 
-  // Horizontales
-  for(int i = 53-10; i<=78+5;i++){  // horizontal abajo +5,  Horizontal arriba -10
+  // Horizontales 
+  for(int i = 53-10; i<=78+5;i++){
     if(i == x || i-1 == x){
-      for(int t = 51-10; t<=51+5;t++){
-        if(y==t){
+        for(int t = 51-10; t<=51+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 51+5 || y == 51-10 ){
           valido = 0; 
         }
-      } 
-      if(y == 51+5 || y == 51-10 ){
-        valido = 0; 
-      }        
-    }
-  }  
-  for(int i = 53-10; i<=78+5;i++){
-    if(i == x){
-      if(y == 51+5 || y == 51-10){
-        valido = 0; 
       }
-    }
   }
   for(int i = 103-10; i<=213+5;i++){
-      if(i == x){
-        if(y == 51+5 || y == 51-10){
+      if(i == x || i-1 == x){
+        for(int t = 51-10; t<=51+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 51+5 || y == 51-10 ){
           valido = 0; 
         }
       }
     }
   for(int i = 1-10; i<= 51 +5;i++){
-      if(i == x){
-        if(y == 118+5 || y == 118-10){
+      if(i == x || i-1 == x){
+        for(int t = 118-10; t<=118+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 118+5 || y == 118-10 ){
           valido = 0; 
         }
       }
     }
   for(int i = 266-10; i<= 316+5;i++){
-      if(i == x){
-        if(y == 118+5 || y == 118-10){
+      if(i == x || i-1 == x){
+        for(int t = 118-10; t<=118+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 118+5 || y == 118-10 ){
           valido = 0; 
         }
       }
     }
   for(int i = 83-10; i<= 143+5;i++){
-      if(i == x){
-        if(y == 78 +5 || y == 78-10){
+      if(i == x || i-1 == x){
+        for(int t = 78-10; t<=78+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 78+5 || y == 78-10 ){
           valido = 0; 
         }
       }
     }
-  for(int i = 173-10; i<= 223 +5;i++){
-      if(i == x){
-        if(y == 78 +5 || y == 78-10){
+  for(int i = 173-10; i<= 233 +5;i++){
+      if(i == x || i-1 == x){
+        for(int t = 78-10; t<=78+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 78+5 || y == 78-10 ){
           valido = 0; 
         }
       }
     }
   for(int i = 83-10; i<= 143+5;i++){
-      if(i == x){
-        if(y == 158+5 || y == 158-10){
+      if(i == x || i-1 == x){
+        for(int t = 158-10; t<=158+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 158+5 || y == 158-10 ){
           valido = 0; 
         }
       }
     }
-  for(int i = 173-10; i<= 223 +5;i++){
-      if(i == x){
-        if(y == 158+5 || y == 158-10){
+  for(int i = 173-10; i<= 233 +5;i++){
+      if(i == x || i-1 == x){
+        for(int t = 158-10; t<=158+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 158+5 || y == 158-10 ){
           valido = 0; 
         }
       }
     }
   for(int i = 103-10; i<= 213+5;i++){
-      if(i == x){
-        if(y == 186 +5 || y == 186-10){
+      if(i == x || i-1 == x){
+        for(int t = 186-10; t<=186+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 186+5 || y == 186-10 ){
           valido = 0; 
         }
       }
     }
   for(int i = 238-10; i<= 263 +5;i++){
-      if(i == x){
-        if(y == 186 +5 || y == 186-10){
+      if(i == x || i-1 == x){
+        for(int t = 186-10; t<=186+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+        if(y == 186+5 || y == 186-10 ){
           valido = 0; 
         }
       }
@@ -887,6 +925,11 @@ int Restriccion_Movimiento(int x,int y){
   // Verticales
   for(int i = 16-10; i<=51+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 78-11; t<=78+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 78-11 || x == 78+5){
         valido = 0; 
       }        
@@ -894,6 +937,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 36-10; i<=46+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 158-11; t<=158+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 158-11 || x == 158+5){
         valido = 0; 
       }        
@@ -901,6 +949,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 16-10; i<=51+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 238-11; t<=238+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 238-11 || x == 238+5){
         valido = 0; 
       }        
@@ -908,6 +961,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 56-10; i<=91+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 51-11; t<=51+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 51-11 || x == 51+5){
         valido = 0; 
       }        
@@ -915,6 +973,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 83-10; i<=103+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 78-11; t<=78+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 78-11 || x == 78+5){
         valido = 0; 
       }        
@@ -922,6 +985,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 83-10; i<=103+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 238-11; t<=238+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 238-11 || x == 238+5){
         valido = 0; 
       }        
@@ -929,6 +997,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 53-10; i<=118+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 266-11; t<=266+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 266-11 || x == 266+5){
         valido = 0; 
       }        
@@ -936,6 +1009,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 123-10; i<=183+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 51-11; t<=51+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 51-11 || x == 51+5){
         valido = 0; 
       }        
@@ -943,6 +1021,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 133-10; i<=153+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 78-11; t<=78+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 78-11 || x == 78+5){
         valido = 0; 
       }        
@@ -950,6 +1033,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 133-10; i<=153+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 238-11; t<=238+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 238-11 || x == 238+5){
         valido = 0; 
       }        
@@ -957,6 +1045,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 108-10; i<=128+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 158-11; t<=158+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 158-11 || x == 158+5){
         valido = 0; 
       }        
@@ -964,6 +1057,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 146-10; i<=181+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 266-11; t<=266+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 266-11 || x == 266+5){
         valido = 0; 
       }        
@@ -971,6 +1069,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 186-10; i<=221+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 78-11; t<=78+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 78-11 || x == 78+5){
         valido = 0; 
       }        
@@ -978,6 +1081,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 191-10; i<=201+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 158-11; t<=158+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 158-11 || x == 158+5){
         valido = 0; 
       }        
@@ -985,6 +1093,11 @@ int Restriccion_Movimiento(int x,int y){
   }
   for(int i = 191-10; i<=221+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
+      for(int t = 238-11; t<=238+5;t++){
+          if(x==t){
+            valido = 0; 
+          }
+        }
       if(x == 238-11 || x == 238+5){
         valido = 0; 
       }        
