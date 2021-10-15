@@ -138,6 +138,7 @@ void loop() {
   if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
     // Accion del segundo boton
     //LCD_Bitmap(0, 30, 320, 180, Menu_J2);
+    LCD_Clear(0x0000);
     Mapa();
     delay(10);
   }
