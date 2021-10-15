@@ -45,6 +45,9 @@ File myFile;
 File root;
 String Numero;
 extern uint8_t Imagen_1 [];
+extern uint8_t Mapa_2 [];
+extern uint8_t Menu_J1[];
+extern uint8_t Menu_J2[];
 unsigned char temp_2 [25000] PROGMEM = {};
 int Sw1_Flag = 0;
 int Sw2_Flag = 0;
@@ -55,8 +58,8 @@ int vidaa = 100;
 //--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
 int mario_pos = 1;
 int mario_index = 1;
-int pos_x = 10;
-int pos_y = 10;
+int pos_x = 20;
+int pos_y = 20;
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -129,23 +132,18 @@ void setup() {
 void loop() {
   if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
     // Accion del primer boton
-    mario_pos += 1; 
-    //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
-    LCD_Sprite(mario_pos, 20, 16, 32, mario, 8, mario_index, 1, 0);
-    //V_line( x -1, 20, 32, 0x0000);
+    LCD_Bitmap(0, 0, 320, 240, Mapa_2);
     delay(10);
   }
   if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
     // Accion del segundo boton
-    mario_pos -= 1; 
-    //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
-    LCD_Sprite(mario_pos, 20, 16, 32, mario, 8, mario_index, 0, 0);
-    //V_line( x -1, 20, 32, 0x0000);
+    //LCD_Bitmap(0, 30, 320, 180, Menu_J2);
+    Mapa();
     delay(10);
   }
 
   // Prueba de funciones
-  Movimiento("J1");
+  Movimiento("J2");
 
 }
 //***************************************************************************************************************************************
@@ -794,9 +792,21 @@ void Movimiento(String jugador){ // J1, J2
 
 int Restriccion_Movimiento(int x,int y){
   int valido = 1;
+  // bordes  pantalla
+  if (x == 0 || x == 320-10){
+    valido = 0;
+  }else if(y == 15 || y == 240-15-10){
+    valido = 0;
+  }
+
   // Horizontales
   for(int i = 53-10; i<=78+5;i++){  // horizontal abajo +5,  Horizontal arriba -10
-    if(i == x){
+    if(i == x || i-1 == x){
+      for(int t = 51-10; t<=51+5;t++){
+        if(y==t){
+          valido = 0; 
+        }
+      } 
       if(y == 51+5 || y == 51-10 ){
         valido = 0; 
       }        
@@ -888,7 +898,97 @@ int Restriccion_Movimiento(int x,int y){
       }        
     }
   }
-  
+  for(int i = 16-10; i<=51+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 238-11 || x == 238+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 56-10; i<=91+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 51-11 || x == 51+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 83-10; i<=103+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 78-11 || x == 78+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 83-10; i<=103+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 238-11 || x == 238+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 53-10; i<=118+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 266-11 || x == 266+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 123-10; i<=183+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 51-11 || x == 51+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 133-10; i<=153+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 78-11 || x == 78+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 133-10; i<=153+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 238-11 || x == 238+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 108-10; i<=128+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 158-11 || x == 158+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 146-10; i<=181+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 266-11 || x == 266+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 186-10; i<=221+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 78-11 || x == 78+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 191-10; i<=201+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 158-11 || x == 158+5){
+        valido = 0; 
+      }        
+    }
+  }
+  for(int i = 191-10; i<=221+5;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      if(x == 238-11 || x == 238+5){
+        valido = 0; 
+      }        
+    }
+  }
 
   return valido;
 }
