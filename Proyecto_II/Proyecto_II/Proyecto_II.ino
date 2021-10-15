@@ -742,22 +742,65 @@ void Movimiento(String jugador){ // J1, J2
       valor_random=random(1,5);
     }while(valor_random == 1);
     if(valor_random == 2){
-      pos_x = px2;
       pos_y = py2;
+      pos_x = px2;
     } else if(valor_random == 3){
-      pos_x = px3;
       pos_y = py3;
+      pos_x = px3;
     } else if(valor_random == 4){
-      pos_x = px4;
       pos_y = py4;
+      pos_x = px4;
     }
-    
+    LCD_Clear(0x0000);
+    Mapa();
   } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
-    
+    do{
+      valor_random=random(1,5);
+    }while(valor_random == 2);
+    if(valor_random == 1){
+      pos_y = py1;
+      pos_x = px1;
+    } else if(valor_random == 3){
+      pos_y = py3;
+      pos_x = px3;
+    } else if(valor_random == 4){
+      pos_y = py4;
+      pos_x = px4;
+    }
+    LCD_Clear(0x0000);
+    Mapa();
   } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
-    
+    do{
+      valor_random=random(1,5);
+    }while(valor_random == 3);
+    if(valor_random == 2){
+      pos_y = py2;
+      pos_x = px2;
+    } else if(valor_random == 1){
+      pos_y = py1;
+      pos_x = px1;
+    } else if(valor_random == 4){
+      pos_y = py4;
+      pos_x = px4;
+    }
+    LCD_Clear(0x0000);
+    Mapa();
   } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
-    
+    do{
+      valor_random=random(1,5);
+    }while(valor_random == 1);
+    if(valor_random == 2){
+      pos_y = py2;
+      pos_x = px2;
+    } else if(valor_random == 3){
+      pos_y = py3;
+      pos_x = px3;
+    } else if(valor_random == 1){
+      pos_y = py1;
+      pos_x = px1;
+    }
+    LCD_Clear(0x0000);
+    Mapa();
   }
   
   if(analogRead(Joystick_X) >= 3800 && analogRead(Joystick_Y) <= 2500 && analogRead(Joystick_Y) >= 1500 ){ // Joystick X 
@@ -787,18 +830,18 @@ void Movimiento(String jugador){ // J1, J2
   if(pos_x > copia_x){ // movimiento derecha
     //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
     if(jugador == "J1"){
-      LCD_Sprite(pos_x, copia_y, 10, 10, J1, 3, 1, 0, 0);  
+      LCD_Sprite(pos_x, pos_y, 10, 10, J1, 3, 1, 0, 0);  
     }else{
-      LCD_Sprite(pos_x, copia_y, 10, 10, J2, 3, 1, 0, 0);
+      LCD_Sprite(pos_x, pos_y, 10, 10, J2, 3, 1, 0, 0);
     }
     V_line(pos_x-1 , pos_y, 10, 0x0000);
     V_line(pos_x+11 , pos_y, 10, 0x0000);
   } else if(pos_x <copia_x){ // movimiento izquierda
     //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
     if(jugador == "J1"){
-      LCD_Sprite(pos_x, copia_y, 10, 10, J1, 3, 1, 1, 0);  
+      LCD_Sprite(pos_x, pos_y, 10, 10, J1, 3, 1, 1, 0);  
     }else{
-      LCD_Sprite(pos_x, copia_y, 10, 10, J2, 3, 1, 1, 0);
+      LCD_Sprite(pos_x, pos_y, 10, 10, J2, 3, 1, 1, 0);
     }
     V_line(pos_x-1 , pos_y, 10, 0x0000);
     V_line(pos_x+11 , pos_y, 10, 0x0000);
