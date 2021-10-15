@@ -144,7 +144,7 @@ void loop() {
   }
 
   // Prueba de funciones
-  Movimiento("J2");
+  Movimiento("J1");
 
 }
 //***************************************************************************************************************************************
@@ -727,6 +727,39 @@ void Movimiento(String jugador){ // J1, J2
   int valido;
   copia_x = pos_x;
   copia_y = pos_y;
+  int px1 = 58;
+  int py1 = 21;
+  int px2 = 301;
+  int py2 = 98;
+  int px3 = 31;
+  int py3 = 128;
+  int px4 = 248;
+  int py4 = 206;
+  int valor_random;  
+  // Portales
+  if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
+    do{
+      valor_random=random(1,5);
+    }while(valor_random == 1);
+    if(valor_random == 2){
+      pos_x = px2;
+      pos_y = py2;
+    } else if(valor_random == 3){
+      pos_x = px3;
+      pos_y = py3;
+    } else if(valor_random == 4){
+      pos_x = px4;
+      pos_y = py4;
+    }
+    
+  } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
+    
+  } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
+    
+  } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
+    
+  }
+  
   if(analogRead(Joystick_X) >= 3800 && analogRead(Joystick_Y) <= 2500 && analogRead(Joystick_Y) >= 1500 ){ // Joystick X 
     valido = Restriccion_Movimiento(pos_x+1,pos_y);
     if(valido == 1){
