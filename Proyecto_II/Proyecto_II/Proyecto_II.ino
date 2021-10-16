@@ -51,15 +51,16 @@ extern uint8_t Menu_J2[];
 unsigned char temp_2 [25000] PROGMEM = {};
 int Sw1_Flag = 0;
 int Sw2_Flag = 0;
+int SwJ_Flag = 0;  // Switch Joystick
 int N_Imagen=0;
 boolean Mostrar;
 int vidaa = 100;
-
-//--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
-int mario_pos = 1;
-int mario_index = 1;
 int pos_x = 20;
 int pos_y = 20;
+int Teletransportar = 0;
+//--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
+
+
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -130,18 +131,28 @@ void setup() {
 // Loop
 //***************************************************************************************************************************************
 void loop() {
+  Sw_Flags();
   if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
+    Sw1_Flag = 1;
     // Accion del primer boton
     LCD_Bitmap(0, 0, 320, 240, Mapa_2);
     delay(10);
   }
   if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
+    Sw2_Flag = 1;
     // Accion del segundo boton
     //LCD_Bitmap(0, 30, 320, 180, Menu_J2);
     LCD_Clear(0x0000);
     Mapa();
     delay(10);
   }
+  if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+    SwJ_Flag = 1;
+    // Accion del boton Joystick
+    Teletransportar = 1;
+  }
+
+  
 
   // Prueba de funciones
   Movimiento("J1");
@@ -552,6 +563,18 @@ void Lectura_SD(String nombre) {
 
 
 // ------------------------ Funciones de Programa ------------------------
+void Sw_Flags(void){
+  // Actualización bandera de botones
+  if(digitalRead(PUSH1) == HIGH){ // Boton 1
+    Sw1_Flag = 0;
+  }
+  if(digitalRead(PUSH2) == HIGH){ // Boton 2
+    Sw2_Flag = 0;
+  }
+  if(digitalRead(Joystick_Push) == HIGH){ // Boton Joystick
+    SwJ_Flag = 0;
+  }
+}
 void Cargar_Imagen(String nombre) {
   char Nombre_Archivo[nombre.length() + 1];
   unsigned char temp; 
@@ -653,15 +676,6 @@ int HexToInt(char hexa){
   return entero;
 }
 
-void Sw_Flags(void){
-  // Actualización bandera de botones
-  if(digitalRead(PUSH1) == HIGH){ // Boton 1
-    Sw1_Flag = 0;
-  }
-  if(digitalRead(PUSH2) == HIGH){ // Boton 2
-    Sw2_Flag = 0;
-  }
-}
 
 void Mapa(void){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
   // bloques verticales
@@ -737,72 +751,76 @@ void Movimiento(String jugador){ // J1, J2
   int py4 = 206;
   int valor_random;  
   // Portales
-  if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
-    do{
-      valor_random=random(1,5);
-    }while(valor_random == 1);
-    if(valor_random == 2){
-      pos_y = py2;
-      pos_x = px2;
-    } else if(valor_random == 3){
-      pos_y = py3;
-      pos_x = px3;
-    } else if(valor_random == 4){
-      pos_y = py4;
-      pos_x = px4;
+  if(Teletransportar == 1){
+    Teletransportar = 0;
+    if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
+      do{
+        valor_random=random(1,5);
+      }while(valor_random == 1);
+      if(valor_random == 2){
+        pos_y = py2;
+        pos_x = px2;
+      } else if(valor_random == 3){
+        pos_y = py3;
+        pos_x = px3;
+      } else if(valor_random == 4){
+        pos_y = py4;
+        pos_x = px4;
+      }
+      LCD_Clear(0x0000);
+      Mapa();
+    } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
+      do{
+        valor_random=random(1,5);
+      }while(valor_random == 2);
+      if(valor_random == 1){
+        pos_y = py1;
+        pos_x = px1;
+      } else if(valor_random == 3){
+        pos_y = py3;
+        pos_x = px3;
+      } else if(valor_random == 4){
+        pos_y = py4;
+        pos_x = px4;
+      }
+      LCD_Clear(0x0000);
+      Mapa();
+    } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
+      do{
+        valor_random=random(1,5);
+      }while(valor_random == 3);
+      if(valor_random == 2){
+        pos_y = py2;
+        pos_x = px2;
+      } else if(valor_random == 1){
+        pos_y = py1;
+        pos_x = px1;
+      } else if(valor_random == 4){
+        pos_y = py4;
+        pos_x = px4;
+      }
+      LCD_Clear(0x0000);
+      Mapa();
+    } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
+      do{
+        valor_random=random(1,5);
+      }while(valor_random == 1);
+      if(valor_random == 2){
+        pos_y = py2;
+        pos_x = px2;
+      } else if(valor_random == 3){
+        pos_y = py3;
+        pos_x = px3;
+      } else if(valor_random == 1){
+        pos_y = py1;
+        pos_x = px1;
+      }
+      LCD_Clear(0x0000);
+      Mapa();
     }
-    LCD_Clear(0x0000);
-    Mapa();
-  } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
-    do{
-      valor_random=random(1,5);
-    }while(valor_random == 2);
-    if(valor_random == 1){
-      pos_y = py1;
-      pos_x = px1;
-    } else if(valor_random == 3){
-      pos_y = py3;
-      pos_x = px3;
-    } else if(valor_random == 4){
-      pos_y = py4;
-      pos_x = px4;
-    }
-    LCD_Clear(0x0000);
-    Mapa();
-  } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
-    do{
-      valor_random=random(1,5);
-    }while(valor_random == 3);
-    if(valor_random == 2){
-      pos_y = py2;
-      pos_x = px2;
-    } else if(valor_random == 1){
-      pos_y = py1;
-      pos_x = px1;
-    } else if(valor_random == 4){
-      pos_y = py4;
-      pos_x = px4;
-    }
-    LCD_Clear(0x0000);
-    Mapa();
-  } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
-    do{
-      valor_random=random(1,5);
-    }while(valor_random == 1);
-    if(valor_random == 2){
-      pos_y = py2;
-      pos_x = px2;
-    } else if(valor_random == 3){
-      pos_y = py3;
-      pos_x = px3;
-    } else if(valor_random == 1){
-      pos_y = py1;
-      pos_x = px1;
-    }
-    LCD_Clear(0x0000);
-    Mapa();
   }
-  
+
+  // Cambio de valor en la posición 
   if(analogRead(Joystick_X) >= 3800 && analogRead(Joystick_Y) <= 2500 && analogRead(Joystick_Y) >= 1500 ){ // Joystick X 
     valido = Restriccion_Movimiento(pos_x+1,pos_y);
     if(valido == 1){
