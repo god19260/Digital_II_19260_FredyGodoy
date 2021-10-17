@@ -860,7 +860,7 @@ void Movimiento(String jugador){ // J1, J2
       LCD_Sprite(pos_x, pos_y, 10, 10, J2, 3, 1, 0, 0);
     }
     V_line(pos_x-1 , pos_y, 10, 0x0000);
-    V_line(pos_x+11 , pos_y, 10, 0x0000);
+    V_line(pos_x+10 , pos_y-1, 10, 0x0000);
   } else if(pos_x <copia_x){ // movimiento izquierda
     //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
     if(jugador == "J1"){
@@ -868,21 +868,21 @@ void Movimiento(String jugador){ // J1, J2
     }else{
       LCD_Sprite(pos_x, pos_y, 10, 10, J2, 3, 1, 1, 0);
     }
-    V_line(pos_x-1 , pos_y, 10, 0x0000);
+    V_line(pos_x-1 , pos_y-1, 10, 0x0000);
     V_line(pos_x+11 , pos_y, 10, 0x0000);
   } 
   // Movimiento en el eje y
-  else if (pos_y > copia_y){  // movimiento arriba
-    H_line(pos_x, pos_y-1, 10, 0x0000);
-    H_line(pos_x, pos_y+10, 10, 0x0000);
+  else if (pos_y > copia_y){  // movimiento abajo
+    H_line(pos_x-1, pos_y-1, 10, 0x0000);
+    H_line(pos_x-1, pos_y+10, 10, 0x0000);
     if(jugador == "J1"){
       LCD_Sprite(copia_x, pos_y, 10, 10, J1, 3, 0, 0, 0);  
     }else{
       LCD_Sprite(copia_x, pos_y, 10, 10, J2, 3, 0, 0, 0);
     }
-  }else if (pos_y < copia_y){  // movimiento en abajo
-    H_line(pos_x, pos_y-1, 10, 0x0000);
-    H_line(pos_x, pos_y+10, 10, 0x0000);
+  }else if (pos_y < copia_y){  // movimiento en arriba
+    H_line(pos_x-1, pos_y-1, 10, 0x0000);
+    H_line(pos_x-1, pos_y+10, 10, 0x0000);
     if(jugador == "J1"){
       LCD_Sprite(copia_x, pos_y, 10, 10, J1, 3, 2, 0, 0);  
     }else {
@@ -1222,9 +1222,10 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
    largo_luz_y = 10; 
   } else if(direccion == 2){
    // Movimiento arriba 
-   y-=15;
+   y-=16;
    largo_luz_x = 10;
-   largo_luz_y = 15; 
+   largo_luz_y = 15;
+   //V_line(x-1, y+15, 10, 0x0000); 
   } else if(direccion == 3){
    // Movimiento a la izquierda 
    x-=15;
@@ -1232,21 +1233,22 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
    largo_luz_y = 10; 
   } else if(direccion == 4){
    // Movimiento abajo 
-   y+=10;
+   y+=12;
    largo_luz_x = 10;
-   largo_luz_y = 15; 
+   largo_luz_y = 15;
+   //V_line(x-1, y-10, 10, 0x0000); 
   }
+ 
   if(direccion != 0){
-    for(i = x; i<x+largo_luz_x && i<=320;i++){
-      if(Restriccion_Movimiento(i,e)){
-       for( e = y; e<y+largo_luz_y;e++){
-        Localidad = (i*2-2)+((e-1)*640);
-        color = Mapa_2[Localidad]*256;
-        color += Mapa_2[Localidad+1];
-        FillRect(i,e, 1,1,color);
-        } 
+    for(i = x-1; i<x+largo_luz_x && i<=320;i++){
+     for( e = y-1; e<y+largo_luz_y;e++){
+      Localidad = (i*2-2)+((e-1)*640);
+      color = Mapa_2[Localidad]*256;
+      color += Mapa_2[Localidad+1];
+      FillRect(i,e, 1,1,color); 
       }
     }  
   }
+  
   
 }
