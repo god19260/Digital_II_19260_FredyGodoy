@@ -151,11 +151,10 @@ void loop() {
     // Accion del boton Joystick
     Teletransportar = 1;
   }
-
+  Movimiento("J1");
   
 
   // Prueba de funciones
-  Movimiento("J1");
 
 }
 //***************************************************************************************************************************************
@@ -750,6 +749,8 @@ void Movimiento(String jugador){ // J1, J2
   int px4 = 248;
   int py4 = 206;
   int valor_random;  
+  int direccion;
+    
   // Portales
   if(Teletransportar == 1){
     Teletransportar = 0;
@@ -819,31 +820,37 @@ void Movimiento(String jugador){ // J1, J2
       Mapa();
     }
   }
-
+  direccion = 0;
   // Cambio de valor en la posición 
   if(analogRead(Joystick_X) >= 3800 && analogRead(Joystick_Y) <= 2500 && analogRead(Joystick_Y) >= 1500 ){ // Joystick X 
     valido = Restriccion_Movimiento(pos_x+1,pos_y);
     if(valido == 1){
       pos_x += 1; 
+      direccion = 1;
     } 
   } else if (analogRead(Joystick_X) <= 200 && analogRead(Joystick_Y) <= 2500 && analogRead(Joystick_Y) >= 1500){  
     valido = Restriccion_Movimiento(pos_x-1,pos_y);
     if(valido == 1){
-      pos_x -= 1; 
+      pos_x -= 1;
+      direccion = 3; 
     } 
     
   } if(analogRead(Joystick_Y) >= 3800 && analogRead(Joystick_X) <= 2500 && analogRead(Joystick_X) >= 1500){ // Joystick Y
     valido = Restriccion_Movimiento(pos_x,pos_y+1);
     if(valido == 1){
       pos_y += 1; 
+      direccion = 4;
     } 
   } else if (analogRead(Joystick_Y) <= 200 && analogRead(Joystick_X) <= 2500 && analogRead(Joystick_X) >= 1500){  
     valido = Restriccion_Movimiento(pos_x,pos_y-1);
     if(valido == 1){
       pos_y -= 1; 
+      direccion = 2;
     } 
   } 
-    
+  // Prueba de funcion linterna
+  Linterna(pos_x,pos_y,direccion);
+  
   //Movimiento en el eje x
   if(pos_x > copia_x){ // movimiento derecha
     //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
@@ -1199,4 +1206,43 @@ int Restriccion_Movimiento(int x,int y){
   }
 
   return valido;
+}
+
+void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = izquierda 4 = abajo
+  int largo_luz_x,largo_luz_y;
+  int color = 0;
+  int Localidad; 
+  //Serial.println(direccion);
+  if(direccion == 1){
+   // Movimiento a la derecha 
+    x+=10;
+    largo_luz_x = 15;
+    largo_luz_y = 10; 
+  } else if(direccion == 2){
+   // Movimiento arriba 
+    y-=15;
+    largo_luz_x = 10;
+    largo_luz_y = 15; 
+  } else if(direccion == 3){
+   // Movimiento a la izquierda 
+    x-=15;
+    largo_luz_x = 15;
+    largo_luz_y = 10; 
+  } else if(direccion == 4){
+   // Movimiento abajo 
+    y+=10;
+    largo_luz_x = 10;
+    largo_luz_y = 15; 
+  }
+  if(direccion != 0){
+    for(int i = x; i<=x+largo_luz_x && i<=320;i++){
+      for(int e = y; e<=y+largo_luz_y;e++){
+        Localidad = (i*2-2)+((e-1)*640);
+        color = Mapa_2[Localidad]*256;
+        color += Mapa_2[Localidad+1];
+        FillRect(i,e, 1,1,color);
+      }
+    }  
+  }
+  
 }
