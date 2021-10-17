@@ -1212,35 +1212,39 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
   int largo_luz_x,largo_luz_y;
   int color = 0;
   int Localidad; 
+  int i = x;
+  int e = y;
   //Serial.println(direccion);
   if(direccion == 1){
    // Movimiento a la derecha 
-    x+=10;
-    largo_luz_x = 15;
-    largo_luz_y = 10; 
+   x+=11;
+   largo_luz_x = 15;
+   largo_luz_y = 10; 
   } else if(direccion == 2){
    // Movimiento arriba 
-    y-=15;
-    largo_luz_x = 10;
-    largo_luz_y = 15; 
+   y-=15;
+   largo_luz_x = 10;
+   largo_luz_y = 15; 
   } else if(direccion == 3){
    // Movimiento a la izquierda 
-    x-=15;
-    largo_luz_x = 15;
-    largo_luz_y = 10; 
+   x-=15;
+   largo_luz_x = 15;
+   largo_luz_y = 10; 
   } else if(direccion == 4){
    // Movimiento abajo 
-    y+=10;
-    largo_luz_x = 10;
-    largo_luz_y = 15; 
+   y+=10;
+   largo_luz_x = 10;
+   largo_luz_y = 15; 
   }
   if(direccion != 0){
-    for(int i = x; i<=x+largo_luz_x && i<=320;i++){
-      for(int e = y; e<=y+largo_luz_y;e++){
+    for(i = x; i<x+largo_luz_x && i<=320;i++){
+      if(Restriccion_Movimiento(i,e)){
+       for( e = y; e<y+largo_luz_y;e++){
         Localidad = (i*2-2)+((e-1)*640);
         color = Mapa_2[Localidad]*256;
         color += Mapa_2[Localidad+1];
         FillRect(i,e, 1,1,color);
+        } 
       }
     }  
   }
