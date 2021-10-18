@@ -58,6 +58,8 @@ int vidaa = 100;
 int pos_x = 20;
 int pos_y = 20;
 int Teletransportar = 0;
+// variables funcion linterna
+int last_direccion,last_linterna_x,last_linterna_y; 
 //--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
 
 
@@ -860,7 +862,7 @@ void Movimiento(String jugador){ // J1, J2
       LCD_Sprite(pos_x, pos_y, 10, 10, J2, 3, 1, 0, 0);
     }
     V_line(pos_x-1 , pos_y, 10, 0x0000);
-    V_line(pos_x+10 , pos_y-1, 10, 0x0000);
+    V_line(pos_x+9 , pos_y-1, 10, 0x0000);
   } else if(pos_x <copia_x){ // movimiento izquierda
     //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
     if(jugador == "J1"){
@@ -1211,35 +1213,62 @@ int Restriccion_Movimiento(int x,int y){
 void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = izquierda 4 = abajo
   int largo_luz_x,largo_luz_y;
   int color = 0;
-  int Localidad; 
+  int Localidad;
   int i = x;
   int e = y;
-  //Serial.println(direccion);
+  // Borrar rastro de la ultima posición
+  if(last_direccion == 1){
+    if(direccion != 1 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
+    }
+  } else if(last_direccion == 2){
+    if(direccion != 2 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
+    }
+  } else if(last_direccion == 3){
+    if(direccion != 3 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
+    }
+  } else if(last_direccion == 4){
+    if(direccion != 4 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
+    }
+  }
+  
   if(direccion == 1){
    // Movimiento a la derecha 
    x+=11;
    largo_luz_x = 15;
    largo_luz_y = 10; 
+   last_linterna_x = x-1;
+   last_linterna_y = y-1;
+   last_direccion = 1;
   } else if(direccion == 2){
    // Movimiento arriba 
    y-=16;
    largo_luz_x = 10;
    largo_luz_y = 15;
-   //V_line(x-1, y+15, 10, 0x0000); 
+   last_linterna_x = x-1;
+   last_linterna_y = y-1;
+   last_direccion = 2;
   } else if(direccion == 3){
    // Movimiento a la izquierda 
    x-=15;
    largo_luz_x = 15;
-   largo_luz_y = 10; 
+   largo_luz_y = 10;
+   last_linterna_x = x-1;
+   last_linterna_y = y-1;
+   last_direccion = 3; 
   } else if(direccion == 4){
    // Movimiento abajo 
    y+=12;
    largo_luz_x = 10;
    largo_luz_y = 15;
-   //V_line(x-1, y-10, 10, 0x0000); 
+   last_linterna_x = x-1;
+   last_linterna_y = y-1;
+   last_direccion = 4;
   }
-  
-  FillRect(x-16,y-1, 15,11,0x0000);    
+   
   if(direccion != 0){
     for(i = x-1; i<x+largo_luz_x && i<=320;i++){
      for( e = y-1; e<y+largo_luz_y;e++){
@@ -1249,6 +1278,5 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
       FillRect(i,e, 1,1,color); 
       }
     }  
-  }
-  
+  } 
 }
