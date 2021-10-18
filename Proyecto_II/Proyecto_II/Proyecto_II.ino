@@ -1238,7 +1238,8 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
    largo_luz_y = 15;
    //V_line(x-1, y-10, 10, 0x0000); 
   }
- 
+  
+  FillRect(x-16,y-1, 15,11,0x0000);    
   if(direccion != 0){
     for(i = x-1; i<x+largo_luz_x && i<=320;i++){
      for( e = y-1; e<y+largo_luz_y;e++){
@@ -1249,6 +1250,5 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
       }
     }  
   }
-  
   
 }
