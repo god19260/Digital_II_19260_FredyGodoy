@@ -46,8 +46,8 @@ File root;
 String Numero;
 extern uint8_t Imagen_1 [];
 extern uint8_t Mapa_2 [];
-extern uint8_t Menu_J1[];
-extern uint8_t Menu_J2[];
+extern uint8_t Menu_J1 [];
+//extern uint8_t Menu_J2 [];
 unsigned char temp_2 [25000] PROGMEM = {};
 int Sw1_Flag = 0;
 int Sw2_Flag = 0;
@@ -58,6 +58,8 @@ int vidaa = 100;
 int pos_x = 20;
 int pos_y = 20;
 int Teletransportar = 0;
+int x_Contrario = 30;
+int y_Contrario = 50;
 // variables funcion linterna
 int last_direccion,last_linterna_x,last_linterna_y; 
 //--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
@@ -81,10 +83,6 @@ void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int
 void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int columns, int index, char flip, char offset);
 
 
-//extern uint8_t fondo[];
-//extern uint8_t Imagen_1[];
-//extern uint8_t Imagen_2[];
-//extern uint8_t Imagen_3[];
 //***************************************************************************************************************************************
 // Initialization
 //***************************************************************************************************************************************
@@ -125,9 +123,9 @@ void setup() {
 
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
   LCD_Clear(0x00);
-
-  //Mapa();
-    
+  Mapa();
+//  Menu("J1");
+//LCD_Bitmap(0, 30, 320, 180, Menu_J1);
 }
 //***************************************************************************************************************************************
 // Loop
@@ -143,9 +141,9 @@ void loop() {
   if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
     Sw2_Flag = 1;
     // Accion del segundo boton
-    //LCD_Bitmap(0, 30, 320, 180, Menu_J2);
-    LCD_Clear(0x0000);
-    Mapa();
+    //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
+    //LCD_Clear(0x0000);
+    //Mapa();
     delay(10);
   }
   if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
@@ -154,7 +152,6 @@ void loop() {
     Teletransportar = 1;
   }
   Movimiento("J1");
-  
   // Prueba de funciones
   
 }
@@ -732,8 +729,11 @@ void Informacion_J2(int vida){
   //for(int x = 130; x<=barra;x+=5){ LCD_Bitmap(x, 4, 5, 5, cuadro_vida); }
 }
 
-void Menu(void){
-  
+void Menu(String J){
+  if(J == "J1"){
+    Serial.println("Menu_1");
+   // LCD_Bitmap(0, 30, 320, 180, Menu_J1);
+  }
 }
 
 void Movimiento(String jugador){ // J1, J2
@@ -1559,53 +1559,8 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
       }
     }
   }
-  Mapa_Segmentado(x,y); // regremar mapa en void setup *-**-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-
-  
-//  if(direccion == 1){
-//   // Movimiento a la derecha 
-//   x+=11;
-//   largo_luz_x = 15;
-//   largo_luz_y = 10; 
-//   last_linterna_x = x-1;
-//   last_linterna_y = y-1;
-//   last_direccion = 1;
-//  } else if(direccion == 2){
-//   // Movimiento arriba 
-//   y-=16;
-//   largo_luz_x = 10;
-//   largo_luz_y = 15;
-//   last_linterna_x = x-1;
-//   last_linterna_y = y-1;
-//   last_direccion = 2;
-//  } else if(direccion == 3){
-//   // Movimiento a la izquierda 
-//   x-=15;
-//   largo_luz_x = 15;
-//   largo_luz_y = 10;
-//   last_linterna_x = x-1;
-//   last_linterna_y = y-1;
-//   last_direccion = 3; 
-//  } else if(direccion == 4){
-//   // Movimiento abajo 
-//   y+=12;
-//   largo_luz_x = 10;
-//   largo_luz_y = 15;
-//   last_linterna_x = x-1;
-//   last_linterna_y = y-1;
-//   last_direccion = 4;
-//  }
-//   
-//  if(direccion != 0){
-//    for(i = x-1; i<x+largo_luz_x && i<=320;i++){
-//     for( e = y-1; e<y+largo_luz_y;e++){
-//      Localidad = (i*2-2)+((e-1)*640);
-//      color = Mapa_2[Localidad]*256;
-//      color += Mapa_2[Localidad+1];
-//      FillRect(i,e, 1,1,color); 
-//      }
-//    }  
-//  }
-   
+  Mapa_Segmentado(x,y); // regremar mapa en void setup *-**-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-   
+  Jugador_Contrario("J2",x_Contrario, y_Contrario);
 }
 
 void Mapa_Segmentado(int x, int y){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
@@ -1647,28 +1602,53 @@ void Mapa_Segmentado(int x, int y){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
     for(int x = 103; x<=213;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
     for(int y = 191; y<=201;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }  
   }else if(x>238-10-15 && y>146-10-15){  
-      for(int y = 191; y<=221;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
-      for(int y = 146; y<=181;y+=5){ LCD_Bitmap(266, y, 5, 5, ladrillo_gris); }
-      for(int x = 238; x<=263;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
+    for(int y = 191; y<=221;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
+    for(int y = 146; y<=181;y+=5){ LCD_Bitmap(266, y, 5, 5, ladrillo_gris); }
+    for(int x = 238; x<=263;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
   }    
-  
- 
+}
 
-
-
-
-
- 
-
-
-//    
-
-
-//    // bloques horizontales 
-
-
-
-
-
-//    for(int x = 238; x<=263;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
+void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del jugador contrario
+  if(last_direccion == 1){ // Derecha
+    if(x>pos_x+10 && x<pos_x+10+15 && y>=pos_y-9 && y<=pos_y+10){
+      if(J == "J1"){
+        LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
+      }else {
+        LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
+      }        
+    }else{
+      FillRect(x,y, 10,10,0x0000);
+    }
+  }else if(last_direccion == 2){ // Arriba
+    if(x>=pos_x-9 && x<=pos_x+9 && y>=pos_y-15-10 && y<=pos_y){
+      if(J == "J1"){
+        LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
+      }else {
+        LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
+      }        
+    }else{
+      FillRect(x,y, 10,10,0x0000);
+    }
+  }else if(last_direccion == 3){ // Izquierda
+    if(x>=pos_x-15-10 && x<=pos_x && y>=pos_y-9 && y<=pos_y+10){
+      if(J == "J1"){
+        LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
+      }else {
+        LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
+      }        
+    }else{
+      FillRect(x,y, 10,10,0x0000);
+    }
+  }else if(last_direccion == 4){ // Abajo
+    if(x>=pos_x-9 && x<=pos_x+9 && y>=pos_y+10 && y<=pos_y+10+15){
+      if(J == "J1"){
+        LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
+      }else {
+        LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
+      }        
+    }else{
+      FillRect(x,y, 10,10,0x0000);
+    }
+  }
+    
 }
