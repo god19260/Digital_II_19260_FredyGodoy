@@ -65,6 +65,19 @@ int last_direccion,last_linterna_x,last_linterna_y;
 //--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
 
 
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~                                                        ~~~
+
+String Jugador = "J2"; 
+String Contrincante = "J1";
+
+// ~~~                                                        ~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -124,8 +137,8 @@ void setup() {
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
   LCD_Clear(0x00);
   Mapa();
-//  Menu("J1");
-//LCD_Bitmap(0, 30, 320, 180, Menu_J1);
+//  Menu(Jugador);
+
 }
 //***************************************************************************************************************************************
 // Loop
@@ -151,7 +164,7 @@ void loop() {
     // Accion del boton Joystick
     Teletransportar = 1;
   }
-  Movimiento("J1");
+  Movimiento(Jugador);
   // Prueba de funciones
   
 }
@@ -1560,7 +1573,7 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
     }
   }
   Mapa_Segmentado(x,y); // regremar mapa en void setup *-**-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-   
-  Jugador_Contrario("J2",x_Contrario, y_Contrario);
+  Jugador_Contrario(Contrincante,x_Contrario, y_Contrario);
 }
 
 void Mapa_Segmentado(int x, int y){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
