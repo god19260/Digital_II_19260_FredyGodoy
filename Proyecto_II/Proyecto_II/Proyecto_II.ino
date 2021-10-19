@@ -125,7 +125,8 @@ void setup() {
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
   LCD_Clear(0x00);
   Mapa();
-//  Menu(Jugador);
+  Menu("J1");
+  //LCD_Bitmap(0, 30, 320, 180, Menu_J1);
 
 }
 //***************************************************************************************************************************************
@@ -745,9 +746,11 @@ void Informacion_J2(int vida){
 }
 
 void Menu(String J){
+  Serial.println("Menu_1");
   if(J == "J1"){
-    Serial.println("Menu_1");
-   // LCD_Bitmap(0, 30, 320, 180, Menu_J1);
+//    LCD_Bitmap(0, 0, 320, 240, Mapa_2);
+    Serial.println("/*/*/*/*/*/*/*/*/");
+//    LCD_Bitmap(0, 30, 320, 180, Menu_J1);
   }
 }
 
@@ -1226,6 +1229,13 @@ int Restriccion_Movimiento(int x,int y){
 
 boolean Restriccion_Linterna (int x, int y){
   int valido = 1;
+  // bordes  pantalla
+  if (x == 0 || x == 320){
+    valido = 0;
+  }else if(y == 15 || y == 240-10){
+    valido = 0;
+  }
+  
   // Horizontales 
   for(int i = 53; i<=78;i++){
     if(i == x){
