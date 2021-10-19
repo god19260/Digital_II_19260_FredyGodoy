@@ -126,7 +126,7 @@ void setup() {
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
   LCD_Clear(0x00);
 
-  Mapa();
+  //Mapa();
     
 }
 //***************************************************************************************************************************************
@@ -157,7 +157,7 @@ void loop() {
   
 
   // Prueba de funciones
-
+  Mapa_Segmentado(0); // regremar mapa en void setup *-**-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-
 }
 //***************************************************************************************************************************************
 // Función para inicializar LCD
@@ -891,7 +891,7 @@ void Movimiento(String jugador){ // J1, J2
       LCD_Sprite(copia_x, pos_y, 10, 10, J2, 3, 2, 0, 0);
     }
   } 
-  delay(20);
+ // delay(20);
 }
 
 int Restriccion_Movimiento(int x,int y){
@@ -1210,6 +1210,238 @@ int Restriccion_Movimiento(int x,int y){
   return valido;
 }
 
+boolean Restriccion_Linterna (int x, int y){
+  int valido = 1;
+  // Horizontales 
+  for(int i = 53; i<=78;i++){
+    if(i == x){
+        for(int t = 51; t<=51;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+      }
+  }
+  for(int i = 103; i<=213;i++){
+      if(i == x){
+        for(int t = 51; t<=51;t++){
+          if(y==t){
+            valido = 0; 
+          } 
+        }
+      }
+    }
+  for(int i = 1; i<= 51;i++){
+      if(i == x){
+        for(int t = 118; t<=118;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+      }
+    }
+  for(int i = 266; i<= 316;i++){
+      if(i == x){
+        for(int t = 118-10; t<=118+5;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+      }
+    }
+  for(int i = 83; i<= 143;i++){
+      if(i == x){
+        for(int t = 78; t<=78;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        }
+      }
+    }
+  for(int i = 173; i<= 233; i++){
+      if(i == x){
+        for(int t = 78; t<=78;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+      }
+    }
+  for(int i = 83; i<= 143;i++){
+      if(i == x){
+        for(int t = 158; t<=158;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        }
+      }
+    }
+  for(int i = 173; i<= 233;i++){
+      if(i == x){
+        for(int t = 158; t<=158;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+      }
+    }
+  for(int i = 103; i<= 213;i++){
+      if(i == x){
+        for(int t = 186; t<=186;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+      }
+    }
+  for(int i = 238; i<= 263;i++){
+      if(i == x){
+        for(int t = 186; t<=186;t++){
+          if(y==t){
+            valido = 0; 
+          }
+        } 
+      }
+    }
+
+  // Verticales
+  for(int i = 16; i<=51;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 78; t<=78;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }      
+    }
+  }
+  for(int i = 36; i<=46;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 158; t<=158;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }      
+    }
+  }
+  for(int i = 16; i<=51;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 238; t<=238;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }     
+    }
+  }
+  for(int i = 56; i<=91;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 51; t<=51;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 83; i<=103;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 78; t<=78;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }    
+    }
+  }
+  for(int i = 83; i<=103;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 238; t<=238;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 53; i<=118;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 266; t<=266;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 123; i<=183;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 51; t<=51;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }           
+    }
+  }
+  for(int i = 133; i<=153;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 78; t<=78;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 133; i<=153;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 238; t<=238;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 108; i<=128;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 158; t<=158;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 146; i<=181;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 266; t<=266;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 186; i<=221;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 78; t<=78;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 191; i<=201;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 158; t<=158;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  for(int i = 191; i<=221;i++){ // vertical derecha - 10,  vertical izquierda + 5
+    if(i == y){
+      for(int t = 238; t<=238;t++){
+        if(x==t){
+          valido = 0; 
+        }
+      }
+    }
+  }
+  return valido;
+}
 void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = izquierda 4 = abajo
   int largo_luz_x,largo_luz_y;
   int color = 0;
@@ -1237,46 +1469,171 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
   
   if(direccion == 1){
    // Movimiento a la derecha 
-   x+=11;
-   largo_luz_x = 15;
-   largo_luz_y = 10; 
-   last_linterna_x = x-1;
-   last_linterna_y = y-1;
-   last_direccion = 1;
-  } else if(direccion == 2){
-   // Movimiento arriba 
-   y-=16;
-   largo_luz_x = 10;
-   largo_luz_y = 15;
-   last_linterna_x = x-1;
-   last_linterna_y = y-1;
-   last_direccion = 2;
-  } else if(direccion == 3){
-   // Movimiento a la izquierda 
-   x-=15;
-   largo_luz_x = 15;
-   largo_luz_y = 10;
-   last_linterna_x = x-1;
-   last_linterna_y = y-1;
-   last_direccion = 3; 
-  } else if(direccion == 4){
-   // Movimiento abajo 
-   y+=12;
-   largo_luz_x = 10;
-   largo_luz_y = 15;
-   last_linterna_x = x-1;
-   last_linterna_y = y-1;
-   last_direccion = 4;
-  }
-   
-  if(direccion != 0){
-    for(i = x-1; i<x+largo_luz_x && i<=320;i++){
-     for( e = y-1; e<y+largo_luz_y;e++){
-      Localidad = (i*2-2)+((e-1)*640);
-      color = Mapa_2[Localidad]*256;
-      color += Mapa_2[Localidad+1];
-      FillRect(i,e, 1,1,color); 
+    x+=10;
+    largo_luz_x = 15;
+    largo_luz_y = 10; 
+    last_linterna_x = x-1;
+    last_linterna_y = y-1;
+    last_direccion = 1;
+    for(int i = y; i<y+largo_luz_y && i<=240;i++){
+      if (Restriccion_Linterna(x,i)){
+        for(int e=x ; e<x+largo_luz_x;e++){
+          if (Restriccion_Linterna(e,i)){
+            Localidad = (e*2-2)+((i-1)*640);
+            color = Mapa_2[Localidad]*256;
+            color += Mapa_2[Localidad+1];
+            FillRect(e,i, 1,1,color);
+          }
+          else{
+            e = x+largo_luz_x;
+          }
+        }
       }
     }  
-  } 
+  } else if(direccion == 2){
+   // Movimiento arriba 
+    y-=1;
+    largo_luz_x = 8;
+    largo_luz_y = 15; 
+    last_linterna_x = x-1;
+    last_linterna_y = y-15;
+    last_direccion = 2;
+    for(int i = x; i<x+largo_luz_x && i<=320;i++){
+      if (Restriccion_Linterna(i,y)){
+        for(int e=y ; e>y-largo_luz_y;e--){
+          if (Restriccion_Linterna(i,e)){
+            Localidad = (i*2-2)+((e-1)*640);
+            color = Mapa_2[Localidad]*256;
+            color += Mapa_2[Localidad+1];
+            FillRect(i,e, 1,1,color);
+          }
+          else{
+            e = y-largo_luz_y;
+          }
+        }
+      }
+    } 
+  } else if(direccion == 3){
+   // Movimiento a la izquierda 
+    x-=1;
+    largo_luz_x = 15;
+    largo_luz_y = 10; 
+    last_linterna_x = x-15;
+    last_linterna_y = y-1;
+    last_direccion = 3; 
+    for(int i = y; i<y+largo_luz_y && i<=240;i++){
+      if (Restriccion_Linterna(x,i)){
+        for(int e=x ; e>x-largo_luz_x;e--){
+          if (Restriccion_Linterna(e,i)){
+            Localidad = (e*2-2)+((i-1)*640);
+            color = Mapa_2[Localidad]*256;
+            color += Mapa_2[Localidad+1];
+            FillRect(e,i, 1,1,color);
+          }
+          else{
+            e = x-largo_luz_x;
+          }
+        }
+      }
+    }    
+  } else if(direccion == 4){
+   // Movimiento abajo 
+    y+=10;
+    largo_luz_x = 8;
+    largo_luz_y = 15; 
+    last_linterna_x = x-1;
+    last_linterna_y = y-1;
+    last_direccion = 4;
+    for(int i = x; i<x+largo_luz_x && i<=320;i++){
+      if (Restriccion_Linterna(i,y)){
+        for(int e=y ; e<y+largo_luz_y;e++){
+          if (Restriccion_Linterna(i,e)){
+            Localidad = (i*2-2)+((e-1)*640);
+            color = Mapa_2[Localidad]*256;
+            color += Mapa_2[Localidad+1];
+            FillRect(i,e, 1,1,color);
+          }
+          else{
+            e = y+largo_luz_y;
+          }
+        }
+      }
+    }
+  }
+//  if(direccion == 1){
+//   // Movimiento a la derecha 
+//   x+=11;
+//   largo_luz_x = 15;
+//   largo_luz_y = 10; 
+//   last_linterna_x = x-1;
+//   last_linterna_y = y-1;
+//   last_direccion = 1;
+//  } else if(direccion == 2){
+//   // Movimiento arriba 
+//   y-=16;
+//   largo_luz_x = 10;
+//   largo_luz_y = 15;
+//   last_linterna_x = x-1;
+//   last_linterna_y = y-1;
+//   last_direccion = 2;
+//  } else if(direccion == 3){
+//   // Movimiento a la izquierda 
+//   x-=15;
+//   largo_luz_x = 15;
+//   largo_luz_y = 10;
+//   last_linterna_x = x-1;
+//   last_linterna_y = y-1;
+//   last_direccion = 3; 
+//  } else if(direccion == 4){
+//   // Movimiento abajo 
+//   y+=12;
+//   largo_luz_x = 10;
+//   largo_luz_y = 15;
+//   last_linterna_x = x-1;
+//   last_linterna_y = y-1;
+//   last_direccion = 4;
+//  }
+//   
+//  if(direccion != 0){
+//    for(i = x-1; i<x+largo_luz_x && i<=320;i++){
+//     for( e = y-1; e<y+largo_luz_y;e++){
+//      Localidad = (i*2-2)+((e-1)*640);
+//      color = Mapa_2[Localidad]*256;
+//      color += Mapa_2[Localidad+1];
+//      FillRect(i,e, 1,1,color); 
+//      }
+//    }  
+//  }
+   
+}
+
+void Mapa_Segmentado(int seccion){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
+  // bloques verticales
+  for(int y = 16; y<=51;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
+  for(int y = 36; y<=46;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
+  for(int y = 16; y<=51;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
+  for(int y = 56; y<=91;y+=5){ LCD_Bitmap(51, y, 5, 5, ladrillo_gris); }
+  for(int y = 83; y<=103;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
+  for(int y = 83; y<=103;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
+  for(int y = 53; y<=118;y+=5){ LCD_Bitmap(266, y, 5, 5, ladrillo_gris); }
+  for(int y = 123; y<=183;y+=5){ LCD_Bitmap(51, y, 5, 5, ladrillo_gris); }
+  for(int y = 133; y<=153;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
+  for(int y = 133; y<=153;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
+  for(int y = 108; y<=128;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
+  for(int y = 146; y<=181;y+=5){ LCD_Bitmap(266, y, 5, 5, ladrillo_gris); }
+  for(int y = 186; y<=221;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
+  for(int y = 191; y<=201;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
+  for(int y = 191; y<=221;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
+
+  // bloques horizontales
+  for(int x = 53; x<=78;x+=5){ LCD_Bitmap(x, 51, 5, 5, ladrillo_gris); }
+  for(int x = 103; x<=213;x+=5){ LCD_Bitmap(x, 51, 5, 5, ladrillo_gris); }
+  for(int x = 1; x<=51;x+=5){ LCD_Bitmap(x, 118, 5, 5, ladrillo_gris); }
+  for(int x = 266; x<=316;x+=5){ LCD_Bitmap(x, 118, 5, 5, ladrillo_gris); }
+  for(int x = 83; x<=143;x+=5){ LCD_Bitmap(x, 78, 5, 5, ladrillo_gris); }
+  for(int x = 173; x<=233;x+=5){ LCD_Bitmap(x, 78, 5, 5, ladrillo_gris); }
+  for(int x = 83; x<=143;x+=5){ LCD_Bitmap(x, 158, 5, 5, ladrillo_gris); }
+  for(int x = 173; x<=233;x+=5){ LCD_Bitmap(x, 158, 5, 5, ladrillo_gris); }
+  for(int x = 103; x<=213;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
+  for(int x = 238; x<=263;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
 }
