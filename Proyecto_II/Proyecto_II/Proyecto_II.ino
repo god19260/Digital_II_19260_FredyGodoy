@@ -787,7 +787,7 @@ void Movimiento(String jugador){ // J1, J2
         pos_y = py4;
         pos_x = px4;
       }
-      LCD_Clear(0x0000);
+      FillRect(1,15,320,210,0x000);
       Mapa();
     } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
       do{
@@ -803,7 +803,7 @@ void Movimiento(String jugador){ // J1, J2
         pos_y = py4;
         pos_x = px4;
       }
-      LCD_Clear(0x0000);
+      FillRect(1,15,320,210,0x000);
       Mapa();
     } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
       do{
@@ -819,7 +819,7 @@ void Movimiento(String jugador){ // J1, J2
         pos_y = py4;
         pos_x = px4;
       }
-      LCD_Clear(0x0000);
+      FillRect(1,15,320,210,0x000);
       Mapa();
     } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
       do{
@@ -835,7 +835,7 @@ void Movimiento(String jugador){ // J1, J2
         pos_y = py1;
         pos_x = px1;
       }
-      LCD_Clear(0x0000);
+      FillRect(1,15,320,210,0x000);
       Mapa();
     }
   }
@@ -1230,14 +1230,13 @@ int Restriccion_Movimiento(int x,int y){
 boolean Restriccion_Linterna (int x, int y){
   int valido = 1;
   // bordes  pantalla
-  if (x == 0 || x == 320){
+  if (x == 0 || x == 320-10){
     valido = 0;
-  }else if(y == 15 || y == 240-10){
+  }else if(y == 15 || y == 240-15){
     valido = 0;
   }
-  
   // Horizontales 
-  for(int i = 53; i<=78;i++){
+  for(int i = 53; i<=82;i++){
     if(i == x){
         for(int t = 51; t<=51;t++){
           if(y==t){
@@ -1246,7 +1245,7 @@ boolean Restriccion_Linterna (int x, int y){
         } 
       }
   }
-  for(int i = 103; i<=213;i++){
+  for(int i = 103; i<=217;i++){
       if(i == x){
         for(int t = 51; t<=51;t++){
           if(y==t){
@@ -1255,7 +1254,7 @@ boolean Restriccion_Linterna (int x, int y){
         }
       }
     }
-  for(int i = 1; i<= 51;i++){
+  for(int i = 1; i<= 55;i++){
       if(i == x){
         for(int t = 118; t<=118;t++){
           if(y==t){
@@ -1264,16 +1263,16 @@ boolean Restriccion_Linterna (int x, int y){
         } 
       }
     }
-  for(int i = 266; i<= 316;i++){
+  for(int i = 266; i<= 320;i++){
       if(i == x){
-        for(int t = 118-10; t<=118+5;t++){
+        for(int t = 118; t<=118;t++){
           if(y==t){
             valido = 0; 
           }
         } 
       }
     }
-  for(int i = 83; i<= 143;i++){
+  for(int i = 83; i<= 147;i++){
       if(i == x){
         for(int t = 78; t<=78;t++){
           if(y==t){
@@ -1282,7 +1281,7 @@ boolean Restriccion_Linterna (int x, int y){
         }
       }
     }
-  for(int i = 173; i<= 233; i++){
+  for(int i = 173; i<= 237; i++){
       if(i == x){
         for(int t = 78; t<=78;t++){
           if(y==t){
@@ -1291,7 +1290,7 @@ boolean Restriccion_Linterna (int x, int y){
         } 
       }
     }
-  for(int i = 83; i<= 143;i++){
+  for(int i = 83; i<= 147;i++){
       if(i == x){
         for(int t = 158; t<=158;t++){
           if(y==t){
@@ -1300,7 +1299,7 @@ boolean Restriccion_Linterna (int x, int y){
         }
       }
     }
-  for(int i = 173; i<= 233;i++){
+  for(int i = 173; i<= 237;i++){
       if(i == x){
         for(int t = 158; t<=158;t++){
           if(y==t){
@@ -1309,7 +1308,7 @@ boolean Restriccion_Linterna (int x, int y){
         } 
       }
     }
-  for(int i = 103; i<= 213;i++){
+  for(int i = 103; i<= 217;i++){
       if(i == x){
         for(int t = 186; t<=186;t++){
           if(y==t){
@@ -1318,7 +1317,7 @@ boolean Restriccion_Linterna (int x, int y){
         } 
       }
     }
-  for(int i = 238; i<= 263;i++){
+  for(int i = 238; i<= 267;i++){
       if(i == x){
         for(int t = 186; t<=186;t++){
           if(y==t){
@@ -1329,7 +1328,7 @@ boolean Restriccion_Linterna (int x, int y){
     }
 
   // Verticales
-  for(int i = 16; i<=51;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 16; i<=59;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 78; t<=78;t++){
         if(x==t){
@@ -1338,7 +1337,7 @@ boolean Restriccion_Linterna (int x, int y){
       }      
     }
   }
-  for(int i = 36; i<=46;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 36; i<=50;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 158; t<=158;t++){
         if(x==t){
@@ -1347,7 +1346,7 @@ boolean Restriccion_Linterna (int x, int y){
       }      
     }
   }
-  for(int i = 16; i<=51;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 16; i<=55;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 238; t<=238;t++){
         if(x==t){
@@ -1356,7 +1355,7 @@ boolean Restriccion_Linterna (int x, int y){
       }     
     }
   }
-  for(int i = 56; i<=91;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 56; i<=95;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 51; t<=51;t++){
         if(x==t){
@@ -1365,7 +1364,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 83; i<=103;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 83; i<=107;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 78; t<=78;t++){
         if(x==t){
@@ -1374,7 +1373,7 @@ boolean Restriccion_Linterna (int x, int y){
       }    
     }
   }
-  for(int i = 83; i<=103;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 83; i<=107;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 238; t<=238;t++){
         if(x==t){
@@ -1383,7 +1382,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 53; i<=118;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 53; i<=122;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 266; t<=266;t++){
         if(x==t){
@@ -1392,7 +1391,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 123; i<=183;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 123; i<=187;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 51; t<=51;t++){
         if(x==t){
@@ -1401,7 +1400,7 @@ boolean Restriccion_Linterna (int x, int y){
       }           
     }
   }
-  for(int i = 133; i<=153;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 133; i<=157;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 78; t<=78;t++){
         if(x==t){
@@ -1410,7 +1409,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 133; i<=153;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 133; i<=157;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 238; t<=238;t++){
         if(x==t){
@@ -1419,7 +1418,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 108; i<=128;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 108; i<=132;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 158; t<=158;t++){
         if(x==t){
@@ -1428,7 +1427,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 146; i<=181;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 146; i<=185;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 266; t<=266;t++){
         if(x==t){
@@ -1437,7 +1436,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 186; i<=221;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 186; i<=225;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 78; t<=78;t++){
         if(x==t){
@@ -1446,7 +1445,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 191; i<=201;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 191; i<=205;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 158; t<=158;t++){
         if(x==t){
@@ -1455,7 +1454,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
-  for(int i = 191; i<=221;i++){ // vertical derecha - 10,  vertical izquierda + 5
+  for(int i = 191; i<=225;i++){ // vertical derecha - 10,  vertical izquierda + 5
     if(i == y){
       for(int t = 238; t<=238;t++){
         if(x==t){
@@ -1464,6 +1463,7 @@ boolean Restriccion_Linterna (int x, int y){
       }
     }
   }
+
   return valido;
 }
 void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = izquierda 4 = abajo
@@ -1472,6 +1472,15 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
   int Localidad;
   int i = x;
   int e = y;
+  if(last_linterna_x<0)
+    last_linterna_x = 0;
+  else if(320<last_linterna_x)
+    last_linterna_x = 320;
+  if(last_linterna_y<0)
+    last_linterna_y = 16;
+  else if(320<last_linterna_y)
+    last_linterna_y = 225;
+    
   // Borrar rastro de la ultima posición
   if(last_direccion == 1){
     if(direccion != 1 && direccion != 0){
