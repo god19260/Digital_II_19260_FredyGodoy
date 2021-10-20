@@ -57,11 +57,18 @@ boolean Mostrar;
 int vidaa = 100;
 int pos_x = 20;
 int pos_y = 20;
-int Teletransportar = 0;
 int x_Contrario = 30;
 int y_Contrario = 50;
 // variables funcion linterna
 int last_direccion,last_linterna_x,last_linterna_y; 
+// variables funcion cofre_loot
+int Cofre_Arma;
+int Cofre_Balas;
+// variables funcion habilitar_armas/balas
+int Interactuar = 0;
+int ArmaEnable = 0;
+int BalasEnable = 0;
+int Balas = 0;
 //--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
 String Jugador = "";
 String Contrincante = "";
@@ -125,14 +132,11 @@ void setup() {
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
   LCD_Clear(0x00);
   Mapa();
-  Menu("J1");
+  Cofres_Loot ();
+  //Menu("J1");
   //LCD_Bitmap(0, 30, 320, 180, Menu_J1);
 
-}
-//***************************************************************************************************************************************
-// Loop
-//***************************************************************************************************************************************
-void loop() {
+  
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // ~~~         J1 = niño             J2 = doctor              ~~~
   
@@ -147,6 +151,11 @@ void loop() {
   // ~~~                                                        ~~~
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+}
+//***************************************************************************************************************************************
+// Loop
+//***************************************************************************************************************************************
+void loop() {
   Sw_Flags();
   if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
     Sw1_Flag = 1;
@@ -158,14 +167,17 @@ void loop() {
     Sw2_Flag = 1;
     // Accion del segundo boton
     //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
-    //LCD_Clear(0x0000);
-    //Mapa();
+    if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
+      // funcion disparar
+      Balas-=1;
+      LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
+    }
     delay(10);
   }
   if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
     SwJ_Flag = 1;
     // Accion del boton Joystick
-    Teletransportar = 1;
+    Interactuar = 1;
   }
   Movimiento(Jugador);
   // Prueba de funciones
@@ -769,10 +781,28 @@ void Movimiento(String jugador){ // J1, J2
   int py4 = 206;
   int valor_random;  
   int direccion;
-    
+
+  int cx1 = 1;
+  int cy1 = 16;
+  int cx2 = 83;
+  int cy2 = 16;
+  int cx3 = 220;
+  int cy3 = 16;
+  int cx4 = 303;
+  int cy4 = 16;
+  int cx5 = 1;
+  int cy5 = 123;
+  int cx6 = 140;
+  int cy6 = 191;
+  int cx7 = 163;
+  int cy7 = 191;
+  int cx8 = 303;
+  int cy8 = 123;
+  
   // Portales
-  if(Teletransportar == 1){
-    Teletransportar = 0;
+  if(Interactuar == 1){
+    randomSeed(analogRead(Joystick_X*Joystick_Y));
+    Interactuar = 0;
     if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
       do{
         valor_random=random(1,5);
@@ -838,6 +868,74 @@ void Movimiento(String jugador){ // J1, J2
       FillRect(1,15,320,210,0x000);
       Mapa();
     }
+    //------------------------------------------------------------------------------------------------    
+    //COFRES
+    else if (pos_x >= cx1 && pos_x <= cx1+17 && pos_y >= cy1 && pos_y <= cy1+7){
+      if(Cofre_Arma == 1){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 1){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }else if (pos_x >= cx2 && pos_x <= cx2+17 && pos_y >= cy2 && pos_y <= cy2+7){
+      if(Cofre_Arma == 2){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 2){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }else if (pos_x >= cx3 && pos_x <= cx3+17 && pos_y >= cy3 && pos_y <= cy3+7){
+      if(Cofre_Arma == 3){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 3){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }else if (pos_x >= cx4 && pos_x <= cx4+17 && pos_y >= cy4 && pos_y <= cy4+7){
+      if(Cofre_Arma == 4){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 4){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }else if (pos_x >= cx5 && pos_x <= cx5+17 && pos_y >= cy5 && pos_y <= cy5+7){
+      if(Cofre_Arma == 5){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 5){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }else if (pos_x >= cx6 && pos_x <= cx6+17 && pos_y >= cy6 && pos_y <= cy6+7){
+      if(Cofre_Arma == 6){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 6){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }else if (pos_x >= cx7 && pos_x <= cx7+17 && pos_y >= cy7 && pos_y <= cy7+7){
+      if(Cofre_Arma == 7){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 7){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }else if (pos_x >= cx8 && pos_x <= cx8+17 && pos_y >= cy8 && pos_y <= cy8+7){
+      if(Cofre_Arma == 8){
+        //HABILITAR EL ARMA AL JUAGDOR
+        Habilitar_Arma();
+      } else if(Cofre_Balas == 8){
+        //HABILITAR LAS BALAS AL JUAGDOR
+        Habilitar_Balas();
+      } 
+    }
+   // -----------------------------------------------------------------------------------------------   
   }
   direccion = 0;
   // Cambio de valor en la posición 
@@ -1685,4 +1783,96 @@ void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del ju
     }
   }
     
+}
+void Cofres_Loot (){
+  
+  int random1, random2;
+
+  //OBTENCION DE LOS 2 COFRES RANDOM
+  int a = 0;
+  randomSeed(analogRead(Joystick_X*Joystick_Y));
+  //random1 = random(1,6);
+  do{
+    a-=1;
+    random1 = random(1,9);
+  }while(a>0);
+  do{
+    a = random1;
+    random2 = random(1,9);
+  }while(random2 == random1 && a>0);
+
+  switch(random1){
+    case 1:
+      Cofre_Arma = 1;
+      break;
+    case 2:
+      Cofre_Arma = 2;
+      break;
+    case 3:
+      Cofre_Arma = 3;
+      break;
+    case 4:
+      Cofre_Arma = 4;
+      break;
+    case 5:
+      Cofre_Arma = 5;
+      break;
+    case 6:
+      Cofre_Arma = 6;
+      break;
+    case 7:
+      Cofre_Arma = 7;
+      break;
+    case 8:
+      Cofre_Arma = 8;
+      break;
+  }  
+
+  switch(random2){
+    case 1:
+      Cofre_Balas = 1;
+      break;
+    case 2:
+      Cofre_Balas = 2;
+      break;
+    case 3:
+      Cofre_Balas = 3;
+      break;
+    case 4:
+      Cofre_Balas = 4;
+      break;
+    case 5:
+      Cofre_Balas = 5;
+      break;
+    case 6:
+      Cofre_Balas = 6;
+      break;
+    case 7:
+      Cofre_Balas = 7;
+      break;
+    case 8:
+      Cofre_Balas = 8;
+      break;
+  }
+
+  Serial.println(random1);
+  Serial.println(random2);
+}
+
+void Habilitar_Arma (){
+  if (ArmaEnable == 0){
+    ArmaEnable = 1;
+    LCD_Sprite(270, 3, 10, 10, ArmaImagen, 1, 0, 0, 0);
+    Serial.println("arma habilitada");
+  }
+}
+
+void Habilitar_Balas (){
+  if (BalasEnable == 0){
+    BalasEnable = 1;
+    Balas = 8;
+    LCD_Sprite(290, 3, 10, 10, BalasImagen, 1, 0, 0, 0);
+    LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
+    Serial.println("balas habilitada");
+  }
 }
