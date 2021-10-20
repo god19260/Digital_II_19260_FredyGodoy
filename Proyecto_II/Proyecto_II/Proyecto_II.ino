@@ -69,9 +69,12 @@ int Interactuar = 0;
 int ArmaEnable = 0;
 int BalasEnable = 0;
 int Balas = 0;
+//Variables funcion teleportar
+int Llaves = 2;
 //--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
 String Jugador = "";
 String Contrincante = "";
+int Disparar;
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -133,6 +136,8 @@ void setup() {
   LCD_Clear(0x00);
   Mapa();
   Cofres_Loot ();
+  LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+  LCD_Sprite(310, 3, 10, 10, LlavesImagen, 1, 0, 0, 0);
   //Menu("J1");
   //LCD_Bitmap(0, 30, 320, 180, Menu_J1);
 
@@ -168,7 +173,7 @@ void loop() {
     // Accion del segundo boton
     //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
     if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
-      // funcion disparar
+      Disparar = 1;
       Balas-=1;
       LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
     }
@@ -803,71 +808,89 @@ void Movimiento(String jugador){ // J1, J2
   if(Interactuar == 1){
     randomSeed(analogRead(Joystick_X*Joystick_Y));
     Interactuar = 0;
-    if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
-      do{
-        valor_random=random(1,5);
-      }while(valor_random == 1);
-      if(valor_random == 2){
-        pos_y = py2;
-        pos_x = px2;
-      } else if(valor_random == 3){
-        pos_y = py3;
-        pos_x = px3;
-      } else if(valor_random == 4){
-        pos_y = py4;
-        pos_x = px4;
+    
+      if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 1);
+        if (Llaves > 0){
+          Llaves-=1;
+          LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 2){
+            pos_y = py2;
+            pos_x = px2;
+          } else if(valor_random == 3){
+            pos_y = py3;
+            pos_x = px3;
+          } else if(valor_random == 4){
+            pos_y = py4;
+            pos_x = px4;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
+      } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 2);
+        if (Llaves > 0){
+          Llaves-=1;
+          LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 1){
+            pos_y = py1;
+            pos_x = px1;
+          } else if(valor_random == 3){
+            pos_y = py3;
+            pos_x = px3;
+          } else if(valor_random == 4){
+            pos_y = py4;
+            pos_x = px4;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
+      } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 3);
+        if (Llaves > 0){
+          Llaves-=1;
+          LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 2){
+            pos_y = py2;
+            pos_x = px2;
+          } else if(valor_random == 1){
+            pos_y = py1;
+            pos_x = px1;
+          } else if(valor_random == 4){
+            pos_y = py4;
+            pos_x = px4;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
+      } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 4);
+        if (Llaves > 0){
+          Llaves-=1;
+          LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 2){
+            pos_y = py2;
+            pos_x = px2;
+          } else if(valor_random == 3){
+            pos_y = py3;
+            pos_x = px3;
+          } else if(valor_random == 1){
+            pos_y = py1;
+            pos_x = px1;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
       }
-      FillRect(1,15,320,210,0x000);
-      Mapa();
-    } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
-      do{
-        valor_random=random(1,5);
-      }while(valor_random == 2);
-      if(valor_random == 1){
-        pos_y = py1;
-        pos_x = px1;
-      } else if(valor_random == 3){
-        pos_y = py3;
-        pos_x = px3;
-      } else if(valor_random == 4){
-        pos_y = py4;
-        pos_x = px4;
-      }
-      FillRect(1,15,320,210,0x000);
-      Mapa();
-    } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
-      do{
-        valor_random=random(1,5);
-      }while(valor_random == 3);
-      if(valor_random == 2){
-        pos_y = py2;
-        pos_x = px2;
-      } else if(valor_random == 1){
-        pos_y = py1;
-        pos_x = px1;
-      } else if(valor_random == 4){
-        pos_y = py4;
-        pos_x = px4;
-      }
-      FillRect(1,15,320,210,0x000);
-      Mapa();
-    } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
-      do{
-        valor_random=random(1,5);
-      }while(valor_random == 1);
-      if(valor_random == 2){
-        pos_y = py2;
-        pos_x = px2;
-      } else if(valor_random == 3){
-        pos_y = py3;
-        pos_x = px3;
-      } else if(valor_random == 1){
-        pos_y = py1;
-        pos_x = px1;
-      }
-      FillRect(1,15,320,210,0x000);
-      Mapa();
-    }
+    
     //------------------------------------------------------------------------------------------------    
     //COFRES
     else if (pos_x >= cx1 && pos_x <= cx1+17 && pos_y >= cy1 && pos_y <= cy1+7){
@@ -1328,9 +1351,9 @@ int Restriccion_Movimiento(int x,int y){
 boolean Restriccion_Linterna (int x, int y){
   int valido = 1;
   // bordes  pantalla
-  if (x == 0 || x == 320-10){
+  if (x < 0 || x > 320){
     valido = 0;
-  }else if(y == 15 || y == 240-15){
+  }else if(y < 16 || y > 240-15){
     valido = 0;
   }
   // Horizontales 
@@ -1570,13 +1593,15 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
   int Localidad;
   int i = x;
   int e = y;
+  Accion_Disparar();
+  
   if(last_linterna_x<0)
     last_linterna_x = 0;
   else if(320<last_linterna_x)
     last_linterna_x = 320;
-  if(last_linterna_y<0)
+  if(last_linterna_y<16)
     last_linterna_y = 16;
-  else if(320<last_linterna_y)
+  else if(225<last_linterna_y)
     last_linterna_y = 225;
     
   // Borrar rastro de la ultima posición
@@ -1697,10 +1722,10 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
 
 void Mapa_Segmentado(int x, int y){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
   // bloques verticales
-  Serial.print("x: ");
-  Serial.print(x);
-  Serial.print("  y:");
-  Serial.println(y);
+//  Serial.print("x: ");
+//  Serial.print(x);
+//  Serial.print("  y:");
+//  Serial.println(y);
 
   if(x<78+5+15 && y<91+5+15){
     for(int y = 56; y<=91;y+=5){ LCD_Bitmap(51, y, 5, 5, ladrillo_gris); }
@@ -1874,5 +1899,35 @@ void Habilitar_Balas (){
     LCD_Sprite(290, 3, 10, 10, BalasImagen, 1, 0, 0, 0);
     LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
     Serial.println("balas habilitada");
+  }
+}
+
+void Accion_Disparar(void){
+  if(Disparar == 1){ 
+    if(last_direccion == 1){// Disparar a la derecha 
+    FillRect(pos_x+10,pos_y+3,7,5,0xF900);
+    Disparar = 0;
+    Serial.println("Se Disparo a la derecha");
+    delay(300);
+    FillRect(pos_x+10,pos_y+3,7,5,0x8c00);
+    } else if(last_direccion == 2){ // Disparar arriba 
+      FillRect(pos_x+2,pos_y-7,4,7,0xF900);
+      Disparar = 0;
+      Serial.println("Se Disparo para arriba");
+      delay(300);
+      FillRect(pos_x+2,pos_y-7,4,7,0x8c00);
+    }else if(last_direccion == 3){ // Disparar a la izquierda 
+      FillRect(pos_x-7,pos_y+3,7,5,0xF900);
+      Disparar = 0;
+      Serial.println("Se Disparo a la izquierda");
+      delay(300);
+      FillRect(pos_x-7,pos_y+3,7,5,0x8c00);
+    }else if(last_direccion == 4){ // Disparar abajo
+      FillRect(pos_x+2,pos_y+10,4,7,0xF900);
+      Disparar = 0;
+      Serial.println("Se Disparo para abajo");
+      delay(300);
+      FillRect(pos_x+2,pos_y+10,4,7,0x8c00);
+    }
   }
 }
