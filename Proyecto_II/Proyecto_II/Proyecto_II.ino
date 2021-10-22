@@ -164,7 +164,7 @@ void setup() {
 // Loop
 //***************************************************************************************************************************************
 void loop() {
-  Movimiento(Jugador);
+  Movimiento(Jugador);  
   currentMillis = millis();
   if (currentMillis - previousMillis >= intervalo) {
     previousMillis = currentMillis;
@@ -1036,6 +1036,24 @@ void Movimiento(String jugador){ // J1, J2
       LCD_Sprite(copia_x, pos_y, 10, 10, J2, 3, 2, 0, 0);
     }
   } 
+  // Borrar rastro de la ultima posición
+  if(last_direccion == 1){
+    if(direccion != 1 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
+    }
+  } else if(last_direccion == 2){
+    if(direccion != 2 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
+    }
+  } else if(last_direccion == 3){
+    if(direccion != 3 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
+    }
+  } else if(last_direccion == 4){
+    if(direccion != 4 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
+    }
+  }
   delay(10);
 }
 
@@ -1610,25 +1628,7 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
     last_linterna_y = 16;
   else if(225<last_linterna_y)
     last_linterna_y = 225;
-    
-  // Borrar rastro de la ultima posición
-  if(last_direccion == 1){
-    if(direccion != 1 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
-    }
-  } else if(last_direccion == 2){
-    if(direccion != 2 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
-    }
-  } else if(last_direccion == 3){
-    if(direccion != 3 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
-    }
-  } else if(last_direccion == 4){
-    if(direccion != 4 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
-    }
-  }
+  
   
   if(direccion == 1){
    // Movimiento a la derecha 
