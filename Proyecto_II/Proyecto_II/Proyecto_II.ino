@@ -175,7 +175,8 @@ void loop() {
   if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
     Sw1_Flag = 1;
     // Accion del primer boton
-    LCD_Bitmap(0, 0, 320, 240, Mapa_2);
+    //LCD_Bitmap(0, 0, 320, 240, Mapa_2);
+    Cargar_Imagen("INTRO.TXT");
     delay(10);
   }
   if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
@@ -630,7 +631,6 @@ void Cargar_Imagen(String nombre) {
     unsigned int y = 0;
     unsigned long Contador_General = 0;
     unsigned int Ultima_Posicion = 0;
-    unsigned int Fila = 0;
     unsigned int Size = myFile.size();
     
     if(nombre == "casa.txt"){
@@ -662,19 +662,14 @@ void Cargar_Imagen(String nombre) {
         y += espacio;
         x = 0;
         Contador_General = 0;
-        if(y == Fila+240){
-          Ultima_Posicion = myFile.position();  
-        }
-        
         //Ultima_Posicion = myFile.position();
       }else{
         Contador_General++;  
         if(y == 240){
-          Fila++;
           y = 0;
-          myFile.seek(Ultima_Posicion+2); // Empezar a leer desde la segunda linea de pixel
         }
       }
+      //Serial.println(temp);
       
     }
     // Mostrar la imagen
