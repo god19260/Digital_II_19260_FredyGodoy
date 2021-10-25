@@ -39,6 +39,8 @@
 #define Joystick_X PE_3
 #define Joystick_Y PE_2
 #define Joystick_Push PA_7
+
+const int chipSelect = PA_3;
  
 int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};
 File myFile;
@@ -55,10 +57,10 @@ int SwJ_Flag = 0;  // Switch Joystick
 int N_Imagen=0;
 boolean Mostrar;
 int vidaa = 100;
-int pos_x = 20;
-int pos_y = 20;
-int x_Contrario = 30;
-int y_Contrario = 50;
+int pos_x = 212;
+int pos_y = 118;
+int x_Contrario = 103;
+int y_Contrario = 118;
 // variables funcion linterna
 int last_direccion,last_linterna_x,last_linterna_y; 
 // variables funcion cofre_loot
@@ -78,6 +80,26 @@ int direccion;
 int Disparar;
 const long intervalo = 100;
 unsigned long previousMillis,currentMillis;
+
+int Vida_Dr=100;
+int Vida_Presa=100;
+int Estado = 1;
+int Ready_J1 = 0;
+int Ready_J2 = 0;
+
+int ColorAccion;
+int DatosRecibidos1;
+int DatosRecibidos2;
+int DatosRecibidos3;
+
+int UltimaPocicion;
+int posicion_y;
+int primerCero;
+int char1;
+int char2;
+int x;
+int x_seg_ciclo;
+extern uint8_t MatrizFondo[];
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -109,21 +131,23 @@ void setup() {
   
   SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
   Serial.begin(9600);
+  Serial2.begin(9600);
   GPIOPadConfigSet(GPIO_PORTB_BASE, 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPU);
   Serial.println("Start");
+  Serial2.println("Start");
   LCD_Init();
   LCD_Clear(0x00);
 
   // SD
   SPI.setModule(0);
   pinMode(PA_3, OUTPUT); // CS pin modulo SD
-  Serial.println("Seleccione 1:Mario, 2:Guitarra, 3:Einstein");
+  //Serial.println("Seleccione 1:Mario, 2:Guitarra, 3:Einstein");
   if (!SD.begin(PA_3)) {
     Serial.println("initialization failed!");
     return;
   }
   root = SD.open("/");
-  printDirectory(root, 0);
+  //printDirectory(root, 0);
   //-------------------------------------------------------------
 
   //FillRect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int c)
@@ -138,11 +162,12 @@ void setup() {
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
   LCD_Clear(0x00);
   //Mapa();
-  Cofres_Loot ();
-  LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
-  LCD_Sprite(310, 3, 10, 10, LlavesImagen, 1, 0, 0, 0);
-  //Menu("J1");
+//  Cofres_Loot ();
+//  LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+//  LCD_Sprite(310, 3, 10, 10, LlavesImagen, 1, 0, 0, 0);
+//  //Menu("J1");
   //LCD_Bitmap(0, 30, 320, 180, Menu_J1);
+//  Informacion_J2 (Vida_Dr);
 
   
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -151,9 +176,11 @@ void setup() {
   Jugador = "J1";
   
   if(Jugador == "J1"){
-    Contrincante = "J2"; 
+    Contrincante = "J2";
+    ColorAccion =  0xF900;
   }else{
     Contrincante = "J1";
+    ColorAccion =  0xF04c0;
   }
   
   // ~~~                                                        ~~~
@@ -164,38 +191,175 @@ void setup() {
 // Loop
 //***************************************************************************************************************************************
 void loop() {
-  Movimiento(Jugador);  
-  currentMillis = millis();
-  if (currentMillis - previousMillis >= intervalo) {
-    previousMillis = currentMillis;
-    Linterna(pos_x,pos_y,direccion);
-    Mapa();
+/*Estados:
+  1: Menú de espera de ambos jugadores
+  2: Reproducción intro
+  3: Jugando
+  4: Gana J1 (niño)
+  5: Gana J2 (Dr)*/
+  if (Estado == 1){
+    Estado_1();
   }
-  Sw_Flags();
-  if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
-    Sw1_Flag = 1;
-    // Accion del primer boton
-    //LCD_Bitmap(0, 0, 320, 240, Mapa_2);
-    Cargar_Imagen("INTRO.TXT");
-    delay(10);
-  }
-  if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
-    Sw2_Flag = 1;
-    // Accion del segundo boton
-    //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
-    if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
-      Disparar = 1;
-      Balas-=1;
-      LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
-    }
-    delay(10);
-  }
-  if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
-    SwJ_Flag = 1;
-    // Accion del boton Joystick
-    Interactuar = 1;
+
+  else if (Estado == 2){
+    Estado_2();
   }
   
+  else if (Estado == 3){
+//    Serial2.println(String(pos_x)+","+String(pos_y)+",");
+//    if (Serial2.available()){
+//      DatosRecibidos1 = Serial2.read();                //Detecta primer caracter
+//      delay(5);
+//      DatosRecibidos2 = Serial2.read();                //Detecta segundo caracter
+//      delay(5);
+//      if (DatosRecibidos2 == ','){                     //Si segundo caracter es ',' va a A si no va a B
+//        x_Contrario = ConversionASCII(DatosRecibidos1);// A: x = caracter1
+//      }else {
+//        DatosRecibidos3 = Serial2.read();              // B: Detecta tercer caracter
+//        delay(5);
+//        if (DatosRecibidos3 == ','){                   //Si tercer caracter es ',' va a C si no va a D
+//          x_Contrario = ConversionASCII(DatosRecibidos1)*10 + ConversionASCII(DatosRecibidos2);// C: x = caracter1 * 10 + caracter2
+//        }else{
+//          x_Contrario = ConversionASCII(DatosRecibidos1)*100 + ConversionASCII(DatosRecibidos2)*10 + ConversionASCII(DatosRecibidos3);// D: x = caracter1 * 100 + caracter2 * 10 + caracter 3
+//          delay(5);
+//        }
+//      }
+//      DatosRecibidos1 = Serial2.read();
+//      delay(5);
+//      DatosRecibidos2 = Serial2.read();                //Detecta segundo caracter
+//      delay(5);
+//      if (DatosRecibidos2 == ','){
+//        y_Contrario = ConversionASCII(DatosRecibidos1);
+//      }else {
+//        DatosRecibidos3 = Serial2.read();
+//        delay(5);
+//        if (DatosRecibidos3 == ','){
+//          y_Contrario = ConversionASCII(DatosRecibidos1)*10 + ConversionASCII(DatosRecibidos2);
+//        }else{
+//          y_Contrario = ConversionASCII(DatosRecibidos1)*100 + ConversionASCII(DatosRecibidos2)*10 + ConversionASCII(DatosRecibidos3);
+//          delay(5);
+//        }
+//      }
+//    }
+      //Serial.println(DatosRecibidos);
+      //Serial.println(x_Contrario);
+      //Serial.println(y_Contrario);
+      
+
+      //Serial.println(pos_x);
+      //Serial.println(pos_y);
+      
+    Jugador_Contrario(Jugador , x_Contrario, y_Contrario);
+      
+    
+    if (Vida_Dr == 0){
+      Serial.println("Muere Dr");
+      ArmaEnable = 0;
+      BalasEnable = 0;
+      Vida_Dr = 100;
+      Balas = 0;
+      Llaves = 2;
+      Estado = 4; 
+      Disparar = 0;
+    }else if (Balas == 0 && Vida_Dr > 0 && ArmaEnable == 1 && BalasEnable == 1){
+      Serial.println("Muere niño");
+      ArmaEnable = 0;
+      BalasEnable = 0;
+      Vida_Dr = 100;
+      Balas = 0;
+      Llaves = 2;
+      Estado = 5;
+      Disparar = 0;
+    }else if (Vida_Presa < 0){
+      Serial.println("Muere niño");
+      ArmaEnable = 0;
+      BalasEnable = 0;
+      Vida_Presa = 100;
+      Balas = 0;
+      Llaves = 2;
+      Estado = 5; 
+      Disparar = 0;
+    }
+    
+    Movimiento(Jugador);
+    currentMillis = millis();
+    if (currentMillis - previousMillis >= intervalo) {
+      previousMillis = currentMillis;
+      Linterna(pos_x,pos_y,direccion);
+      Mapa();
+    }
+    Sw_Flags();
+    if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
+      Sw1_Flag = 1;
+      // Accion del primer boton
+      LCD_Bitmap(0, 0, 320, 240, Mapa_2);
+      delay(10);
+    }
+    if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
+      Sw2_Flag = 1;
+      // Accion del segundo boton
+      //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
+      if(Jugador == "J1"){ 
+        if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
+          Disparar = 1;
+          Balas-=1;
+          LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
+        }
+      }
+      else{
+        Disparar = 1;
+      }
+      delay(10);
+    }
+    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+      SwJ_Flag = 1;
+      // Accion del boton Joystick
+      Interactuar = 1;
+    }
+  }
+
+  else if (Estado == 4){
+    LCD_Clear(0x00);
+    //Función para imprimir imagen J1 WIN
+
+    Cargar_Imagen("J1_WIN.TXT");
+
+    LCD_Print("Gana Chico Abducido", 10, 200, 2, 0xffff, NULL);
+    LCD_Print("PRESIONA EL JOYSTICK PARA CONTINUAR", 25, 220, 1, 0xffff, NULL);
+    
+    Serial.println("Gana J1");
+    int a = 1;
+    while (a){
+      if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+        SwJ_Flag = 1;
+        // Accion del boton Joystick
+        a = 0;
+      }
+    }
+    LCD_Clear(0x00);
+    Estado = 1;
+  }
+
+  else if (Estado == 5){
+    LCD_Clear(0x00);
+    //Función para imprimir imagen J2 WIN
+    Cargar_Imagen("J2_WIN.TXT");
+
+    LCD_Print("Gana Dr Zombie ", 50, 200, 2, 0xffff, NULL);
+    LCD_Print("PRESIONA EL JOYSTICK PARA CONTINUAR", 25, 220, 1, 0xffff, NULL);
+    
+    Serial.println("Gana J2");
+    int a = 1;
+    while (a){
+      if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+        SwJ_Flag = 1;
+        // Accion del boton Joystick
+        a = 0;
+      }
+    }
+    LCD_Clear(0x00);
+    Estado = 1;
+  }
   // Prueba de funciones
   
 }
@@ -745,7 +909,11 @@ void Mapa(void){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
 
 void Informacion_J2(int vida){
   //int barra = map(vida,0,100,130,200);
-  LCD_Print("Vida del Doctor", 0, 0, 1, 0xffff, 0x0000);
+  if (Jugador == "J1"){
+    LCD_Print("Vida del Doctor", 0, 0, 1, 0xffff, 0x0000);
+  }else {
+    LCD_Print("Vida de la Presa", 0, 0, 1, 0xffff, 0x0000);
+  }
   // Rojo 0x19e92e, Verde 0xed1c24
   H_line(129,3,101,0x5419);
   H_line(129,9,101,0x5419);
@@ -766,6 +934,30 @@ void Informacion_J2(int vida){
   }
   //for(int x = 130; x<=barra;x+=5){ LCD_Bitmap(x, 4, 5, 5, cuadro_vida); }
 }
+
+//void Informacion_J1(int vida){
+//  //int barra = map(vida,0,100,130,200);
+//  LCD_Print("Vida de la Presa", 0, 0, 1, 0xffff, 0x0000);
+//  // Rojo 0x19e92e, Verde 0xed1c24
+//  H_line(129,3,101,0x5419);
+//  H_line(129,9,101,0x5419);
+//  V_line(129,3,6,0x5419);
+//  V_line(231,3,6,0x5419);
+//  H_line(130, 4, 100, 0x00);
+//  H_line(130, 5, 100, 0x00);
+//  H_line(130, 6, 100, 0x00);
+//  H_line(130, 7, 100, 0x00);
+//  H_line(130, 8, 100, 0x00);
+//  
+//  if(vida >= 0){
+//    H_line(130, 4, vida, 0xE800);
+//    H_line(130, 5, vida, 0xE800);
+//    H_line(130, 6, vida, 0xE800);
+//    H_line(130, 7, vida, 0xE800);
+//    H_line(130, 8, vida, 0xE800); 
+//  }
+//  //for(int x = 130; x<=barra;x+=5){ LCD_Bitmap(x, 4, 5, 5, cuadro_vida); }
+//}
 
 void Menu(String J){
   Serial.println("Menu_1");
@@ -812,7 +1004,7 @@ void Movimiento(String jugador){ // J1, J2
   if(Interactuar == 1){
     randomSeed(analogRead(Joystick_X*Joystick_Y));
     Interactuar = 0;
-    
+    if(Jugador == "J1"){
       if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
         do{
           valor_random=random(1,5);
@@ -895,74 +1087,159 @@ void Movimiento(String jugador){ // J1, J2
         }
       }
     
-    //------------------------------------------------------------------------------------------------    
-    //COFRES
-    else if (pos_x >= cx1 && pos_x <= cx1+17 && pos_y >= cy1 && pos_y <= cy1+7){
-      if(Cofre_Arma == 1){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 1){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
-    }else if (pos_x >= cx2 && pos_x <= cx2+17 && pos_y >= cy2 && pos_y <= cy2+7){
-      if(Cofre_Arma == 2){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 2){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
-    }else if (pos_x >= cx3 && pos_x <= cx3+17 && pos_y >= cy3 && pos_y <= cy3+7){
-      if(Cofre_Arma == 3){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 3){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
-    }else if (pos_x >= cx4 && pos_x <= cx4+17 && pos_y >= cy4 && pos_y <= cy4+7){
-      if(Cofre_Arma == 4){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 4){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
-    }else if (pos_x >= cx5 && pos_x <= cx5+17 && pos_y >= cy5 && pos_y <= cy5+7){
-      if(Cofre_Arma == 5){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 5){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
-    }else if (pos_x >= cx6 && pos_x <= cx6+17 && pos_y >= cy6 && pos_y <= cy6+7){
-      if(Cofre_Arma == 6){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 6){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
-    }else if (pos_x >= cx7 && pos_x <= cx7+17 && pos_y >= cy7 && pos_y <= cy7+7){
-      if(Cofre_Arma == 7){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 7){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
-    }else if (pos_x >= cx8 && pos_x <= cx8+17 && pos_y >= cy8 && pos_y <= cy8+7){
-      if(Cofre_Arma == 8){
-        //HABILITAR EL ARMA AL JUAGDOR
-        Habilitar_Arma();
-      } else if(Cofre_Balas == 8){
-        //HABILITAR LAS BALAS AL JUAGDOR
-        Habilitar_Balas();
-      } 
+      //------------------------------------------------------------------------------------------------    
+      //COFRES
+      else if (pos_x >= cx1 && pos_x <= cx1+17 && pos_y >= cy1 && pos_y <= cy1+7){
+        if(Cofre_Arma == 1){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 1){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }else if (pos_x >= cx2 && pos_x <= cx2+17 && pos_y >= cy2 && pos_y <= cy2+7){
+        if(Cofre_Arma == 2){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 2){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }else if (pos_x >= cx3 && pos_x <= cx3+17 && pos_y >= cy3 && pos_y <= cy3+7){
+        if(Cofre_Arma == 3){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 3){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }else if (pos_x >= cx4 && pos_x <= cx4+17 && pos_y >= cy4 && pos_y <= cy4+7){
+        if(Cofre_Arma == 4){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 4){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }else if (pos_x >= cx5 && pos_x <= cx5+17 && pos_y >= cy5 && pos_y <= cy5+7){
+        if(Cofre_Arma == 5){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 5){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }else if (pos_x >= cx6 && pos_x <= cx6+17 && pos_y >= cy6 && pos_y <= cy6+7){
+        if(Cofre_Arma == 6){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 6){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }else if (pos_x >= cx7 && pos_x <= cx7+17 && pos_y >= cy7 && pos_y <= cy7+7){
+        if(Cofre_Arma == 7){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 7){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }else if (pos_x >= cx8 && pos_x <= cx8+17 && pos_y >= cy8 && pos_y <= cy8+7){
+        if(Cofre_Arma == 8){
+          //HABILITAR EL ARMA AL JUAGDOR
+          Habilitar_Arma();
+        } else if(Cofre_Balas == 8){
+          //HABILITAR LAS BALAS AL JUAGDOR
+          Habilitar_Balas();
+        } 
+      }
+     // -----------------------------------------------------------------------------------------------   
     }
-   // -----------------------------------------------------------------------------------------------   
+
+    if(Jugador == "J2"){
+      if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 1);
+        if (Llaves > 0){
+          //Llaves-=1;
+          //LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 2){
+            pos_y = py2;
+            pos_x = px2;
+          } else if(valor_random == 3){
+            pos_y = py3;
+            pos_x = px3;
+          } else if(valor_random == 4){
+            pos_y = py4;
+            pos_x = px4;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
+      } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 2);
+        if (Llaves > 0){
+          //Llaves-=1;
+          //LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 1){
+            pos_y = py1;
+            pos_x = px1;
+          } else if(valor_random == 3){
+            pos_y = py3;
+            pos_x = px3;
+          } else if(valor_random == 4){
+            pos_y = py4;
+            pos_x = px4;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
+      } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 3);
+        if (Llaves > 0){
+          //Llaves-=1;
+          //LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 2){
+            pos_y = py2;
+            pos_x = px2;
+          } else if(valor_random == 1){
+            pos_y = py1;
+            pos_x = px1;
+          } else if(valor_random == 4){
+            pos_y = py4;
+            pos_x = px4;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
+      } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
+        do{
+          valor_random=random(1,5);
+        }while(valor_random == 4);
+        if (Llaves > 0){
+          //Llaves-=1;
+          //LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+          if(valor_random == 2){
+            pos_y = py2;
+            pos_x = px2;
+          } else if(valor_random == 3){
+            pos_y = py3;
+            pos_x = px3;
+          } else if(valor_random == 1){
+            pos_y = py1;
+            pos_x = px1;
+          }
+          FillRect(1,15,320,210,0x000);
+          Mapa();
+        }
+      }
+    }
   }
   direccion = 0;
   // Cambio de valor en la posición 
@@ -1031,24 +1308,6 @@ void Movimiento(String jugador){ // J1, J2
       LCD_Sprite(copia_x, pos_y, 10, 10, J2, 3, 2, 0, 0);
     }
   } 
-  // Borrar rastro de la ultima posición
-  if(last_direccion == 1){
-    if(direccion != 1 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
-    }
-  } else if(last_direccion == 2){
-    if(direccion != 2 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
-    }
-  } else if(last_direccion == 3){
-    if(direccion != 3 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
-    }
-  } else if(last_direccion == 4){
-    if(direccion != 4 && direccion != 0){
-    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
-    }
-  }
   delay(10);
 }
 
@@ -1612,8 +1871,11 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
   int color = 0;
   int Localidad;
   int i = x;
-  int e = y; 
+  int e = y;
+
+  
   Accion_Disparar();
+  
   
   if(last_linterna_x<0)
     last_linterna_x = 0;
@@ -1623,7 +1885,25 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
     last_linterna_y = 16;
   else if(225<last_linterna_y)
     last_linterna_y = 225;
-  
+    
+  // Borrar rastro de la ultima posición
+  if(last_direccion == 1){
+    if(direccion != 1 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
+    }
+  } else if(last_direccion == 2){
+    if(direccion != 2 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
+    }
+  } else if(last_direccion == 3){
+    if(direccion != 3 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 16,11,0x0000);
+    }
+  } else if(last_direccion == 4){
+    if(direccion != 4 && direccion != 0){
+    FillRect(last_linterna_x,last_linterna_y, 11,16,0x0000);
+    }
+  }
   
   if(direccion == 1){
    // Movimiento a la derecha 
@@ -1721,57 +2001,10 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
   Jugador_Contrario(Contrincante,x_Contrario, y_Contrario);
 }
 
-void Mapa_Segmentado(int x, int y){ //LCD_Bitmap(x, y, 5, 5, ladrillo_gris);
-  Serial.print("x: ");
-  Serial.print(x);
-  Serial.print("  y:");
-  Serial.println(y);
-
-  // bloques verticales
-  if(x+10>=51-16 && x<=78+26){
-    for(int y = 56; y<=91;y+=5){ LCD_Bitmap(51, y, 5, 5, ladrillo_gris); }
-    for(int y = 123; y<=183;y+=5){ LCD_Bitmap(51, y, 5, 5, ladrillo_gris); }
-    for(int y = 16; y<=51;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
-    for(int y = 186; y<=221;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
-    for(int y = 83; y<=103;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
-    for(int y = 133; y<=153;y+=5){ LCD_Bitmap(78, y, 5, 5, ladrillo_gris); }
-  }else if(x+10>=158-16 && x<=158+26){
-    for(int y = 36; y<=46;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
-    for(int y = 108; y<=128;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
-    for(int y = 191; y<=201;y+=5){ LCD_Bitmap(158, y, 5, 5, ladrillo_gris); }
-  }else if(x+10>=238-16 && x<=266+26){
-    for(int y = 16; y<=51;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
-    for(int y = 133; y<=153;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
-    for(int y = 83; y<=103;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
-    for(int y = 191; y<=221;y+=5){ LCD_Bitmap(238, y, 5, 5, ladrillo_gris); }
-    for(int y = 53; y<=118;y+=5){ LCD_Bitmap(266, y, 5, 5, ladrillo_gris); } 
-    for(int y = 146; y<=181;y+=5){ LCD_Bitmap(266, y, 5, 5, ladrillo_gris); }
-  } 
-
-  // bloques horizontales
-  if(y+10>=51-16 && y<=78+26){
-    for(int x = 53; x<=78;x+=5){ LCD_Bitmap(x, 51, 5, 5, ladrillo_gris); }
-    for(int x = 103; x<=213;x+=5){ LCD_Bitmap(x, 51, 5, 5, ladrillo_gris); }
-    for(int x = 83; x<=143;x+=5){ LCD_Bitmap(x, 78, 5, 5, ladrillo_gris); }
-    for(int x = 173; x<=233;x+=5){ LCD_Bitmap(x, 78, 5, 5, ladrillo_gris); }
-  } else if(y+10>=118-16 && y<=118+26){
-    for(int x = 1; x<=51;x+=5){ LCD_Bitmap(x, 118, 5, 5, ladrillo_gris); }
-    for(int x = 266; x<=316;x+=5){ LCD_Bitmap(x, 118, 5, 5, ladrillo_gris); }
-  } else if(y+10>=158-16 && y<=186+26){
-    for(int x = 83; x<=143;x+=5){ LCD_Bitmap(x, 158, 5, 5, ladrillo_gris); }
-    for(int x = 173; x<=233;x+=5){ LCD_Bitmap(x, 158, 5, 5, ladrillo_gris); }  
-    for(int x = 103; x<=213;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
-    for(int x = 238; x<=263;x+=5){ LCD_Bitmap(x, 186, 5, 5, ladrillo_gris); }
-  }
-
-
-  
-}
-
 void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del jugador contrario
   if(last_direccion == 1){ // Derecha
     if(x>pos_x+10 && x<pos_x+10+15 && y>=pos_y-9 && y<=pos_y+10){
-      if(J == "J1"){
+      if(J == "J2"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -1781,7 +2014,7 @@ void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del ju
     }
   }else if(last_direccion == 2){ // Arriba
     if(x>=pos_x-9 && x<=pos_x+9 && y>=pos_y-15-10 && y<=pos_y){
-      if(J == "J1"){
+      if(J == "J2"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -1791,7 +2024,7 @@ void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del ju
     }
   }else if(last_direccion == 3){ // Izquierda
     if(x>=pos_x-15-10 && x<=pos_x && y>=pos_y-9 && y<=pos_y+10){
-      if(J == "J1"){
+      if(J == "J2"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -1801,7 +2034,7 @@ void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del ju
     }
   }else if(last_direccion == 4){ // Abajo
     if(x>=pos_x-9 && x<=pos_x+9 && y>=pos_y+10 && y<=pos_y+10+15){
-      if(J == "J1"){
+      if(J == "J2"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -1908,29 +2141,175 @@ void Habilitar_Balas (){
 void Accion_Disparar(void){
   if(Disparar == 1){ 
     if(last_direccion == 1){// Disparar a la derecha 
-    FillRect(pos_x+10,pos_y+3,7,5,0xF900);
+    FillRect(pos_x+10,pos_y+3,7,5,ColorAccion);
+    if(y_Contrario < pos_y+6 && y_Contrario > pos_y-6 && x_Contrario>pos_x){
+      if (Jugador == "J1"){
+        Vida_Dr-=20;
+        Informacion_J2 (Vida_Dr);
+      }
+      else{
+          Vida_Presa-=34;
+          Informacion_J2 (Vida_Presa);
+      }
+    }
     Disparar = 0;
     Serial.println("Se Disparo a la derecha");
     delay(300);
     FillRect(pos_x+10,pos_y+3,7,5,0x8c00);
     } else if(last_direccion == 2){ // Disparar arriba 
-      FillRect(pos_x+2,pos_y-7,4,7,0xF900);
+      FillRect(pos_x+2,pos_y-7,4,7,ColorAccion);
+      if(x_Contrario < pos_x+6 && x_Contrario > pos_x-6 && y_Contrario <pos_y){
+        if (Jugador == "J1"){
+          Vida_Dr-=20;
+          Informacion_J2 (Vida_Dr);
+        }
+        else{
+            Vida_Presa-=34;
+            Informacion_J2 (Vida_Presa);
+        }
+      }
       Disparar = 0;
       Serial.println("Se Disparo para arriba");
       delay(300);
       FillRect(pos_x+2,pos_y-7,4,7,0x8c00);
     }else if(last_direccion == 3){ // Disparar a la izquierda 
-      FillRect(pos_x-7,pos_y+3,7,5,0xF900);
+      FillRect(pos_x-7,pos_y+3,7,5,ColorAccion);
+      if(y_Contrario < pos_y+6 && y_Contrario > pos_y-6 && x_Contrario <pos_x){
+        if (Jugador == "J1"){
+          Vida_Dr-=20;
+          Informacion_J2 (Vida_Dr);
+        }
+        else{
+            Vida_Presa-=34;
+            Informacion_J2 (Vida_Presa);
+        }
+      }
       Disparar = 0;
       Serial.println("Se Disparo a la izquierda");
       delay(300);
       FillRect(pos_x-7,pos_y+3,7,5,0x8c00);
     }else if(last_direccion == 4){ // Disparar abajo
-      FillRect(pos_x+2,pos_y+10,4,7,0xF900);
+      FillRect(pos_x+2,pos_y+10,4,7,ColorAccion);
+      if(x_Contrario < pos_x+6 && x_Contrario > pos_x-6 && y_Contrario>pos_y){
+        if (Jugador == "J1"){
+          Vida_Dr-=20;
+          Informacion_J2 (Vida_Dr);
+        }
+        else{
+            Vida_Presa-=34;
+            Informacion_J2 (Vida_Presa);
+        }
+      }
       Disparar = 0;
       Serial.println("Se Disparo para abajo");
       delay(300);
       FillRect(pos_x+2,pos_y+10,4,7,0x8c00);
     }
   }
+}
+char ConversionASCII(char x) {
+  if (x == '0'){
+    return 0;
+  }else if (x == '1'){
+    return 1;
+  }else if (x == '2'){
+    return 2;
+  }else if (x == '3'){
+    return 3;
+  }else if (x == '4'){
+    return 4;
+  }else if (x == '5'){
+    return 5;
+  }else if (x == '6'){
+    return 6;
+  }else if (x == '7'){
+    return 7;
+  }else if (x == '8'){
+    return 8;
+  }else if (x == '9'){
+    return 9;
+  }else if (x == 'a'){
+    return 10;
+  }else if (x == 'b'){
+    return 11;
+  }else if (x == 'c'){
+    return 12;
+  }else if (x == 'd'){
+    return 13;
+  }else if (x == 'e'){
+    return 14;
+  }else if (x == 'f'){
+    return 15;
+  }else {
+    return 0;
+  }
+}
+
+int ConversionDecimal (int a, int b){
+  return (ConversionASCII(a)*16+ConversionASCII(b));
+}
+
+void Estado_1(void){
+  if(Jugador == "J1"){LCD_Print("JUGADOR 1", 90, 20, 2, 0xffff, 0x0000);}
+    else{LCD_Print("JUGADOR 2", 70, 20, 2, 0xffff, 0x0000);}
+
+    LCD_Print("Presiona el", 75, 70, 2, 0xffff, 0x0000);
+    LCD_Print("JOY STICK", 90, 100, 2, 0xffff, 0x0000);
+    LCD_Print("para comenzar", 60, 130, 2, 0xffff, 0x0000);
+    
+    Sw_Flags();
+    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+      SwJ_Flag = 1;
+      // Accion del boton Joystick
+      Ready_J1  = 1;
+    }
+    if (Serial2.available() || Serial.available()){
+      Ready_J2 = Serial2.read();
+      Ready_J2 = Serial.read();
+      //Serial.println("esta leyendo");
+    }
+    if (Ready_J1){
+      Serial2.println('1');
+      //Serial.println("esta mandando la bandera");
+    }
+    if (Ready_J1 == 1 && Ready_J2 == '1'){
+       Ready_J1 = 0;
+       LCD_Clear(0x00);
+       Estado = 2;  
+    }
+
+    if(Jugador == "J1"){ 
+      pos_x = 212;
+      pos_y = 118;
+
+      x_Contrario = 103;
+      y_Contrario = 118;
+      
+    }else {
+      pos_x = 103;
+      pos_y = 118;
+
+      x_Contrario = 212;
+      y_Contrario = 118;
+      
+    }
+}
+
+void Estado_2(void){
+  Ready_J2 == '0';
+    Serial.println("CORRE CINEMATICA");
+    // COLOCAR LA FUNCION PARA LA CINEMATICA
+    Cargar_Imagen("INTRO.TXT");
+    
+    
+    Estado = 3;
+    LCD_Clear(0x00);
+    if(Jugador == "J1"){ 
+      Informacion_J2 (Vida_Dr);
+      Cofres_Loot ();
+      LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
+      LCD_Sprite(310, 3, 10, 10, LlavesImagen, 1, 0, 0, 0);
+    } else if(Jugador == "J2") {
+      Informacion_J2 (Vida_Presa);
+    }
 }
