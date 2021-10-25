@@ -85,7 +85,7 @@ int Vida_Dr=100;
 int Vida_Presa=100;
 int Estado = 1;
 int Ready_J1 = 0;
-int Ready_J2 = 0;
+int Ready_J2 = 48;
 
 int ColorAccion;
 int DatosRecibidos1;
@@ -206,7 +206,7 @@ void loop() {
   }
   
   else if (Estado == 3){
-//    Serial2.println(String(pos_x)+","+String(pos_y)+",");
+//    //Serial2.println(String(pos_x)+","+String(pos_y)+",");
 //    if (Serial2.available()){
 //      DatosRecibidos1 = Serial2.read();                //Detecta primer caracter
 //      delay(5);
@@ -241,8 +241,34 @@ void loop() {
 //        }
 //      }
 //    }
-      //Serial.println(DatosRecibidos);
-      //Serial.println(x_Contrario);
+
+
+      if (Serial2.available()){
+        char temp1;
+        String x_contrario_temp = "";
+        String y_contrario_temp = "";
+        temp1 = Serial2.read();
+        if(temp1== ','){
+          delay(5);
+          x_contrario_temp = Serial2.read();
+          delay(5);
+          x_contrario_temp += Serial2.read();
+          delay(5);
+          x_contrario_temp += Serial2.read();
+          delay(5);
+          y_contrario_temp = Serial2.read();
+          delay(5);
+          y_contrario_temp += Serial2.read();
+          delay(5);
+          y_contrario_temp += Serial2.read();
+          Serial.println("pos_x: " + x_contrario_temp + " pos_y: " + y_contrario_temp); 
+        }        
+      }
+
+      
+
+      //Serial.print(DatosRecibidos+ ":");
+      //Serial.print(x_Contrario + ": ");
       //Serial.println(y_Contrario);
       
 
@@ -2264,18 +2290,26 @@ void Estado_1(void){
       Ready_J1  = 1;
     }
     if (Serial2.available() || Serial.available()){
-      Ready_J2 = Serial2.read();
-      Ready_J2 = Serial.read();
+      if(Serial2.read() != '-1'){
+        Ready_J2 = Serial2.read();
+        Ready_J2 = Serial.read(); 
+      }
       //Serial.println("esta leyendo");
     }
+    
     if (Ready_J1){
       Serial2.println('1');
       //Serial.println("esta mandando la bandera");
     }
-    if (Ready_J1 == 1 && Ready_J2 == '1'){
+    Serial.print("Ready_J1: ");
+    Serial.print(Ready_J1);
+    Serial.print(" Ready_J2: ");
+    Serial.println(Ready_J2);
+    
+    if (Ready_J1 != 0 && Ready_J2 != '0'){
        Ready_J1 = 0;
        LCD_Clear(0x00);
-       Estado = 2;  
+       Estado = 3;  
     }
 
     if(Jugador == "J1"){ 
@@ -2296,11 +2330,10 @@ void Estado_1(void){
 }
 
 void Estado_2(void){
-  Ready_J2 == '0';
+  Ready_J2 = 48;
     Serial.println("CORRE CINEMATICA");
     // COLOCAR LA FUNCION PARA LA CINEMATICA
     Cargar_Imagen("INTRO.TXT");
-    
     
     Estado = 3;
     LCD_Clear(0x00);
