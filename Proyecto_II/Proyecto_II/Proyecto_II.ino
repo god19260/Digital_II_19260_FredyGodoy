@@ -61,6 +61,12 @@ int pos_x = 212;
 int pos_y = 118;
 int x_Contrario = 103;
 int y_Contrario = 118;
+int Dato1; 
+int Dato2; 
+int Dato3; 
+int Dato4; 
+int Dato5; 
+int Dato6;
 // variables funcion linterna
 int last_direccion,last_linterna_x,last_linterna_y; 
 // variables funcion cofre_loot
@@ -71,7 +77,7 @@ int Interactuar = 0;
 int ArmaEnable = 0;
 int BalasEnable = 0;
 int Balas = 0;
-//Variables funcion teleportar
+//Variables funcion teletransportar
 int Llaves = 2;
 //--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
 String Jugador = "";
@@ -99,6 +105,12 @@ int char1;
 int char2;
 int x;
 int x_seg_ciclo;
+// Variable estado 3
+char temp1;
+String x_contrario_temp = "";
+String y_contrario_temp = "";
+int cont = 0;
+
 extern uint8_t MatrizFondo[];
 
 //***************************************************************************************************************************************
@@ -134,7 +146,7 @@ void setup() {
   Serial2.begin(9600);
   GPIOPadConfigSet(GPIO_PORTB_BASE, 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPU);
   Serial.println("Start");
-  Serial2.println("Start");
+  Serial2.print("Start");
   LCD_Init();
   LCD_Clear(0x00);
 
@@ -206,76 +218,57 @@ void loop() {
   }
   
   else if (Estado == 3){
-//    //Serial2.println(String(pos_x)+","+String(pos_y)+",");
-//    if (Serial2.available()){
-//      DatosRecibidos1 = Serial2.read();                //Detecta primer caracter
-//      delay(5);
-//      DatosRecibidos2 = Serial2.read();                //Detecta segundo caracter
-//      delay(5);
-//      if (DatosRecibidos2 == ','){                     //Si segundo caracter es ',' va a A si no va a B
-//        x_Contrario = ConversionASCII(DatosRecibidos1);// A: x = caracter1
-//      }else {
-//        DatosRecibidos3 = Serial2.read();              // B: Detecta tercer caracter
-//        delay(5);
-//        if (DatosRecibidos3 == ','){                   //Si tercer caracter es ',' va a C si no va a D
-//          x_Contrario = ConversionASCII(DatosRecibidos1)*10 + ConversionASCII(DatosRecibidos2);// C: x = caracter1 * 10 + caracter2
-//        }else{
-//          x_Contrario = ConversionASCII(DatosRecibidos1)*100 + ConversionASCII(DatosRecibidos2)*10 + ConversionASCII(DatosRecibidos3);// D: x = caracter1 * 100 + caracter2 * 10 + caracter 3
-//          delay(5);
-//        }
-//      }
-//      DatosRecibidos1 = Serial2.read();
-//      delay(5);
-//      DatosRecibidos2 = Serial2.read();                //Detecta segundo caracter
-//      delay(5);
-//      if (DatosRecibidos2 == ','){
-//        y_Contrario = ConversionASCII(DatosRecibidos1);
-//      }else {
-//        DatosRecibidos3 = Serial2.read();
-//        delay(5);
-//        if (DatosRecibidos3 == ','){
-//          y_Contrario = ConversionASCII(DatosRecibidos1)*10 + ConversionASCII(DatosRecibidos2);
-//        }else{
-//          y_Contrario = ConversionASCII(DatosRecibidos1)*100 + ConversionASCII(DatosRecibidos2)*10 + ConversionASCII(DatosRecibidos3);
-//          delay(5);
-//        }
-//      }
-//    }
 
+//ENVIO DE POSICION
+    Dato1 = pos_x / 100;
+    Dato2 = (pos_x - (Dato1 * 100))/10;
+    Dato3 = pos_x - (Dato1 * 100) - (Dato2 * 10);
 
-      if (Serial2.available()){
-        char temp1;
-        String x_contrario_temp = "";
-        String y_contrario_temp = "";
-        temp1 = Serial2.read();
-        if(temp1== ','){
-          delay(5);
-          x_contrario_temp = Serial2.read();
-          delay(5);
-          x_contrario_temp += Serial2.read();
-          delay(5);
-          x_contrario_temp += Serial2.read();
-          delay(5);
-          y_contrario_temp = Serial2.read();
-          delay(5);
-          y_contrario_temp += Serial2.read();
-          delay(5);
-          y_contrario_temp += Serial2.read();
-          Serial.println("pos_x: " + x_contrario_temp + " pos_y: " + y_contrario_temp); 
-        }        
-      }
+    Dato4 = pos_y / 100;
+    Dato5 = (pos_y - (Dato4 * 100))/10;
+    Dato6 = pos_y - (Dato4 * 100) - (Dato5 * 10);
 
-      
+    Serial2.print (Dato1);
+    Serial2.print (Dato2);
+    Serial2.print (Dato3);
+    Serial2.print (Dato4);
+    Serial2.print (Dato5);
+    Serial2.print (Dato6);
+   
 
-      //Serial.print(DatosRecibidos+ ":");
-      //Serial.print(x_Contrario + ": ");
-      //Serial.println(y_Contrario);
-      
-
-      //Serial.println(pos_x);
-      //Serial.println(pos_y);
-      
-    Jugador_Contrario(Jugador , x_Contrario, y_Contrario);
+// Lectura de datos (enviados por el otro jugador)
+    if (Serial2.available()){
+      int temp1;
+      x_contrario_temp = "";
+      y_contrario_temp = "";
+          
+      Serial.println(","+String(Dato1)+String(Dato2)+String(Dato3)+String(Dato4)+String(Dato5)+String(Dato6));
+      delay(10);
+      x_contrario_temp = ConversionASCII(String(Serial2.read()));
+      delay(10);
+      x_contrario_temp += ConversionASCII(String(Serial2.read()));
+      delay(10);
+      x_contrario_temp += ConversionASCII(String(Serial2.read()));
+      delay(10);
+      y_contrario_temp = ConversionASCII(String(Serial2.read()));
+      delay(10);
+      y_contrario_temp += ConversionASCII(String(Serial2.read()));
+      delay(10);
+      y_contrario_temp += ConversionASCII(String(Serial2.read()));
+      Serial.print("pos_x: " + x_contrario_temp + " pos_y: " + y_contrario_temp);
+      Serial.print("    ");
+      Serial.println(cont);
+      if(cont >= 20){
+        Serial2.end();
+        Serial2.begin(9600);
+        cont = 0;
+      } 
+    }
+    
+    x_Contrario = x_contrario_temp.toInt();
+    y_Contrario = y_contrario_temp.toInt();
+    cont++;
+    Jugador_Contrario(Contrincante , x_Contrario, y_Contrario);
       
     
     if (Vida_Dr == 0){
@@ -345,6 +338,8 @@ void loop() {
   }
 
   else if (Estado == 4){
+    Ready_J2 = 48;
+    Serial2.print(',');
     LCD_Clear(0x00);
     //Función para imprimir imagen J1 WIN
 
@@ -367,6 +362,8 @@ void loop() {
   }
 
   else if (Estado == 5){
+    Ready_J2 = 48;
+    Serial2.print('.');
     LCD_Clear(0x00);
     //Función para imprimir imagen J2 WIN
     Cargar_Imagen("J2_WIN.TXT");
@@ -2030,7 +2027,7 @@ void Linterna(int x,int y,int direccion){ // direccion 1=derecha 2 = arriba 3 = 
 void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del jugador contrario
   if(last_direccion == 1){ // Derecha
     if(x>pos_x+10 && x<pos_x+10+15 && y>=pos_y-9 && y<=pos_y+10){
-      if(J == "J2"){
+      if(J == "J1"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -2040,7 +2037,7 @@ void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del ju
     }
   }else if(last_direccion == 2){ // Arriba
     if(x>=pos_x-9 && x<=pos_x+9 && y>=pos_y-15-10 && y<=pos_y){
-      if(J == "J2"){
+      if(J == "J1"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -2050,7 +2047,7 @@ void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del ju
     }
   }else if(last_direccion == 3){ // Izquierda
     if(x>=pos_x-15-10 && x<=pos_x && y>=pos_y-9 && y<=pos_y+10){
-      if(J == "J2"){
+      if(J == "J1"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -2060,7 +2057,7 @@ void Jugador_Contrario(String J, int x, int y){ // x,y son las posiciones del ju
     }
   }else if(last_direccion == 4){ // Abajo
     if(x>=pos_x-9 && x<=pos_x+9 && y>=pos_y+10 && y<=pos_y+10+15){
-      if(J == "J2"){
+      if(J == "J1"){
         LCD_Sprite(x, y, 10, 10, J1, 3, 1, 1, 0);  
       }else {
         LCD_Sprite(x,y, 10, 10, J2, 3, 1, 1, 0);
@@ -2233,47 +2230,41 @@ void Accion_Disparar(void){
     }
   }
 }
-char ConversionASCII(char x) {
-  if (x == '0'){
-    return 0;
-  }else if (x == '1'){
-    return 1;
-  }else if (x == '2'){
-    return 2;
-  }else if (x == '3'){
-    return 3;
-  }else if (x == '4'){
-    return 4;
-  }else if (x == '5'){
-    return 5;
-  }else if (x == '6'){
-    return 6;
-  }else if (x == '7'){
-    return 7;
-  }else if (x == '8'){
-    return 8;
-  }else if (x == '9'){
-    return 9;
-  }else if (x == 'a'){
-    return 10;
-  }else if (x == 'b'){
-    return 11;
-  }else if (x == 'c'){
-    return 12;
-  }else if (x == 'd'){
-    return 13;
-  }else if (x == 'e'){
-    return 14;
-  }else if (x == 'f'){
-    return 15;
+String ConversionASCII(String x) {
+  if (x == "48"){
+    return "0";
+  }else if (x == "49"){
+    return "1";
+  }else if (x == "50"){
+    return "2";
+  }else if (x == "51"){
+    return "3";
+  }else if (x == "52"){
+    return "4";
+  }else if (x == "53"){
+    return "5";
+  }else if (x == "54"){
+    return "6";
+  }else if (x == "55"){
+    return "7";
+  }else if (x == "56"){
+    return "8";
+  }else if (x == "57"){
+    return "9";
+  }else if (x == "44"){
+    Estado = 4;
+    return "";
+  }else if (x == "46"){
+    Estado = 5;
+    return "";
   }else {
-    return 0;
+    return "";
   }
 }
 
-int ConversionDecimal (int a, int b){
-  return (ConversionASCII(a)*16+ConversionASCII(b));
-}
+//int ConversionDecimal (int a, int b){
+//  return (ConversionASCII(a)*16+ConversionASCII(b));
+//}
 
 void Estado_1(void){
   if(Jugador == "J1"){LCD_Print("JUGADOR 1", 90, 20, 2, 0xffff, 0x0000);}
@@ -2289,16 +2280,14 @@ void Estado_1(void){
       // Accion del boton Joystick
       Ready_J1  = 1;
     }
-    if (Serial2.available() || Serial.available()){
-      if(Serial2.read() != '-1'){
-        Ready_J2 = Serial2.read();
-        Ready_J2 = Serial.read(); 
-      }
-      //Serial.println("esta leyendo");
-    }
+    
     
     if (Ready_J1){
-      Serial2.println('1');
+      Serial2.print(1);
+      if (Serial2.available()){
+        Ready_J2 = Serial2.read();
+        //Serial.println("esta leyendo");
+      }
       //Serial.println("esta mandando la bandera");
     }
     Serial.print("Ready_J1: ");
@@ -2306,7 +2295,7 @@ void Estado_1(void){
     Serial.print(" Ready_J2: ");
     Serial.println(Ready_J2);
     
-    if (Ready_J1 != 0 && Ready_J2 != '0'){
+    if (Ready_J1 != 0 && Ready_J2 == '1'){
        Ready_J1 = 0;
        LCD_Clear(0x00);
        Estado = 3;  
