@@ -379,6 +379,7 @@ void loop() {
       }
       else{
         Disparar = 1;
+        musica_zombi();
       }
       delay(10);
     }
@@ -2644,6 +2645,40 @@ void musica_bala(){
   wholenote = (60000 * 4) / tempo;
   divider = 0, noteDuration = 0;
    for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
+
+    // calculates the duration of each note
+    divider = melody[thisNote + 1];
+    if (divider > 0) {
+      // regular note, just proceed
+      noteDuration = (wholenote) / divider;
+    } else if (divider < 0) {
+      // dotted notes are represented with negative durations!!
+      noteDuration = (wholenote) / abs(divider);
+      noteDuration *= 1.5; // increases the duration in half for dotted notes
+    }
+
+    // we only play the note for 90% of the duration, leaving 10% as a pause
+    tone(buzzer, melody[thisNote], noteDuration * 0.9);
+
+    // Wait for the specief duration before playing the next note.
+    delay(noteDuration);
+
+    // stop the waveform generation before the next note.
+    noTone(buzzer);
+  }
+}
+
+void musica_zombi(void){
+  tempo = 2500;
+  buzzer = PF_1;
+  int melody[] = {
+    NOTE_12, 8, NOTE_9, 8, NOTE_8, 8, NOTE_6, 8, NOTE_5, 8, NOTE_6, 8, NOTE_9, 8, NOTE_8, 8, NOTE_9, 8, NOTE_10, 8, NOTE_9, 8, NOTE_8, 8, NOTE_6, 8, NOTE_5, 8, NOTE_4, 8, NOTE_5, 8, NOTE_7, 8, NOTE_7, 8, NOTE_8, 8, NOTE_9, 8, 
+    NOTE_3, 8, NOTE_2, 8, NOTE_2, 8, NOTE_1, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_3, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_4, 8, NOTE_4, 8, NOTE_5, 8, NOTE_5, 8, NOTE_4, 8, NOTE_4, 8, NOTE_3, 8, 
+  };
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
+  wholenote = (60000 * 4) / tempo;
+  divider = 0, noteDuration = 0;
+  for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
 
     // calculates the duration of each note
     divider = melody[thisNote + 1];
