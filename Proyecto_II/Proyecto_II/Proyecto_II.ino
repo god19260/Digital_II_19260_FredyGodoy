@@ -336,7 +336,12 @@ void loop() {
   4: Gana J1 (niño)
   5: Gana J2 (Dr)*/
   if (Estado == 1){
-    musica_menu(); // Estado 1 se encuentra en la función musica()
+    if (Jugador == "J1"){
+      musica_menu(); // Estado 1 se encuentra en la función musica()
+    }
+    else {
+      Estado_1();
+    }
   }
 
   else if (Estado == 2){
@@ -2319,7 +2324,7 @@ String ConversionASCII(String x) {
 
 void Estado_1(void){
   if(Jugador == "J1"){LCD_Print("JUGADOR 1", 90, 20, 2, 0xffff, 0x0000);}
-    else{LCD_Print("JUGADOR 2", 70, 20, 2, 0xffff, 0x0000);}
+    else{LCD_Print("JUGADOR 2", 90, 20, 2, 0xffff, 0x0000);}
 
     LCD_Print("Presiona el", 75, 70, 2, 0xffff, 0x0000);
     LCD_Print("JOY STICK", 90, 100, 2, 0xffff, 0x0000);
