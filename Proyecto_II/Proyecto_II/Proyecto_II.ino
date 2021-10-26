@@ -26,7 +26,133 @@
 #include "bitmaps.h"
 #include "lcd_registers.h"
 #include "font.h"
+//***************************************/***************************************
+//------------------- Notas musicales / variabes buzzer -------------------------
+#define NOTE_B0  31
+#define NOTE_C1  33
+#define NOTE_CS1 35
+#define NOTE_D1  37
+#define NOTE_DS1 39
+#define NOTE_E1  41
+#define NOTE_F1  44
+#define NOTE_FS1 46
+#define NOTE_G1  49
+#define NOTE_GS1 52
+#define NOTE_A1  55
+#define NOTE_AS1 58
+#define NOTE_B1  62
+#define NOTE_C2  65
+#define NOTE_CS2 69
+#define NOTE_D2  73
+#define NOTE_DS2 78
+#define NOTE_E2  82
+#define NOTE_F2  87
+#define NOTE_FS2 93
+#define NOTE_G2  98
+#define NOTE_GS2 104
+#define NOTE_A2  110
+#define NOTE_AS2 117
+#define NOTE_B2  123
+#define NOTE_C3  131
+#define NOTE_CS3 139
+#define NOTE_D3  147
+#define NOTE_DS3 156
+#define NOTE_E3  165
+#define NOTE_F3  175
+#define NOTE_FS3 185
+#define NOTE_G3  196
+#define NOTE_GS3 208
+#define NOTE_A3  220
+#define NOTE_AS3 233
+#define NOTE_B3  247
+#define NOTE_C4  262
+#define NOTE_CS4 277
+#define NOTE_D4  294
+#define NOTE_DS4 311
+#define NOTE_E4  330
+#define NOTE_F4  349
+#define NOTE_FS4 370
+#define NOTE_G4  392
+#define NOTE_GS4 415
+#define NOTE_A4  440
+#define NOTE_AS4 466
+#define NOTE_B4  494
+#define NOTE_C5  523
+#define NOTE_CS5 554
+#define NOTE_D5  587
+#define NOTE_DS5 622
+#define NOTE_E5  659
+#define NOTE_F5  698
+#define NOTE_FS5 740
+#define NOTE_G5  784
+#define NOTE_GS5 831
+#define NOTE_A5  880
+#define NOTE_AS5 932
+#define NOTE_B5  988
+#define NOTE_C6  1047
+#define NOTE_CS6 1109
+#define NOTE_D6  1175
+#define NOTE_DS6 1245
+#define NOTE_E6  1319
+#define NOTE_F6  1397
+#define NOTE_FS6 1480
+#define NOTE_G6  1568
+#define NOTE_GS6 1661
+#define NOTE_A6  1760
+#define NOTE_AS6 1865
+#define NOTE_B6  1976
+#define NOTE_C7  2093
+#define NOTE_CS7 2217
+#define NOTE_D7  2349
+#define NOTE_DS7 2489
+#define NOTE_E7  2637
+#define NOTE_F7  2794
+#define NOTE_FS7 2960
+#define NOTE_G7  3136
+#define NOTE_GS7 3322
+#define NOTE_A7  3520
+#define NOTE_AS7 3729
+#define NOTE_B7  3951
+#define NOTE_C8  4186
+#define NOTE_CS8 4435
+#define NOTE_D8  4699
+#define NOTE_DS8 4978
+#define REST 0
 
+#define NOTE_0 0
+#define NOTE_1 333
+#define NOTE_2 667
+#define NOTE_3 1000
+#define NOTE_4 1333
+#define NOTE_5 1667
+#define NOTE_6 2000
+#define NOTE_7 2333
+#define NOTE_8 2667
+#define NOTE_9 3000
+#define NOTE_10 3333
+#define NOTE_11 3667
+#define NOTE_12 4000
+#define NOTE_13 4333
+#define NOTE_14 4667
+#define NOTE_15 5000
+
+int tempo = 150;
+int buzzer = PF_1;
+
+int melody[] = {
+  NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_C4, 8, NOTE_E4, 8, NOTE_DS4, 8, 
+  NOTE_B3, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_B3, 8, NOTE_D4, 8, 
+  NOTE_C4, 8, NOTE_A3, 8, NOTE_B3, 8, NOTE_E3, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8,
+  NOTE_E4, 8, NOTE_C4, 8, NOTE_E4, 8, NOTE_DS4, 8, NOTE_B3, 8, NOTE_D4, 8, NOTE_D4, 8,
+  NOTE_D4, 8, NOTE_D4, 8, NOTE_C4, 8, NOTE_D4, 8, NOTE_E4, 8, NOTE_D4, 8, NOTE_C4, 8,
+  NOTE_B3, 8, NOTE_A3, 8,
+};
+int notes = sizeof(melody) / sizeof(melody[0]) / 2;
+
+// this calculates the duration of a whole note in ms
+int wholenote = (60000 * 4) / tempo;
+
+int divider = 0, noteDuration = 0;
 //***************************************************************************************************************************************
 // Variables y Constantes
 //***************************************************************************************************************************************
@@ -84,7 +210,7 @@ String Jugador = "";
 String Contrincante = "";
 int direccion;
 int Disparar;
-const long intervalo = 100;
+const long intervalo = 170;
 unsigned long previousMillis,currentMillis;
 
 int Vida_Dr=100;
@@ -210,7 +336,7 @@ void loop() {
   4: Gana J1 (niño)
   5: Gana J2 (Dr)*/
   if (Estado == 1){
-    Estado_1();
+    musica_menu(); // Estado 1 se encuentra en la función musica()
   }
 
   else if (Estado == 2){
@@ -218,58 +344,44 @@ void loop() {
   }
   
   else if (Estado == 3){
-
-//ENVIO DE POSICION
-    Dato1 = pos_x / 100;
-    Dato2 = (pos_x - (Dato1 * 100))/10;
-    Dato3 = pos_x - (Dato1 * 100) - (Dato2 * 10);
-
-    Dato4 = pos_y / 100;
-    Dato5 = (pos_y - (Dato4 * 100))/10;
-    Dato6 = pos_y - (Dato4 * 100) - (Dato5 * 10);
-
-    Serial2.print (Dato1);
-    Serial2.print (Dato2);
-    Serial2.print (Dato3);
-    Serial2.print (Dato4);
-    Serial2.print (Dato5);
-    Serial2.print (Dato6);
-   
-
-// Lectura de datos (enviados por el otro jugador)
-    if (Serial2.available()){
-      int temp1;
-      x_contrario_temp = "";
-      y_contrario_temp = "";
-          
-      Serial.println(","+String(Dato1)+String(Dato2)+String(Dato3)+String(Dato4)+String(Dato5)+String(Dato6));
-      delay(10);
-      x_contrario_temp = ConversionASCII(String(Serial2.read()));
-      delay(10);
-      x_contrario_temp += ConversionASCII(String(Serial2.read()));
-      delay(10);
-      x_contrario_temp += ConversionASCII(String(Serial2.read()));
-      delay(10);
-      y_contrario_temp = ConversionASCII(String(Serial2.read()));
-      delay(10);
-      y_contrario_temp += ConversionASCII(String(Serial2.read()));
-      delay(10);
-      y_contrario_temp += ConversionASCII(String(Serial2.read()));
-      Serial.print("pos_x: " + x_contrario_temp + " pos_y: " + y_contrario_temp);
-      Serial.print("    ");
-      Serial.println(cont);
-      if(cont >= 20){
-        Serial2.end();
-        Serial2.begin(9600);
-        cont = 0;
-      } 
+        
+    Movimiento(Jugador);
+    currentMillis = millis();
+    if (currentMillis - previousMillis >= intervalo) {
+      Datos_Comunicacion();
+      previousMillis = currentMillis;
+      Linterna(pos_x,pos_y,direccion);
+      Mapa();
     }
-    
-    x_Contrario = x_contrario_temp.toInt();
-    y_Contrario = y_contrario_temp.toInt();
-    cont++;
-    Jugador_Contrario(Contrincante , x_Contrario, y_Contrario);
-      
+    Sw_Flags();
+    if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
+      Sw1_Flag = 1;
+      // Accion del primer boton
+      LCD_Bitmap(0, 0, 320, 240, Mapa_2);
+      delay(10);
+    }
+    if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
+      Sw2_Flag = 1;
+      // Accion del segundo boton
+      //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
+      if(Jugador == "J1"){ 
+        if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
+          Disparar = 1;
+          musica_bala();
+          Balas-=1;
+          LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
+        }
+      }
+      else{
+        Disparar = 1;
+      }
+      delay(10);
+    }
+    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+      SwJ_Flag = 1;
+      // Accion del boton Joystick
+      Interactuar = 1;
+    }
     
     if (Vida_Dr == 0){
       Serial.println("Muere Dr");
@@ -299,89 +411,14 @@ void loop() {
       Estado = 5; 
       Disparar = 0;
     }
-    
-    Movimiento(Jugador);
-    currentMillis = millis();
-    if (currentMillis - previousMillis >= intervalo) {
-      previousMillis = currentMillis;
-      Linterna(pos_x,pos_y,direccion);
-      Mapa();
-    }
-    Sw_Flags();
-    if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
-      Sw1_Flag = 1;
-      // Accion del primer boton
-      LCD_Bitmap(0, 0, 320, 240, Mapa_2);
-      delay(10);
-    }
-    if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
-      Sw2_Flag = 1;
-      // Accion del segundo boton
-      //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
-      if(Jugador == "J1"){ 
-        if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
-          Disparar = 1;
-          Balas-=1;
-          LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
-        }
-      }
-      else{
-        Disparar = 1;
-      }
-      delay(10);
-    }
-    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
-      SwJ_Flag = 1;
-      // Accion del boton Joystick
-      Interactuar = 1;
-    }
   }
 
   else if (Estado == 4){
-    Ready_J2 = 48;
-    Serial2.print(',');
-    LCD_Clear(0x00);
-    //Función para imprimir imagen J1 WIN
-
-    Cargar_Imagen("J1_WIN.TXT");
-
-    LCD_Print("Gana Chico Abducido", 10, 200, 2, 0xffff, NULL);
-    LCD_Print("PRESIONA EL JOYSTICK PARA CONTINUAR", 25, 220, 1, 0xffff, NULL);
-    
-    Serial.println("Gana J1");
-    int a = 1;
-    while (a){
-      if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
-        SwJ_Flag = 1;
-        // Accion del boton Joystick
-        a = 0;
-      }
-    }
-    LCD_Clear(0x00);
-    Estado = 1;
+    Estado_4();
   }
 
   else if (Estado == 5){
-    Ready_J2 = 48;
-    Serial2.print('.');
-    LCD_Clear(0x00);
-    //Función para imprimir imagen J2 WIN
-    Cargar_Imagen("J2_WIN.TXT");
-
-    LCD_Print("Gana Dr Zombie ", 50, 200, 2, 0xffff, NULL);
-    LCD_Print("PRESIONA EL JOYSTICK PARA CONTINUAR", 25, 220, 1, 0xffff, NULL);
-    
-    Serial.println("Gana J2");
-    int a = 1;
-    while (a){
-      if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
-        SwJ_Flag = 1;
-        // Accion del boton Joystick
-        a = 0;
-      }
-    }
-    LCD_Clear(0x00);
-    Estado = 1;
+    Estado_5();
   }
   // Prueba de funciones
   
@@ -1025,7 +1062,9 @@ void Movimiento(String jugador){ // J1, J2
   
   // Portales
   if(Interactuar == 1){
-    randomSeed(analogRead(Joystick_X*Joystick_Y));
+     Serial.println("----------------------------------------------------------------");
+   // randomSeed(analogRead(Joystick_X*Joystick_Y));
+   
     Interactuar = 0;
     if(Jugador == "J1"){
       if(pos_x >= px1 && pos_x <= px1+6 && pos_y >= py1 && pos_y <= py1+6){ // portal 1
@@ -1109,7 +1148,6 @@ void Movimiento(String jugador){ // J1, J2
           Mapa();
         }
       }
-    
       //------------------------------------------------------------------------------------------------    
       //COFRES
       else if (pos_x >= cx1 && pos_x <= cx1+17 && pos_y >= cy1 && pos_y <= cy1+7){
@@ -2074,7 +2112,7 @@ void Cofres_Loot (){
 
   //OBTENCION DE LOS 2 COFRES RANDOM
   int a = 0;
-  randomSeed(analogRead(Joystick_X*Joystick_Y));
+  //randomSeed(analogRead(Joystick_X*Joystick_Y));
   //random1 = random(1,6);
   do{
     a-=1;
@@ -2145,6 +2183,7 @@ void Cofres_Loot (){
 
 void Habilitar_Arma (){
   if (ArmaEnable == 0){
+    musica_cofre();
     ArmaEnable = 1;
     LCD_Sprite(270, 3, 10, 10, ArmaImagen, 1, 0, 0, 0);
     Serial.println("arma habilitada");
@@ -2153,6 +2192,7 @@ void Habilitar_Arma (){
 
 void Habilitar_Balas (){
   if (BalasEnable == 0){
+    musica_cofre();
     BalasEnable = 1;
     Balas = 8;
     LCD_Sprite(290, 3, 10, 10, BalasImagen, 1, 0, 0, 0);
@@ -2251,13 +2291,14 @@ String ConversionASCII(String x) {
     return "8";
   }else if (x == "57"){
     return "9";
-  }else if (x == "44"){
+  }else if (x == ','){
     Estado = 4;
     return "";
   }else if (x == "46"){
     Estado = 5;
     return "";
   }else {
+    Serial.println("**************************************************");
     return "";
   }
 }
@@ -2281,13 +2322,12 @@ void Estado_1(void){
       Ready_J1  = 1;
     }
     
-    
+    if (Serial2.available()){
+      Ready_J2 = Serial2.read();
+      //Serial.println("esta leyendo");
+    }
     if (Ready_J1){
-      Serial2.print(1);
-      if (Serial2.available()){
-        Ready_J2 = Serial2.read();
-        //Serial.println("esta leyendo");
-      }
+      Serial2.print(1);  
       //Serial.println("esta mandando la bandera");
     }
     Serial.print("Ready_J1: ");
@@ -2298,7 +2338,7 @@ void Estado_1(void){
     if (Ready_J1 != 0 && Ready_J2 == '1'){
        Ready_J1 = 0;
        LCD_Clear(0x00);
-       Estado = 3;  
+       Estado = 2;  
     }
 
     if(Jugador == "J1"){ 
@@ -2334,4 +2374,242 @@ void Estado_2(void){
     } else if(Jugador == "J2") {
       Informacion_J2 (Vida_Presa);
     }
+}
+
+void Estado_3(){
+  
+}
+
+void Estado_4(){
+  Ready_J2 = 48;
+  Serial2.print(',');
+  LCD_Clear(0x00);
+  //Función para imprimir imagen J1 WIN
+
+  Cargar_Imagen("J1_WIN.TXT");
+
+  LCD_Print("Gana Chico Abducido", 10, 200, 2, 0xffff, NULL);
+  LCD_Print("PRESIONA EL JOYSTICK PARA CONTINUAR", 25, 220, 1, 0xffff, NULL);
+  
+  Serial.println("Gana J1");
+  int a = 1;
+  while (a){
+    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+      SwJ_Flag = 1;
+      // Accion del boton Joystick
+      a = 0;
+    }
+  }
+  LCD_Clear(0x00);
+  Estado = 1;
+  tempo = 150;
+  int melody[] = {
+    NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_C4, 8, NOTE_E4, 8, NOTE_DS4, 8, 
+    NOTE_B3, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_B3, 8, NOTE_D4, 8, 
+    NOTE_C4, 8, NOTE_A3, 8, NOTE_B3, 8, NOTE_E3, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8,
+    NOTE_E4, 8, NOTE_C4, 8, NOTE_E4, 8, NOTE_DS4, 8, NOTE_B3, 8, NOTE_D4, 8, NOTE_D4, 8,
+    NOTE_D4, 8, NOTE_D4, 8, NOTE_C4, 8, NOTE_D4, 8, NOTE_E4, 8, NOTE_D4, 8, NOTE_C4, 8,
+    NOTE_B3, 8, NOTE_A3, 8,
+  };
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
+  
+  // this calculates the duration of a whole note in ms
+  wholenote = (60000 * 4) / tempo;
+  
+  divider = 0, noteDuration = 0;
+}
+
+void Estado_5(){
+  Ready_J2 = 48;
+  Serial2.print('.');
+  LCD_Clear(0x00);
+  //Función para imprimir imagen J2 WIN
+  Cargar_Imagen("J2_WIN.TXT");
+
+  LCD_Print("Gana Dr Zombie ", 50, 200, 2, 0xffff, NULL);
+  LCD_Print("PRESIONA EL JOYSTICK PARA CONTINUAR", 25, 220, 1, 0xffff, NULL);
+  
+  Serial.println("Gana J2");
+  int a = 1;
+  while (a){
+    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+      SwJ_Flag = 1;
+      // Accion del boton Joystick
+      a = 0;
+    }
+  }
+  LCD_Clear(0x00);
+  Estado = 1;
+  tempo = 150;
+  int melody[] = {
+    NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_C4, 8, NOTE_E4, 8, NOTE_DS4, 8, 
+    NOTE_B3, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_D4, 8, NOTE_B3, 8, NOTE_D4, 8, 
+    NOTE_C4, 8, NOTE_A3, 8, NOTE_B3, 8, NOTE_E3, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_E4, 8,
+    NOTE_E4, 8, NOTE_C4, 8, NOTE_E4, 8, NOTE_DS4, 8, NOTE_B3, 8, NOTE_D4, 8, NOTE_D4, 8,
+    NOTE_D4, 8, NOTE_D4, 8, NOTE_C4, 8, NOTE_D4, 8, NOTE_E4, 8, NOTE_D4, 8, NOTE_C4, 8,
+    NOTE_B3, 8, NOTE_A3, 8,
+  };
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
+  
+  // this calculates the duration of a whole note in ms
+  wholenote = (60000 * 4) / tempo;
+  
+  divider = 0, noteDuration = 0;
+    
+}
+
+void musica_menu(){ // Estado 1 se encuantra adentro de musica()
+  for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
+      Estado_1();
+      if(Estado != 1){
+        break;
+      }
+      // calculates the duration of each note
+      divider = melody[thisNote + 1];
+      if (divider > 0) {
+        // regular note, just proceed
+        noteDuration = (wholenote) / divider;
+      } else if (divider < 0) {
+        // dotted notes are represented with negative durations!!
+        noteDuration = (wholenote) / abs(divider);
+        noteDuration *= 1.5; // increases the duration in half for dotted notes
+      }
+  
+      // we only play the note for 90% of the duration, leaving 10% as a pause
+      tone(buzzer, melody[thisNote], noteDuration * 0.9);
+  
+      // Wait for the specief duration before playing the next note.
+      delay(noteDuration);
+  
+      // stop the waveform generation before the next note.
+      noTone(buzzer);
+    }
+}
+
+void Datos_Comunicacion(void){
+  //ENVIO DE POSICION
+    Dato1 = pos_x / 100;
+    Dato2 = (pos_x - (Dato1 * 100))/10;
+    Dato3 = pos_x - (Dato1 * 100) - (Dato2 * 10);
+
+    Dato4 = pos_y / 100;
+    Dato5 = (pos_y - (Dato4 * 100))/10;
+    Dato6 = pos_y - (Dato4 * 100) - (Dato5 * 10);
+
+    Serial2.print (Dato1);
+    Serial2.print (Dato2);
+    Serial2.print (Dato3);
+    Serial2.print (Dato4);
+    Serial2.print (Dato5);
+    Serial2.print (Dato6);
+   
+
+    // Lectura de datos (enviados por el otro jugador)
+    if (Serial2.available()){
+      int temp1;
+      x_contrario_temp = "";
+      y_contrario_temp = "";
+          
+      Serial.println(","+String(Dato1)+String(Dato2)+String(Dato3)+String(Dato4)+String(Dato5)+String(Dato6));
+      delay(10);
+      x_contrario_temp = ConversionASCII(String(Serial2.read()));
+      delay(10);
+      x_contrario_temp += ConversionASCII(String(Serial2.read()));
+      delay(10);
+      x_contrario_temp += ConversionASCII(String(Serial2.read()));
+      delay(10);
+      y_contrario_temp = ConversionASCII(String(Serial2.read()));
+      delay(10);
+      y_contrario_temp += ConversionASCII(String(Serial2.read()));
+      delay(10);
+      y_contrario_temp += ConversionASCII(String(Serial2.read()));
+      Serial.print("pos_x: " + x_contrario_temp + " pos_y: " + y_contrario_temp);
+      Serial.print("    ");
+      Serial.println(cont);
+      if(cont >= 20){
+        Serial2.end();
+        Serial2.begin(9600);
+        cont = 0;
+      } 
+    }
+    
+    x_Contrario = x_contrario_temp.toInt();
+    y_Contrario = y_contrario_temp.toInt();
+    cont++;
+    Jugador_Contrario(Contrincante , x_Contrario, y_Contrario);
+}
+
+void musica_cofre(){
+  tempo = 150;
+  buzzer = PF_1;
+  
+  int melody[] = {
+    NOTE_E6, 16, NOTE_B5, 16,
+  };
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
+  wholenote = (60000 * 4) / tempo;
+  divider = 0, noteDuration = 0;
+  for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
+
+    // calculates the duration of each note
+    divider = melody[thisNote + 1];
+    if (divider > 0) {
+      // regular note, just proceed
+      noteDuration = (wholenote) / divider;
+    } else if (divider < 0) {
+      // dotted notes are represented with negative durations!!
+      noteDuration = (wholenote) / abs(divider);
+      noteDuration *= 1.5; // increases the duration in half for dotted notes
+    }
+
+    // we only play the note for 90% of the duration, leaving 10% as a pause
+    tone(buzzer, melody[thisNote], noteDuration * 0.9);
+
+    // Wait for the specief duration before playing the next note.
+    delay(noteDuration);
+
+    // stop the waveform generation before the next note.
+    noTone(buzzer);
+  }
+}
+
+void musica_teletransporte(void){
+  
+  
+}
+
+void musica_bala(){
+  tempo = 900;//1300;
+  buzzer = PF_1;
+
+  int melody[] = {
+    NOTE_1, 8, NOTE_2, 8, NOTE_10, 8, NOTE_8, 8, NOTE_9, 8,
+    //NOTE_9, 8, NOTE_11, 8, NOTE_12, 8, NOTE_13, 8, NOTE_14, 8,
+  };
+  
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
+  wholenote = (60000 * 4) / tempo;
+  divider = 0, noteDuration = 0;
+   for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
+
+    // calculates the duration of each note
+    divider = melody[thisNote + 1];
+    if (divider > 0) {
+      // regular note, just proceed
+      noteDuration = (wholenote) / divider;
+    } else if (divider < 0) {
+      // dotted notes are represented with negative durations!!
+      noteDuration = (wholenote) / abs(divider);
+      noteDuration *= 1.5; // increases the duration in half for dotted notes
+    }
+
+    // we only play the note for 90% of the duration, leaving 10% as a pause
+    tone(buzzer, melody[thisNote], noteDuration * 0.9);
+
+    // Wait for the specief duration before playing the next note.
+    delay(noteDuration);
+
+    // stop the waveform generation before the next note.
+    noTone(buzzer);
+  }
 }
