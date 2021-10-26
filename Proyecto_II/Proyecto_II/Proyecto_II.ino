@@ -388,29 +388,32 @@ void loop() {
       ArmaEnable = 0;
       BalasEnable = 0;
       Vida_Dr = 100;
+      Vida_Presa = 100;
       Balas = 0;
       Llaves = 2;
       Estado = 4; 
       Disparar = 0;
-    }else if (Balas == 0 && Vida_Dr > 0 && ArmaEnable == 1 && BalasEnable == 1){
+    }else if ((Balas == 0 && Vida_Dr > 20 && ArmaEnable == 1 && BalasEnable == 1)||Vida_Presa < 0){
       Serial.println("Muere niño");
       ArmaEnable = 0;
       BalasEnable = 0;
       Vida_Dr = 100;
+      Vida_Presa = 100;
       Balas = 0;
       Llaves = 2;
       Estado = 5;
       Disparar = 0;
-    }else if (Vida_Presa < 0){
-      Serial.println("Muere niño");
-      ArmaEnable = 0;
-      BalasEnable = 0;
-      Vida_Presa = 100;
-      Balas = 0;
-      Llaves = 2;
-      Estado = 5; 
-      Disparar = 0;
-    }
+    }//else if (Vida_Presa < 0){
+//      Serial.println("Muere niño");
+//      ArmaEnable = 0;
+//      BalasEnable = 0;
+//      Vida_Dr = 100;
+//      Vida_Presa = 100;
+//      Balas = 0;
+//      Llaves = 2;
+//      Estado = 5; 
+//      Disparar = 0;
+//    }
   }
 
   else if (Estado == 4){
@@ -1085,6 +1088,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px4;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
@@ -1105,6 +1109,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px4;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
@@ -1125,6 +1130,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px4;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
@@ -1145,6 +1151,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px1;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       }
@@ -1237,6 +1244,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px4;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       } else if (pos_x >= px2 && pos_x <= px2+6 && pos_y >= py2 && pos_y <= py2+6){
@@ -1257,6 +1265,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px4;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       } else if (pos_x >= px3 && pos_x <= px3+6 && pos_y >= py3 && pos_y <= py3+6){
@@ -1277,6 +1286,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px4;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       } else if (pos_x >= px4 && pos_x <= px4+6 && pos_y >= py4 && pos_y <= py4+6){
@@ -1297,6 +1307,7 @@ void Movimiento(String jugador){ // J1, J2
             pos_x = px1;
           }
           FillRect(1,15,320,210,0x000);
+          musica_teletransporte();
           Mapa();
         }
       }
@@ -2291,14 +2302,13 @@ String ConversionASCII(String x) {
     return "8";
   }else if (x == "57"){
     return "9";
-  }else if (x == ','){
+  }else if (x == "44"){
     Estado = 4;
     return "";
   }else if (x == "46"){
     Estado = 5;
     return "";
   }else {
-    Serial.println("**************************************************");
     return "";
   }
 }
@@ -2574,8 +2584,46 @@ void musica_cofre(){
 }
 
 void musica_teletransporte(void){
-  
-  
+  tempo = 1300;
+  buzzer = PF_1;
+  int melody[] = {
+  NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_1, 8, NOTE_3, 8, NOTE_5, 8, 
+
+    NOTE_9, 8, NOTE_7, 8, NOTE_10, 8, NOTE_9, 8, NOTE_8, 8, NOTE_6, 8, NOTE_7, 8, NOTE_6, 8, NOTE_7, 8, NOTE_6, 8, NOTE_7, 8, NOTE_13, 8, NOTE_10, 8, NOTE_8, 8, NOTE_7, 8, NOTE_8, 8, NOTE_6, 8, NOTE_4, 8, NOTE_9, 8, NOTE_10, 8, 
+
+    NOTE_12, 8, NOTE_9, 8, NOTE_8, 8, NOTE_6, 8, NOTE_5, 8, NOTE_6, 8, NOTE_9, 8, NOTE_8, 8, NOTE_9, 8, NOTE_10, 8, NOTE_9, 8, NOTE_8, 8, NOTE_6, 8, NOTE_5, 8, NOTE_4, 8, NOTE_5, 8, NOTE_7, 8, NOTE_7, 8, NOTE_8, 8, NOTE_9, 8, 
+
+    NOTE_8, 8, NOTE_6, 8, NOTE_3, 8, NOTE_2, 8, NOTE_2, 8, NOTE_3, 8, NOTE_3, 8, NOTE_4, 8, NOTE_4, 8, NOTE_4, 8, NOTE_3, 8, NOTE_3, 8, NOTE_2, 8, NOTE_3, 8, NOTE_2, 8, NOTE_3, 8, NOTE_3, 8, NOTE_4, 8, NOTE_4, 8, NOTE_3, 8, 
+
+    NOTE_3, 8, NOTE_2, 8, NOTE_2, 8, NOTE_1, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_3, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_2, 8, NOTE_4, 8, NOTE_4, 8, NOTE_5, 8, NOTE_5, 8, NOTE_4, 8, NOTE_4, 8, NOTE_3, 8, 
+
+    NOTE_1, 8, NOTE_0, 8, NOTE_1, 8, NOTE_0, 8, NOTE_0, 8, NOTE_1, 8, NOTE_0, 8, NOTE_1, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8, NOTE_0, 8,
+  };
+  notes = sizeof(melody) / sizeof(melody[0]) / 2;
+  wholenote = (60000 * 4) / tempo;
+  divider = 0, noteDuration = 0;
+  for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
+
+    // calculates the duration of each note
+    divider = melody[thisNote + 1];
+    if (divider > 0) {
+      // regular note, just proceed
+      noteDuration = (wholenote) / divider;
+    } else if (divider < 0) {
+      // dotted notes are represented with negative durations!!
+      noteDuration = (wholenote) / abs(divider);
+      noteDuration *= 1.5; // increases the duration in half for dotted notes
+    }
+
+    // we only play the note for 90% of the duration, leaving 10% as a pause
+    tone(buzzer, melody[thisNote], noteDuration * 0.9);
+
+    // Wait for the specief duration before playing the next note.
+    delay(noteDuration);
+
+    // stop the waveform generation before the next note.
+    noTone(buzzer);
+  }
 }
 
 void musica_bala(){
