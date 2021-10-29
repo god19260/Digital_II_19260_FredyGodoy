@@ -1,10 +1,10 @@
 //***************************************************************************************************************************************
-/* Librería para el uso de la pantalla ILI9341 en modo 8 bits
-   Basado en el código de martinayotte - https://www.stm32duino.com/viewtopic.php?t=637
-   Adaptación, migración y creación de nuevas funciones: Pablo Mazariegos y José Morales
-   Con ayuda de: José Guerra
-   Modificaciones y adaptación: Diego Morales
-   IE3027: Electrónica Digital 2 - 2021
+/* 
+ *  Proyecto II Digital II
+ *  Juego: Break Away 
+ *  Integrantes: 
+ *  Fernando Caceros 19148
+ *  Fredy Godoy 19260
 */
 //***************************************************************************************************************************************
 #include <SPI.h>
@@ -153,6 +153,7 @@ int notes = sizeof(melody) / sizeof(melody[0]) / 2;
 int wholenote = (60000 * 4) / tempo;
 
 int divider = 0, noteDuration = 0;
+
 //***************************************************************************************************************************************
 // Variables y Constantes
 //***************************************************************************************************************************************
@@ -175,7 +176,7 @@ String Numero;
 extern uint8_t Imagen_1 [];
 extern uint8_t Mapa_2 [];
 extern uint8_t Menu_J1 [];
-//extern uint8_t Menu_J2 [];
+extern uint8_t MatrizFondo[];
 unsigned char temp_2 [25000] PROGMEM = {};
 int Sw1_Flag = 0;
 int Sw2_Flag = 0;
@@ -193,19 +194,6 @@ int Dato3;
 int Dato4; 
 int Dato5; 
 int Dato6;
-// variables funcion linterna
-int last_direccion,last_linterna_x,last_linterna_y; 
-// variables funcion cofre_loot
-int Cofre_Arma;
-int Cofre_Balas;
-// variables funcion habilitar_armas/balas
-int Interactuar = 0;
-int ArmaEnable = 0;
-int BalasEnable = 0;
-int Balas = 0;
-//Variables funcion teletransportar
-int Llaves = 2;
-//--*-*-*-*-* Variables de prueba -*-*-*-*-*-*-
 String Jugador = "";
 String Contrincante = "";
 int direccion;
@@ -231,13 +219,29 @@ int char1;
 int char2;
 int x;
 int x_seg_ciclo;
+// variables funcion linterna
+int last_direccion,last_linterna_x,last_linterna_y; 
+
+// variables funcion cofre_loot
+int Cofre_Arma;
+int Cofre_Balas;
+
+// variables funcion habilitar_armas/balas
+int Interactuar = 0;
+int ArmaEnable = 0;
+int BalasEnable = 0;
+int Balas = 0;
+
+//Variables funcion teletransportar
+int Llaves = 2;
+
+
 // Variable estado 3
 char temp1;
 String x_contrario_temp = "";
 String y_contrario_temp = "";
 int cont = 0;
 
-extern uint8_t MatrizFondo[];
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -261,8 +265,6 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int
 // Initialization
 //***************************************************************************************************************************************
 void setup() {
-  //pinMode(Joystick_X, INPUT);
-  //pinMode(Joystick_Y, INPUT);
   pinMode(Joystick_Push, INPUT_PULLUP);
   pinMode(PUSH1,INPUT_PULLUP);
   pinMode(PUSH2,INPUT_PULLUP);
@@ -279,34 +281,22 @@ void setup() {
   // SD
   SPI.setModule(0);
   pinMode(PA_3, OUTPUT); // CS pin modulo SD
-  //Serial.println("Seleccione 1:Mario, 2:Guitarra, 3:Einstein");
   if (!SD.begin(PA_3)) {
     Serial.println("initialization failed!");
     return;
   }
   root = SD.open("/");
-  //printDirectory(root, 0);
+
+  
   //-------------------------------------------------------------
-
-  //FillRect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int c)
   FillRect(80, 60, 160, 120, 0x0400);
-
-  //LCD_Print(String text, int x, int y, int fontSize, int color, int background)
   String text1 = "Iniciando";
   LCD_Print(text1, 85, 110, 2, 0xffff, 0x0000);
 
   delay(1000);
 
-  //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);  
   LCD_Clear(0x00);
-  //Mapa();
-//  Cofres_Loot ();
-//  LCD_Print(String(Llaves), 300, 3, 1, 0xffff, 0x0000);
-//  LCD_Sprite(310, 3, 10, 10, LlavesImagen, 1, 0, 0, 0);
-//  //Menu("J1");
-  //LCD_Bitmap(0, 30, 320, 180, Menu_J1);
-//  Informacion_J2 (Vida_Dr);
-
+  
   
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // ~~~         J1 = niño             J2 = doctor              ~~~
@@ -349,77 +339,8 @@ void loop() {
   }
   
   else if (Estado == 3){
-        
-    Movimiento(Jugador);
-    currentMillis = millis();
-    if (currentMillis - previousMillis >= intervalo) {
-      Datos_Comunicacion();
-      previousMillis = currentMillis;
-      Linterna(pos_x,pos_y,direccion);
-      Mapa();
-    }
-    Sw_Flags();
-    if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
-      Sw1_Flag = 1;
-      // Accion del primer boton
-      LCD_Bitmap(0, 0, 320, 240, Mapa_2);
-      delay(10);
-    }
-    if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
-      Sw2_Flag = 1;
-      // Accion del segundo boton
-      //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
-      if(Jugador == "J1"){ 
-        if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
-          Disparar = 1;
-          musica_bala();
-          Balas-=1;
-          LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
-        }
-      }
-      else{
-        Disparar = 1;
-        musica_zombi();
-      }
-      delay(10);
-    }
-    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
-      SwJ_Flag = 1;
-      // Accion del boton Joystick
-      Interactuar = 1;
-    }
+    Estado_3();    
     
-    if (Vida_Dr == 0){
-      Serial.println("Muere Dr");
-      ArmaEnable = 0;
-      BalasEnable = 0;
-      Vida_Dr = 100;
-      Vida_Presa = 100;
-      Balas = 0;
-      Llaves = 2;
-      Estado = 4; 
-      Disparar = 0;
-    }else if ((Balas == 0 && Vida_Dr > 20 && ArmaEnable == 1 && BalasEnable == 1)||Vida_Presa < 0){
-      Serial.println("Muere niño");
-      ArmaEnable = 0;
-      BalasEnable = 0;
-      Vida_Dr = 100;
-      Vida_Presa = 100;
-      Balas = 0;
-      Llaves = 2;
-      Estado = 5;
-      Disparar = 0;
-    }//else if (Vida_Presa < 0){
-//      Serial.println("Muere niño");
-//      ArmaEnable = 0;
-//      BalasEnable = 0;
-//      Vida_Dr = 100;
-//      Vida_Presa = 100;
-//      Balas = 0;
-//      Llaves = 2;
-//      Estado = 5; 
-//      Disparar = 0;
-//    }
   }
 
   else if (Estado == 4){
@@ -428,9 +349,7 @@ void loop() {
 
   else if (Estado == 5){
     Estado_5();
-  }
-  // Prueba de funciones
-  
+  }  
 }
 //***************************************************************************************************************************************
 // Función para inicializar LCD
@@ -2393,12 +2312,71 @@ void Estado_2(void){
 }
 
 void Estado_3(){
-  
+  Movimiento(Jugador);
+    currentMillis = millis();
+    if (currentMillis - previousMillis >= intervalo) {
+      Datos_Comunicacion();
+      previousMillis = currentMillis;
+      Linterna(pos_x,pos_y,direccion);
+      Mapa();
+    }
+    Sw_Flags();
+    if(digitalRead(PUSH1) == LOW && Sw1_Flag == 0){
+      Sw1_Flag = 1;
+      // Accion del primer boton
+      LCD_Bitmap(0, 0, 320, 240, Mapa_2);
+      delay(10);
+    }
+    if(digitalRead(PUSH2) == LOW && Sw2_Flag == 0){
+      Sw2_Flag = 1;
+      // Accion del segundo boton
+      //LCD_Bitmap(0, 30, 320, 180, Menu_J1 );
+      if(Jugador == "J1"){ 
+        if(ArmaEnable == 1 && BalasEnable == 1 && Balas>0){
+          Disparar = 1;
+          musica_bala();
+          Balas-=1;
+          LCD_Print(String(Balas), 280, 3, 1, 0xffff, 0x0000);
+        }
+      }
+      else{
+        Disparar = 1;
+        musica_zombi();
+      }
+      delay(10);
+    }
+    if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
+      SwJ_Flag = 1;
+      // Accion del boton Joystick
+      Interactuar = 1;
+    }
+    
+    if (Vida_Dr == 0){
+      Serial.println("Muere Dr");
+      ArmaEnable = 0;
+      BalasEnable = 0;
+      Vida_Dr = 100;
+      Vida_Presa = 100;
+      Balas = 0;
+      Llaves = 2;
+      Estado = 4; 
+      Disparar = 0;
+    }else if ((Balas == 0 && Vida_Dr > 20 && ArmaEnable == 1 && BalasEnable == 1)||Vida_Presa < 0){
+      Serial.println("Muere niño");
+      ArmaEnable = 0;
+      BalasEnable = 0;
+      Vida_Dr = 100;
+      Vida_Presa = 100;
+      Balas = 0;
+      Llaves = 2;
+      Estado = 5;
+      Disparar = 0;
+    }
 }
 
 void Estado_4(){
-  Ready_J2 = 48;
   Serial2.print(',');
+  Serial2.end();
   LCD_Clear(0x00);
   //Función para imprimir imagen J1 WIN
 
@@ -2410,6 +2388,7 @@ void Estado_4(){
   Serial.println("Gana J1");
   int a = 1;
   while (a){
+    Sw_Flags();
     if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
       SwJ_Flag = 1;
       // Accion del boton Joystick
@@ -2417,6 +2396,8 @@ void Estado_4(){
     }
   }
   LCD_Clear(0x00);
+  Serial2.begin(9600);
+  Ready_J2 = 48;
   Estado = 1;
   tempo = 150;
   int melody[] = {
@@ -2436,8 +2417,8 @@ void Estado_4(){
 }
 
 void Estado_5(){
-  Ready_J2 = 48;
   Serial2.print('.');
+  Serial2.end();
   LCD_Clear(0x00);
   //Función para imprimir imagen J2 WIN
   Cargar_Imagen("J2_WIN.TXT");
@@ -2448,6 +2429,7 @@ void Estado_5(){
   Serial.println("Gana J2");
   int a = 1;
   while (a){
+    Sw_Flags();
     if(digitalRead(Joystick_Push) == LOW && SwJ_Flag == 0){
       SwJ_Flag = 1;
       // Accion del boton Joystick
@@ -2455,6 +2437,8 @@ void Estado_5(){
     }
   }
   LCD_Clear(0x00);
+  Serial2.begin(9600);
+  Ready_J2 = 48;
   Estado = 1;
   tempo = 150;
   int melody[] = {
